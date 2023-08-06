@@ -1,25 +1,78 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@extends('admin.layouts.commonMaster' )
+
+@section('title', 'Login Cover - Pages')
+
+@section('vendor-style')
+<!-- Vendor -->
+<link rel="stylesheet" href="{{asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css')}}" />
+@endsection
+
+@section('page-style')
+<!-- Page -->
+<link rel="stylesheet" href="{{asset('assets/vendor/css/pages/page-auth.css')}}">
+@endsection
+
+@section('vendor-script')
+<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js')}}"></script>
+@endsection
+
+@section('page-script')
+<script src="{{asset('assets/js/pages-auth.js')}}"></script>
+@endsection
+
+@section('layoutContent')
+<div class="authentication-wrapper authentication-cover authentication-bg">
+    <div class="authentication-inner row">
+
+        <!-- /Left Text -->
+        <div class="d-none d-lg-flex col-lg-7 p-0">
+            <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
+                <img src="{{ asset('assets/img/illustrations/auth-forgot-password-illustration-light.png') }}"
+                    alt="auth-forgot-password-cover" class="img-fluid my-5 auth-illustration"
+                    data-app-light-img="illustrations/auth-forgot-password-illustration-light.png"
+                    data-app-dark-img="illustrations/auth-forgot-password-illustration-dark.png">
+
+                <img src="{{ asset('assets/img/illustrations/bg-shape-image-light.png') }}"
+                    alt="auth-forgot-password-cover" class="platform-bg"
+                    data-app-light-img="illustrations/bg-shape-image-light.png"
+                    data-app-dark-img="illustrations/bg-shape-image-dark.png">
+            </div>
+        </div>
+        <!-- /Left Text -->
+
+        <!-- Forgot Password -->
+        <div class="d-flex col-12 col-lg-5 align-items-center p-sm-5 p-4">
+            <div class="w-px-400 mx-auto">
+                <!-- Logo -->
+                <div class="app-brand mb-4">
+                    <a href="{{url('/')}}" class="app-brand-link gap-2">
+                        <span
+                            class="app-brand-logo demo">@include('admin._partials.macros',["height"=>20,"withbg"=>'fill:
+                            #fff;'])</span>
+                    </a>
+                </div>
+                <!-- /Logo -->
+                <h3 class="mb-1 fw-bold">Forgot Password? 🔒</h3>
+                <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
+                    <form method="POST" id="formAuthentication" class="mb-3" action="{{ route('password.email') }}">
+                        @csrf
+                    <div class="mb-3">
+                        <x-input label='Email' type="email" :required=true placeholder='Enter your email' name="email">
+                        </x-input>
+                    </div>
+                    <button class="btn btn-primary d-grid w-100">Email Password Reset Link</button>
+                </form>
+                <div class="text-center">
+                    <a href="{{route('login')}}" class="d-flex align-items-center justify-content-center">
+                        <i class="ti ti-chevron-left scaleX-n1-rtl"></i>
+                        Back to login
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /Forgot Password -->
     </div>
-
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</div>
+@endsection
