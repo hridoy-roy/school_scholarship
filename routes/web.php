@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\AboutUsController;
+use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\GalleryController;
+use App\Http\Controllers\Frontend\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +20,12 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get('/',[HomeController::class,'index']);
 
 
 Route::middleware('auth')->group(function () {
