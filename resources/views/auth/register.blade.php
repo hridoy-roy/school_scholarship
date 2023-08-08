@@ -1,52 +1,114 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('admin.layouts.commonMaster' )
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+@section('title', 'Login Cover - Pages')
+
+@section('vendor-style')
+<!-- Vendor -->
+<link rel="stylesheet" href="{{asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css')}}" />
+@endsection
+
+@section('page-style')
+<!-- Page -->
+<link rel="stylesheet" href="{{asset('assets/vendor/css/pages/page-auth.css')}}">
+@endsection
+
+@section('vendor-script')
+<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js')}}"></script>
+@endsection
+
+@section('page-script')
+<script src="{{asset('assets/js/pages-auth.js')}}"></script>
+@endsection
+
+@section('layoutContent')
+<div class="authentication-wrapper authentication-cover authentication-bg">
+    <div class="authentication-inner row">
+
+        <!-- /Left Text -->
+        <div class="d-none d-lg-flex col-lg-7 p-0">
+            <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
+                <img src="{{ asset('assets/img/illustrations/auth-register-illustration-light.png') }}"
+                    alt="auth-register-cover" class="img-fluid my-5 auth-illustration"
+                    data-app-light-img="illustrations/auth-register-illustration-light.png"
+                    data-app-dark-img="illustrations/auth-register-illustration-dark.png">
+
+                <img src="{{ asset('assets/img/illustrations/bg-shape-image-light.png') }}" alt="auth-register-cover"
+                    class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png"
+                    data-app-dark-img="illustrations/bg-shape-image-dark.png">
+            </div>
         </div>
+        <!-- /Left Text -->
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <!-- Register -->
+        <div class="d-flex col-12 col-lg-5 align-items-center p-sm-5 p-4">
+            <div class="w-px-400 mx-auto">
+                <!-- Logo -->
+                <div class="app-brand mb-4">
+                    <a href="{{url('/')}}" class="app-brand-link gap-2">
+                        <span
+                            class="app-brand-logo demo">@include('admin._partials.macros',["height"=>20,"withbg"=>'fill:
+                            #fff;'])</span>
+                    </a>
+                </div>
+                <!-- /Logo -->
+                <h3 class="mb-1 fw-bold">Adventure starts here 🚀</h3>
+                <p class="mb-4">Make your app management easy and fun!</p>
+
+                <form class="mb-3" id="formAuthentication" method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <div class="mb-3">
+                        <x-input label='Name' type="name" :required=true placeholder='Enter your Name' name="name">
+                        </x-input>
+                    </div>
+                    <div class="mb-3">
+                        <x-input label='Email' type="email" :required=true placeholder='Enter your email' name="email">
+                        </x-input>
+                    </div>
+                    <div class="mb-3 form-password-toggle">
+                        <x-input label='Password' type="password" :required=true placeholder='Password' name="password">
+                        </x-input>
+                    </div>
+
+                    <div class="mb-3 form-password-toggle">
+                        <x-input label='Confirm Password' type="password" :required=true
+                            placeholder='Password Confirmation' name="password_confirmation">
+                        </x-input>
+                    </div>
+                    <button class="btn btn-primary d-grid w-100">
+                        Sign up
+                    </button>
+                </form>
+
+                <p class="text-center">
+                    <span>Already have an account?</span>
+                    <a href="{{route('login')}}">
+                        <span>Sign in instead</span>
+                    </a>
+                </p>
+
+                <div class="divider my-4">
+                    <div class="divider-text">or</div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
+                        <i class="tf-icons fa-brands fa-facebook-f fs-5"></i>
+                    </a>
+
+                    <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
+                        <i class="tf-icons fa-brands fa-google fs-5"></i>
+                    </a>
+
+                    <a href="javascript:;" class="btn btn-icon btn-label-twitter">
+                        <i class="tf-icons fa-brands fa-twitter fs-5"></i>
+                    </a>
+                </div>
+            </div>
         </div>
+        <!-- /Register -->
+    </div>
+</div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+@endsection
