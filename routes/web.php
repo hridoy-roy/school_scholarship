@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\AboutUsController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\GalleryController;
 use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\AdmitCardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,28 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+// Admit Card by Tanvir
+    
+    // Route::get('/admitcard/submit', [AdmitCardController::class, 'submit'])->name('admitcard.submit');
+
+    // Route::get('/admitcard/card', [AdmitCardController::class, 'view'])->name('profile.view');
+
+
 });
 
+
+
+
 require __DIR__.'/auth.php';
+
+
+Route::get('/submit',function () {
+    return view('admitcard.submit');
+});
+
+Route::get('/card',function () {
+    return view('admitcard.card');
+});
+
