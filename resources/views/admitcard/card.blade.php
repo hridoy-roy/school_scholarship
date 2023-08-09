@@ -113,7 +113,7 @@
 
 
 
-<section>
+<section class="card">
 	<div class="container">
 		<div class="admit-card">
 			<div class="BoxA border- padding mar-bot"> 
@@ -131,7 +131,9 @@
 					</div>
 
 						<div class="col-sm-3 txt-center">
-						<img src="logo.jpg" width="100px;" />
+						<img src="{{ url('/assets/img/logo.jpg') }}" width="100vh;" />
+
+						
 					</div>
 
 				</div>
@@ -163,7 +165,7 @@
 							  <td><b>DOB: </b>02 Jul 1997</td>
 							</tr>
 							<tr>
-							  <td colspan="2" style="    height: 125px;"><b>Address: </b>text</td>
+							  <td colspan="2" style=" height: 125px;"><b>Address: </b>text</td>
 							</tr>
 						  </tbody>
 						</table>
@@ -172,7 +174,9 @@
 						<table class="table table-bordered">
 						  <tbody>
 							<tr>
-							  <th scope="row txt-center"><img src="tanvir.jpg" width="123px" height="165px" /></th>
+							  <th scope="row txt-center"><img src="{{ url('/assets/img/tanvir.jpg') }}" width="123vh" height="165px" /></th>
+
+							  
 							</tr>
 
 						

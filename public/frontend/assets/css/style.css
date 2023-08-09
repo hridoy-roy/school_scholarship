@@ -1529,24 +1529,28 @@ li .single_team_text p{
 
 /*subnit section*/
 
-.signup-page {
-    float: left;
+.submit-page {
+    /* float: left; */
     width: 100%;
     height: 100%;
     background-color: #f9f9f9;
-    padding: 20px 0px 20px;
+    padding: 110px 360px 50px;
 }
+
+
 .form-bg {
-    background-color: white;
-    border: 1px solid #e8edea;
-    padding: 20px 40px 30px;
+    background-color: #f0f0f2;
+    border: 1px solid #c9c9c9;
+    padding: 5px 40px 10px;
 }
-.logo {
+
+/* .logo {
     width: 200px;
     margin: 20px auto 40px;
     display: block;
-}
-.signup-page h2 {
+} */
+
+.submit-page h2 {
     font-size: 17px;
     color: #999;
     text-align: center;
@@ -1627,8 +1631,9 @@ span.option-br {
 
 }
 
-
 .note{
+    font-size: 14px;
+    line-height: 1.5;
     color: red;
 }
 
@@ -1644,11 +1649,91 @@ span.option-br {
     margin: 15px 5px;
 }
 
-
-/* Card sectioln*/
-
+/* Responsive section */
 
 
+
+@media (min-width: 1200px) and (max-width: 3500px) {
+
+    .submit-page {
+        /* float: left; */
+        width: 100%;
+        height: 100%;
+        background-color: #f9f9f9;
+        padding: 100px 360px 50px;
+    }
+
+  }
+
+  @media (min-width: 992px) and (max-width: 1200px) {
+
+    .submit-page {
+        /* float: left; */
+        width: 100%;
+        height: 100%;
+        padding: 100px 260px 20px;
+    }
+
+
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+
+    .submit-page {
+        /* float: left; */
+        width: 100%;
+        height: 100%;
+      
+        padding: 100px 120px 20px;
+    }
+
+  }
+
+  @media (max-width: 767px) {
+
+    .submit-page {
+        /* float: left; */
+        width: 100%;
+        height: 100%;
+        
+        padding: 100px 80px 20px;
+    }
+
+  }
+
+  @media (max-width: 450px) {
+
+    .submit-page {
+        /* float: left; */
+        width: 100%;
+        height: 100%;
+     
+        padding: 100px 30px 20px;
+    }
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Card sectioln */
+
+
+.card{
+    margin: 100px 0px 50px;
+    
+
+}
 .txt-center {
     text-align: center;
 }
@@ -1663,6 +1748,7 @@ span.option-br {
 }
 .admit-card {
     border: 2px solid #000;
+    background-color: #f7f7f7;
     padding: 15px;
     margin: 20px 0;
 }

@@ -1,10 +1,7 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
+
 <html class="no-js" lang="">
-<!--<![endif]-->
+
 
 <head>
     <meta charset="utf-8">
@@ -114,28 +111,24 @@
 
 
 
-    <div class="signup-page">
+    <div class="submit-page">
       <div class="container">
         <div class="row">
-          <div class="col-sm-10 col-lg-6 offset-sm-1 offset-lg-3">        
+          <div class="col-xl-4 col-lg-5 col-md-5">        
             <div class="form-bg">
     
               <!-- <a href="#"><img src="/images/logo.png" alt="logo" class="logo"></a> -->
     
               
-    
-    
                <div class="admit form-bg">
                   <h2>Download Your Admit Card</h2>
                </div>
     
     
-    
-    
               <p class="note">Note: You have to make confirm your payment of tuition fees before downloading the admit card</p>
     
               <form>
-                <!-- <button class="login-with-fb"><i class="fa fa-facebook-official" aria-hidden="true"></i> Log in with Facebook</button> -->
+                
     
                 <span class="options-divider"> </span>
                 <!-- <span class="option-br"></span> -->
