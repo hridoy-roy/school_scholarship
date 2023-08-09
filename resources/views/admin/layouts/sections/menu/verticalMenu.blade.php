@@ -26,25 +26,25 @@
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
         </li>
-        {{-- <li
-            class="{{ request()->routeIs('experiences.index') || request()->routeIs('experiences.create') || request()->routeIs('experiences.edit') ? 'active open' : '' }} menu-item">
+        <li
+            class="{{ request()->routeIs('classes.index') || request()->routeIs('classes.create') || request()->routeIs('classes.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-briefcase"></i>
-                <div data-i18n="Dashboards">Experiences</div>
+                <div data-i18n="Dashboards">Class</div>
                 <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
             </a>
             <ul class="menu-sub">
-                <li class="{{ request()->routeIs('experiences.index') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('experiences.index') }}" class="menu-link">
+                <li class="{{ request()->routeIs('classes.index') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('classes.index') }}" class="menu-link">
                         <div>List</div>
                     </a>
                 </li>
-                <li class="{{ request()->routeIs('experiences.create') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('experiences.create') }}" class="menu-link">
+                <li class="{{ request()->routeIs('classes.create') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('classes.create') }}" class="menu-link">
                         <div>Create</div>
                     </a>
                 </li>
             </ul>
-        </li> --}}
+        </li>
     </ul>
 </aside>

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Institute;
+use App\Models\ExamCenter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class InstituteController extends Controller
+class ExamCenterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class InstituteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Institute $institute)
+    public function show(ExamCenter $examCenter)
     {
         //
     }
@@ -43,7 +43,7 @@ class InstituteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Institute $institute)
+    public function edit(ExamCenter $examCenter)
     {
         //
     }
@@ -51,7 +51,7 @@ class InstituteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Institute $institute)
+    public function update(Request $request, ExamCenter $examCenter)
     {
         //
     }
@@ -59,7 +59,7 @@ class InstituteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Institute $institute)
+    public function destroy(ExamCenter $examCenter)
     {
         //
     }
