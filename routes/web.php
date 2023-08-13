@@ -1,13 +1,19 @@
 <?php
 
+use App\Models\Institute;
+use App\Models\ExamCenter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InstituteController;
+use App\Http\Controllers\Admin\ExamCenterController;
 use App\Http\Controllers\Frontend\AboutUsController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\GalleryController;
+use App\Http\Controllers\Admin\StudentClassController;
+
 // use App\Http\Controllers\Frontend\ContactController;
 
 /*
@@ -34,6 +40,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resources([
         'classes' => StudentClassController::class,
+        'institute'=>InstituteController::class,
+        'examcenter'=>ExamCenterController::class,
     ]);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -59,4 +67,3 @@ Route::get('/submit',function () {
 Route::get('/card',function () {
     return view('admitcard.card');
 });
-

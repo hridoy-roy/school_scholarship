@@ -13,7 +13,14 @@ class InstituteController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => "Institute",
+            'sub_title' => "Index",
+            'header' => "List Class",
+            'classes' => Institute::paginate(),
+        ];
+        $institutes = Institute::orderBy('order_by')->get();
+        return view ('admin.content.institute.index', compact('institutes'), $data);
     }
 
     /**
@@ -21,7 +28,12 @@ class InstituteController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => "Institute",
+            'sub_title' => "Create",
+            'header' => "Create Class",
+        ];
+        return view('admin.content.institute.create', $data);
     }
 
     /**
@@ -29,7 +41,17 @@ class InstituteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $this->validate($request, [
+            'name'=>'required|min:6|max:255',
+            'order_by'=>'required|numeric',
+            'status'=>'required',
+        ]);
+
+        Institute::create($request->all());
+
+        session()->put('success', 'Item created successfully.');;
+            
+        return redirect()->route('institute.index');
     }
 
     /**
@@ -45,7 +67,13 @@ class InstituteController extends Controller
      */
     public function edit(Institute $institute)
     {
-        //
+        $data = [
+            'title' => "Class",
+            'sub_title' => "Edit",
+            'header' => "Edit Class",
+            'class' => $institute
+        ];
+        return view ('admin.content.institute.create',compact('institute'), $data);
     }
 
     /**
@@ -53,7 +81,17 @@ class InstituteController extends Controller
      */
     public function update(Request $request, Institute $institute)
     {
-        //
+         $this->validate($request, [
+            'name'=>'required|min:3|max:255',
+            'order_by'=>'required|numeric',
+            'status'=>'required',
+        ]);
+
+        $institute->update($request->all());
+
+        session()->put('success', 'Item Updated successfully.');
+            
+        return redirect()->route('institute.index');
     }
 
     /**
@@ -61,6 +99,8 @@ class InstituteController extends Controller
      */
     public function destroy(Institute $institute)
     {
-        //
+        $institute->delete();
+        session()->put('success', 'Item Deleted successfully.');
+        return redirect()->back();
     }
 }

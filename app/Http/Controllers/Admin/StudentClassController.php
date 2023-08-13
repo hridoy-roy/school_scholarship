@@ -15,11 +15,12 @@ class StudentClassController extends Controller
     {
         $data = [
             'title' => "Class",
-            'sub_title' => "Create",
+            'sub_title' => "Index",
             'header' => "List Class",
             'classes' => StudentClass::paginate(),
         ];
-        return view('admin.content.class.list', $data);
+        $classes = StudentClass::orderBy('order_by')->get();
+        return view ('admin.content.class.index', compact('classes'), $data);
     }
 
     /**
@@ -40,17 +41,17 @@ class StudentClassController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required'
+         $this->validate($request, [
+            'name'=>'required|min:6|max:255',
+            'order_by'=>'required|numeric',
+            'status'=>'required',
         ]);
 
+        StudentClass::create($request->all());
 
-        StudentClass::create([
-            'name' => $request->name
-        ]);
-
-        session()->put('success', 'Item created successfully.');
-        return redirect()->back();
+        session()->put('success', 'Item created successfully.');;
+            
+        return redirect()->route('classes.index');
     }
 
     /**
@@ -72,7 +73,7 @@ class StudentClassController extends Controller
             'header' => "Edit Class",
             'class' => $class
         ];
-        return view('admin.content.class.edit', $data);
+        return view ('admin.content.class.create',compact('class'), $data);
     }
 
     /**
@@ -80,15 +81,16 @@ class StudentClassController extends Controller
      */
     public function update(Request $request, StudentClass $class)
     {
-        $request->validate([
-            'name' => 'required'
+         $this->validate($request, [
+            'name'=>'required|min:3|max:255',
+            'order_by'=>'required|numeric',
+            'status'=>'required',
         ]);
 
-        $class->update([
-            'name' => $request->name
-        ]);
+        $class->update($request->all());
 
         session()->put('success', 'Item Updated successfully.');
+            
         return redirect()->route('classes.index');
     }
 
