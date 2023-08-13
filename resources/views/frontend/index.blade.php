@@ -183,7 +183,7 @@
 
 
 
-
+{{-- Start Portfolio Section --}}
 
     <section id="portfolio" class="portfolio sections">
         <div class="container-fluid">
@@ -200,7 +200,9 @@
                         </div>
                     </div>
                     <div class="work_menu text-center">
+
                         <div id="filters" class="toolbar mb2 mt2">
+
                             <button class="btn-md fil-cat filter active" data-filter="all">ALL</button>/
                             <button class="btn-md fil-cat filter" data-rel="web" data-filter=".web">WEB
                                 DESIGN</button>/
@@ -217,7 +219,9 @@
                     </div>
 
                     <div style="clear:both;"></div>
+
                     <div id="portfoliowork">
+
                         <div class="single_portfolio tile scale-anm web grid-item-width2 video">
                             <img src="{{ url('frontend/assets/images/pf1.jpg') }}" alt="" />
                             <a href="{{ url('frontend/assets/images/pf1.jpg') }}" class="portfolio-img">
@@ -228,6 +232,7 @@
                                 </div>
                             </a>
                         </div>
+
                         <div class="single_portfolio tile scale-anm bcards photo">
                             <img src="{{ url('frontend/assets/images/pf2.jpg') }}" alt="" />
                             <a href="{{ url('frontend/assets/images/pf2.jpg') }}" class="portfolio-img">
@@ -238,6 +243,7 @@
                                 </div>
                             </a>
                         </div>
+
                         <div class="single_portfolio tile scale-anm web video">
                             <img src="{{ url('frontend/assets/images/pf3.jpg') }}" alt="" />
                             <a href="{{ url('frontend/assets/images/pf3.jpg') }}" class="portfolio-img">
@@ -248,6 +254,7 @@
                                 </div>
                             </a>
                         </div>
+
                         <div class="single_portfolio tile scale-anm web photo">
                             <img src="{{ url('frontend/assets/images/pf4.jpg') }}" alt="" />
                             <a href="{{ url('frontend/assets/images/pf4.jpg') }}" class="portfolio-img">
@@ -258,6 +265,7 @@
                                 </div>
                             </a>
                         </div>
+
                         <div class="single_portfolio tile scale-anm bcards design">
                             <img src="{{ url('frontend/assets/images/pf5.jpg') }}" alt="" />
                             <a href="{{ url('frontend/assets/images/pf5.jpg') }}" class="portfolio-img">
@@ -269,6 +277,7 @@
                             </a>
                         </div>
 
+
                         <div class="single_portfolio tile scale-anm flyers video design">
                             <img src="{{ url('frontend/assets/images/pf6.jpg') }}" alt="" />
                             <a href="{{ url('frontend/assets/images/pf6.jpg') }}" class="portfolio-img">
@@ -279,6 +288,7 @@
                                 </div>
                             </a>
                         </div>
+
                         <div class="single_portfolio tile scale-anm photo flyers">
                             <img src="{{ url('frontend/assets/images/pf7.jpg') }}" alt="" />
                             <a href="{{ url('frontend/assets/images/pf7.jpg') }}" class="portfolio-img">
@@ -301,13 +311,22 @@
                             </a>
                         </div>
 
+
+
+
+                 
+
+
                     </div>
 
                     <div style="clear:both;"></div>
+                    
                 </div>
             </div>
         </div><!-- End off container -->
     </section> <!-- End off Work Section -->
+
+    {{-- End Portfolio Section --}}
 
 
 

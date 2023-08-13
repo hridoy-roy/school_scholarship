@@ -110,14 +110,131 @@
 
 
 
+
+
+
 <section class="card">
+	<div class="container">
+		<div class="admit-card">
+			<div class="BoxA border- padding mar-bot"> 
+				<div class="row">
 
-  <h1 style="color: red">Admit Card</h1>
+					<div class="col-sm-5">
+						<h5>The Student welfare Association</h5>
+						<p>Address <br>Location</p>
+					</div>
 
+
+					<div class="col-sm-4">
+						<h5>Admit Card</h5>
+						<p>Exam Name</p>
+					</div>
+
+						<div class="col-sm-3 txt-center">
+						<img src="{{ url('/assets/img/logo.jpg') }}" width="100vh;" />
+
+						
+					</div>
+
+				</div>
+			</div>
+
+	<!-- 		<div class="BoxC border- padding mar-bot">
+				<div class="row">
+					<div class="col-sm-6">
+						<h5>Student ID : 191000</h5>
+					</div>
+				</div>
+			</div> -->
+
+			<div class="BoxD border- padding mar-bot">
+				<div class="row">
+					<div class="col-sm-10">
+						<table class="table table-bordered">
+						  <tbody>
+							<tr>
+							  <td><b>Student ID  : 9910100</b></td>
+							  <td><b>Section: </b> A</td>
+							</tr>
+							<tr>
+							  <td><b>Student Name: </b>Tanvir</td>
+							  <td><b>Sex: </b>Male</td>
+							</tr>
+							<tr>
+							  <td><b>Father/Husband Name: </b>XYZ</td>
+							  <td><b>DOB: </b>02 Jul 1997</td>
+							</tr>
+							<tr>
+							  <td colspan="2" style=" height: 125px;"><b>Address: </b>text</td>
+							</tr>
+						  </tbody>
+						</table>
+					</div>
+					<div class="col-sm-2 txt-center">
+						<table class="table table-bordered">
+						  <tbody>
+							<tr>
+							  <th scope="row txt-center"><img src="{{ url('/assets/img/tanvir.jpg') }}" width="123vh" height="165px" /></th>
+
+							  
+							</tr>
+
+						
+
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="BoxE border- padding mar-bot txt-center">
+				<div class="row">
+					<div class="col-sm-12">
+						<h5>EXAMINATION VENUE</h5>
+						<p>School Name <br>Location</p>
+					</div>
+				</div>
+			</div>
+			<div class="BoxF border- padding mar-bot txt-center">
+				<div class="row">
+					<div class="col-sm-12">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>Sr. No.</th>
+									<th>Subject/Paper</th>
+									<th>Exam Date</th>
+								</tr>
+							</thead>
+						  <tbody>
+							<tr>
+							  <td>1</td>
+							  <td>English</td>
+							  <td>5 July 2023</td>
+							</tr>
+							<tr>
+							  <td>2</td>
+							  <td>English</td>
+							  <td>5 July 2023</td>
+							</tr>
+							<tr>
+							  <td>3</td>
+							  <td>English</td>
+							  <td>5 July 2023</td>
+							</tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<footer class="txt-center">
+				<!-- <p> School name </p> -->
+			</footer>
+			
+		</div>
+	</div>
+	
 </section>
-
-
-
 
 
 
