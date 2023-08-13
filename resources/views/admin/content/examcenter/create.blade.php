@@ -1,6 +1,6 @@
 @extends('admin.layouts.layoutMaster')
 
-@section('title', 'Create Class')
+@section('title', 'Create Isntitute')
 
 @section('page-script')
 <script src="{{asset('assets/js/form-validation.js')}}"></script>
@@ -11,48 +11,55 @@
     <h4 class="fw-bold">
         <span class="text-muted fw-light">{{ $title ?? 'N/A' }} /</span> {{ $sub_title ?? 'N/A' }}
     </h4>
-    <a href="{{route('classes.index')}}"> <button class=" btn btn-primary">➥ List</button></a>
+    <a href="{{route('examcenter.index')}}"> <button class=" btn btn-primary">➥ List</button></a>
 </div>
 <div class="row">
     <!-- FormValidation -->
     <div class="col-12">
         <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
-                @if(isset($class))
-                <h5 class="mb-0">Edit Class</h5>
+                @if(isset($center))
+                <h5 class="mb-0">Edit Exam Center</h5>
                 @else
-                <h5 class="mb-0">Create Class</h5>
+                <h5 class="mb-0">Create Exam Center</h5>
                 @endif
-                <small class="text-muted float-end">Default label</small>
+                <small class="text-muted float-end">Exam Center Form</small>
             </div>
             <div class="card-body">
-                <form method="post" action="{{(@$class) ? route('classes.update',$class->id) : route('classes.store')}}">
+                <form method="post" action="{{(@$center) ? route('examcenter.update',$center->id) : route('examcenter.store')}}">
                     @csrf
 
-                    @if(isset($class))
+                    @if(isset($center))
                     @method('put')
                     @endif
 
                     <div class="mb-3">
-                        <label class="form-label" for="name">Class Name <code>*</code></label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter Class Name" value="{{@$class->name}}" />
+                        <label class="form-label" for="name">Exam Center Name <code>*</code></label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter Exam Center Name" value="{{@$center->name}}" />
                         @error('name')
                         <code>*{{$message}}</code>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="order_by">Class Serial</label>
-                        <input type="text" class="form-control" name="order_by" id="basic-default-company" value="{{@$class->order_by}}" placeholder="Enter Category Serial" />
+                        <label class="form-label" for="name">Exam Center Capacity <code>*</code></label>
+                        <input type="text" class="form-control" name="capacity" placeholder="Enter Exam Center Capacity" value="{{@$center->capacity}}" />
+                        @error('name')
+                        <code>*{{$message}}</code>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="order_by">Exam Center Serial</label>
+                        <input type="text" class="form-control" name="order_by" id="basic-default-company" value="{{@$center->order_by}}" placeholder="Enter Exam Center Serial" />
                         @error('order_by')
                         <code>*{{$message}}</code>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="status">Class Status <code>*</code></label>
+                        <label class="form-label" for="status">Exam Center Status <code>*</code></label>
                         <select class="form-control" name="status">
-                            @if(isset($class))
-                            <option value="{{$class->status}}">
-                                {{$class->status == 1 ? 'Active' : 'Inactive'}}
+                            @if(isset($center))
+                            <option value="{{$center->status}}">
+                                {{$center->status == 1 ? 'Active' : 'Inactive'}}
                             </option>
                             @else
                             <option value=" ">Select</option>
@@ -65,7 +72,7 @@
                         @enderror
                     </div>
                     <button type="submit" class="btn btn-primary">
-                        {{(@$class)?'Update':'Submit'}}
+                        {{(@$center)?'Update':'Submit'}}
                     </button>
                 </form>
             </div>

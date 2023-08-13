@@ -13,7 +13,14 @@ class ExamCenterController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => "Exam Center",
+            'sub_title' => "Index",
+            'header' => "List Class",
+            'classes' => ExamCenter::paginate(),
+        ];
+        $examcenters = ExamCenter::orderBy('order_by')->get();
+        return view ('admin.content.examcenter.index', compact('examcenters'), $data);
     }
 
     /**
@@ -21,7 +28,12 @@ class ExamCenterController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => "Exam Center",
+            'sub_title' => "Create",
+            'header' => "Create Class",
+        ];
+        return view('admin.content.examcenter.create', $data);
     }
 
     /**
@@ -29,13 +41,24 @@ class ExamCenterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $this->validate($request, [
+            'name'=>'required|min:6|max:255',
+            'capacity'=>'required|max:10',
+            'order_by'=>'required|numeric',
+            'status'=>'required',
+        ]);
+
+        ExamCenter::create($request->all());
+
+        session()->put('success', 'Item created successfully.');;
+            
+        return redirect()->route('examcenter.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(ExamCenter $examCenter)
+    public function show(ExamCenter $center)
     {
         //
     }
@@ -43,24 +66,44 @@ class ExamCenterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ExamCenter $examCenter)
+    public function edit($id)
     {
-        //
+        $data = [
+            'title' => "Exam Center",
+            'sub_title' => "Edit",
+            'header' => "Edit Class",
+        ];
+        $center = ExamCenter::where('id', $id)->first();
+        return view ('admin.content.examcenter.create',compact('center'), $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ExamCenter $examCenter)
+    public function update(Request $request, $id)
     {
-        //
+         $this->validate($request, [
+            'name'=>'required|min:3|max:255',
+            'capacity'=>'required|max:10',
+            'order_by'=>'required|numeric',
+            'status'=>'required',
+        ]);
+        $ExamCenter = ExamCenter::find($id);
+        $ExamCenter->update($request->all());
+
+        session()->put('success', 'Item Updated successfully.');
+            
+        return redirect()->route('examcenter.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ExamCenter $examCenter)
+    public function destroy($id)
     {
-        //
+        $ExamCenter = ExamCenter::find($id);
+        $ExamCenter->delete();
+        session()->put('success', 'Item Deleted successfully.');
+        return redirect()->back();
     }
 }

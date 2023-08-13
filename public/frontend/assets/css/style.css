@@ -1,5 +1,13 @@
 
 
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+
+
+
 /*
 Author: Bootstrapthemes
 Author URI: http://bootstrapthemes.co
@@ -280,6 +288,7 @@ ul{
     width: 100%;
     height: 100%;
 }
+
 /*.map-overlay {
     background-color: rgba(255, 114, 0, 0.75);
     width: 100%;
@@ -290,6 +299,7 @@ ul{
     width: 100%;
     height: auto;
 }*/
+
 
 .no-padding {
     padding: 0 !important;
@@ -561,37 +571,40 @@ input::-ms-input-placeholder {
 }
 .main_menu_bg{
     margin-top: 0px;
-    background-color: transparent;
+    background-color: #000142;
+    
 }
 .main_menu_bg .navbar-default {
     background-color: transparent; 
     border-color: transparent; 
     transition: all .6s;
-    margin: 15px auto;
+    margin: 10px auto;
 }
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus{
     color:#e74c3c;
     background: transparent;
 }
-.main_menu_bg .navbar {}
+
+/* .main_menu_bg .navbar {} */
 
 .main_menu_bg .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
     color: #e74c3c;
-    padding-bottom: 22px;
+    padding-bottom: 14px;
     border-bottom: 1px solid #e74c3c;
     background: transparent;
 
 }
 
 .main_menu_bg .navbar-nav>li>a {
-    padding-top: 15px;
+    padding-top: 14px;
     padding-bottom: 20px;
     text-transform: uppercase;
-    font-size: 0.875rem;
-    color: #fff;
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #e4e8f7;
 }
 .navbar-brand {
-    padding: 0px 15px;
+    padding: 18px 15px;
 }
 .navbar-brand>img {
     max-width: 80%;
@@ -1112,10 +1125,12 @@ button.btn-md:hover {
     background: #f4f5f9;
     padding: 80px 0px 30px 0px;
 }
-.single_pricing ul{
+
+/* .single_pricing ul{
 
 
-}
+} */
+
 .single_pricing ul li{
     line-height:45px;
     height:45px;
@@ -1428,7 +1443,7 @@ li .single_team_text p{
                         footer section
 ===================================================================*/
 .footer{
-    background: #000000;
+    background: #000142;
 }
 .main_footer{
     overflow: hidden;
@@ -1437,13 +1452,13 @@ li .single_team_text p{
 
 .main_footer .flowus a i{
     color:#fff;
-    font-size:1rem;
-    padding: 5px;
+    font-size:1.5rem;
+    padding: 10px;
     border-radius: 0;
     width:30px;
     height:30px;
     text-align: center;
-    line-height: 18px;
+    line-height: 20px;
     margin-top:10px;
 }
 .main_footer .flowus a i:hover{
@@ -1465,7 +1480,7 @@ li .single_team_text p{
 }
 .copyright_text p a{
     padding:0px 10px;
-    color:#e74c3c;
+    color: #e74e3e;
 }
 
 
@@ -1480,9 +1495,9 @@ li .single_team_text p{
     position: fixed;
     bottom: 20px;
     right: 25px;
-    color: #fff;
+    color: #ffffff;
     cursor: pointer;
-    background-color: #000;
+    background-color: #ff0000;
     z-index: 1000;
     transition: opacity .5s, background-color .5s;
     -moz-transition: opacity .5s, background-color .5s;
@@ -1495,10 +1510,10 @@ li .single_team_text p{
 }
 
 .scrollup i {
-    font-size: 13px;
+    font-size: 12px;
     position: absolute;
     opacity: 1;
-    color: #fff;
+    color: #ffffff;
     left: 50%;
     top: 50%;
     margin-top: -7px;
@@ -1508,8 +1523,254 @@ li .single_team_text p{
 }
 
 
+/* ==========================================================================
+   Admit Card Style submit by Tanvir
+   ========================================================================== */
+
+/*subnit section*/
+
+.submit-page {
+    /* float: left; */
+    width: 100%;
+    height: 100%;
+    background-color: #f9f9f9;
+    padding: 110px 360px 50px;
+}
 
 
+.form-bg {
+    background-color: #f0f0f2;
+    border: 1px solid #c9c9c9;
+    padding: 5px 40px 10px;
+}
+
+/* .logo {
+    width: 200px;
+    margin: 20px auto 40px;
+    display: block;
+} */
+
+.submit-page h2 {
+    font-size: 17px;
+    color: #999;
+    text-align: center;
+    margin: 15px 5px;
+}
+button.login-with-fb {
+    background-color: #d93025;
+    border: none;
+    width: 100%;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+.signup-btn {
+    background-color: #d93025;
+    border: none;
+    width: 100%;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin: 10px 0px 10px;
+}
+.signup-btn:hover, .login-with-fb:hover{
+  opacity: 0.9;
+}
+.term-policy {
+    color: #ab5350;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    width: 61%;
+    float: none;
+    margin: 0 auto;
+    line-height: 20px;
+}
+
+
+button.login-with-fb i {
+    font-size: 18px;
+    margin-right: 5px;
+}
+span.options-divider {
+    text-align: center;
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
+    position: relative;
+    width: 0px;
+    margin: 0 auto;
+    padding: 8px 0px;
+    background-color: #fff;
+    z-index: 3;
+    color: #999;
+}
+
+span.option-br {
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    width: 100%;
+    bottom: 34px;
+    z-index: 2;
+    display: block;
+}
+.admit {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0px 15px 0px;
+}
+
+.admit h2{
+    color: #070808;
+
+}
+
+.note{
+    font-size: 14px;
+    line-height: 1.5;
+    color: red;
+}
+
+
+.get-app {
+    font-size: 16px;
+    padding: 10px 10px 15px;
+    text-align: center;
+    width: 100%;
+}
+.get-app a {
+    display: inline-block;
+    margin: 15px 5px;
+}
+
+/* Responsive section */
+
+
+
+@media (min-width: 1200px) and (max-width: 3500px) {
+
+    .submit-page {
+        /* float: left; */
+        width: 100%;
+        height: 100%;
+        background-color: #f9f9f9;
+        padding: 100px 360px 50px;
+    }
+
+  }
+
+  @media (min-width: 992px) and (max-width: 1200px) {
+
+    .submit-page {
+        /* float: left; */
+        width: 100%;
+        height: 100%;
+        padding: 100px 260px 20px;
+    }
+
+
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+
+    .submit-page {
+        /* float: left; */
+        width: 100%;
+        height: 100%;
+      
+        padding: 100px 120px 20px;
+    }
+
+  }
+
+  @media (max-width: 767px) {
+
+    .submit-page {
+        /* float: left; */
+        width: 100%;
+        height: 100%;
+        
+        padding: 100px 80px 20px;
+    }
+
+  }
+
+  @media (max-width: 450px) {
+
+    .submit-page {
+        /* float: left; */
+        width: 100%;
+        height: 100%;
+     
+        padding: 100px 30px 20px;
+    }
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Card sectioln */
+
+
+.card{
+    margin: 100px 0px 50px;
+    
+
+}
+.txt-center {
+    text-align: center;
+}
+.border- {
+    border: 1px solid #000 !important;
+}
+.padding {
+    padding: 15px;
+}
+.mar-bot {
+    margin-bottom: 15px;
+}
+.admit-card {
+    border: 2px solid #000;
+    background-color: #f7f7f7;
+    padding: 15px;
+    margin: 20px 0;
+}
+.BoxA h5, .BoxA p {
+    margin: 0;
+}
+h5 {
+    text-transform: uppercase;
+}
+table img {
+    width: 100%;
+    margin: 0 auto;
+}
+.table-bordered td, .table-bordered th, .table thead th {
+    border: 1px solid #000000 !important;
+}
+
+
+
+/* ==========================================================================
+   End Admit Card Style submit by Tanvir
+   ========================================================================== */
 
 
 
