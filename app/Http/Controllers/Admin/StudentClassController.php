@@ -15,7 +15,7 @@ class StudentClassController extends Controller
     {
         $data = [
             'title' => "Class",
-            'sub_title' => "Create",
+            'sub_title' => "List",
             'header' => "List Class",
             'classes' => StudentClass::paginate(),
         ];
@@ -43,7 +43,6 @@ class StudentClassController extends Controller
         $request->validate([
             'name' => 'required'
         ]);
-
 
         StudentClass::create([
             'name' => $request->name
