@@ -73,7 +73,7 @@ class StudentClassController extends Controller
             'header' => "Edit Class",
             'class' => $class
         ];
-        return view ('admin.content.class.create',compact('class'), $data);
+        return view ('admin.content.class.create', $data);
     }
 
     /**

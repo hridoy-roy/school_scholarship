@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstituteController;
 use App\Http\Controllers\Admin\ExamCenterController;
 use App\Http\Controllers\Frontend\AboutUsController;
-use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Frontend\GalleryController;
 use App\Http\Controllers\Admin\StudentClassController;
 
@@ -33,6 +33,8 @@ use App\Http\Controllers\Admin\StudentClassController;
 
 
 Route::get('/',[HomeController::class,'index']);
+
+Route::post('contact-us', [ContactController::class,'store'])->name('contact.store');
 
 
 Route::middleware('auth')->group(function () {

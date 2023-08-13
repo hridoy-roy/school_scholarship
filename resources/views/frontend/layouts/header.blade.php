@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{{ url('frontend/assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ url('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('frontend/assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/contact-us.css') }}">
     <!--<link rel="stylesheet" href="{{ url('frontend/assets/css/bootstrap-theme.min.css') }}">-->
 
 

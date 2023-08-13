@@ -72,7 +72,6 @@ class ExamCenterController extends Controller
             'title' => "Exam Center",
             'sub_title' => "Edit",
             'header' => "Edit Class",
-            'class' => $id
         ];
         $center = ExamCenter::where('id', $id)->first();
         return view ('admin.content.examcenter.create',compact('center'), $data);

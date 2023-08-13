@@ -71,7 +71,6 @@ class InstituteController extends Controller
             'title' => "Class",
             'sub_title' => "Edit",
             'header' => "Edit Class",
-            'class' => $institute
         ];
         return view ('admin.content.institute.create',compact('institute'), $data);
     }
