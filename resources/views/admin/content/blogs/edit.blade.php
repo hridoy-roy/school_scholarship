@@ -28,7 +28,7 @@
         <div class="card">
             <h5 class="card-header">{{ $header ?? 'N/A' }}</h5>
             <div class="card-body">
-                <form action="{{ route('blogs.update',$blog->id) }}" method="POST" class="row g-3 needs-validation"
+                <form action="{{ route('blogs.update',$blog->slug) }}" method="POST" class="row g-3 needs-validation"
                     novalidate id="identifier" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')

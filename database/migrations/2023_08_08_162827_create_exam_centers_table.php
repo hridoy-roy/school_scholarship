@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Student;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -13,6 +14,10 @@ return new class extends Migration
     {
         Schema::create('exam_centers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('capacity');
+            $table->integer('order_by')->nullable();
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
         });
     }

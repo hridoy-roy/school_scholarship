@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Blog;
 use App\Http\Requests\BlogRequest;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
+use App\Http\Requests\BlogUpdateRequest;
 
 class BlogController extends Controller
 {
@@ -41,7 +43,7 @@ class BlogController extends Controller
     public function store(BlogRequest $request)
     {
         $fileName = time() . "-blog." . $request->file('banner')->getClientOriginalExtension();
-        $request->file('banner')->move(public_path('upload/blog/'), $fileName);
+        Image::make($request->file('banner'))->save('upload/blog/' . $fileName);
         $project = Blog::create(array_merge($request->validated(), ['banner' => $fileName, 'user_id' => auth()->user()->id]));
         session()->put('success', 'Item created successfully.');
         return redirect()->back();
@@ -81,17 +83,15 @@ class BlogController extends Controller
     public function update(BlogUpdateRequest $request, Blog $blog)
     {
         if ($request->banner != '') {
-            $path = public_path('upload/blog/');
 
             //code for remove old file
             if ($blog->banner != ''  && $blog->banner != null) {
-                $file_old = $path . $blog->banner;
-                unlink($file_old);
+                unlink('upload/blog/' . $blog->banner);
             }
 
             //upload new file
-            $fileName = time() . "-project." . $request->file('banner')->getClientOriginalExtension();
-            $request->file('banner')->move(public_path('upload/blog/'), $fileName);
+            $fileName = time() . "-blog." . $request->file('banner')->getClientOriginalExtension();
+            Image::make($request->file('banner'))->save('upload/blog/' . $fileName);
 
             //for update in table
             $blog->update(array_merge($request->validated(), ['banner' => $fileName]));
@@ -108,7 +108,7 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        unlink(public_path('upload/blog/') . $blog->banner);
+        unlink('upload/blog/' . $blog->banner);
         $blog->delete();
         session()->put('success', 'Item Deleted successfully.');
         return redirect()->back();

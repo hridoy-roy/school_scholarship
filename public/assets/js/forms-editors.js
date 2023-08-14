@@ -17,7 +17,7 @@
   });
 
   $("#identifier").on("submit",function() {
-    $("#hiddenArea").val($("#snow-editor").html());
+    $("#hiddenArea").val($(".ql-editor").html());
   })
 
   // Bubble Theme
