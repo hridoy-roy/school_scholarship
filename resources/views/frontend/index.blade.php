@@ -214,7 +214,7 @@
                     @foreach ($gallerys as $gallery)
 
 
-                        <button class="btn-md fil-cat filter" data-rel="<?php echo $gallery->category;?>" data-filter=".<?php echo $gallery->category;?> ">{{$gallery->category}}</button>
+                        <button class="btn-md fil-cat filter" data-rel="<?php echo $gallery->category;?>" data-filter=".<?php echo $gallery->category;?> ">{{ucfirst($gallery->title)}} </button>
 
                     @endforeach 
                 @endif
