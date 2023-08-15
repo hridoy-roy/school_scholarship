@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{{asset('assets/vendor/css/pages/page-misc.css')}}">
 @endsection
 
-@section('content')
+@section('layoutContent')
 <!--Under Maintenance -->
 <div class="container-xxl container-p-y">
     <div class="misc-wrapper">

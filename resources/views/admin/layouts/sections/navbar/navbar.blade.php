@@ -66,15 +66,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="">
+                        <a class="dropdown-item" href="{{ route('password.update') }}">
                             <i class="ti ti-brand-css3 me-2 ti-sm"></i>
-                            <span class="align-middle">Css</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="">
-                            <i class="ti ti-brand-alpine-js me-2 ti-sm"></i>
-                            <span class="align-middle">Js</span>
+                            <span class="align-middle">Chnage Password</span>
                         </a>
                     </li>
                     <li>

@@ -26,6 +26,7 @@
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
         </li>
+        @if (auth()->user()->is_admin == 1)
         <li
             class="{{ request()->routeIs('classes.index') || request()->routeIs('classes.create') || request()->routeIs('classes.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -71,6 +72,51 @@
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-smart-home"></i>
                 <div data-i18n="Dashboards">Blogs</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('blogs.index') }}"
+                        class="{{ request()->routeIs('blogs.index') ? 'active' : '' }} menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('blogs.create') }}"
+                        class="{{ request()->routeIs('blogs.create') ? 'active' : '' }} menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li
+            class="{{ request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit') || request()->routeIs('users.show') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Dashboards">Admin</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('users.index') }}"
+                        class="{{ request()->routeIs('users.index') ? 'active' : '' }} menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('users.create') }}"
+                        class="{{ request()->routeIs('users.create') ? 'active' : '' }} menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        @endif
+        <li
+            class="{{ request()->routeIs('blogs.index') || request()->routeIs('blogs.create') || request()->routeIs('blogs.edit') || request()->routeIs('blogs.show') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Dashboards">Result</div>
                 <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
             </a>
             <ul class="menu-sub">
