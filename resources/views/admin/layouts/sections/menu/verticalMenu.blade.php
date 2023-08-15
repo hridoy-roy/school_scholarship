@@ -93,7 +93,7 @@
             </ul>
         </li>
 
-        <li
+        {{-- <li
             class="{{ request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit') || request()->routeIs('users.show') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-smart-home"></i>
@@ -114,7 +114,8 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
+
         @endif
 
         <li
