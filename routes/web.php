@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use App\Models\Institute;
 use App\Models\Institute;
 use App\Models\ExamCenter;
 use App\Models\Gallery;
