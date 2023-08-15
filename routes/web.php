@@ -61,12 +61,13 @@ Route::middleware('auth')->group(function () {
 
 
 // GalleryController
-// Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
-// Route::put('/gallery/create', [GalleryController::class, 'store'])->name('gallery.store');
-// Route::get('/gallery/list', [GalleryController::class, 'list'])->name('gallery.list');
-// Route::get('/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
-// Route::post('/gallery/update/{id}', [GalleryController::class, 'update'])->name('gallery.update');
-// Route::delete('/gallery/destroy/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+
+Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
+Route::put('/gallery/create', [GalleryController::class, 'store'])->name('gallery.store');
+Route::get('/gallery/list', [GalleryController::class, 'list'])->name('gallery.list');
+Route::get('/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
+Route::post('/gallery/update/{id}', [GalleryController::class, 'update'])->name('gallery.update');
+Route::delete('/gallery/destroy/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 
 
 
