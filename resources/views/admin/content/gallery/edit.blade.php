@@ -15,58 +15,48 @@
 </div>
 <div class="row">
     <!-- FormValidation -->
-    <div class="col-12">
-        <div class="card mb-4">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                @if(isset($class))
-                <h5 class="mb-0">Edit Class</h5>
-                @else
-                <h5 class="mb-0">Create Class</h5>
-                @endif
-                <small class="text-muted float-end">Default label</small>
-            </div>
+
+   <div class="col-12">
+        <div class="card">
+            <h5 class="card-header">{{ $header ?? 'N/A' }}</h5>
             <div class="card-body">
-                <form method="post" action="{{(@$class) ? route('classes.update',$class->id) : route('classes.store')}}">
+
+                <form action="{{ route('gallery.update', $gallery->id) }}" method="POST" class="row g-3 needs-validation" novalidate
+                    id="identifier" enctype="multipart/form-data">
                     @csrf
+                    {{-- @method('POST') --}}
 
-                    @if(isset($class))
-                    @method('put')
-                    @endif
+                    <div class="col-md-6">
+                        <x-input label='Title' :required=true placeholder='Write Your Title' name="title" value="{{$gallery->title}}">
+                        </x-input>
+                    </div>
 
-                    <div class="mb-3">
-                        <label class="form-label" for="name">Class Name <code>*</code></label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter Class Name" value="{{@$class->name}}" />
-                        @error('name')
-                        <code>*{{$message}}</code>
-                        @enderror
+                    <div class="col-md-6">
+                        <x-input label='Sub Title' :required=true placeholder='Write Your Sub Title' name="sub_title" value="{{$gallery->sub_title}}">
+                        </x-input>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="order_by">Class Serial</label>
-                        <input type="text" class="form-control" name="order_by" id="basic-default-company" value="{{@$class->order_by}}" placeholder="Enter Category Serial" />
-                        @error('order_by')
-                        <code>*{{$message}}</code>
-                        @enderror
+
+                    <div class="col-md-6">
+                        <x-input label='Category' :required=true placeholder='Write Your Category' name="category" value="{{$gallery->category}}">
+                        </x-input>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="status">Class Status <code>*</code></label>
-                        <select class="form-control" name="status">
-                            @if(isset($class))
-                            <option value="{{$class->status}}">
-                                {{$class->status == 1 ? 'Active' : 'Inactive'}}
-                            </option>
-                            @else
-                            <option value=" ">Select</option>
-                            @endif
-                            <option value="1">Active</option>
-                            <option value="0">Inactive</option>
-                        </select>
-                        @error('status')
-                        <code>*{{$message}}</code>
-                        @enderror
+
+
+                    <div class="col-md-6">
+                        <x-input label='Small Image' :required=true type='file' name="small_image">
+                        </x-input>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        {{(@$class)?'Update':'Submit'}}
-                    </button>
+
+                    <div class="col-md-6">
+                        <x-input label='Big Image' :required=true type='file' name="big_image">
+                        </x-input>
+                    </div>
+
+                  
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>

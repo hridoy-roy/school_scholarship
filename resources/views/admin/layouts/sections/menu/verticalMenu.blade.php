@@ -142,7 +142,7 @@
 
 
 
-        <li
+    <li
         class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon ti ti-school"></i>

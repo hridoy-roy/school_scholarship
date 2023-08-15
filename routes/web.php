@@ -3,6 +3,7 @@
 use App\Models\Institute;
 use App\Models\ExamCenter;
 use App\Models\Gallery;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\BlogController;
