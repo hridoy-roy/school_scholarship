@@ -32,6 +32,7 @@
 </div>
 <div class="row">
     <!-- FormValidation -->
+
     <div class="col-12">
         <div class="card">
             <h5 class="card-header">{{ $header ?? 'N/A' }}</h5>
@@ -57,17 +58,16 @@
                         </x-input>
                     </div>
 
-
-                    <div class="col-md-6">
-                        <x-input label='Small Image' :required=true type='file' name="small_image">
-                        </x-input>
-                    </div>
-
                     <div class="col-md-6">
                         <x-input label='Big Image' :required=true type='file' name="big_image">
                         </x-input>
                     </div>
 
+
+                    <div class="col-md-6">
+                        <x-input label='Small Image' :required=true type='file' name="small_image">
+                        </x-input>
+                    </div>
                   
 
                     <div class="col-12">
@@ -77,6 +77,7 @@
             </div>
         </div>
     </div>
+
     <!-- /FormValidation -->
 </div>
 @endsection
