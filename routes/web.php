@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Institute;
-use App\Models\Institute;
 use App\Models\ExamCenter;
 use App\Models\Gallery;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +13,6 @@ use App\Http\Controllers\Admin\InstituteController;
 use App\Http\Controllers\Admin\ExamCenterController;
 use App\Http\Controllers\Admin\StudentClassController;
 use App\Http\Controllers\Frontend\GalleryController;
-use App\Http\Controllers\Controller;
 
 // use App\Http\Controllers\Frontend\ContactController;
 
@@ -63,12 +61,12 @@ Route::middleware('auth')->group(function () {
 
 
 // GalleryController
-Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
-Route::put('/gallery/create', [GalleryController::class, 'store'])->name('gallery.store');
-Route::get('/gallery/list', [GalleryController::class, 'list'])->name('gallery.list');
-Route::get('/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
-Route::post('/gallery/update/{id}', [GalleryController::class, 'update'])->name('gallery.update');
-Route::delete('/gallery/destroy/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+// Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
+// Route::put('/gallery/create', [GalleryController::class, 'store'])->name('gallery.store');
+// Route::get('/gallery/list', [GalleryController::class, 'list'])->name('gallery.list');
+// Route::get('/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
+// Route::post('/gallery/update/{id}', [GalleryController::class, 'update'])->name('gallery.update');
+// Route::delete('/gallery/destroy/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 
 
 
