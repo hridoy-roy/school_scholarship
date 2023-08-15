@@ -41,7 +41,7 @@
                 <form action="{{ route('gallery.store') }}" method="POST" class="row g-3 needs-validation" novalidate
                     id="identifier" enctype="multipart/form-data">
                     @csrf
-                    @method('POST')
+                    @method('PUT')
 
                     <div class="col-md-6">
                         <x-input label='Title' :required=true placeholder='Write Your Title' name="title">
