@@ -86,7 +86,7 @@
                                             <li><a href="#home">HOME</a></li>
                                             <li><a href="#history">ABOUT US</a></li>
                                             <li><a href="#portfolio">PORTFOLIO</a></li>
-                                            <li><a href="#pricing">PRICING</a></li>
+                                            <li><a href="{{ route('student.create') }}">Registration</a></li>
                                             <li><a href="#team">TEAM</a></li>
                                             <li><a href="#blog">BLOG</a></li>
                                             <li><a href="#contact">CONTACT</a></li>
