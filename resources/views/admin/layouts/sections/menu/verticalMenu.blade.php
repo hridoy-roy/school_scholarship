@@ -27,6 +27,7 @@
             </a>
         </li>
         @if (auth()->user()->is_admin == 1)
+
         <li
             class="{{ request()->routeIs('classes.index') || request()->routeIs('classes.create') || request()->routeIs('classes.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -47,6 +48,7 @@
                 </li>
             </ul>
         </li>
+
         <li
             class="{{ request()->routeIs('classes.index') || request()->routeIs('classes.create') || request()->routeIs('classes.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -67,6 +69,7 @@
                 </li>
             </ul>
         </li>
+
         <li
             class="{{ request()->routeIs('classes.index') || request()->routeIs('classes.create') || request()->routeIs('classes.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -110,7 +113,8 @@
                 </li>
             </ul>
         </li>
-        <li
+
+        {{-- <li
             class="{{ request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit') || request()->routeIs('users.show') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-smart-home"></i>
@@ -131,8 +135,10 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
+
         @endif
+
         <li
             class="{{ request()->routeIs('blogs.index') || request()->routeIs('blogs.create') || request()->routeIs('blogs.edit') || request()->routeIs('blogs.show') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -155,5 +161,34 @@
                 </li>
             </ul>
         </li>
+
+
+
+    <li
+        class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon ti ti-school"></i>
+            <div data-i18n="Dashboards">Gallery</div>
+            <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+        </a>
+        <ul class="menu-sub">
+           
+            <li class="{{ request()->routeIs('gallery.create') ? 'active' : '' }} menu-item">
+                <a href="{{ route('gallery.create') }}" class="menu-link">
+                    <div>Create</div>
+                </a>
+            </li>
+
+            <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
+                <a href="{{ route('gallery.list') }}" class="menu-link">
+                    <div>List</div>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+
+
+
     </ul>
 </aside>

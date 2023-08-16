@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Blog;
+use App\Models\Gallery;
 use App\Http\Controllers\Controller;
+
 
 class HomeController extends Controller
 {
@@ -11,6 +13,7 @@ class HomeController extends Controller
     {
         $data = [
             'blogs' => Blog::take(6)->get(),
+            'gallerys' => Gallery::get(),
         ];
         return view('frontend.index', $data);
     }
@@ -29,4 +32,12 @@ class HomeController extends Controller
         ];
         return view('frontend.blog-details', $data);
     }
+
+
+    
+
+
+
+
+
 }
