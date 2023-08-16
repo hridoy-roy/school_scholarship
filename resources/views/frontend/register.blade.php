@@ -1,17 +1,43 @@
-@extends('frontend.layouts.main')
+<!DOCTYPE html>
+<html lang="en">
 
-@push('css')
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Scholarship Register Form</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="{{ url('frontend/assets/css/registerform.css') }}" />
-@endpush
+    <script type="text/javascript" src="{{ asset('js/jquerys.js') }}"></script>
+    <script src="{{ url('frontend/assets/js/vendor/form.js') }}"></script>
+
+</head>
+
+<body>
+
+
 
 @section('main-container')
 <section>
     <div class="container my-5">
         <h1 class="text-center mb-5">Registration Form</h1>
 
-        <form action="{{ @$student ? route('student.update', $student->id) : route('student.store') }}"
+        <form action="{{ @$student ? route('students.update', $student->id) : route('students.store') }}"
             class="form" method="POST" enctype="multipart/form-data">
             @csrf
              @if(isset($student))
@@ -70,7 +96,7 @@
 
             </div>
 
-            <h6>Student Information:</h6>
+            <h6 class="color">Student Information:</h6>
 
             <div class="row g-3 mt-2 mb-4">
                 <div class="col-md">
@@ -89,10 +115,10 @@
                 <div class="col-md">
 
                     <div class="form-group">
-                        <label for="name_bn">Name <code>*(Bangla)</code></label>
+                        <label for="name_bn">Name <code>*(বাংলা)</code></label>
                         <input type="text" class="form-control @error('name_bn') is-invalid @enderror"
                             name="{{ 'name_bn' }}" id="name_bn" value="{{ @$student->name_bn }}" {{  old('name_bn')}}
-                            placeholder="Name" />
+                            placeholder="নাম" />
                         @error('name_bn')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -154,7 +180,7 @@
             <div class="row g-3 mb-4">
                 <div class="col">
                     <div class="form-group">
-                        <label for="class_division">Subject<code>*</code></label>                        
+                        <label for="class_division">Subject<code>*</code></label>
                         <select class="form-select" name="class_division" id="class_division">
                             @if (isset($student))
                             <option value="{{ $student->class_division }}">
@@ -211,7 +237,7 @@
                 <div class="col-md">
                     <div class="form-group">
                         <label for="blood_group">Blood Group <code>*</code></label>
-                        <select class="form-select" name="blood_group" id="blood_group">                            
+                        <select class="form-select" name="blood_group" id="blood_group">
                             @if (isset($student))
                                 <option value="{{ $student->blood_group }}">
                                     @if ($student->blood_group  == 1 )
@@ -265,7 +291,7 @@
 
 
 
-            <h6>Parents Information:</h6>
+            <h6 class="color">Parents Information:</h6>
 
             <div class="row g-3 mt-2 mb-4">
                 <div class="col-md">
@@ -281,10 +307,10 @@
                 </div>
                 <div class="col-md">
                     <div class="form-group">
-                        <label for="father_name_bn">Father Name <code>*(Bangla)</code></label>
+                        <label for="father_name_bn">Father Name <code>*(বাংলা)</code></label>
                         <input type="text" class="form-control @error('father_name_bn') is-invalid @enderror"
                             name="{{ 'father_name_bn' }}" id="father_name_bn"
-                            {{ old('father_name_bn')}} value="{{ @$student->father_name_bn }}" placeholder="Father Name" />
+                            {{ old('father_name_bn')}} value="{{ @$student->father_name_bn }}" placeholder="বাবার নাম" />
                         @error('father_name_bn')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -318,10 +344,10 @@
                 </div>
                 <div class="col-md">
                     <div class="form-group">
-                        <label for="mother_name_bn">Mother Name <code>*(Bangla)</code></label>
+                        <label for="mother_name_bn">Mother Name <code>*(বাংলা)</code></label>
                         <input type="text" class="form-control @error('mother_name_bn') is-invalid @enderror"
                             name="{{ 'mother_name_bn' }}" id="mother_name_bn"
-                            value="{{ @$student->mother_name_bn }}" {{ old('mother_name_bn')}} placeholder="Mother Name" />
+                            value="{{ @$student->mother_name_bn }}" {{ old('mother_name_bn')}} placeholder="মায়ের নাম" />
                         @error('mother_name_bn')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -343,7 +369,7 @@
 
             <div class="border mb-5"></div>
 
-            <h6 class="mb-5">Present Address:</h6>
+            <h6 class="mb-5 color">Present Address:</h6>
             <div class="form-group mb-5">
                 <label for="present_address">House Adress <code>*</code></label>
                 <input type="text" class="form-control @error('present_address') is-invalid @enderror"
@@ -354,7 +380,7 @@
                 @enderror
             </div>
             <div class="border"></div>
-            <h6 class="mt-5">Permanent Address:</h6>
+            <h6 class="mt-5 color">Permanent Address:</h6>
             <div class="row g-3 mt-3 mb-4">
                 <div class="col-md">
                     <div class="form-group">
@@ -457,7 +483,7 @@
             </div>
 
             <div class="border-gardient">
-                <h6 class="mb-5">Absence of Guardian Information:</h6>
+                <h6 class="mb-5 color">Absence of Guardian Information:</h6>
                 <div class="row justify-content-center mb-3">
                     <div class="col-md-8">
                         <div class="row">
@@ -551,7 +577,7 @@
 
             <div class="border mb-5"></div>
 
-            <h6 class="mb-5">Additional Information:</h6>
+            <h6 class="mb-5 color">Additional Information:</h6>
             <div class="form-group mb-5">
                 <label for="previous_scholarship_name_group">Previous Scholarship Organization (if
                     any)</label>
@@ -582,4 +608,5 @@
         </form>
     </div>
 </section>
-@endsection
+
+</body>

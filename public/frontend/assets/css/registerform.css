@@ -192,3 +192,53 @@ progress {
   margin-top: 90px;
   margin-bottom: 90px;
 }
+
+/* ------------------------------------------ */
+.reg{
+    color: red;
+  }
+  .color{
+    font-size: 2rem;
+    color:seagreen;
+  }
+  .btn:hover{
+    background-color: red;
+    border-radius: 8px;
+
+  }
+
+
+  #blah{
+    width: 50px;
+    height: 50px;
+  }
+
+  h3{
+    color: seagreen;
+  }
+
+  p {
+    font-size: 12pt;
+    color: black;
+  }
+  canvas {
+
+    border-style: solid;
+
+    border-color: black;
+    border-radius: 50%;
+  }
+  #canv1{
+    width: 120px;
+    height: 100px;
+    justify-content:center;
+
+  }
+
+  input {
+    font-family: verdana;
+    font-size: 12pt;
+  }
+  .form-check-input{
+    font-size: 1.2rem;
+  }

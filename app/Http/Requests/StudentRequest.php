@@ -24,7 +24,7 @@ class StudentRequest extends FormRequest
         return [
             'school_madrasa' => ['required'],
             'student_type' => ['required'],
-            'area' => ['required|min:3|max:255'],
+            'area' => ['required','min:3','max:255'],
             'name_bn' => ['required|min:3|max:255'],
             'name_en' => ['required|min:3|max:255'],
             'father_name_bn' => ['required|min:3|max:255'],

@@ -41,6 +41,7 @@ body {
     overflow: hidden !important;
 }
 
+
 .loaded {
     width: 60px;
     height: 60px;
@@ -178,7 +179,7 @@ h2 {
 h3 {
     font-family: 'Source Sans Pro', sans-serif;
     font-size:1.714rem;
-    line-height: 2.5rem; 
+    line-height: 2.5rem;
     color:#fff;
     font-weight: 400;
 }
@@ -556,9 +557,9 @@ input::-ms-input-placeholder {
     padding-top: 0px;
     padding-bottom: 0px;
     position: fixed;
-    top: 0; 
-    left: 0; 
-    right: 0; 
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 300;
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
@@ -572,11 +573,11 @@ input::-ms-input-placeholder {
 .main_menu_bg{
     margin-top: 0px;
     background-color: #000142;
-    
+
 }
 .main_menu_bg .navbar-default {
-    background-color: transparent; 
-    border-color: transparent; 
+    background-color: transparent;
+    border-color: transparent;
     transition: all .6s;
     margin: 10px auto;
 }
@@ -624,12 +625,12 @@ input::-ms-input-placeholder {
     list-style: none;
     background-color: transparent;
     -webkit-background-clip: padding-box;
-    background-clip: padding-box; 
-    border: 0px solid #ccc; 
-    border: 0px solid rgba(0,0,0,.15); 
-    border-radius: 0px; 
-    -webkit-box-shadow: 0 0px 0px rgba(0,0,0,.175); 
-    box-shadow: 0 0px 0px 
+    background-clip: padding-box;
+    border: 0px solid #ccc;
+    border: 0px solid rgba(0,0,0,.15);
+    border-radius: 0px;
+    -webkit-box-shadow: 0 0px 0px rgba(0,0,0,.175);
+    box-shadow: 0 0px 0px
 }
 
 /*.dropdown-menu .navbar-form .form-group input[type="text"]{
@@ -640,7 +641,7 @@ input::-ms-input-placeholder {
 }
 .dropdown-menu .navbar-form .form-group .form-control::-webkit-input-placeholder{
     color: #e74c3c;
-    opacity: 1; 
+    opacity: 1;
 }
 .dropdown-menu .navbar-form {
     margin-right: -30px;
@@ -911,9 +912,9 @@ button.btn-md:hover {
 .portfolio .toolbar{
     margin-bottom:50px;
 }
-#portfoliowork {  
+#portfoliowork {
     margin: 1rem 0;
-    -webkit-column-count: 4; 
+    -webkit-column-count: 4;
     -moz-column-count: 4;
     column-count: 4;
     -webkit-column-gap: 0rem;
@@ -923,7 +924,7 @@ button.btn-md:hover {
     -moz-column-width: 33.33333333333333%;
     column-width: 33.33333333333333%;
 }
-.tile { 
+.tile {
     display: none;
 
 }
@@ -936,7 +937,7 @@ button.btn-md:hover {
 
 .tile img {
     height: auto;
-    display: inline-block; 
+    display: inline-block;
     width: 100%;
 }
 
@@ -1092,7 +1093,7 @@ button.btn-md:hover {
     padding: 30px 0px;
     background: #999999;
     position: relative;
-    height: 200px;  
+    height: 200px;
 }
 .pricing_head h3{
     text-transform:uppercase;
@@ -1183,7 +1184,7 @@ button.btn-md:hover {
     left:0;
     bottom:0;
     content:"";
-    background: url(../images/teambg2.png) no-repeat bottom center;  
+    background: url(../images/teambg2.png) no-repeat bottom center;
 }
 .main_team ul li{
     text-align: center;
@@ -1298,7 +1299,7 @@ li .single_team_text p{
     font-size:1rem;
 }
 .main_testimonial .single_testimonial .single_test_author h4 span{
-    font-family: 'ralewayregular'; 
+    font-family: 'ralewayregular';
 }
 .main_testimonial .single_testimonial .single_test_author p{
     color:#fff;
@@ -1415,7 +1416,7 @@ li .single_team_text p{
 }
 
 /*====================================================================
-                        Trail Section 
+                        Trail Section
 ======================================================================*/
 .main_trial_area{
     background: url(../images/trailbg.jpg) no-repeat top center;
@@ -1683,7 +1684,7 @@ span.option-br {
         /* float: left; */
         width: 100%;
         height: 100%;
-      
+
         padding: 100px 120px 20px;
     }
 
@@ -1695,7 +1696,7 @@ span.option-br {
         /* float: left; */
         width: 100%;
         height: 100%;
-        
+
         padding: 100px 80px 20px;
     }
 
@@ -1707,7 +1708,7 @@ span.option-br {
         /* float: left; */
         width: 100%;
         height: 100%;
-     
+
         padding: 100px 30px 20px;
     }
 
@@ -1731,7 +1732,7 @@ span.option-br {
 
 .card{
     margin: 100px 0px 50px;
-    
+
 
 }
 .txt-center {
