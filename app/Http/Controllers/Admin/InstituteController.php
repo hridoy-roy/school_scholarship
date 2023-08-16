@@ -17,9 +17,8 @@ class InstituteController extends Controller
             'title' => "Institute",
             'sub_title' => "Index",
             'header' => "List Class",
-            'classes' => Institute::paginate(),
         ];
-        $institutes = Institute::orderBy('order_by')->get();
+        $institutes = Institute::orderBy('order_by')->paginate();
         return view ('admin.content.institute.index', compact('institutes'), $data);
     }
 

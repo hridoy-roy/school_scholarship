@@ -190,5 +190,20 @@
 
 
 
+            class="{{ request()->routeIs('classes.index') || request()->routeIs('classes.create') || request()->routeIs('classes.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                {{-- <i class="menu-icon tf-icons ti ti-briefcase"></i> --}}                
+                <i class="menu-icon ti ti-server"></i>
+                <div data-i18n="Dashboards">Registration</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">1</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="{{ request()->routeIs('classes.index') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('student.index') }}" class="menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </aside>

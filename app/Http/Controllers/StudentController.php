@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Institute;
+use App\Models\StudentClass;
 use Illuminate\Http\Request;
 use App\Http\Requests\StudentRequest;
 
@@ -13,7 +15,14 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => "Institute",
+            'sub_title' => "Index",
+            'header' => "List Class",
+        ];
+        $students = Student::with('institute')->with('student_class')->get();
+
+        return view ('admin.content.register.index', compact('students'), $data);
     }
 
     /**
@@ -21,7 +30,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $institutes = Institute::where('status',1)->pluck('name','id');
+        $student_classes = StudentClass::where('status',1)->pluck('name','id');
+        return view('frontend.register',compact('institutes','student_classes'));
     }
 
     /**
@@ -29,7 +40,22 @@ class StudentController extends Controller
      */
     public function store(StudentRequest $request)
     {
-        dd($request->validated());
+        $student_data = $request->except(['image','registration_no','roll_no']); 
+        
+
+        $file = " ";   
+         
+        if($file = $request->file('image')){
+            $imageName = $request->name_en.'.'.$file->getClientOriginalExtension();
+            $student_data['image'] = $file->move('assets/img/original/',$imageName);
+        }
+        
+
+        Student::create($student_data);
+
+        session()->put('success', 'Item created successfully.');;
+
+        return redirect()->back();
     }
 
     /**
@@ -45,15 +71,44 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        $data = [
+            'title' => "Class",
+            'sub_title' => "Edit",
+            'header' => "Edit Class",
+        ];
+        $institutes = Institute::where('status',1)->pluck('name','id');
+        $student_classes = StudentClass::where('status',1)->pluck('name','id');
+        return view ('frontend.register', compact('student', 'institutes', 'student_classes'), $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Student $student)
+    public function update(StudentRequest $request, Student $student)
     {
-        //
+        $student_data = $request->except(['image','registration_no',]);
+        
+        $file = " ";
+        $deleteOldImage = $student->image;
+         
+        if($file = $request->file('image')){
+            if(file_exists($deleteOldImage)){
+                unlink($deleteOldImage);
+            }
+            $imageName = $request->name_en.'.'.$file->getClientOriginalExtension();
+            $student_data['image'] = $file->move('dist/img/original/',$imageName);
+        }
+        else{            
+            $student_data['image'] = $student->photo;
+        }
+
+
+
+        $student->update($student_data);
+
+        session()->put('success', 'Item Updated successfully.');
+            
+        return redirect()->route('register.index');
     }
 
     /**
@@ -61,6 +116,13 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $deleteOldImage = $student->photo;
+        if(file_exists($deleteOldImage)){
+            unlink($deleteOldImage);
+        }
+
+        $student->delete();
+        session()->put('success', 'Item Deleted successfully.');
+        return redirect()->back();
     }
 }

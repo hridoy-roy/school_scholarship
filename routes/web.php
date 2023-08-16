@@ -1,8 +1,10 @@
 <?php
 
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -35,12 +37,12 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/blog', [HomeController::class, 'blog'])->name('frontend.blog');
 Route::get('/blog/{blog}', [HomeController::class, 'details']);
 Route::post('contact-us', [ContactController::class, 'store'])->name('contact.store');
+Route::resource('students', StudentController::class);
 
 
 Route::middleware('auth')->group(function () {
     Route::middleware('is.admin')->group(function () {
         Route::get('admin/dashboard', DashboardController::class)->name('admin.dashboard');
-
         Route::resources([
             'classes' => StudentClassController::class,
             'users' => UserController::class,
@@ -61,11 +63,6 @@ Route::middleware('auth')->group(function () {
     Route::get('password', [PasswordController::class, 'updatePass'])->name('password.update');
 });
 
-// Admit Card by Tanvir
-
-// Route::get('/admitcard/submit', [AdmitCardController::class, 'submit'])->name('admitcard.submit');
-
-// Route::get('/admitcard/card', [AdmitCardController::class, 'view'])->name('profile.view');
 
 
 // GalleryController
