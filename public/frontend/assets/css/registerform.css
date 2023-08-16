@@ -1,0 +1,194 @@
+/* glodal class */
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+.gap {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.gap-1 {
+  margin-top: 180px;
+  margin-bottom: 180px;
+}
+
+/* essential section */
+
+body {
+  font-family: "poppins";
+}
+.form-select option:nth-child(1) {
+  color: rgba(0, 0, 0, 0) !important;
+}
+.form-select:focus,
+.form-control:focus {
+  border-color: #86b7fe;
+  box-shadow: none;
+}
+option:checked {
+  display: none;
+}
+label {
+  margin-bottom: 0.4rem;
+}
+input {
+  color: rgba(0, 0, 0, 0.541) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 0.35rem !important;
+}
+select {
+  color: rgba(0, 0, 0, 0.541) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 0.35rem !important;
+}
+select option {
+  color: rgba(0, 0, 0, 0.788);
+}
+::placeholder {
+  color: rgba(0, 0, 0, 0.541) !important;
+}
+
+/* form section */
+
+form {
+  border: 1px solid #ccc;
+  border-radius: 0.35rem;
+  padding: 1.6rem;
+}
+.form-step {
+  display: none;
+  animation: animation 5s;
+  transform-origin: top;
+}
+.form-step-active {
+  display: block;
+}
+.btn-next,
+.btn-prev {
+  background-color: rgb(11, 78, 179);
+  color: white;
+  border-radius: 0.25rem;
+  width: 100px;
+  height: 40px;
+  transition: 1s;
+}
+.btn:hover {
+  color: white;
+  background-color: rgb(11, 78, 179);
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgb(11, 78, 179);
+}
+@keyframes animation {
+  form {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+/* Progress Bar */
+
+.progressbar {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 80px;
+}
+.progressbar::before,
+progress {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #dcdcdc;
+  z-index: -1;
+}
+.progress {
+  position: absolute;
+  background-color: rgb(11, 78, 179) !important;
+  width: 0%;
+}
+.progress-step {
+  width: 2.1875rem;
+  height: 2.1875rem;
+  background-color: #dcdcdc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.progress-step-active {
+  background-color: rgb(11, 78, 179);
+  color: #f3f3f3;
+}
+.progress-step::after {
+  content: attr(data-title);
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+}
+
+/* Family background */
+
+.father-information,
+.mother-information,
+.payment-information {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 0.35rem;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.payment-information img {
+  width: 80px;
+}
+.btn-next input {
+  background-color: rgba(255, 222, 173, 0);
+  color: white !important;
+  border: none !important;
+}
+
+.border {
+  width: 100%;
+  margin-top: 60px;
+  border-bottom: 0.5px solid #aaa7a7;
+}
+.border-gardient {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 0.35rem;
+  margin-top: 90px;
+  margin-bottom: 90px;
+}

@@ -17,9 +17,8 @@ class ExamCenterController extends Controller
             'title' => "Exam Center",
             'sub_title' => "Index",
             'header' => "List Class",
-            'classes' => ExamCenter::paginate(),
         ];
-        $examcenters = ExamCenter::orderBy('order_by')->get();
+        $examcenters = ExamCenter::orderBy('order_by')->paginate();
         return view ('admin.content.examcenter.index', compact('examcenters'), $data);
     }
 

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('institutes', function (Blueprint $table) {
-            $table->integer('order_by')->nullable();
-            $table->tinyInteger('status')->nullable();
+            $table->integer('order_by');
+            $table->tinyInteger('status');
         });
     }
 

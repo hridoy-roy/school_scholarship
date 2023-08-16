@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -37,6 +39,9 @@ class ContactController extends Controller
         ]);
 
         $contact = Contact::create($request->all());
+        
+
+        Mail::to($contact->email)->send(new ContactMail($contact->toArray()));
             
         return redirect()->back();
     }

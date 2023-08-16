@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('registration_no');
-            $table->string('roll_no')->nullable();
+            $table->string('roll_no');
             $table->string('school_madrasa');
             $table->string('student_type');
             $table->string('area');
@@ -40,13 +40,13 @@ return new class extends Migration
             $table->string('mobile');
             $table->string('facebook')->nullable();
             $table->string('dob');
-            $table->string('blood_group')->nullable();
-            $table->string('email')->nullable();
+            $table->string('blood_group');
+            $table->string('email');
             $table->string('absent_of_parent_name');
             $table->string('absent_of_parent_relation');
             $table->string('absent_of_parent_occupation');
             $table->string('absent_of_parent_annual_earning');
-            $table->string('previous_scholarship_name_group')->nullable();
+            $table->string('previous_scholarship_name_group');
             $table->timestamps();
         });
     }
