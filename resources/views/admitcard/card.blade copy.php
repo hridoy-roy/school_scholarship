@@ -116,7 +116,7 @@
 <section class="card">
 	<div class="container">
 		<div class="admit-card">
-			<div class="BoxA border- padding mar-bot"> 
+			<div class="BoxA border- padding mar-bot">
 				<div class="row">
 
 					<div class="col-sm-5">
@@ -133,7 +133,7 @@
 						<div class="col-sm-3 txt-center">
 						<img src="{{ url('/assets/img/logo.jpg') }}" width="100vh;" />
 
-						
+
 					</div>
 
 				</div>
@@ -176,10 +176,10 @@
 							<tr>
 							  <th scope="row txt-center"><img src="{{ url('/assets/img/tanvir.jpg') }}" width="123vh" height="165px" /></th>
 
-							  
+
 							</tr>
 
-						
+
 
 						  </tbody>
 						</table>
@@ -230,10 +230,10 @@
 			<footer class="txt-center">
 				<!-- <p> School name </p> -->
 			</footer>
-			
+
 		</div>
 	</div>
-	
+
 </section>
 
 
@@ -269,11 +269,11 @@
 
                                   <p class="wow fadeInRight" data-wow-duration="1s">Develop By
                                     <a href="#">Dev Team </a> © <?php echo date("Y"); ?>. All Rights
-                                    Reserved 
+                                    Reserved
                                   </p>
                             </div>
 
-                       
+
 
                         </div>
                     </div>

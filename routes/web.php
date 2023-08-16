@@ -49,6 +49,9 @@ Route::middleware('auth')->group(function () {
             'institute' => InstituteController::class,
             'examcenter' => ExamCenterController::class,
         ]);
+        Route::get('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudent'])->name('student.assign');
+        Route::post('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudents'])->name('students.assign');
+        Route::get('student/assign/{exam_center}/list', [ExamCenterController::class, 'assignStudentList'])->name('student.assign.list');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

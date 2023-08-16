@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Student;
 use App\Models\ExamCenter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,7 +21,7 @@ class ExamCenterController extends Controller
             'classes' => ExamCenter::paginate(),
         ];
         $examcenters = ExamCenter::orderBy('order_by')->get();
-        return view ('admin.content.examcenter.index', compact('examcenters'), $data);
+        return view('admin.content.examcenter.index', compact('examcenters'), $data);
     }
 
     /**
@@ -41,17 +42,17 @@ class ExamCenterController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate($request, [
-            'name'=>'required|min:6|max:255',
-            'capacity'=>'required|max:10',
-            'order_by'=>'required|numeric',
-            'status'=>'required',
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'capacity' => 'required',
+            'order_by' => 'required|numeric',
+            'status' => 'required',
         ]);
 
         ExamCenter::create($request->all());
 
         session()->put('success', 'Item created successfully.');;
-            
+
         return redirect()->route('examcenter.index');
     }
 
@@ -74,7 +75,7 @@ class ExamCenterController extends Controller
             'header' => "Edit Class",
         ];
         $center = ExamCenter::where('id', $id)->first();
-        return view ('admin.content.examcenter.create',compact('center'), $data);
+        return view('admin.content.examcenter.create', compact('center'), $data);
     }
 
     /**
@@ -82,17 +83,17 @@ class ExamCenterController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $this->validate($request, [
-            'name'=>'required|min:3|max:255',
-            'capacity'=>'required|max:10',
-            'order_by'=>'required|numeric',
-            'status'=>'required',
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'capacity' => 'required',
+            'order_by' => 'required|numeric',
+            'status' => 'required',
         ]);
         $ExamCenter = ExamCenter::find($id);
         $ExamCenter->update($request->all());
 
         session()->put('success', 'Item Updated successfully.');
-            
+
         return redirect()->route('examcenter.index');
     }
 
@@ -105,5 +106,42 @@ class ExamCenterController extends Controller
         $ExamCenter->delete();
         session()->put('success', 'Item Deleted successfully.');
         return redirect()->back();
+    }
+
+
+    public function assignStudent(ExamCenter $exam_center)
+    {
+        $data = [
+            'title' => "Student",
+            'sub_title' => "Assign",
+            'header' => "Student Assign",
+            'exam_center' => $exam_center,
+            'students' => Student::get(),
+        ];
+        return view('admin.content.examcenter.assign', $data);
+    }
+    public function assignStudents(Request $request, ExamCenter $exam_center)
+    {
+
+        dd($request->all(), $exam_center);
+        $data = [
+            'title' => "Student",
+            'sub_title' => "Assign",
+            'header' => "Student Assign",
+            'exam_center' => $exam_center,
+            'students' => Student::get(),
+        ];
+        return view('admin.content.examcenter.assign', $data);
+    }
+
+    public function assignStudentList(ExamCenter $exam_center)
+    {
+        $data = [
+            'title' => "Student",
+            'sub_title' => "Assign",
+            'header' => "Student Assign",
+            'exam_center' => $exam_center,
+        ];
+        return view('admin.content.examcenter.assigned-list', $data);
     }
 }
