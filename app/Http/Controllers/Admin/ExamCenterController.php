@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Models\ExamCenter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ExamCenterAssignRequest;
 
 class ExamCenterController extends Controller
 {
@@ -111,19 +112,31 @@ class ExamCenterController extends Controller
 
     public function assignStudent(ExamCenter $exam_center)
     {
+        $year = date('Y');
         $data = [
             'title' => "Student",
             'sub_title' => "Assign",
             'header' => "Student Assign",
             'exam_center' => $exam_center,
-            'students' => Student::get(),
+            'students' => Student::whereYear('created_at', '=', $year)->get(),
         ];
         return view('admin.content.examcenter.assign', $data);
     }
-    public function assignStudents(Request $request, ExamCenter $exam_center)
+    public function assignStudents(ExamCenterAssignRequest $request, ExamCenter $exam_center)
     {
 
-        dd($request->all(), $exam_center);
+        if ((count($request->validated()) + $exam_center->students->count()) > $exam_center->capacity) {
+            session()->put('error', 'Your Selected Item Is more than Capacity');
+            return redirect()->back();
+        } else {
+            for ($i = 0; $i < count($request->validated()); $i++) {
+                Student::find($request->validated('student_id')[$i] ?? null)->update([
+                    'exam_center_id' => $exam_center->id
+                ]);
+            }
+        }
+        dd(count($request->validated()), $exam_center);
+        session()->put('success', 'Item created successfully.');
         $data = [
             'title' => "Student",
             'sub_title' => "Assign",
@@ -144,4 +157,26 @@ class ExamCenterController extends Controller
         ];
         return view('admin.content.examcenter.assigned-list', $data);
     }
+    public function assignStudentResult(ExamCenter $exam_center)
+    {
+        $data = [
+            'title' => "Student",
+            'sub_title' => "Assign",
+            'header' => "Student Assign",
+            'exam_center' => $exam_center,
+        ];
+        return view('admin.content.examcenter.assigned-result', $data);
+    }
+    public function assignStudentResultPost(ExamCenter $exam_center)
+    {
+        $data = [
+            'title' => "Student",
+            'sub_title' => "Assign",
+            'header' => "Student Assign",
+            'exam_center' => $exam_center,
+        ];
+        return view('admin.content.examcenter.assigned-list', $data);
+    }
+
+    
 }

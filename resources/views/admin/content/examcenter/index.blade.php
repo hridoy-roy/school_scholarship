@@ -46,6 +46,8 @@
                                         class="ti ti-pencil me-1"></i> Edit</a>
                                 <a class="dropdown-item" href="{{route('student.assign',$examcenter->id)}}"><i
                                         class="ti ti-pencil me-1"></i> Assing Student</a>
+                                <a class="dropdown-item" href="{{route('student.assign',$examcenter->id)}}"><i
+                                        class="ti ti-pencil me-1"></i> Result Student</a>
                                 <form method="post" id="{{'form_'.$examcenter->id}}"
                                     action="{{route('examcenter.destroy',$examcenter->id)}}">
                                     @csrf

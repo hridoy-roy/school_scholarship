@@ -37,4 +37,7 @@ Session::forget('success')
 <script>
     toastr.error("{{ Session::get('error') }}");
 </script>
+@php
+Session::forget('error')
+@endphp
 @endif
