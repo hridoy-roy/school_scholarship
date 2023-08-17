@@ -32,7 +32,7 @@
             class="{{ request()->routeIs('institute.index') || request()->routeIs('institute.create') || request()->routeIs('institute.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon ti ti-school"></i>
-                <div data-i18n="Dashboards">Institute</div>
+                <div data-i18n="Dashboards">School</div>
                 <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
             </a>
             <ul class="menu-sub">
@@ -46,34 +46,41 @@
                         <div>Create</div>
                     </a>
                 </li>
+
+                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('institute.index') }}" class="menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
             </ul>
         </li>
-
         <li
-            class="{{ request()->routeIs('classes.index') || request()->routeIs('classes.create') || request()->routeIs('classes.edit') ? 'active open' : '' }} menu-item">
+            class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon ti ti-server"></i>
                 <div data-i18n="Dashboards">Class</div>
                 <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
             </a>
             <ul class="menu-sub">
-                <li class="{{ request()->routeIs('classes.index') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('classes.index') }}" class="menu-link">
-                        <div>List</div>
-                    </a>
-                </li>
-                <li class="{{ request()->routeIs('classes.create') ? 'active' : '' }} menu-item">
+
+                <li class="{{ request()->routeIs('gallery.create') ? 'active' : '' }} menu-item">
                     <a href="{{ route('classes.create') }}" class="menu-link">
                         <div>Create</div>
+                    </a>
+                </li>
+
+                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('classes.index') }}" class="menu-link">
+                        <div>List</div>
                     </a>
                 </li>
             </ul>
         </li>
 
+
         <li
             class="{{ request()->routeIs('examcenter.index') || request()->routeIs('examcenter.create') || request()->routeIs('examcenter.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                {{-- <i class="menu-icon tf-icons ti ti-briefcase"></i> --}}
                 <i class="menu-icon ti ti-clipboard"></i>
                 <div data-i18n="Dashboards">Exam Center</div>
                 <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
@@ -137,6 +144,20 @@
                     <a href="{{ route('student.unpaid.view') }}"
                         class="{{ request()->routeIs('student.unpaid.view') ? 'active' : '' }} menu-link">
                         <div>Unpaid List</div>
+
+
+        <li
+            class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-smart-home"></i>
+                <div data-i18n="Dashboards">Contact</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">1</div>
+            </a>
+            <ul class="menu-sub">
+
+                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('contact.index') }}" class="menu-link">
+                        <div>List</div>
                     </a>
                 </li>
             </ul>

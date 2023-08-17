@@ -42,17 +42,19 @@ class StudentClassController extends Controller
     public function store(Request $request)
     {
          $this->validate($request, [
-            'name'=>'required|min:6|max:255',
+            'name'=>'required|max:15',
             'order_by'=>'required|numeric',
             'status'=>'required',
         ]);
 
         StudentClass::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'order_by' => $request->order_by,
+            'status' => $request->status,
         ]);
 
         session()->put('success', 'Item created successfully.');
-        return redirect()->back();
+        return redirect()->route('classes.index');
     }
 
     /**

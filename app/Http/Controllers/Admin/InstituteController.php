@@ -16,7 +16,7 @@ class InstituteController extends Controller
         $data = [
             'title' => "Institute",
             'sub_title' => "Index",
-            'header' => "List Class",
+            'header' => "List Institute",
         ];
         $institutes = Institute::orderBy('order_by')->paginate();
         return view ('admin.content.institute.index', compact('institutes'), $data);
@@ -30,7 +30,7 @@ class InstituteController extends Controller
         $data = [
             'title' => "Institute",
             'sub_title' => "Create",
-            'header' => "Create Class",
+            'header' => "Create Institute",
         ];
         return view('admin.content.institute.create', $data);
     }
@@ -67,9 +67,9 @@ class InstituteController extends Controller
     public function edit(Institute $institute)
     {
         $data = [
-            'title' => "Class",
+            'title' => "Institute",
             'sub_title' => "Edit",
-            'header' => "Edit Class",
+            'header' => "Edit Institute",
         ];
         return view ('admin.content.institute.create',compact('institute'), $data);
     }

@@ -317,7 +317,6 @@ ul.social li{
 			          <td style="text-align: center;">
 			          	<div class="text-author">
 				           	<p>Name : {{ $contact['name'] }}</p>
-				           	<p>Subject : {{ $contact['name'] }}</p>
 				           	<p>Mobile : {{ $contact['mobile'] }}</p>
 				           	<p>Email : {{ $contact['email'] }}</p>
 				           	<p>Massege : {{ $contact['massage'] }}</p>

@@ -14,7 +14,13 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => "Contact",
+            'sub_title' => "Index",
+            'header' => "List Contact",
+        ];
+        $contacts = Contact::paginate();
+        return view ('admin.content.contact.index', compact('contacts'), $data);
     }
 
     /**
@@ -75,6 +81,8 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        session()->put('success', 'Item Deleted successfully.');
+        return redirect()->back();
     }
 }
