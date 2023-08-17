@@ -86,14 +86,32 @@
                 <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
             </a>
             <ul class="menu-sub">
+
                 <li class="{{ request()->routeIs('examcenter.index') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('examcenter.create') }}" class="menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+
+                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
                     <a href="{{ route('examcenter.index') }}" class="menu-link">
                         <div>List</div>
                     </a>
                 </li>
-                <li class="{{ request()->routeIs('examcenter.create') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('examcenter.create') }}" class="menu-link">
-                        <div>Create</div>
+
+            </ul>
+        </li>
+        <li class="{{ request()->routeIs('students.index') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-smart-home"></i>
+                <div data-i18n="Dashboards">Registration</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">1</div>
+            </a>
+            <ul class="menu-sub">
+
+                <li class="{{ request()->routeIs('students.index') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('students.index') }}" class="menu-link">
+                        <div>List</div>
                     </a>
                 </li>
             </ul>
@@ -144,8 +162,10 @@
                     <a href="{{ route('student.unpaid.view') }}"
                         class="{{ request()->routeIs('student.unpaid.view') ? 'active' : '' }} menu-link">
                         <div>Unpaid List</div>
-
-
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li
             class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
