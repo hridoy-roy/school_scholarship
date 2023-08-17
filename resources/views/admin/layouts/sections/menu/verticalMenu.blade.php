@@ -32,7 +32,7 @@
             class="{{ request()->routeIs('classes.index') || request()->routeIs('classes.create') || request()->routeIs('classes.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon ti ti-school"></i>
-                <div data-i18n="Dashboards">Institute</div>
+                <div data-i18n="Dashboards">School</div>
                 <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
             </a>
             <ul class="menu-sub">
@@ -87,6 +87,22 @@
                 <li class="{{ request()->routeIs('classes.create') ? 'active' : '' }} menu-item">
                     <a href="{{ route('examcenter.create') }}" class="menu-link">
                         <div>Create</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li
+            class="{{ request()->routeIs('classes.index') || request()->routeIs('classes.create') || request()->routeIs('classes.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                {{-- <i class="menu-icon tf-icons ti ti-briefcase"></i> --}}
+                <i class="menu-icon ti ti-servergi"></i>
+                <div data-i18n="Dashboards">Registration</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="{{ request()->routeIs('classes.index') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('students.index') }}" class="menu-link">
+                        <div>List</div>
                     </a>
                 </li>
             </ul>

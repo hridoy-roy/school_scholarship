@@ -7,7 +7,7 @@
     <h4 class="fw-bold">
         <span class="text-muted fw-light">{{ $title ?? 'N/A' }} /</span> {{ $sub_title ?? 'N/A' }}
     </h4>
-    <a href="{{route('student.create')}}"> <button class=" btn btn-primary">➥ Create</button></a>
+    <a href="{{route('students.create')}}"> <button class=" btn btn-primary">➥ Create</button></a>
 </div>
 <div class="card">
     <h5 class="card-header">Create Student</h5>
@@ -57,20 +57,12 @@
             @foreach($students as $student)
             <tr>
             <td>{{$sl++}}</td>
-            <td>{{asset($student->image)}}</td>
+            <td><img src="{{asset($student->image)}}" alt="" style="width: 70px; height:80px; object-fit:cover"></td>
             <td>{{$student->name_bn}}</td>
             <td>{{$student->institute->name}}</td>
             <td>{{$student->student_class->name}}</td>
             <td>{{$student->class_roll}}</td>
-            <td>
-                @if ($student->class_division  == 1 )
-                    Science
-                @elseif ($student->class_division  == 2 )
-                    Business Study
-                @else
-                    Humanities
-                @endif
-            </td>
+            <td>{{$student->class_division}}</td>
             <td>{{$student->class_section}}</td>
             <td>{{$student->school_madrasa}}</td>
             <td>{{$student->student_type}}</td>
@@ -121,8 +113,8 @@
                     <i class="ti ti-dots-vertical"></i>
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('student.edit',$student->id)}}"><i class="ti ti-pencil me-1"></i> Edit</a>
-                    <form method="post" id="{{'form_'.$student->id}}" action="{{route('student.destroy',$student->id)}}">
+                    <a class="dropdown-item" href="{{route('students.edit',$student->id)}}"><i class="ti ti-pencil me-1"></i> Edit</a>
+                    <form method="post" id="{{'form_'.$student->id}}" action="{{route('students.destroy',$student->id)}}">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="dropdown-item" data-id="{{$student->id}}"><i class="ti ti-trash me-1"></i> Delete</button>

@@ -44,7 +44,7 @@
                 @method('put')
              @endif
 
-            <input type="hidden" name="registration_no">
+            
             <div class="row g-3 mt-5">
                 <div class="col-md">
 
@@ -86,7 +86,7 @@
                     <div class="form-group">
                         <label for="area">Area<code>*</code></label>
                         <input type="text" class="form-control @error('area') is-invalid @enderror"
-                            name="{{ 'area' }}" id="area" value="{{ @$student->area }}{{ old('area') }}"
+                            name="{{ 'area' }}" id="area" value="{{ @$student->area }}" {{ old('area') }}
                             placeholder="Area" />
                         @error('area')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -104,7 +104,7 @@
                     <div class="form-group">
                         <label for="name_en">Name <code>*(English)</code></label>
                         <input type="text" class="form-control @error('name_en') is-invalid @enderror"
-                            name="{{ 'name_en' }}" id="name_en" value="{{ @$student->name_en }}"{{  old('name_en'),}}
+                            name="{{ 'name_en' }}" id="name_en" value="{{ @$student->name_en }}" {{old('name_en')}}
                             placeholder="Name" />
                         @error('name_en')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -152,10 +152,10 @@
                             @if (isset($student))
                                 <option value="{{ $student->student_class_id }}">{{ $student->student_class->name }}</option>
                             @else
-                                <option value=" ">Select School Name</option>
+                                <option value=" ">Select Class Name</option>
                             @endif
-                            @foreach($student_classes as $key=>$student_class_id)
-                              <option value="{{$key}}">{{$student_class_id}}</option>
+                            @foreach($student_classes as $key=>$student_class)
+                              <option value="{{$key}}">{{$student_class}}</option>
                               @endforeach
                         </select>
                         @error('class')
@@ -178,30 +178,12 @@
             </div>
 
             <div class="row g-3 mb-4">
-                <div class="col">
+                <div class="col-md">
                     <div class="form-group">
                         <label for="class_division">Subject<code>*</code></label>
-                        <select class="form-select" name="class_division" id="class_division">
-                            @if (isset($student))
-                            <option value="{{ $student->class_division }}">
-                                @if ($student->class_division  == 1 )
-                                    Science
-                                @elseif ($student->class_division  == 2 )
-                                    Business Study
-                                @else
-                                    Humanities
-                                @endif
-                            </option>
-                            @else
-                                <option value=" ">Select School Name</option>
-                            @endif
-                            <option value="1" {{ old('class_division') === '1' ? 'selected' : '' }}>Science
-                            </option>
-                            <option value="2" {{ old('class_division') === '2' ? 'selected' : '' }}>Business
-                                Study</option>
-                            <option value="3" {{ old('class_division') === '3' ? 'selected' : '' }}>
-                                Humanities</option>
-                        </select>
+                        <input type="text" class="form-control @error('class_division') is-invalid @enderror"
+                            name="{{ 'class_division' }}" id="class_roll"  value="{{ @$student->class_division }}" {{old('class_division')}}
+                            placeholder="Subject" />
                         @error('class_division')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -388,7 +370,7 @@
                         <input type="text"
                             class="form-control @error('permanent_address_district') is-invalid @enderror"
                             name="{{ 'permanent_address_district' }}" id="permanent_address_district"
-                            value="{{ old('permanent_address_district') , @$student->permanent_address_district}}" placeholder="Division Name" />
+                            value="{{ @$student->permanent_address_district}}" {{ old('permanent_address_district')  }} placeholder="Division Name" />
                         @error('permanent_address_district')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -448,7 +430,7 @@
                 <div class="col-md">
                     <div class="form-group">
                         <label for="mobile">Mobile Number <code>*</code></label>
-                        <input type="number" class="form-control @error('mobile') is-invalid @enderror"
+                        <input type="text" class="form-control @error('mobile') is-invalid @enderror"
                             name="{{ 'mobile' }}" id="mobile" value="{{ @$student->mobile }}" {{ old('mobile')}}
                             placeholder="Mobile Number" />
                         @error('mobile')
