@@ -22,7 +22,7 @@ class StudentController extends Controller
         ];
         $students = Student::with('institute')->with('student_class')->get();
 
-        return view ('admin.content.register.index', compact('students'), $data);
+        return view('admin.content.register.index', compact('students'), $data);
     }
 
     /**
@@ -30,9 +30,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $institutes = Institute::where('status',1)->pluck('name','id');
-        $student_classes = StudentClass::where('status',1)->pluck('name','id');
-        return view('frontend.register',compact('institutes','student_classes'));
+        $institutes = Institute::where('status', 1)->pluck('name', 'id');
+        $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
+        return view('frontend.register', compact('institutes', 'student_classes'));
     }
 
     /**
@@ -40,18 +40,24 @@ class StudentController extends Controller
      */
     public function store(StudentRequest $request)
     {
-        $student_data = $request->except(['image','registration_no','roll_no']); 
-        
 
-        $file = " ";   
-         
-        if($file = $request->file('image')){
-            $imageName = $request->name_en.'.'.$file->getClientOriginalExtension();
-            $student_data['image'] = $file->move('assets/img/original/',$imageName);
+        if (Student::latest()->first()?->registration_no) {
+            $currentRegNo = Student::latest()->first()?->registration_no;
+            $currentYear = substr($currentRegNo, 0, 4);
+            if ($currentYear === date('Y')) {
+                $student_data['registration_no'] = $currentRegNo + 1;
+            } else {
+                $student_data['registration_no'] = date('Y') . '0001';
+            }
+        } else {
+            $student_data['registration_no'] = date('Y') . '0001';
         }
-        
+        $fileName = time() . "-profile." . $request->file('image')->getClientOriginalExtension();
+        $student_data['image'] = $request->file('image')->move(public_path('upload/profile/'), $fileName);
 
-        Student::create($student_data);
+        
+        // dd(array_merge($student_data,$request->validated()));
+        Student::create(array_merge($student_data,$request->validated()));
 
         session()->put('success', 'Item created successfully.');;
 
@@ -76,9 +82,9 @@ class StudentController extends Controller
             'sub_title' => "Edit",
             'header' => "Edit Class",
         ];
-        $institutes = Institute::where('status',1)->pluck('name','id');
-        $student_classes = StudentClass::where('status',1)->pluck('name','id');
-        return view ('frontend.register', compact('student', 'institutes', 'student_classes'), $data);
+        $institutes = Institute::where('status', 1)->pluck('name', 'id');
+        $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
+        return view('frontend.register', compact('student', 'institutes', 'student_classes'), $data);
     }
 
     /**
@@ -86,19 +92,18 @@ class StudentController extends Controller
      */
     public function update(StudentRequest $request, Student $student)
     {
-        $student_data = $request->except(['image','registration_no',]);
-        
+        $student_data = $request->except(['image', 'registration_no',]);
+
         $file = " ";
         $deleteOldImage = $student->image;
-         
-        if($file = $request->file('image')){
-            if(file_exists($deleteOldImage)){
+
+        if ($file = $request->file('image')) {
+            if (file_exists($deleteOldImage)) {
                 unlink($deleteOldImage);
             }
-            $imageName = $request->name_en.'.'.$file->getClientOriginalExtension();
-            $student_data['image'] = $file->move('dist/img/original/',$imageName);
-        }
-        else{            
+            $imageName = $request->name_en . '.' . $file->getClientOriginalExtension();
+            $student_data['image'] = $file->move('dist/img/original/', $imageName);
+        } else {
             $student_data['image'] = $student->photo;
         }
 
@@ -107,7 +112,7 @@ class StudentController extends Controller
         $student->update($student_data);
 
         session()->put('success', 'Item Updated successfully.');
-            
+
         return redirect()->route('register.index');
     }
 
@@ -117,7 +122,7 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $deleteOldImage = $student->photo;
-        if(file_exists($deleteOldImage)){
+        if (file_exists($deleteOldImage)) {
             unlink($deleteOldImage);
         }
 
