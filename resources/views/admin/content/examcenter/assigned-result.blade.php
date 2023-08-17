@@ -2,7 +2,6 @@
 
 @section('title', 'Exam Center')
 
-
 @section('vendor-style')
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css')}}">
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css')}}">
@@ -12,7 +11,7 @@
 <!-- Row Group CSS -->
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css')}}">
 <!-- Form Validation -->
-<link rel="stylesheet" href="{{asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css')}}" />
+<link rel="stylesheet" href="{{asset('assets/vendor/libs/form-validation/umd/styles/index.min.css')}}" />
 @endsection
 
 @section('vendor-script')
@@ -21,9 +20,9 @@
 <script src="{{asset('assets/vendor/libs/moment/moment.js')}}"></script>
 <script src="{{asset('assets/vendor/libs/flatpickr/flatpickr.js')}}"></script>
 <!-- Form Validation -->
-<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js')}}"></script>
-<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js')}}"></script>
-<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/form-validation/umd/bundle/popular.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/form-validation/umd/plugin-bootstrap5/index.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/form-validation/umd//plugin-auto-focus/index.min.js')}}"></script>
 @endsection
 
 @section('page-script')
@@ -54,14 +53,15 @@
             <table class="datatables-basic table">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>#</th>
+                        <th>Photo</th>
                         <th>Name</th>
-                        <th>Position</th>
-                        <th>Email</th>
-                        <th>City</th>
-                        <th>Date</th>
-                        <th>Salary</th>
-                        <th>Status</th>
+                        <th>Reg. No</th>
+                        <th>Roll</th>
+                        <th>Father Name</th>
+                        <th>DOB</th>
+                        <th>Mobile</th>
+                        <th>Check Box</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,6 +70,7 @@
                         <td>234234</td>
                         <td>234234</td>
                         <td>234234</td>
+                        <td>23423</td>
                         <td>23423</td>
                         <td>23423</td>
                         <td>
@@ -82,6 +83,7 @@
                     </tr>
                     <tr>
                         <td></td>
+                        <td>234234</td>
                         <td>234234</td>
                         <td>234234</td>
                         <td>234234</td>

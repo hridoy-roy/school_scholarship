@@ -109,15 +109,21 @@ class ExamCenterController extends Controller
     }
 
 
-    public function assignStudent(ExamCenter $exam_center)
+    public function assignStudent(Request $request,ExamCenter $exam_center)
     {
-        $year = date('Y');
+        if ($request->year) {
+            $year = $request->year;
+        } else {
+            $year = date('Y');
+        }
         $data = [
             'title' => "Student",
             'sub_title' => "Assign",
-            'header' => "Student Assign",
+            'header' => "All Students in " . $year,
+            'currentYear' => $year,
+            'years' => range(2020, date('Y')),
             'exam_center' => $exam_center,
-            'students' => Student::whereYear('created_at', '=', $year)->get(),
+            'students' => Student::whereYear('created_at', '=', $year)->whereNull('exam_center_id')->get(),
         ];
         return view('admin.content.examcenter.assign', $data);
     }
@@ -177,5 +183,5 @@ class ExamCenterController extends Controller
         return view('admin.content.examcenter.assigned-list', $data);
     }
 
-    
+
 }

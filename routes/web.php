@@ -5,8 +5,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\Admin\PayController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstituteController;
@@ -55,6 +58,15 @@ Route::middleware('auth')->group(function () {
         Route::get('student/assign/{exam_center}/list', [ExamCenterController::class, 'assignStudentList'])->name('student.assign.list');
         Route::get('student/assign/{exam_center}/result', [ExamCenterController::class, 'assignStudentResult'])->name('student.assign.result');
         Route::post('student/assign/{exam_center}/result', [ExamCenterController::class, 'assignStudentResultPost'])->name('student.assign.result.post');
+
+        Route::get('student/pay', [PayController::class, 'assignPayView'])->name('student.pay.view');
+        Route::get('student/paid', [PayController::class, 'assignPaidView'])->name('student.paid.view');
+        Route::get('student/unpaid', [PayController::class, 'assignUnpaidView'])->name('student.unpaid.view');
+        Route::post('student/pay', [PayController::class, 'assignPayStore'])->name('student.pay.store');
+
+
+
+
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
