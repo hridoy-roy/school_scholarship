@@ -18,7 +18,7 @@ class ExamCenterController extends Controller
         $data = [
             'title' => "Exam Center",
             'sub_title' => "Index",
-            'header' => "List Class",
+            'header' => "List Exam Center",
             'examcenters' => ExamCenter::orderBy('order_by')->get(),
         ];
         return view('admin.content.examcenter.index', $data);
@@ -32,7 +32,7 @@ class ExamCenterController extends Controller
         $data = [
             'title' => "Exam Center",
             'sub_title' => "Create",
-            'header' => "Create Class",
+            'header' => "Create Exam Center",
         ];
         return view('admin.content.examcenter.create', $data);
     }
@@ -72,7 +72,7 @@ class ExamCenterController extends Controller
         $data = [
             'title' => "Exam Center",
             'sub_title' => "Edit",
-            'header' => "Edit Class",
+            'header' => "Edit Exam Center",
         ];
         $center = ExamCenter::where('id', $id)->first();
         return view('admin.content.examcenter.create', compact('center'), $data);

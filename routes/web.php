@@ -36,7 +36,6 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/blog', [HomeController::class, 'blog'])->name('frontend.blog');
 Route::get('/blog/{blog}', [HomeController::class, 'details']);
-Route::post('contact-us', [ContactController::class, 'store'])->name('contact.store');
 Route::resource('students', StudentController::class);
 
 
@@ -49,6 +48,7 @@ Route::middleware('auth')->group(function () {
             'blogs' => BlogController::class,
             'institute' => InstituteController::class,
             'examcenter' => ExamCenterController::class,
+            'contact' => ContactController::class,
         ]);
         Route::get('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudent'])->name('student.assign');
         Route::post('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudents'])->name('students.assign');
