@@ -52,12 +52,12 @@ class StudentController extends Controller
         } else {
             $student_data['registration_no'] = date('Y') . '0001';
         }
-        $fileName = time() . "-profile." . $request->file('image')->getClientOriginalExtension();
-        $student_data['image'] = $request->file('image')->move(public_path('upload/profile/'), $fileName);
 
-        
+        $student_data['image'] = time() . "-profile." . $request->file('image')->getClientOriginalExtension();
+        $request->file('image')->move(public_path('upload/profile/'), $student_data['image']);
+
         // dd(array_merge($student_data,$request->validated()));
-        Student::create(array_merge($student_data,$request->validated()));
+        Student::create(array_merge($request->validated(), $student_data));
 
         session()->put('success', 'Item created successfully.');;
 

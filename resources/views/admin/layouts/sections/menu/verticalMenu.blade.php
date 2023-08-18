@@ -183,28 +183,22 @@
             </ul>
         </li>
 
-        {{-- <li
-            class="{{ request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit') || request()->routeIs('users.show') ? 'active open' : '' }} menu-item">
+        <li
+            class="{{ request()->routeIs('student.admin.card')? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                <div data-i18n="Dashboards">Admin</div>
+                <div data-i18n="Dashboards">Admit Card</div>
                 <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ route('users.index') }}"
-                        class="{{ request()->routeIs('users.index') ? 'active' : '' }} menu-link">
-                        <div>List</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('users.create') }}"
-                        class="{{ request()->routeIs('users.create') ? 'active' : '' }} menu-link">
-                        <div>Create</div>
+                    <a href="{{ route('student.admin.card') }}"
+                        class="{{ request()->routeIs('student.admin.card') ? 'active' : '' }} menu-link">
+                        <div>Download</div>
                     </a>
                 </li>
             </ul>
-        </li> --}}
+        </li>
 
         @endif
 

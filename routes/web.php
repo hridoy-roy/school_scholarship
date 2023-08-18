@@ -1,7 +1,5 @@
 <?php
 
-
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\StudentController;
@@ -11,6 +9,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Admin\AdmitCardController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstituteController;
 use App\Http\Controllers\Admin\ExamCenterController;
@@ -63,6 +62,10 @@ Route::middleware('auth')->group(function () {
         Route::get('student/paid', [PayController::class, 'assignPaidView'])->name('student.paid.view');
         Route::get('student/unpaid', [PayController::class, 'assignUnpaidView'])->name('student.unpaid.view');
         Route::post('student/pay', [PayController::class, 'assignPayStore'])->name('student.pay.store');
+        Route::post('student/unpaid', [PayController::class, 'assignUnpaidStore'])->name('student.unpaid.store');
+
+        Route::get('student/admit-card',[AdmitCardController::class, 'studentView'])->name('student.admin.card');
+        Route::Post('student/admit-card/download',[AdmitCardController::class, 'studentDownload'])->name('student.admin.card.download');
 
 
 

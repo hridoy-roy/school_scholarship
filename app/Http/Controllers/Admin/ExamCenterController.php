@@ -109,7 +109,7 @@ class ExamCenterController extends Controller
     }
 
 
-    public function assignStudent(Request $request,ExamCenter $exam_center)
+    public function assignStudent(Request $request, ExamCenter $exam_center)
     {
         if ($request->year) {
             $year = $request->year;
@@ -129,27 +129,19 @@ class ExamCenterController extends Controller
     }
     public function assignStudents(ExamCenterAssignRequest $request, ExamCenter $exam_center)
     {
-
-        if ((count($request->validated()) + $exam_center->students->count()) > $exam_center->capacity) {
+        if ((count($request->validated('student_id')) + $exam_center->students?->count()) > $exam_center->capacity) {
             session()->put('error', 'Your Selected Item Is more than Capacity');
             return redirect()->back();
         } else {
-            for ($i = 0; $i < count($request->validated()); $i++) {
+            for ($i = 0; $i < count($request->validated('student_id')); $i++) {
                 Student::find($request->validated('student_id')[$i] ?? null)->update([
                     'exam_center_id' => $exam_center->id
                 ]);
             }
         }
-        dd(count($request->validated()), $exam_center);
-        session()->put('success', 'Item created successfully.');
-        $data = [
-            'title' => "Student",
-            'sub_title' => "Assign",
-            'header' => "Student Assign",
-            'exam_center' => $exam_center,
-            'students' => Student::get(),
-        ];
-        return view('admin.content.examcenter.assign', $data);
+        session()->put('success', 'Exam Center Assign successfully.');
+
+        return redirect()->back();
     }
 
     public function assignStudentList(ExamCenter $exam_center)
@@ -172,14 +164,18 @@ class ExamCenterController extends Controller
         ];
         return view('admin.content.examcenter.assigned-result', $data);
     }
-    public function assignStudentResultPost(ExamCenter $exam_center)
+    public function assignStudentResultPost(Request $request, ExamCenter $exam_center)
     {
-        $data = [
-            'title' => "Student",
-            'sub_title' => "Assign",
-            'header' => "Student Assign",
-            'exam_center' => $exam_center,
-        ];
-        return view('admin.content.examcenter.assigned-list', $data);
+        if ($request->student_id && $request->marks) {
+            for ($i = 0; $i < count($request->student_id); $i++) {
+                if ($request->student_id[$i] && $request->marks[$i]) {
+                    Student::find($request->student_id[$i] ?? null)->update([
+                        'marks' => $request->marks[$i]
+                    ]);
+                }
+            }
+        }
+        session()->put('success', 'Marks Assign successfully.');
+        return redirect()->back();
     }
 }
