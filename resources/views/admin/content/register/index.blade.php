@@ -113,6 +113,7 @@
                     <i class="ti ti-dots-vertical"></i>
                 </button>
                 <div class="dropdown-menu">
+                    <a href="{{route('students.show',$student->id)}}"><button class="btn btn-sm btn-info"><i class="fa-solid fa-eye "></i></button></a> 
                     <a class="dropdown-item" href="{{route('students.edit',$student->id)}}"><i class="ti ti-pencil me-1"></i> Edit</a>
                     <form method="post" id="{{'form_'.$student->id}}" action="{{route('students.destroy',$student->id)}}">
                         @csrf

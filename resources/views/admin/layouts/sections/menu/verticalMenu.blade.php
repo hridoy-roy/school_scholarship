@@ -46,12 +46,6 @@
                         <div>Create</div>
                     </a>
                 </li>
-
-                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('institute.index') }}" class="menu-link">
-                        <div>List</div>
-                    </a>
-                </li>
             </ul>
         </li>
         <li

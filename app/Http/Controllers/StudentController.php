@@ -7,6 +7,7 @@ use App\Models\Institute;
 use App\Models\StudentClass;
 use Illuminate\Http\Request;
 use App\Http\Requests\StudentRequest;
+use App\Http\Requests\UpdateStudentRequest;
 
 class StudentController extends Controller
 {
@@ -61,7 +62,7 @@ class StudentController extends Controller
 
         session()->put('success', 'Item created successfully.');;
 
-        return redirect()->back();
+        return redirect()->route('students.show',[$student->id]);
     }
 
     /**
@@ -69,7 +70,8 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        $student->load(['institute','student_class']);
+        return view ('frontend.view', compact('student'));
     }
 
     /**
@@ -90,7 +92,7 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StudentRequest $request, Student $student)
+    public function update(UpdateStudentRequest $request, Student $student)
     {
         $student_data = $request->except(['image', 'registration_no',]);
 
