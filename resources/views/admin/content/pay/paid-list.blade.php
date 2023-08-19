@@ -45,10 +45,10 @@
     <form action="{{ route('student.paid.view') }}" method="get">
         @csrf
         <div class="row  align-items-end">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <h5 class="card-header">{{ $header ?? 'N/A' }} </h5>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label class="form-label" for="multicol-birthdate">Select Year</label>
                 <select name="year" id="year" class="form-select">
                     @foreach ($years as $year)
@@ -61,7 +61,7 @@
             </div>
         </div>
     </form>
-    <form action="{{ route('student.pay.store') }}" method="post">
+    <form action="{{ route('student.unpaid.store') }}" method="post">
         @csrf
         <div class="card-datatable table-responsive pt-0">
             <table class="datatables-basic table">
@@ -75,56 +75,46 @@
                         <th>Reg. Date</th>
                         <th>Mobile</th>
                         <th>Pay Status</th>
-                        <th>Check Box</th>
+                        <th>Check For Unpaid</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($students as $student)
                     <tr>
-                        <td>1</td>
+                        <td>{{ ++$loop->index }}</td>
                         <td>
                             <div class="d-flex justify-content-start align-items-center user-name">
                                 <div class="avatar-wrapper">
                                     <div class="avatar me-2">
-                                        <img src="{{ asset('assets/img/avatars/9.png') }}" alt="Avatar"
+                                        <img src="{{ asset('upload/profile/'.$student->image) }}" alt="Avatar"
                                             class="rounded-circle">
                                     </div>
                                 </div>
                                 <div class="d-flex flex-column">
-                                    <span class="emp_name text-truncate">Rosmunda Steed</span>
-                                    <small class="emp_post text-truncate text-muted">Assistant Media Planner</small>
+                                    <span class="emp_name text-truncate">{{ $student->name_en }}</span>
+                                    <small class="emp_post text-truncate text-muted">{{ $student->name_bn }}</small>
                                 </div>
                             </div>
                         </td>
-                        <td>234234</td>
-                        <td>234234</td>
-                        <td>23423</td>
-                        <td>23423</td>
-                        <td>234234</td>
+                        <td>{{ $student->registration_no }}</td>
+                        <td>{{ $student->roll_no ?? 'Not Set' }}</td>
+                        <td>{{ $student->father_name_en }}</td>
+                        <td>{{ $student->created_at->format('d.m.Y') }}</td>
+                        <td>{{ $student->mobile }}</td>
                         <td>
-                            <span class="badge bg-label-success me-1">Paid</span>
+                            @if ($student->payment_status === 'unpaid')
                             <span class="badge bg-label-danger me-1">Unpaid</span>
+                            @else
+                            <span class="badge bg-label-success me-1">Paid</span>
+                            @endif
                         </td>
                         <td>
                             <input type="checkbox" class="form-check-input" id="basic-default-checkbox"
-                                name="student_id[]" value="1" @if(is_array(old('student_id')) && in_array(1,
-                                old('student_id'))) checked @endif>
+                                name="student_id[]" value="{{ $student->id }}" @if(is_array(old('student_id')) &&
+                                in_array(1, old('student_id'))) checked @endif>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>234234</td>
-                        <td>234234</td>
-                        <td>234234</td>
-                        <td>234234</td>
-                        <td>23423</td>
-                        <td>23423</td>
-                        <td>234234</td>
-                        <td>
-                            <input type="checkbox" class="form-check-input" id="basic-default-checkbox"
-                                name="student_id[]" value="2" @if(is_array(old('student_id')) && in_array(2,
-                                old('student_id'))) checked @endif>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
@@ -137,7 +127,4 @@
     </form>
 </div>
 <!--/ Select -->
-
-
-
 @endsection

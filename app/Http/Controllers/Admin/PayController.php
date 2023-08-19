@@ -26,9 +26,36 @@ class PayController extends Controller
         ];
         return view('admin.content.pay.list', $data);
     }
-    public function assignPayStore(ExamCenterAssignRequest $request)
+    public function assignPayStore(Request $request)
     {
-        dd($request->all());
+        if ($request->student_id) {
+            for ($i = 0; $i < count($request->student_id); $i++) {
+                $student = Student::find($request->student_id[$i] ?? null);
+                if ($student->payment_status === 'unpaid') {
+                    $student->update([
+                        'payment_status' => 'paid'
+                    ]);
+                }
+            }
+        }
+        session()->put('success', 'Student payment Add successfully.');
+        return redirect()->back();
+    }
+
+    public function assignUnpaidStore(Request $request)
+    {
+        if ($request->student_id) {
+            for ($i = 0; $i < count($request->student_id); $i++) {
+                $student = Student::find($request->student_id[$i] ?? null);
+                if ($student->payment_status === 'paid') {
+                    $student->update([
+                        'payment_status' => 'unpaid'
+                    ]);
+                }
+            }
+        }
+        session()->put('success', 'Student payment Add successfully.');
+        return redirect()->back();
     }
 
     public function assignPaidView(Request $request)
@@ -46,7 +73,7 @@ class PayController extends Controller
             'years' => range(2020, date('Y')),
             'students' => Student::whereYear('created_at', '=', $year)->where('payment_status', 'paid')->get(),
         ];
-        return view('admin.content.pay.list', $data);
+        return view('admin.content.pay.paid-list', $data);
     }
 
     public function assignUnpaidView(Request $request)
@@ -65,11 +92,5 @@ class PayController extends Controller
             'students' => Student::whereYear('created_at', '=', $year)->where('payment_status', 'unpaid')->get(),
         ];
         return view('admin.content.pay.unpaid-list', $data);
-    }
-
-    public function studentSearchYear(Request $request)
-    {
-        dd($request->all());
-        // return
     }
 }

@@ -37,12 +37,11 @@
     <h4 class="fw-bold">
         <span class="text-muted fw-light">{{ $title ?? 'N/A' }} /</span> {{ $sub_title ?? 'N/A' }}
     </h4>
-    <a href="{{route('examcenter.create')}}"> <button class=" btn btn-primary">➥ Create</button></a>
 </div>
 
 <!-- Select -->
 <div class="card">
-    <form action="{{ route('student.unpaid.view') }}" method="get">
+    <form action="{{ route('student.admin.card') }}" method="get">
         @csrf
         <div class="row  align-items-end">
             <div class="col-md-4">
@@ -61,7 +60,7 @@
             </div>
         </div>
     </form>
-    <form action="{{ route('student.pay.store') }}" method="post">
+    <form action="{{ route('student.admin.card.download') }}" method="post">
         @csrf
         <div class="card-datatable table-responsive pt-0">
             <table class="datatables-basic table">
@@ -75,7 +74,7 @@
                         <th>Reg. Date</th>
                         <th>Mobile</th>
                         <th>Pay Status</th>
-                        <th>Check For Paid</th>
+                        <th>Check For Unpaid</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -119,7 +118,8 @@
                 <tfoot>
                     <tr>
                         <th colspan="7"></th>
-                        <th colspan="2"><button class="btn btn-secondary create-new btn-primary">Save</button></th>
+                        <th colspan="2"><button class="btn btn-secondary create-new btn-primary">Download Admit
+                                Card</button></th>
                     </tr>
                 </tfoot>
             </table>
