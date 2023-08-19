@@ -453,7 +453,7 @@
                         <div class="form-group">
                             <label for="mobile">Mobile Number <code>*</code></label>
                             <input type="text" class="form-control @error('mobile') is-invalid @enderror"
-                                name="{{ 'mobile' }}" id="mobile" value="{{ @$student->mobile  ?? old('mobile')}}"
+                                name="{{ 'mobile' }}" id="mobile" value="{{ @$student->mobile  ?? old('mobile')}}"  placeholder="Mobile">
                             @error('mobile')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

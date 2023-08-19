@@ -58,7 +58,7 @@ class StudentController extends Controller
         $request->file('image')->move(public_path('upload/profile/'), $student_data['image']);
 
         // dd(array_merge($student_data,$request->validated()));
-        Student::create(array_merge($request->validated(), $student_data));
+        $student = Student::create(array_merge($request->validated(), $student_data));
 
         session()->put('success', 'Item created successfully.');;
 
