@@ -1723,49 +1723,27 @@ span.option-br {
 
 
 
-
-
-
-
 /* Card sectioln */
 
 
-.card{
-    margin: 100px 0px 50px;
 
 
-}
-.txt-center {
-    text-align: center;
-}
-.border- {
-    border: 1px solid #000 !important;
-}
-.padding {
-    padding: 15px;
-}
-.mar-bot {
-    margin-bottom: 15px;
-}
-.admit-card {
-    border: 2px solid #000;
-    background-color: #f7f7f7;
-    padding: 15px;
-    margin: 20px 0;
-}
-.BoxA h5, .BoxA p {
-    margin: 0;
-}
-h5 {
-    text-transform: uppercase;
-}
-table img {
-    width: 100%;
-    margin: 0 auto;
-}
-.table-bordered td, .table-bordered th, .table thead th {
-    border: 1px solid #000000 !important;
-}
+
+
+
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+
+   .admit-card:last-child(3) {
+     margin: 0 auto 20px auto;
+   }
+ 
+   .admit-card-responsive {
+     display: none;
+   }
+ 
+ }
+ 
 
 
 
