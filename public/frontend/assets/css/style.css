@@ -1730,9 +1730,8 @@ span.option-br {
 
 
 
-
 /* Tablet desktop :768px. */
-@media (min-width: 768px) and (max-width: 991px) {
+/* @media (min-width: 768px) and (max-width: 991px) {
 
    .admit-card:last-child(3) {
      margin: 0 auto 20px auto;
@@ -1743,7 +1742,7 @@ span.option-br {
    }
  
  }
- 
+  */
 
 
 

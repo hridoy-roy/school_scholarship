@@ -1,6 +1,7 @@
 @extends('frontend.layouts.main')
 
 @section('main-container')
+
 <!--home Section -->
 <section id="home" class="home">
     <div class="overlay">
