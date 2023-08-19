@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstituteController;
 use App\Http\Controllers\Admin\ExamCenterController;
 use App\Http\Controllers\Frontend\GalleryController;
+use App\Http\Controllers\Frontend\SliderController;
 use App\Http\Controllers\Admin\StudentClassController;
 
 // use App\Http\Controllers\Frontend\ContactController;
@@ -88,6 +89,17 @@ Route::get('/gallery/list', [GalleryController::class, 'list'])->name('gallery.l
 Route::get('/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
 Route::post('/gallery/update/{id}', [GalleryController::class, 'update'])->name('gallery.update');
 Route::delete('/gallery/destroy/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+
+
+
+// Slider Controller
+
+Route::get('/slider/create', [SliderController::class, 'create'])->name('slider.create');
+Route::put('/slider/create', [SliderController::class, 'store'])->name('slider.store');
+Route::get('/slider/list', [SliderController::class, 'list'])->name('slider.list');
+Route::get('/slider/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
+Route::post('/slider/update/{id}', [SliderController::class, 'update'])->name('slider.update');
+Route::delete('/slider/destroy/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');
 
 
 require __DIR__ . '/auth.php';

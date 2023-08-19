@@ -14,6 +14,7 @@ class HomeController extends Controller
         $data = [
             'blogs' => Blog::take(6)->get(),
             'gallerys' => Gallery::get(),
+            // 'sliders' => Slider::get(),
         ];
         return view('frontend.index', $data);
     }

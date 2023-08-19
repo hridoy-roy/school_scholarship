@@ -48,6 +48,7 @@
                 </li>
             </ul>
         </li>
+
         <li
             class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -160,6 +161,7 @@
                 </li>
             </ul>
         </li>
+
         <li
             class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -240,6 +242,7 @@
             </ul>
         </li>
 
+
         <li
             class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -262,5 +265,35 @@
                 </li>
             </ul>
         </li>
+
+
+
+        <li
+        class="{{ request()->routeIs('slider.create') || request()->routeIs('slider.list') || request()->routeIs('slider.edit') ? 'active open' : '' }} menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon ti ti-school"></i>
+            <div data-i18n="Dashboards">Slider</div>
+            <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+        </a>
+        <ul class="menu-sub">
+
+            <li class="{{ request()->routeIs('slider.create') ? 'active' : '' }} menu-item">
+                <a href="{{ route('slider.create') }}" class="menu-link">
+                    <div>Create</div>
+                </a>
+            </li>
+
+            <li class="{{ request()->routeIs('slider.list') ? 'active' : '' }} menu-item">
+                <a href="{{ route('slider.list') }}" class="menu-link">
+                    <div>List</div>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+
+
+
+
     </ul>
 </aside>
