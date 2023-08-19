@@ -1,205 +1,227 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="">
-<!--<![endif]-->
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>School Scholarship</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  {{-- Bangla font --}}
+  <link href="https://fonts.maateen.me/bangla/font.css" rel="stylesheet">
+  <link href="https://fonts.maateen.me/apona-lohit/font.css" rel="stylesheet">
+
 
     <!--Google Fonts link-->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
 
-
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/iconfont.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/slick/slick.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/slick/slick-theme.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/jquery.fancybox.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/magnific-popup.css') }}">
-    <!--<link rel="stylesheet" href="{{ url('frontend/assets/css/bootstrap-theme.min.css') }}">-->
+    <link rel="stylesheet" href="assets/css/iconfont.css">
+    <link rel="stylesheet" href="assets/css/slick/slick.css">
+    <link rel="stylesheet" href="assets/css/slick/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
 
 
     <!--For Plugins external css-->
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/plugins.css') }}" />
+    <link rel="stylesheet" href="assets/css/plugins.css" />
 
     <!--Theme custom css -->
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/style.css') }}">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!--Theme Responsive css-->
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/responsive.css') }}" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
 
-    <script src="{{ url('frontend/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+    <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+    {{-- card right section --}}
+    {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" /> --}}
+
+    <style> legend.group-border {
+        width: inherit;
+        /* Or auto */
+        padding: 0 10px;
+        /* To give a bit of padding on the left and right */
+        border-bottom: none;
+      }
+      
+      fieldset.group-border {
+        border: 2px groove #000000 !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow: 0px 0px 0px 0px #000;
+        box-shadow: 0px 0px 0px 0px #000;
+      }
+      
+      </style>
+
+
 </head>
+<body>
+    
+    <div class="container bg-dark bangla_font" style="padding: .6rem; ">
 
-<body data-spy="scroll" data-target=".navbar-collapse">
+        <div class="container mt3 p-3" style="background-color: #e0e0e0">
 
-    <div class='preloader'>
-        <div class='loaded'>&nbsp;</div>
-    </div>
+            <div class="container-botto" style="display: flex; justify-content: space-between; align-items: center;">
 
-    <div class="culmn">
-        <header id="main_menu" class="header navbar-fixed-top">
-            <div class="main_menu_bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="nave_menu">
-                            <nav class="navbar navbar-default">
-                                <div class="container-fluid">
-                                    <!-- Brand and toggle get grouped for better mobile display -->
-                                    <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                            <span class="sr-only">Toggle navigation</span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                        </button>
-                                        <a class="navbar-brand" href="#home">
-                                            <img src="{{ url('frontend/assets/images/logo.png') }}" />
-                                        </a>
-                                    </div>
+                  <div class="row">
 
-                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="col-xl-3 col-lg-3 col-md-3">
 
+                        <div class="admit-card">
+                            
 
-
-                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                                        <ul class="nav navbar-nav navbar-right">
-                                            <li><a href="#home">HOME</a></li>
-                                            <li><a href="#history">ABOUT US</a></li>
-                                            <li><a href="#portfolio">PORTFOLIO</a></li>
-                                            <li><a href="#pricing">PRICING</a></li>
-                                            <li><a href="#team">TEAM</a></li>
-                                            <li><a href="#blog">BLOG</a></li>
-                                            <li><a href="#contact">CONTACT</a></li>
-                                            {{-- <li><a href="{{route('admitcard.submit')}}">Admit Card Download</a></li> --}}
-
-                                            {{-- href="{{url($team->linkedin)}}" --}}
-
-                                        </ul>
-
-                                    </div>
-
-                                </div>
-                            </nav>
+                            <div class="card" style="width: 20vh; float: left;" >
+                                <img class="card-img-top" src="{{ url('assets/img/logo.jpg') }}" alt="Picture" >
+                            </div>
+                                        
+                            <div style="width: 10vh; float: right; " >
+                                    
+                                <img class="card-img-top" src="{{ url('assets/img/main-logo.png') }}" alt="Picture" >
+                            </div>
                         </div>
                     </div>
 
-                </div>
 
+                
+
+                
+                <div class="col-xl-6 col-lg-6 col-md-6">
+
+                    <div style="text-align: center" class="admit-card">
+                    
+                        <h5> <b>দি স্টুডন্টে ওয়লেফয়োর এসোসয়িশেন সাভার</b> </h5>
+                        <h5> <b>The Student Welfare Association Savar</b> </h5>
+                        <h5> <b>বৃত্তি পরীক্ষা ২০২৩ ইং</b> </h5>
+                        <h5> <b>রেজি নং - ঢ -০৮৫৭৭৩</b> </h5>
+                      
+                         
+                   </div>
             </div>
-        </header>
-        <!--End of header -->
-
-
-
-<section class="card">
-
-  <h1 style="color: red">Admit Card</h1>
-
-</section>
 
 
 
 
 
+            <div class="col-xl-3 col-lg-3 col-md-3">
+
+                <div class="admit-card">
+                    
+                        
+                    <fieldset class="group-border">
+                        <legend class="group-border">অফিস কর্তৃক পূরণীয় </legend>
+
+                        <br>
 
 
+                        <div class="row">
 
+                            <div class="col-lg-2">
+                                <label class="control-label" for="Name">বৃত্তি পরীক্ষার রোল</label>
+                            </div>
 
+                            <div class="col-lg-4">
+                                <input class="form-control input-sm" disabled="disabled" id="Name" name="Name" placeholder="Nome Documento" value="A134-MULTAS" type="text">
+                            </div>
 
+                        </div>
 
+                        <br>
 
-<!--Footer section-->
-<section class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="main_footer">
-                    <div class="row">
-
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="flowus">
-                                <a href=""><i class="fa fa-facebook"></i></a>
-                                <a href=""><i class="fa fa-instagram"></i></a>
-                                <a href=""><i class="fa fa-youtube"></i></a>
-                                <a href=""><i class="fa fa-twitter"></i></a>
-                                <a href=""><i class="fa fa-google-plus"></i></a>
-                                {{-- <a href=""><i class="fa fa-dribbble"></i></a> --}}
+                             <div class="row">
+                            <div class="col-lg-2">
+                                <label class="control-label" for="Name">রেজিস্ট্রেশন নং</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <input class="form-control input-sm" disabled="disabled" id="Name" name="Name" placeholder="Nome Documento" value="A134-MULTAS" type="text">
                             </div>
                         </div>
 
-                        <div class="col-sm-6 col-xs-12">
+                        <br>
 
-                            <div class="copyright_text">
-
-                                  <p class="wow fadeInRight" data-wow-duration="1s">Develop By
-                                    <a href="#">Dev Team </a> © <?php echo date("Y"); ?>. All Rights
-                                    Reserved 
-                                  </p>
+                                  <div class="row">
+                            <div class="col-lg-2">
+                                <label class="control-label" for="Name">অঞ্চল</label>
                             </div>
-
-                       
-
+                            <div class="col-lg-4">
+                                <input class="form-control input-sm" disabled="disabled" id="Name" name="Name" placeholder="Nome Documento" value="A134-MULTAS" type="text">
+                            </div>
                         </div>
+
+                        <br>
+
+                  
+                    </fieldset>
+                  
+    
+                      
+                             
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section><!-- End off footer Section-->
+                     
+
+             
+               </div>    {{-- Row --}}
+        
+            </div>   {{--  container-bottom --}}
 
 
+            <br>
 
+            <div class="container-bottom">
 
+                <div class="input-group md-3" style="border: solid black;">
+                    <span class="input-group-text text-white bg-dark">Name</span>
+                    <input type="text" class="form-control" placeholder="">
+                    <span class="input-group-text text-white bg-dark">Fathers Name</span>
+                    <input type="text" class="form-control" placeholder="">
+            
+                </div>
 
+                <div class="input-group md-3" style="border: solid black;">
+                    <span class="input-group-text text-white bg-dark">School Name</span>
+                    <input type="text" class="form-control" placeholder="">
+            
+                </div>
 
+                <div class="input-group md-3" style="border: solid black;">
+                    <span class="input-group-text text-white bg-dark">Class</span>
+                    <input type="text" class="form-control" placeholder="">
+                    <span class="input-group-text text-white bg-dark">Roll</span>
+                    <input type="text" class="form-control" placeholder="">
+                    <span class="input-group-text text-white bg-dark">Group</span>
+                    <input type="text" class="form-control" placeholder="">
+                    <span class="input-group-text text-white bg-dark">Time of Exam</span>
+                    <input type="text" class="form-control" placeholder="">
+                </div>
 
+                <div class="input-group md-3" style="border: solid black;">
+                    <span class="input-group-text text-white bg-dark">Present Address</span>
+                    <input type="text" class="form-control" placeholder="">
+                    <span class="input-group-text text-white bg-dark">Contact No.</span>
+                    <input type="text" class="form-control" placeholder="">
+                </div>
 
+                <div class="input-group md-3" style="border: solid black;">
+                    <span class="input-group-text text-white bg-dark">Date of Exam</span>
+                    <input type="text" class="form-control " placeholder="">
+                    <span class="input-group-text text-white bg-dark">Vanues</span>
+                    <input type="text" class="form-control" placeholder="">
+                </div>
 
+            </div> {{--  container-bottom --}}
 
+        </div> {{--  container mt3 --}}
 
-</div>
-
-<!-- START SCROLL TO TOP  -->
-
-<div class="scrollup">
-    <a href="#"><i class="fa fa-chevron-up"></i></a>
-</div>
-
-<script src="{{ url('frontend/assets/js/vendor/jquery-1.11.2.min.js') }}"></script>
-<script src="{{ url('frontend/assets/js/vendor/bootstrap.min.js') }}"></script>
-
-<script src="{{ url('frontend/assets/js/jquery.magnific-popup.js') }}"></script>
-<script src="{{ url('frontend/assets/js/jquery.mixitup.min.js') }}"></script>
-<script src="{{ url('frontend/assets/js/jquery.easing.1.3.js') }}"></script>
-<script src="{{ url('frontend/assets/js/jquery.masonry.min.js') }}"></script>
-
-<!--slick slide js -->
-<script src="{{ url('frontend/assets/css/slick/slick.js') }}"></script>
-<script src="{{ url('frontend/assets/css/slick/slick.min.js') }}"></script>
-
-
-<script src="{{ url('frontend/assets/js/plugins.js') }}"></script>
-<script src="{{ url('frontend/assets/js/main.js') }}"></script>
+    </div> {{--  container bg-dark --}}
 
 </body>
-
 </html>
