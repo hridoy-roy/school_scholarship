@@ -31,7 +31,7 @@ return new class extends Migration
             $table->foreignIdFor(StudentClass::class);
             $table->foreignIdFor(ExamCenter::class)->nullable();
             $table->string('class_roll');
-            $table->string('class_division');
+            $table->string('class_division')->nullable();
             $table->string('class_section');
             $table->string('present_address');
             $table->string('permanent_address');
@@ -42,6 +42,9 @@ return new class extends Migration
             $table->string('mobile')->unique();
             $table->string('facebook')->nullable();
             $table->date('dob');
+            $table->string('image');
+            $table->string('father_occupation');
+            $table->string('mother_occupation');
             $table->string('blood_group')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('absent_of_parent_name');

@@ -12,7 +12,7 @@
 <!-- Row Group CSS -->
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css')}}">
 <!-- Form Validation -->
-<link rel="stylesheet" href="{{asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css')}}" />
+<link rel="stylesheet" href="{{asset('assets/vendor/libs/form-validation/umd/styles/index.min.css')}}" />
 @endsection
 
 @section('vendor-script')
@@ -21,9 +21,9 @@
 <script src="{{asset('assets/vendor/libs/moment/moment.js')}}"></script>
 <script src="{{asset('assets/vendor/libs/flatpickr/flatpickr.js')}}"></script>
 <!-- Form Validation -->
-<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js')}}"></script>
-<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js')}}"></script>
-<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/form-validation/umd/bundle/popular.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/form-validation/umd/plugin-bootstrap5/index.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/form-validation/umd//plugin-auto-focus/index.min.js')}}"></script>
 @endsection
 
 @section('page-script')
@@ -50,23 +50,29 @@
     </h5>
     <form action="{{ route('students.assign',$exam_center->id) }}" method="post">
         @csrf
+        <button class="btn btn-secondary create-new btn-primary">Save</button>
+    </form>
+    <form action="{{ route('students.assign',$exam_center->id) }}" method="post">
+        @csrf
         <div class="card-datatable table-responsive pt-0">
             <table class="datatables-basic table">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>#</th>
+                        <th>Photo</th>
                         <th>Name</th>
-                        <th>Position</th>
-                        <th>Email</th>
-                        <th>City</th>
-                        <th>Date</th>
-                        <th>Salary</th>
-                        <th>Status</th>
+                        <th>Reg. No</th>
+                        <th>Roll</th>
+                        <th>Father Name</th>
+                        <th>DOB</th>
+                        <th>Mobile</th>
+                        <th>Check Box</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td></td>
+                        <td>234234</td>
                         <td>234234</td>
                         <td>234234</td>
                         <td>234234</td>
@@ -83,6 +89,7 @@
                         <td>234234</td>
                         <td>234234</td>
                         <td>234234</td>
+                        <td>234234</td>
                         <td>23423</td>
                         <td>23423</td>
                         <td>234234</td>
@@ -95,7 +102,9 @@
                 <tfoot>
                     <tr>
                         <th colspan="7"></th>
-                        <th colspan="2"><button class="btn btn-secondary create-new btn-primary">Save</button></th>
+                        <th colspan="2">
+                            <button class="btn btn-secondary create-new btn-primary">Save</button>
+                        </th>
                     </tr>
                 </tfoot>
             </table>

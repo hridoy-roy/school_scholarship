@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StudentRequest extends FormRequest
+class updateStudentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,6 @@ class StudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['required', 'mimes:png,jpg,jpeg,webp', 'max:1024'],
             'school_madrasa' => ['required'],
             'student_type' => ['required'],
             'area' => ['required', 'max:255'],

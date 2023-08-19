@@ -1,13 +1,15 @@
 <?php
 
-
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\Admin\PayController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Admin\AdmitCardController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstituteController;
 use App\Http\Controllers\Admin\ExamCenterController;
@@ -36,7 +38,6 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/blog', [HomeController::class, 'blog'])->name('frontend.blog');
 Route::get('/blog/{blog}', [HomeController::class, 'details']);
-Route::post('contact-us', [ContactController::class, 'store'])->name('contact.store');
 Route::resource('students', StudentController::class);
 
 
@@ -49,12 +50,26 @@ Route::middleware('auth')->group(function () {
             'blogs' => BlogController::class,
             'institute' => InstituteController::class,
             'examcenter' => ExamCenterController::class,
+            'contact' => ContactController::class,
         ]);
         Route::get('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudent'])->name('student.assign');
         Route::post('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudents'])->name('students.assign');
         Route::get('student/assign/{exam_center}/list', [ExamCenterController::class, 'assignStudentList'])->name('student.assign.list');
         Route::get('student/assign/{exam_center}/result', [ExamCenterController::class, 'assignStudentResult'])->name('student.assign.result');
         Route::post('student/assign/{exam_center}/result', [ExamCenterController::class, 'assignStudentResultPost'])->name('student.assign.result.post');
+
+        Route::get('student/pay', [PayController::class, 'assignPayView'])->name('student.pay.view');
+        Route::get('student/paid', [PayController::class, 'assignPaidView'])->name('student.paid.view');
+        Route::get('student/unpaid', [PayController::class, 'assignUnpaidView'])->name('student.unpaid.view');
+        Route::post('student/pay', [PayController::class, 'assignPayStore'])->name('student.pay.store');
+        Route::post('student/unpaid', [PayController::class, 'assignUnpaidStore'])->name('student.unpaid.store');
+
+        Route::get('student/admit-card',[AdmitCardController::class, 'studentView'])->name('student.admin.card');
+        Route::Post('student/admit-card/download',[AdmitCardController::class, 'studentDownload'])->name('student.admin.card.download');
+
+
+
+
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
