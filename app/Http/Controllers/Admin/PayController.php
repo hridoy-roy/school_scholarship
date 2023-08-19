@@ -33,7 +33,8 @@ class PayController extends Controller
                 $student = Student::find($request->student_id[$i] ?? null);
                 if ($student->payment_status === 'unpaid') {
                     $student->update([
-                        'payment_status' => 'paid'
+                        'payment_status' => 'paid',
+                        'roll_no' => $student->id + 1,
                     ]);
                 }
             }
@@ -49,7 +50,8 @@ class PayController extends Controller
                 $student = Student::find($request->student_id[$i] ?? null);
                 if ($student->payment_status === 'paid') {
                     $student->update([
-                        'payment_status' => 'unpaid'
+                        'payment_status' => 'unpaid',
+                        'roll_no' => null,
                     ]);
                 }
             }

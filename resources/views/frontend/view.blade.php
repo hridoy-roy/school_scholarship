@@ -5,7 +5,8 @@
     <tbody>
         <tr>
             <th>Image</th>
-            <td ><img src="{{asset($student->image)}}" style="height:200px;object-fit:cover;" alt="{{$student->title}}"></td>
+            <td><img src="{{asset('upload/profile/'.$student->image)}}" style="height:200px;object-fit:cover;"
+                    alt="{{$student->title}}"></td>
         </tr>
         <tr>
             <th style="width:200px">Name</th>
@@ -41,7 +42,7 @@
             <th style="width:200px">Section</th>
             <td style="width:200px">{{$student->class_section}}</td>
             <th style="width:200px">Division Name</th>
-            <td style="width:200px">{{$student->permanent_address_district}}</td>     
+            <td style="width:200px">{{$student->permanent_address_district}}</td>
         </tr>
         <tr>
             <th style="width:200px">Institute Type</th>
@@ -50,7 +51,7 @@
             <td style="width:200px">{{$student->permanent_address_village}}</td>
         </tr>
         <tr>
-            <th style="width:200px">Student Type</th> 
+            <th style="width:200px">Student Type</th>
             <td style="width:200px">{{$student->student_type}}</td>
             <th style="width:200px">Select Thana</th>
             <td style="width:200px">{{$student->permanent_address_thana}}</td>
@@ -68,26 +69,26 @@
             <td style="width:200px">{{$student->permanent_address}}</td>
         </tr>
         <tr>
-            <th style="width:200px">Blood Group</th>    
+            <th style="width:200px">Blood Group</th>
             <td style="width:200px">
-                @if ($student->blood_group  == 1 )
-                    A+
-                @elseif ($student->blood_group  == 2 )
-                    B+
-                @elseif ($student->blood_group  == 3 )
-                    O+
-                @elseif ($student->blood_group  == 4 )
-                    AB+
-                @elseif ($student->blood_group  == 5 )
-                    A-
-                @elseif ($student->blood_group  == 6 )
-                    B-
-                @elseif ($student->blood_group  == 6 )
-                    O-
-                @elseif ($student->blood_group  == 6 )
-                    B-
+                @if ($student->blood_group == 1 )
+                A+
+                @elseif ($student->blood_group == 2 )
+                B+
+                @elseif ($student->blood_group == 3 )
+                O+
+                @elseif ($student->blood_group == 4 )
+                AB+
+                @elseif ($student->blood_group == 5 )
+                A-
+                @elseif ($student->blood_group == 6 )
+                B-
+                @elseif ($student->blood_group == 6 )
+                O-
+                @elseif ($student->blood_group == 6 )
+                B-
                 @else
-                    AB-
+                AB-
                 @endif
             </td>
             <th style="width:200px">Name of guardian</th>
@@ -117,7 +118,7 @@
         </tr>
         <tr>
             <td style="width:200px">
-                <a href="{{route('students.edit',$student->id)}}"><button class="btn btn-primary">➥ Update</button></a>
+                <a href="{{route('students.edit',$student->id)}}"><button class="btn btn-primary">➥ Edit</button></a>
             </td>
             <td style="width:200px">
                 <a href="#"> <button class=" btn btn-primary">➥ Payment</button></a>
