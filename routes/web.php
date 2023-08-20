@@ -7,6 +7,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Admin\PayController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -54,6 +55,7 @@ Route::middleware('auth')->group(function () {
             'examcenter' => ExamCenterController::class,
             'contact' => ContactController::class,
             'exams' => ExamController::class,
+            'members' => MemberController::class,
         ]);
         Route::get('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudent'])->name('student.assign');
         Route::post('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudents'])->name('students.assign');
