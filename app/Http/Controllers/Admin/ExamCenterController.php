@@ -123,7 +123,10 @@ class ExamCenterController extends Controller
             'currentYear' => $year,
             'years' => range(2020, date('Y')),
             'exam_center' => $exam_center,
-            'students' => Student::whereYear('created_at', '=', $year)->whereNull('exam_center_id')->get(),
+            'students' => Student::whereYear('created_at', '=', $year)->where([
+                'exam_center_id' => null,
+                'payment_status' => 'paid',
+            ])->get(),
         ];
         return view('admin.content.examcenter.assign', $data);
     }
@@ -170,7 +173,11 @@ class ExamCenterController extends Controller
             for ($i = 0; $i < count($request->student_id); $i++) {
                 if ($request->student_id[$i] && $request->marks[$i]) {
                     Student::find($request->student_id[$i] ?? null)->update([
-                        'marks' => $request->marks[$i]
+                        'marks' => $request->marks[$i],
+                    ]);
+                } else {
+                    Student::find($request->student_id[$i] ?? null)->update([
+                        'marks' => null,
                     ]);
                 }
             }

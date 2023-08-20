@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Exam;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Requests\ExamRequest;
 use App\Http\Requests\ExamUpdateRequest;
 use App\Http\Requests\ExamCenterAssignRequest;
@@ -106,11 +107,14 @@ class ExamController extends Controller
             'currentYear' => $year,
             'years' => range(2020, date('Y')),
             'exam' => $exam,
-            'students' => Student::whereYear('created_at', '=', $year)->whereNull('exam_id')->get(),
+            'students' => Student::whereYear('created_at', '=', $year)->where([
+                'exam_id' => null,
+                'payment_status' => 'paid'
+            ])->get(),
         ];
         return view('admin.content.exam.assign', $data);
     }
-    function examStudentAssign(ExamCenterAssignRequest $request, Exam $exam)
+    public function examStudentAssign(ExamCenterAssignRequest $request, Exam $exam)
     {
 
         for ($i = 0; $i < count($request->validated('student_id')); $i++) {
@@ -119,8 +123,15 @@ class ExamController extends Controller
             ]);
         }
 
-        session()->put('success', 'Exam Center Assign successfully.');
+        session()->put('success', 'Exam Assign successfully.');
 
         return redirect()->back();
+    }
+
+    public function examResultDownload(Exam $exam)
+    {
+        $exam = $exam->load('students');
+        $pdf = Pdf::loadView('admin.content.result.download', compact('exam'));
+        return $pdf->download($exam->name . time() . '.pdf');
     }
 }

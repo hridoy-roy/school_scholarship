@@ -49,6 +49,9 @@
                                 <a class="dropdown-item" href="{{ route('student.exam',$exam->id) }}"><i
                                         class="ti ti-pencil me-1"></i>
                                     Exam Assign</a>
+                                <a class="dropdown-item" href="{{ route('student.result.download',$exam->id) }}"><i
+                                        class="ti ti-pencil me-1"></i>
+                                    Result Download</a>
 
                                 <a class="dropdown-item" href="javascript:void(0);"
                                     onclick="$('#logout-form').submit();"><i class="ti ti-trash me-1"></i>
@@ -71,6 +74,7 @@
             </tbody>
         </table>
     </div>
+    {{ $exams->links() }}
 </div>
 <!-- Bootstrap Table with Header - Light -->
 

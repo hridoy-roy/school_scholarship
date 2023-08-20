@@ -42,6 +42,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/blog', [HomeController::class, 'blog'])->name('frontend.blog');
 Route::get('/blog/{blog}', [HomeController::class, 'details']);
 Route::resource('students', StudentController::class);
+Route::get('student/result/{exam}/download', [ExamController::class, 'examResultDownload'])->name('student.result.download');
 
 
 Route::middleware('auth')->group(function () {

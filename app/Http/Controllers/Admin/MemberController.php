@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Member;
-use App\Http\Requests\MemberRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MemberRequest;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests\MemberUpdateRequest;
 
