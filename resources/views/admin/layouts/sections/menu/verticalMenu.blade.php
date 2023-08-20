@@ -133,6 +133,31 @@
                 </li>
             </ul>
         </li>
+
+        {{-- Member --}}
+        <li
+            class="{{ request()->routeIs('members.index') || request()->routeIs('members.create') || request()->routeIs('members.edit') || request()->routeIs('members.show') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Dashboards">Members</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('members.index') }}"
+                        class="{{ request()->routeIs('members.index') ? 'active' : '' }} menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('members.create') }}"
+                        class="{{ request()->routeIs('members.create') ? 'active' : '' }} menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <li
             class="{{ request()->routeIs('student.pay.view') || request()->routeIs('student.paid.view') || request()->routeIs('student.unpaid.view')  ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
