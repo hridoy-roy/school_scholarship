@@ -47,7 +47,6 @@ class SliderController extends Controller
         ]);
 
         $sliders = new Slider;
-
         $sliders->sub_title = $request->sub_title;
         $sliders->title = $request->title;
         $sliders->description = $request->description;

@@ -39,59 +39,59 @@
             <h5 class="card-header">{{ $header ?? 'N/A' }}</h5>
             <div class="card-body">
 
-                <form action="{{ route('slider.store') }}" method="POST" class="row g-3 needs-validation" novalidate
+                <form action="{{route('slider.store')}}" method="POST" class="row g-3 needs-validation" novalidate
                     id="identifier" enctype="multipart/form-data">
 
                     @csrf
-                    @method('PUT')
+                    {{ method_field('PUT')}}
 
                 
 
                     <div class="col-md-6">
-                        <x-input type="text" label='Sub Title' :required=true placeholder='Write Your Sub Title' name="sub_title">
+                        <x-input id="sub_title" type="text" label='Sub Title' :required=true placeholder='Write Your Sub Title' name="sub_title">
                         </x-input>
                     </div>
 
                     <div class="col-md-6">
-                        <x-input type="text" label='Title' :required=true placeholder='Write Your Title' name="title">
+                        <x-input id="title" type="text" label='Title' :required=true placeholder='Write Your Title' name="title">
                         </x-input>
                     </div>
 
                     <div class="col-md-6">
-                        <x-input type="text" label='Description' :required=true placeholder='Write Your Description' name="description">
+                        <x-input id="description" type="text" label='Description' :required=true placeholder='Write Your Description' name="description">
                         </x-input>
                     </div>
 
                     <div class="col-md-6">
-                        <x-input type="text" label='Link one' :required=true placeholder='Write Your Link' name="link1">
+                        <x-input id="link1" type="text" label='Link one' :required=true placeholder='Write Your Link' name="link1">
                         </x-input>
                     </div>
 
                     <div class="col-md-6">
-                        <x-input type="text" label='Link one' :required=true placeholder='Write Your Link' name="link2">
+                        <x-input id="link2" type="text" label='Link one' :required=true placeholder='Write Your Link' name="link2">
                         </x-input>
                     </div>
 
                     <div class="col-md-6">
-                        <x-input label='Logo' :required=true type='file' name="logo">
+                        <x-input id="Logo" label='Logo' :required=true type='file' name="logo">
                         </x-input>
                     </div>
 
 
                     <div class="col-md-6">
-                        <x-input label='Favicon' :required=true type='file' name="favicon">
+                        <x-input id="favicon" label='Favicon' :required=true type='file' name="favicon">
                         </x-input>
                     </div>
 
                     <div class="col-md-6">
-                        <x-input label='Background Image' :required=true type='file' name="bg_img">
+                        <x-input id="bg_img" label='Background Image' :required=true type='file' name="bg_img">
                         </x-input>
                     </div>
                   
                   
 
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                        <button type="submit" name="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
                     </div>
                 </form>
             </div>
