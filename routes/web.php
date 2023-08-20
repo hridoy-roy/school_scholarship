@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Admin\PayController;
@@ -12,9 +13,9 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\AdmitCardController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstituteController;
+use App\Http\Controllers\Frontend\SliderController;
 use App\Http\Controllers\Admin\ExamCenterController;
 use App\Http\Controllers\Frontend\GalleryController;
-use App\Http\Controllers\Frontend\SliderController;
 use App\Http\Controllers\Admin\StudentClassController;
 
 // use App\Http\Controllers\Frontend\ContactController;
@@ -52,6 +53,7 @@ Route::middleware('auth')->group(function () {
             'institute' => InstituteController::class,
             'examcenter' => ExamCenterController::class,
             'contact' => ContactController::class,
+            'exams' => ExamController::class,
         ]);
         Route::get('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudent'])->name('student.assign');
         Route::post('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudents'])->name('students.assign');
@@ -65,8 +67,11 @@ Route::middleware('auth')->group(function () {
         Route::post('student/pay', [PayController::class, 'assignPayStore'])->name('student.pay.store');
         Route::post('student/unpaid', [PayController::class, 'assignUnpaidStore'])->name('student.unpaid.store');
 
-        Route::get('student/admit-card',[AdmitCardController::class, 'studentView'])->name('student.admin.card');
-        Route::Post('student/admit-card/download',[AdmitCardController::class, 'studentDownload'])->name('student.admin.card.download');
+        Route::get('student/admit-card', [AdmitCardController::class, 'studentView'])->name('student.admin.card');
+        Route::Post('student/admit-card/download', [AdmitCardController::class, 'studentDownload'])->name('student.admin.card.download');
+
+        Route::get('student/exam/{exam}', [ExamController::class, 'examStudent'])->name('student.exam');
+        Route::Post('student/exam/assign/{exam}', [ExamController::class, 'examStudentAssign'])->name('student.exam.assign');
 
 
 
