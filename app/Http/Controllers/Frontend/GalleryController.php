@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 use Illuminate\Support\Facades\Storage;
 use App\Models\Gallery;
@@ -47,14 +48,32 @@ class GalleryController extends Controller
         $gallerys->sub_title = $request->sub_title;
         $gallerys->category = $request->category;
 
-        $big_file = $request->file('big_image');
-        Storage::putFile('public/big_image/', $big_file);
-        $gallerys->big_image = "storage/big_image/".$big_file->hashName();
 
-        $small_file = $request->file('small_image');
-        Storage::putFile('public/small_image/', $small_file);
-        $gallerys->small_image = "storage/small_image/".$small_file->hashName();
 
+        // $big_file = $request->file('big_image');
+        // Storage::putFile('public/big_image/', $big_file);
+        // $gallerys->big_image = "storage/big_image/".$big_file->hashName();
+
+        // $small_file = $request->file('small_image');
+        // Storage::putFile('public/small_image/', $small_file);
+        // $gallerys->small_image = "storage/small_image/".$small_file->hashName();
+
+
+
+        $fileName = time() . "-big_image." . $request->file('big_image')->getClientOriginalExtension();
+        Image::make($request->file('big_image'))->save('upload/big_image/'. $fileName);
+        $gallerys->big_image = "upload/big_image/".$fileName;
+
+        // $gallerys->save();
+
+
+        $fileName = time() . "-small_image." . $request->file('small_image')->getClientOriginalExtension();
+        Image::make($request->file('small_image'))->save('upload/small_image/'. $fileName);
+        $gallerys->small_image = "upload/small_image/".$fileName;
+
+        // $gallerys->save();
+
+        // return redirect()->route('gallery.create')->with('success', "New Slider create Successfully");
 
 
         $gallerys->save();
@@ -99,22 +118,77 @@ class GalleryController extends Controller
         $gallerys->category = $request->category;
 
 
-        if($request->file('small_image')){
+        // if($request->file('small_image')){
 
-            $small_file = $request->file('small_image');
-            Storage::putFile('public/small_image/', $small_file);
-            $gallerys->small_image = "storage/small_image/".$small_file->hashName();
+        //     $small_file = $request->file('small_image');
+        //     Storage::putFile('public/small_image/', $small_file);
+        //     $gallerys->small_image = "storage/small_image/".$small_file->hashName();
     
-        }
+        // }
     
 
-        if($request->file('big_image')){
+        // if($request->file('big_image')){
 
-            $big_file = $request->file('big_image');
-            Storage::putFile('public/big_image/', $big_file);
-            $gallerys->big_image = "storage/big_image/".$big_file->hashName();
+        //     $big_file = $request->file('big_image');
+        //     Storage::putFile('public/big_image/', $big_file);
+        //     $gallerys->big_image = "storage/big_image/".$big_file->hashName();
 
+        // }
+
+
+        if ($request->big_image != '') {
+
+            //code for remove old file
+            if ($gallerys->big_image != ''  && $gallerys->big_image != null) {
+                unlink( $gallerys->big_image);
+            }
+
+            //upload new file
+            $fileName = time() . "-gallerys." . $request->file('big_image')->getClientOriginalExtension();
+            Image::make($request->file('big_image'))->save('upload/big_image/' . $fileName);
+            
+
+            //for update in table
+            // $sliders->update(array_merge($request->validated(), ['bg_img' => $fileName]));
+
+            $gallerys->big_image = "upload/big_image/".$fileName;
+
+            $gallerys->save();
+
+
+            session()->put('success', 'Item Updated successfully.');
+            return redirect()->back();
         }
+
+
+
+
+        if ($request->small_image != '') {
+
+            //code for remove old file
+            if ($gallerys->small_image != ''  && $gallerys->small_image != null) {
+                unlink( $gallerys->small_image);
+            }
+
+            //upload new file
+            $fileName = time() . "-gallerys." . $request->file('small_image')->getClientOriginalExtension();
+            Image::make($request->file('small_image'))->save('upload/small_image/' . $fileName);
+            
+
+            //for update in table
+            // $sliders->update(array_merge($request->validated(), ['bg_img' => $fileName]));
+
+            $gallerys->small_image = "upload/small_image/".$fileName;
+
+            $gallerys->save();
+
+
+            session()->put('success', 'Item Updated successfully.');
+            return redirect()->back();
+        }
+
+
+
 
      
 

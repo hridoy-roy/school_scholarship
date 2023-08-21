@@ -21,9 +21,12 @@
             <th>Description</th>
             <th>link one</th>
             <th>link two</th>
-            <th>Logo</th>
-            <th>Favicon</th>
             <th>Bg Image</th>
+
+            {{-- <th>Logo</th>
+            <th>Favicon</th> --}}
+           
+
             <th>Action</th>
             </tr>
         </thead>
@@ -33,18 +36,31 @@
             @endphp
 
             @foreach($sliders as $slider)
+
             <tr>
             <td>{{$sl++}}</td>
             <td>{{$slider->sub_title}}</td>
             <td>{{$slider->title}}</td>
-            <td>{{$slider->description}}</td>
+
+            {{-- <td>{{$slider->description}}</td>
             <td>{{$slider->link1}}</td>
-            <td>{{$slider->link2}}</td>
+            <td>{{$slider->link2}}</td> --}}
 
-            <td><img style="height: 4vh" src="{{url($slider->logo)}}" alt="Logo"></td>
+            <td>{{Str::limit(strip_tags($slider->description),12)}}</td>
+            <td>{{Str::limit(strip_tags($slider->link1),12)}}</td>
+            <td>{{Str::limit(strip_tags($slider->link2),12)}}</td>
 
-            <td><img style="height: 4vh" src="{{url($slider->favicon)}}" alt="Favicon"></td>
+
+
+
             <td><img style="height: 4vh" src="{{url($slider->bg_img)}}" alt="BG Image"></td>
+
+
+            {{-- <td><img style="height: 4vh" src="{{url($slider->logo)}}" alt="Logo"></td>
+
+            <td><img style="height: 4vh" src="{{url($slider->favicon)}}" alt="Favicon"></td> --}}
+
+           
 
             <td><span class="badge bg-label-primary me-1">{{$slider->status == 1 ? 'Active' : 'Inactive'}}</span></td>
             <td>
@@ -76,9 +92,11 @@
             <th>Description</th>
             <th>link one</th>
             <th>link two</th>
-            <th>Logo</th>
-            <th>Favicon</th>
             <th>Bg Image</th>
+
+            {{-- <th>Logo</th>
+            <th>Favicon</th> --}}
+            
 
             <th class="rounded-end-bottom">Actions</th>
             </tr>

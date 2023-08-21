@@ -50,7 +50,7 @@
         </li>
 
         <li
-            class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
+            class="{{ request()->routeIs('classes.create') || request()->routeIs('classes.list') || request()->routeIs('classes.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon ti ti-server"></i>
                 <div data-i18n="Dashboards">Class</div>
@@ -58,13 +58,13 @@
             </a>
             <ul class="menu-sub">
 
-                <li class="{{ request()->routeIs('gallery.create') ? 'active' : '' }} menu-item">
+                <li class="{{ request()->routeIs('classes.create') ? 'active' : '' }} menu-item">
                     <a href="{{ route('classes.create') }}" class="menu-link">
                         <div>Create</div>
                     </a>
                 </li>
 
-                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
+                <li class="{{ request()->routeIs('classes.list') ? 'active' : '' }} menu-item">
                     <a href="{{ route('classes.index') }}" class="menu-link">
                         <div>List</div>
                     </a>
@@ -88,7 +88,7 @@
                     </a>
                 </li>
 
-                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
+                <li class="{{ request()->routeIs('exams.list') ? 'active' : '' }} menu-item">
                     <a href="{{ route('exams.index') }}" class="menu-link">
                         <div>List</div>
                     </a>
@@ -210,8 +210,9 @@
             </ul>
         </li>
 
+
         <li
-            class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
+            class="{{ request()->routeIs('contact.create') || request()->routeIs('contact.list') || request()->routeIs('contact.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon ti ti-smart-home"></i>
                 <div data-i18n="Dashboards">Contact</div>
@@ -219,13 +220,14 @@
             </a>
             <ul class="menu-sub">
 
-                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
+                <li class="{{ request()->routeIs('contact.list') ? 'active' : '' }} menu-item">
                     <a href="{{ route('contact.index') }}" class="menu-link">
                         <div>List</div>
                     </a>
                 </li>
             </ul>
         </li>
+
 
         <li class="{{ request()->routeIs('student.admin.card')? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -313,7 +315,6 @@
                 </li>
             </ul>
         </li>
-
 
 
         <li

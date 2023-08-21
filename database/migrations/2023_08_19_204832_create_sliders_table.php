@@ -19,9 +19,11 @@ return new class extends Migration
             $table->longText('description');
             $table->string('link1');
             $table->string('link2');
-            $table->string('logo');
-            $table->string('favicon');
             $table->string('bg_img');
+
+            // $table->string('logo');
+            // $table->string('favicon');
+            
 
             $table->timestamps();
         });

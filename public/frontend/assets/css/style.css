@@ -680,10 +680,12 @@ input::-ms-input-placeholder {
     margin-top:30px;
 }
 /*home section*/
+
 .home{
-    background: url(../images/homebg.jpg) no-repeat center center;
+    /* background: url(../images/homebg.jpg) no-repeat center center; */
     background-size: cover;
 }
+
 .home_skew_border{
     position: relative;
 }

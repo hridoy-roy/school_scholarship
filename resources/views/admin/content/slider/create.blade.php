@@ -73,6 +73,13 @@
                     </div>
 
                     <div class="col-md-6">
+                        <x-input label='Background Image' :required=true type='file' name="bg_img">
+                        </x-input>
+                    </div>
+
+
+
+                    {{-- <div class="col-md-6">
                         <x-input label='Logo' :required=true type='file' name="logo">
                         </x-input>
                     </div>
@@ -81,12 +88,11 @@
                     <div class="col-md-6">
                         <x-input label='Favicon' :required=true type='file' name="favicon">
                         </x-input>
-                    </div>
+                    </div> --}}
 
-                    <div class="col-md-6">
-                        <x-input label='Background Image' :required=true type='file' name="bg_img">
-                        </x-input>
-                    </div>
+                   
+
+                    
                   
                   
 
