@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Storage;
 use App\Models\Slider;
 
@@ -39,6 +38,7 @@ class SliderController extends Controller
             'description' => 'required|string',
             'link1' => 'required|string',
             'link2' => 'required|string',
+            
             'logo' => 'required|image',
             'favicon' => 'required|image',
             'bg_image' => 'required|image',
