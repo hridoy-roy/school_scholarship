@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Slider;
+use Intervention\Image\Facades\Image;
 
 class SliderController extends Controller
 {
@@ -29,6 +30,7 @@ class SliderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -38,10 +40,11 @@ class SliderController extends Controller
             'description' => 'required|string',
             'link1' => 'required|string',
             'link2' => 'required|string',
+            'bg_img' => 'required|image',
             
-            'logo' => 'required|image',
-            'favicon' => 'required|image',
-            'bg_image' => 'required|image',
+            // 'logo' => 'required|image',
+            // 'favicon' => 'required|image',
+           
             
 
         ]);
@@ -53,23 +56,41 @@ class SliderController extends Controller
         $sliders->link1 = $request->link1;
         $sliders->link2 = $request->link2;
 
-        $logo_file = $request->file('logo');
-        Storage::putFile('public/logo/', $logo_file);
-        $sliders->logo = "storage/logo/".$logo_file->hashName();
+
+        // $bg_file = $request->file('bg_img');
+        // Storage::putFile('upload/bg_img/', $bg_file);
+
         
-        $favicon_file = $request->file('favicon');
-        Storage::putFile('public/favicon/', $favicon_file);
-        $sliders->favicon = "storage/favicon/".$favicon_file->hashName();
-
-        $bg_file = $request->file('bg_image');
-        Storage::putFile('public/bg_image/', $bg_file);
-        $sliders->bg_image = "storage/bg_image/".$bg_file->hashName();
 
 
+        $fileName = time() . "-slider." . $request->file('bg_img')->getClientOriginalExtension();
+
+        Image::make($request->file('bg_img'))->save('upload/bg_img/'. $fileName);
+
+        $sliders->bg_img = "upload/bg_img/".$fileName;
 
         $sliders->save();
 
         return redirect()->route('slider.create')->with('success', "New Slider create Successfully");
+
+        
+
+        // $sliders = Slider::create(array_merge($request->validated(), ['bg_img' => $fileName, 'user_id' => auth()->user()->id]));
+
+        // session()->put('success', 'Item created successfully.');
+        // return redirect()->back();
+
+
+        // $logo_file = $request->file('logo');
+        // Storage::putFile('public/logo/', $logo_file);
+        // $sliders->logo = "storage/logo/".$logo_file->hashName();
+        
+        // $favicon_file = $request->file('favicon');
+        // Storage::putFile('public/favicon/', $favicon_file);
+        // $sliders->favicon = "storage/favicon/".$favicon_file->hashName();
+
+
+        
     }
 
     /**
@@ -118,34 +139,73 @@ class SliderController extends Controller
         $sliders->link2 = $request->link2;
 
 
-        if($request->file('logo')){
+        // if($request->file('bg_img')){
 
-            $logo_file = $request->file('logo');
-            Storage::putFile('public/logo/', $logo_file);
-            $sliders->logo = "storage/logo/".$logo_file->hashName();
+        //     $bg_file = $request->file('bg_img');
+        //     Storage::putFile('public/bg_image/', $bg_file);
+        //     $sliders->bg_img = "storage/bg_image/".$bg_file->hashName();
+
+        // }
+
+
+        if ($request->bg_img != '') {
+
+            //code for remove old file
+            if ($sliders->bg_img != ''  && $sliders->bg_img != null) {
+                unlink( $sliders->bg_img);
+            }
+
+            //upload new file
+            $fileName = time() . "-slider." . $request->file('bg_img')->getClientOriginalExtension();
+            Image::make($request->file('bg_img'))->save('upload/bg_img/' . $fileName);
+            
+
+            //for update in table
+            // $sliders->update(array_merge($request->validated(), ['bg_img' => $fileName]));
+
+            $sliders->bg_img = "upload/bg_img/".$fileName;
+
+            $sliders->save();
+
+
+            session()->put('success', 'Item Updated successfully.');
+            return redirect()->back();
+        }
+
+        // $sliders->update(array_merge($request->validated(), ['bg_img' => $sliders->bg_img]));
+        // session()->put('success', 'Slider Updated successfully.');
+        // return redirect()->back();
+
+
+
+
+
+
+
+
+
+
+
+
+        // if($request->file('logo')){
+
+        //     $logo_file = $request->file('logo');
+        //     Storage::putFile('public/logo/', $logo_file);
+        //     $sliders->logo = "storage/logo/".$logo_file->hashName();
     
-        }
+        // }
     
 
-        if($request->file('favicon')){
+        // if($request->file('favicon')){
 
-            $favicon_file = $request->file('favicon');
-            Storage::putFile('public/favicon/', $favicon_file);
-            $sliders->favicon = "storage/favicon/".$favicon_file->hashName();
+        //     $favicon_file = $request->file('favicon');
+        //     Storage::putFile('public/favicon/', $favicon_file);
+        //     $sliders->favicon = "storage/favicon/".$favicon_file->hashName();
 
-        }
+        // }
 
-        if($request->file('bg_image')){
-
-            $bg_file = $request->file('bg_image');
-            Storage::putFile('public/bg_image/', $bg_file);
-            $sliders->bg_image = "storage/bg_image/".$bg_file->hashName();
-
-        }
-
-     
-
-
+      
+    
         $sliders->save();
 
         return redirect()->route('slider.list')->with('success', "Slider Update Successfully");
@@ -157,11 +217,17 @@ class SliderController extends Controller
     public function destroy(string $id)
     {
         $slider = Slider::find($id);
-        @unlink(public_path($slider->logo));
-        @unlink(public_path($slider->favicon));
-        @unlink(public_path($slider->bg_image));
+
+        @unlink(public_path($slider->bg_img));
+
+        // @unlink(public_path($slider->logo));
+        // @unlink(public_path($slider->favicon));
+
+      
+
         $slider->delete();
 
         return redirect()->route('slider.list')->with('success','Slider Deleteed Successfully');
     }
+
 }
