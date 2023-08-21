@@ -152,25 +152,18 @@
             <div class="main_history">
                 <div class="col-sm-6">
                     <div class="single_history_img">
-                        <img src="{{ url('frontend/assets/images/stab1.png') }}" alt="" />
+                        <img src="{{@$history->image}}" alt="" />
                     </div>
                 </div>
 
                 <div class="col-sm-6">
                     <div class="single_history_content">
                         <div class="head_title">
-                            <h2>OUR HISTORY</h2>
+                            <h2>{{@$history->title}}</h2>
                         </div>
-                        <p>It is a long established fact that a reader will be distracted by the readable
-                            content of a page
-                            when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal
-                            distribution of letters, as opposed to using 'Content here, content here', making it
-                            look like readable English. Many desktop publishing packages and web page editors
-                            now use
-                            Lorem Ipsum as their default model text, and a search for 'lorem ipsum' </p>
+                        <p>{{@$history->description}} </p>
 
-                        <a href="" class="btn btn-lg">BROWSE OUR WORK</a>
+                        <a href="{{@$history->button_link}}" class="btn btn-lg">{{@$history->button}}</a>
                     </div>
                 </div>
             </div>
@@ -356,8 +349,8 @@
                                 <div class="col-sm-3 col-xs-12">
                                     <div class="single_counter_item">
                                         <i class="icon icon-thumbs-up"></i>
-                                        <h2 class="statistic-counter">3891</h2>
-                                        <h4 class="">User Favourites</h4>
+                                        <h2 class="statistic-counter">{{@$counters->total_applicant_number}}</h2>
+                                        <h4 class="">{{@$counters->total_applicant}}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -366,8 +359,8 @@
                                 <div class="col-sm-3 col-xs-12">
                                     <div class="single_counter_item">
                                         <i class="icon icon-business-3"></i>
-                                        <h2 class="statistic-counter">281</h2>
-                                        <h4 class="">Posts Last 24 Hours</h4>
+                                        <h2 class="statistic-counter">{{@$counters->total_scholarship_number}}</h2>
+                                        <h4 class="">{{@$counters->total_scholarship}}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -376,8 +369,8 @@
                                 <div class="col-sm-3 col-xs-12">
                                     <div class="single_counter_item">
                                         <i class="icon icon-people-32"></i>
-                                        <h2 class="statistic-counter">618</h2>
-                                        <h4 class="">Total Posts</h4>
+                                        <h2 class="statistic-counter">{{@$counters->total_school_number}}</h2>
+                                        <h4 class="">{{@$counters->total_school}}</h4>
                                     </div>
 
                                 </div>
@@ -387,8 +380,8 @@
                                 <div class="col-sm-3 col-xs-12">
                                     <div class="single_counter_item">
                                         <i class="icon icon-cup"></i>
-                                        <h2 class="statistic-counter">178</h2>
-                                        <h4 class="">Amazing Features</h4>
+                                        <h2 class="statistic-counter">{{@$counters->total_exam_center_number}}</h2>
+                                        <h4 class="">{{@$counters->total_exam_center}}</h4>
 
                                     </div>
                                 </div>
@@ -487,31 +480,11 @@
                     </div>
                     <div class="separator"></div>
                 </div><!-- End off Head_title -->
-
+                @for ($i=1; $i <9; $i++)
                 <div class="col-sm-3 col-xs-6">
-                    <a href=""><img src="{{ url('frontend/assets/images/clogo1.png') }}" alt="" /></a>
+                    <a href=""><img src="{{@$sponsor->$i}}" alt="" /></a>
                 </div>
-                <div class="col-sm-3 col-xs-6">
-                    <a href=""><img src="{{ url('frontend/assets/images/clogo2.png') }}" alt="" /></a>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                    <a href=""><img src="{{ url('frontend/assets/images/clogo3.png') }}" alt="" /></a>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                    <a href=""><img src="{{ url('frontend/assets/images/clogo4.png') }}" alt="" /></a>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                    <a href=""><img src="{{ url('frontend/assets/images/clogo5.png') }}" alt="" /></a>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                    <a href=""><img src="{{ url('frontend/assets/images/clogo6.png') }}" alt="" /></a>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                    <a href=""><img src="{{ url('frontend/assets/images/clogo9.png') }}" alt="" /></a>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                    <a href=""><img src="{{ url('frontend/assets/images/clogo8.png') }}" alt="" /></a>
-                </div>
+                @endfor
             </div>
         </div>
     </div>

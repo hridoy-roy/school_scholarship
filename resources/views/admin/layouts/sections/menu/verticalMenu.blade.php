@@ -241,5 +241,74 @@
                 </li>
             </ul>
         </li>
+        <li
+            class="{{ request()->routeIs('examcenter.index') || request()->routeIs('examcenter.create') || request()->routeIs('examcenter.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-clipboard"></i>
+                <div data-i18n="Dashboards">Counter</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+
+                <li class="{{ request()->routeIs('examcenter.index') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('counter.create') }}" class="menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+
+                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('counter.index') }}" class="menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <li
+            class="{{ request()->routeIs('examcenter.index') || request()->routeIs('examcenter.create') || request()->routeIs('examcenter.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-clipboard"></i>
+                <div data-i18n="Dashboards">History</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+
+                <li class="{{ request()->routeIs('examcenter.index') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('history.create') }}" class="menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+
+                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('history.index') }}" class="menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <li
+            class="{{ request()->routeIs('examcenter.index') || request()->routeIs('examcenter.create') || request()->routeIs('examcenter.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-clipboard"></i>
+                <div data-i18n="Dashboards">Sponsor</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+
+                <li class="{{ request()->routeIs('examcenter.index') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('sponsor.create') }}" class="menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+
+                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('sponsor.index') }}" class="menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
     </ul>
 </aside>

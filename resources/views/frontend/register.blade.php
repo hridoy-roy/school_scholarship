@@ -174,7 +174,7 @@
                                 <option value="{{$key}}">{{$student_class}}</option>
                                 @endforeach
                             </select>
-                            @error('class')
+                            @error('student_class_id')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

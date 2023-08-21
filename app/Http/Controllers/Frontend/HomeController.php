@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Blog;
+use App\Models\Counter;
 use App\Models\Gallery;
+use App\Models\History;
 use App\Http\Controllers\Controller;
-
+use App\Models\Sponsor;
 
 class HomeController extends Controller
 {
@@ -14,6 +16,9 @@ class HomeController extends Controller
         $data = [
             'blogs' => Blog::take(6)->get(),
             'gallerys' => Gallery::get(),
+            'counters' => Counter::first(),
+            'history' => History::first(),
+            'sponsor' => Sponsor::first(),
         ];
         return view('frontend.index', $data);
     }

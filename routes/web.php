@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CounterController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Admin\PayController;
 use App\Http\Controllers\Admin\BlogController;
@@ -51,7 +54,11 @@ Route::middleware('auth')->group(function () {
             'institute' => InstituteController::class,
             'examcenter' => ExamCenterController::class,
             'contact' => ContactController::class,
+            'counter' => CounterController::class,
+            'history' => HistoryController::class,
+            'sponsor' => SponsorController::class,
         ]);
+        
         Route::get('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudent'])->name('student.assign');
         Route::post('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudents'])->name('students.assign');
         Route::get('student/assign/{exam_center}/list', [ExamCenterController::class, 'assignStudentList'])->name('student.assign.list');
