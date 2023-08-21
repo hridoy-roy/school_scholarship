@@ -1,14 +1,50 @@
 @extends('frontend.layouts.main')
 
 @section('main-container')
+
 <!--home Section -->
 <section id="home" class="home">
+
+
+
     <div class="overlay">
         <div class="home_skew_border">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 ">
+
                         <div class="main_home_slider text-center">
+
+
+
+                            <div class="single_home_slider">
+
+                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+
+                                    <h3>Our Clients Are Our First Priority</h3>
+
+                                    <h1>WELCOME TO BINO</h1>
+
+                                    <div class="separator"></div>
+
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                        industry. Lorem Ipsum has been the industry's
+                                        standard dummy text ever since the 1500s, when an unknown printer took a
+                                        galley
+                                        of type and scrambled it to make a type specimen book.</p>
+
+                                    <div class="home_btn">
+                                        <a href="https://bootstrapthemes.co" class="btn btn-lg m_t_10">GET
+                                            STARTED NOW</a>
+                                        <a href="https://bootstrapthemes.co" class="btn btn-default">LEARN
+                                            MORE</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
                             <div class="single_home_slider">
                                 <div class="main_home wow fadeInUp" data-wow-duration="700ms">
                                     <h3>Our Clients Are Our First Priority</h3>
@@ -28,6 +64,9 @@
 
                                 </div>
                             </div>
+
+
+
                             <div class="single_home_slider">
                                 <div class="main_home wow fadeInUp" data-wow-duration="700ms">
                                     <h3>Our Clients Are Our First Priority</h3>
@@ -47,25 +86,9 @@
 
                                 </div>
                             </div>
-                            <div class="single_home_slider">
-                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
-                                    <h3>Our Clients Are Our First Priority</h3>
-                                    <h1>WELCOME TO BINO</h1>
-                                    <div class="separator"></div>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                        industry. Lorem Ipsum has been the industry's
-                                        standard dummy text ever since the 1500s, when an unknown printer took a
-                                        galley
-                                        of type and scrambled it to make a type specimen book.</p>
-                                    <div class="home_btn">
-                                        <a href="https://bootstrapthemes.co" class="btn btn-lg m_t_10">GET
-                                            STARTED NOW</a>
-                                        <a href="https://bootstrapthemes.co" class="btn btn-default">LEARN
-                                            MORE</a>
-                                    </div>
 
-                                </div>
-                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -85,56 +108,21 @@
         <div class="row">
             <div class="main_feature text-center">
 
-                <div class="col-sm-3">
-                    <div class="single_feature">
-                        <div class="single_feature_icon">
-                            <i class="fa fa-clone"></i>
+                @foreach ($members as $member)
+                    <div class="col-sm-3">
+                        <div class="single_feature">
+                            <div class="single_feature_icon">
+                                <img src="{{asset('upload/member/'.$member->banner)}}" alt="" />
+                            </div>
+                            <h4>{{$member->title}}</h4>
+                            <div class="separator3"></div>
+                            <p>{{$member->designation}}</p>
                         </div>
-
-                        <h4>SLEEK DESIGN</h4>
-                        <div class="separator3"></div>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting let.
-                            Lorem Ipsum has been the industry.</p>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="col-sm-3">
-                    <div class="single_feature">
-                        <div class="single_feature_icon">
-                            <i class="fa fa-heart-o"></i>
-                        </div>
 
-                        <h4>CLEAN CODE</h4>
-                        <div class="separator3"></div>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting let.
-                            Lorem Ipsum has been the industry.</p>
-                    </div>
-                </div>
 
-                <div class="col-sm-3">
-                    <div class="single_feature">
-                        <div class="single_feature_icon">
-                            <i class="fa fa-lightbulb-o"></i>
-                        </div>
-                        <h4>CREATIVE IDEAS</h4>
-                        <div class="separator3"></div>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting let.
-                            Lorem Ipsum has been the industry.</p>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="single_feature">
-                        <div class="single_feature_icon">
-                            <i class="fa fa-comments-o"></i>
-                        </div>
-
-                        <h4>FREE SUPPORT</h4>
-                        <div class="separator3"></div>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting let.
-                            Lorem Ipsum has been the industry.</p>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -201,7 +189,7 @@
 
                         <button class="btn-md fil-cat filter active" data-filter="all">ALL</button>/
 
-                       
+
 
                 @if (count($gallerys) > 0)
                     @foreach ($gallerys as $gallery)
@@ -209,7 +197,7 @@
 
                         <button class="btn-md fil-cat filter" data-rel="<?php echo $gallery->category;?>" data-filter=".<?php echo $gallery->category;?> ">{{ucfirst($gallery->title)}} </button>
 
-                    @endforeach 
+                    @endforeach
                 @endif
 
                     </div>
@@ -239,7 +227,7 @@
                             </a>
                         </div>
 
-                    @endforeach 
+                    @endforeach
                 @endif
 
 
@@ -549,7 +537,7 @@
                 <form method="post" action="{{ route('contact.store') }}" class="contact-form">
                     @csrf
                     <input type="text" name="name" placeholder="Enter Your Name" required>
-                    <input type="text" name="mobile" placeholder="Enter Your mobile" required>                    
+                    <input type="text" name="mobile" placeholder="Enter Your mobile" required>
                     <input type="email" name="email" placeholder="Enter Your email" required>
                     <input type="text" name="subject" placeholder="Subject" required>
                     <textarea name="massage" id="" cols="30" rows="10" placeholder="Write Message Here" required></textarea>

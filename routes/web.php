@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CounterController;
 use App\Http\Controllers\HistoryController;
@@ -9,12 +10,14 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Admin\PayController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\AdmitCardController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstituteController;
+use App\Http\Controllers\Frontend\SliderController;
 use App\Http\Controllers\Admin\ExamCenterController;
 use App\Http\Controllers\Frontend\GalleryController;
 use App\Http\Controllers\Admin\StudentClassController;
@@ -42,6 +45,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/blog', [HomeController::class, 'blog'])->name('frontend.blog');
 Route::get('/blog/{blog}', [HomeController::class, 'details']);
 Route::resource('students', StudentController::class);
+Route::get('student/result/{exam}/download', [ExamController::class, 'examResultDownload'])->name('student.result.download');
 
 
 Route::middleware('auth')->group(function () {
@@ -57,6 +61,8 @@ Route::middleware('auth')->group(function () {
             'counter' => CounterController::class,
             'history' => HistoryController::class,
             'sponsor' => SponsorController::class,
+            'exams' => ExamController::class,
+            'members' => MemberController::class,
         ]);
         
         Route::get('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudent'])->name('student.assign');
@@ -71,8 +77,12 @@ Route::middleware('auth')->group(function () {
         Route::post('student/pay', [PayController::class, 'assignPayStore'])->name('student.pay.store');
         Route::post('student/unpaid', [PayController::class, 'assignUnpaidStore'])->name('student.unpaid.store');
 
-        Route::get('student/admit-card',[AdmitCardController::class, 'studentView'])->name('student.admin.card');
-        Route::Post('student/admit-card/download',[AdmitCardController::class, 'studentDownload'])->name('student.admin.card.download');
+        Route::get('student/admit-card', [AdmitCardController::class, 'studentView'])->name('student.admin.card');
+        Route::Post('student/admit-card/download', [AdmitCardController::class, 'studentDownload'])->name('student.admin.card.download');
+
+        Route::get('student/exam/{exam}', [ExamController::class, 'examStudent'])->name('student.exam');
+        Route::Post('student/exam/assign/{exam}', [ExamController::class, 'examStudentAssign'])->name('student.exam.assign');
+        Route::get('exam/result/{exam}/publish', [ExamController::class, 'examResultPublish'])->name('exam.result.publish');
 
 
 
@@ -95,6 +105,17 @@ Route::get('/gallery/list', [GalleryController::class, 'list'])->name('gallery.l
 Route::get('/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
 Route::post('/gallery/update/{id}', [GalleryController::class, 'update'])->name('gallery.update');
 Route::delete('/gallery/destroy/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+
+
+
+// Slider Controller
+
+Route::get('/slider/create', [SliderController::class, 'create'])->name('slider.create');
+Route::put('/slider/create', [SliderController::class, 'store'])->name('slider.store');
+Route::get('/slider/list', [SliderController::class, 'list'])->name('slider.list');
+Route::get('/slider/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
+Route::post('/slider/update/{id}', [SliderController::class, 'update'])->name('slider.update');
+Route::delete('/slider/destroy/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');
 
 
 require __DIR__ . '/auth.php';

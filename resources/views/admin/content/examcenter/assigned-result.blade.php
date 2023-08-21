@@ -60,7 +60,7 @@
                         <th>Reg. Date</th>
                         <th>Mobile</th>
                         <th>Pay Status</th>
-                        <th>Check Box</th>
+                        <th>Exam Check</th>
                         <th>Marks</th>
                     </tr>
                 </thead>
@@ -95,10 +95,12 @@
                         </td>
                         <td>
                             <input type="checkbox" class="form-check-input" id="basic-default-checkbox"
-                                name="student_id[]" value="{{ $student->id }}" @if($student->marks) checked @endif>
+                                name="student_id[]" value="{{ $student->id }}" @if($student->marks || $student->exam_id)
+                            checked @endif>
                         </td>
                         <td>
-                            <input type="text" class="form-input" value="{{ $student->marks }}" id="basic-default" name="marks[]">
+                            <input type="text" class="form-input" value="{{ $student->marks }}" id="basic-default"
+                                name="marks[]">
                         </td>
                     </tr>
                     @endforeach

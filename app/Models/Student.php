@@ -7,6 +7,7 @@ use App\Models\StudentClass;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Student extends Model
 {
@@ -14,9 +15,13 @@ class Student extends Model
 
     protected $guarded = [];
 
-    public function examCenter()
+    public function examCenter(): BelongsToMany
     {
         return $this->belongsToMany(ExamCenter::class);
+    }
+    public function exam(): BelongsToMany
+    {
+        return $this->belongsToMany(Exam::class);
     }
 
     // public function class(): HasOne
@@ -29,13 +34,13 @@ class Student extends Model
     //     return $this->hasOne(Institute::class);
     // }
 
-     public function institute()
-     {
+    public function institute()
+    {
         return $this->belongsTo(Institute::class);
     }
 
-     public function student_class()
-     {
+    public function student_class()
+    {
         return $this->belongsTo(StudentClass::class);
     }
 }

@@ -6,6 +6,8 @@ use App\Models\Blog;
 use App\Models\Counter;
 use App\Models\Gallery;
 use App\Models\History;
+use App\Models\Slider;
+use App\Models\Member;
 use App\Http\Controllers\Controller;
 use App\Models\Sponsor;
 
@@ -19,6 +21,8 @@ class HomeController extends Controller
             'counters' => Counter::first(),
             'history' => History::first(),
             'sponsor' => Sponsor::first(),
+            'sliders' => Slider::get(),
+            'members' => Member::get(),
         ];
         return view('frontend.index', $data);
     }
@@ -39,7 +43,7 @@ class HomeController extends Controller
     }
 
 
-    
+
 
 
 

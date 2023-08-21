@@ -62,7 +62,7 @@ class StudentController extends Controller
 
         session()->put('success', 'Item created successfully.');;
 
-        return redirect()->route('students.show',[$student->id]);
+        return redirect()->route('students.show', [$student->id]);
     }
 
     /**
@@ -70,8 +70,8 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        $student->load(['institute','student_class']);
-        return view ('frontend.view', compact('student'));
+        $student->load(['institute', 'student_class']);
+        return view('frontend.view', compact('student'));
     }
 
     /**
@@ -94,24 +94,19 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        $student_data = $request->except(['image', 'registration_no',]);
-
-        $file = " ";
-        $deleteOldImage = $student->image;
-
-        if ($file = $request->file('image')) {
-            if (file_exists($deleteOldImage)) {
-                unlink($deleteOldImage);
-            }
-            $imageName = $request->name_en . '.' . $file->getClientOriginalExtension();
-            $student_data['image'] = $file->move('dist/img/original/', $imageName);
+        if ($request->file('image')) {
+                dd();
+                $path = public_path('upload/profile/');
+                unlink($path . $student->image);
+            $student_data['image'] = time() . "-profile." . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('upload/profile/'), $student_data['image']);
         } else {
             $student_data['image'] = $student->photo;
         }
 
 
 
-        $student->update($student_data);
+        $student->update(array_merge($request->validated(), $student_data));
 
         session()->put('success', 'Item Updated successfully.');
 

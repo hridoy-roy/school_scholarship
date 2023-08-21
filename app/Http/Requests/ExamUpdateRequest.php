@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class ExamUpdateRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'name' => ['required', 'unique:exams,name,except,id', 'string'],
+            'exam_date' => ['required', 'date'],
+            'exam_time' => ['required'],
+            'first_grade' => ['required', 'integer'],
+            'second_grade' => ['nullable', 'integer'],
+            'third_grade' => ['nullable', 'integer'],
+        ];
+    }
+}
