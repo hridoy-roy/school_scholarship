@@ -66,7 +66,7 @@ Route::middleware('auth')->group(function () {
             'exams' => ExamController::class,
             'members' => MemberController::class,
         ]);
-        
+
         Route::get('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudent'])->name('student.assign');
         Route::post('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudents'])->name('students.assign');
         Route::get('student/assign/{exam_center}/list', [ExamCenterController::class, 'assignStudentList'])->name('student.assign.list');

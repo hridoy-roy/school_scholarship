@@ -6,6 +6,7 @@ use App\Models\Institute;
 use App\Models\StudentClass;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -15,31 +16,21 @@ class Student extends Model
 
     protected $guarded = [];
 
-    public function examCenter(): BelongsToMany
+    public function examCenter(): BelongsTo
     {
-        return $this->belongsToMany(ExamCenter::class);
+        return $this->belongsTo(ExamCenter::class);
     }
-    public function exam(): BelongsToMany
+    public function exam(): BelongsTo
     {
-        return $this->belongsToMany(Exam::class);
+        return $this->belongsTo(Exam::class);
     }
 
-    // public function class(): HasOne
-    // {
-    //     return $this->hasOne(StudentClass::class);
-    // }
-
-    // public function institute(): HasOne
-    // {
-    //     return $this->hasOne(Institute::class);
-    // }
-
-    public function institute()
+    public function institute(): BelongsTo
     {
         return $this->belongsTo(Institute::class);
     }
 
-    public function student_class()
+    public function student_class(): BelongsTo
     {
         return $this->belongsTo(StudentClass::class);
     }
