@@ -43,7 +43,7 @@ class MemberController extends Controller
     public function store(MemberRequest $request)
     {
         $fileName = time() . "-member." . $request->file('banner')->getClientOriginalExtension();
-        Image::make($request->file('banner'))->move(public_path('upload/member/') . $fileName);
+        $request->file('banner')->move(public_path('upload/member/'), $fileName);
         $project = Member::create(array_merge($request->validated(), ['banner' => $fileName, 'user_id' => auth()->user()->id]));
         session()->put('success', 'Item created successfully.');
         return redirect()->back();
@@ -91,7 +91,7 @@ class MemberController extends Controller
 
             //upload new file
             $fileName = time() . "-member." . $request->file('banner')->getClientOriginalExtension();
-            Image::make($request->file('banner'))->save('upload/member/' . $fileName);
+            $request->file('banner')->save('upload/member/', $fileName);
 
             //for update in table
             $member->update(array_merge($request->validated(), ['banner' => $fileName]));
