@@ -306,7 +306,6 @@
                 <div class="badge bg-label-primary rounded-pill ms-auto">1</div>
             </a>
             <ul class="menu-sub">
-
                 <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
                     <a href="{{ route('contact.index') }}" class="menu-link">
                         <div>List</div>

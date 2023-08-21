@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
-            $table->string('slug')->unique();
             $table->string('banner');
-            $table->text('body');
+            $table->string('designation');
             $table->timestamps();
         });
     }

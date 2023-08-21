@@ -23,8 +23,7 @@ class MemberRequest extends FormRequest
     {
         return [
             'title' => ['required', 'unique:members'],
-            'banner' => ['required', 'mimes:png,jpg,jpeg,webp', 'max:1024'],
-            'body' => ['required', 'string'],
+            'designation' => ['required', 'string'],
         ];
     }
 }
