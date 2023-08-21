@@ -89,6 +89,7 @@
                                             <li><a href="#history">ABOUT US</a></li>
                                             <li><a href="#portfolio">PORTFOLIO</a></li>
                                             <li><a href="{{ route('students.create') }}">Registration</a></li>
+                                            <li><a href="/result">Result</a></li>
                                             <li><a href="#team">TEAM</a></li>
                                             <li><a href="#blog">BLOG</a></li>
                                             <li><a href="#contact">CONTACT</a></li>

@@ -111,8 +111,8 @@
                 @foreach ($members as $member)
                     <div class="col-sm-3">
                         <div class="single_feature">
-                            <div class="single_feature_icon">
-                                <img src="{{asset('upload/member/'.$member->banner)}}" alt="" />
+                            <div class="circle-container">
+                                <img src="{{asset('upload/member/'.$member->banner)}}" alt="" class="circular-image" />
                             </div>
                             <h4>{{$member->title}}</h4>
                             <div class="separator3"></div>
@@ -120,10 +120,6 @@
                         </div>
                     </div>
                 @endforeach
-
-
-
-
             </div>
         </div>
     </div>

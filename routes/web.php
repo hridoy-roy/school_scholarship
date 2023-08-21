@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PayController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\MemberController;
+use App\Http\Controllers\Admin\ResultController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -42,6 +43,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/blog', [HomeController::class, 'blog'])->name('frontend.blog');
 Route::get('/blog/{blog}', [HomeController::class, 'details']);
 Route::resource('students', StudentController::class);
+Route::get('/result', [ResultController::class, 'index'])->name('result');
 Route::get('student/result/{exam}/download', [ExamController::class, 'examResultDownload'])->name('student.result.download');
 
 

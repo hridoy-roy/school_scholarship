@@ -33,6 +33,7 @@ class StudentController extends Controller
     {
         $institutes = Institute::where('status', 1)->pluck('name', 'id');
         $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
+        session()->put('success', 'Item Updated successfully.');
         return view('frontend.register', compact('institutes', 'student_classes'));
     }
 
@@ -86,6 +87,7 @@ class StudentController extends Controller
         ];
         $institutes = Institute::where('status', 1)->pluck('name', 'id');
         $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
+        session()->put('success', 'Item Updated successfully.');
         return view('frontend.register', compact('student', 'institutes', 'student_classes'), $data);
     }
 
