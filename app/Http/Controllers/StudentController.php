@@ -112,7 +112,7 @@ class StudentController extends Controller
 
         session()->put('success', 'Item Updated successfully.');
 
-        return redirect()->route('register.index');
+        return redirect()->route('students.show',[$student->id]);
     }
 
     /**
@@ -120,7 +120,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        $deleteOldImage = $student->photo;
+        $deleteOldImage = $student->image;
         if (file_exists($deleteOldImage)) {
             unlink($deleteOldImage);
         }
