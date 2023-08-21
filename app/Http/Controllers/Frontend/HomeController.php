@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\Slider;
+use App\Models\Member;
 use App\Http\Controllers\Controller;
 
 
@@ -16,6 +17,7 @@ class HomeController extends Controller
             'blogs' => Blog::take(6)->get(),
             'gallerys' => Gallery::get(),
             'sliders' => Slider::get(),
+            'members' => Member::get(),
         ];
         return view('frontend.index', $data);
     }
@@ -36,7 +38,7 @@ class HomeController extends Controller
     }
 
 
-    
+
 
 
 

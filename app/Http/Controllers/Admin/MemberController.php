@@ -44,7 +44,7 @@ class MemberController extends Controller
     {
         $fileName = time() . "-member." . $request->file('banner')->getClientOriginalExtension();
         $request->file('banner')->move(public_path('upload/member/'), $fileName);
-        $project = Member::create(array_merge($request->validated(), ['banner' => $fileName, 'user_id' => auth()->user()->id]));
+        $project = Member::create(array_merge($request->validated(), ['banner' => $fileName]));
         session()->put('success', 'Item created successfully.');
         return redirect()->back();
     }
@@ -54,13 +54,7 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        $data = [
-            'title' => "Member",
-            'sub_title' => "Show",
-            'header' => "Show Member",
-            'member' => $member,
-        ];
-        return view('admin.content.members.show', $data);
+
     }
 
     /**

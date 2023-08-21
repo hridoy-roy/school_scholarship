@@ -17,7 +17,7 @@
                     <th>Name</th>
                     <th>Banner</th>
                     <th>Date</th>
-                    <th>Link</th>
+                    <th>Designation</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -31,22 +31,23 @@
                     <td>
                         {{ \Carbon\Carbon::parse($member->created_at)->diffForHumans() }}
                     </td>
-                    <td><a href="{{ route('members.show',$member->slug) }}" target="_blank"
-                            class="badge bg-label-primary me-1">View</a>
+                    <td>
+                        {{ $member->designation }}
                     </td>
+
                     <td>
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                 data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ route('members.edit',$member->slug) }}"><i
+                                <a class="dropdown-item" href="{{ route('members.edit',$member->id) }}"><i
                                         class="ti ti-pencil me-1"></i>
                                     Edit</a>
 
                                 <a class="dropdown-item" href="javascript:void(0);"
-                                    onclick="$('#logout-form').submit();"><i class="ti ti-trash me-1"></i>
+                                    onclick="$('#member-delete-form').submit();"><i class="ti ti-trash me-1"></i>
                                     Delete</a>
-                                <form id="logout-form" action="{{ route('members.destroy',$member->slug) }}" method="POST"
+                                <form id="member-delete-form" action="{{ route('members.destroy',$member->id) }}" method="POST"
                                     style="display: none;">
                                     @csrf
                                     @method('DELETE')

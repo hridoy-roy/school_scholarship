@@ -38,50 +38,20 @@
                     @csrf
                     @method('POST')
                     <div class="col-md-6">
-                        <x-input label='Title' :required=true placeholder='Write Your Member Name' name="title">
+                        <x-input label='Name' :required=true placeholder='Write Your Member Name' name="title">
                         </x-input>
                     </div>
                     <div class="col-md-6">
-                        <x-input label='Member Banner' :required=true type='file' name="banner">
+                        <x-input label='Designation' :required=true placeholder='Write Your Designation' name="designation">
                         </x-input>
                     </div>
-                    <div class="col-12">
-                        <div class="card mb-4">
-                            <h5 class="card-header">Snow Theme</h5>
-                            <div class="card-body">
-                                <div id="snow-toolbar">
-                                    <span class="ql-formats">
-                                        <select class="ql-font"></select>
-                                        <select class="ql-size"></select>
-                                    </span>
-                                    <span class="ql-formats">
-                                        <button class="ql-bold"></button>
-                                        <button class="ql-italic"></button>
-                                        <button class="ql-underline"></button>
-                                        <button class="ql-strike"></button>
-                                    </span>
-                                    <span class="ql-formats">
-                                        <select class="ql-color"></select>
-                                        <select class="ql-background"></select>
-                                    </span>
-                                    <span class="ql-formats">
-                                        <button class="ql-script" value="sub"></button>
-                                        <button class="ql-script" value="super"></button>
-                                    </span>
-                                    <span class="ql-formats">
-                                        <button class="ql-header" value="1"></button>
-                                        <button class="ql-header" value="2"></button>
-                                        <button class="ql-blockquote"></button>
-                                        <button class="ql-code-block"></button>
-                                    </span>
-                                </div>
-                                <div id="snow-editor">
-                                    
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-6">
+                        <x-input label='Image' :required=true type='file' name="banner">
+                        </x-input>
                     </div>
-                    <textarea name="body" style="display:none" id="hiddenArea"></textarea>
+
+
+
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
                     </div>

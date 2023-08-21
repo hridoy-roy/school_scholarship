@@ -25,7 +25,7 @@ class MemberUpdateRequest extends FormRequest
         return [
             'title' => ['required', Rule::unique('members')->ignore($this->member)],
             'banner' => ['nullable', 'mimes:png,jpg,jpeg,webp', 'max:1024'],
-            'body' => ['required', 'string'],
+            'designation' => ['required', 'string'],
         ];
     }
 }
