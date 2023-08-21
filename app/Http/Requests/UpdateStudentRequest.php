@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Student;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class updateStudentRequest extends FormRequest
@@ -44,11 +46,11 @@ class updateStudentRequest extends FormRequest
             'permanent_address_post_office' => ['required'],
             'permanent_address_thana' => ['required', 'max:255'],
             'permanent_address_district' => ['required', 'max:255'],
-            'mobile' => ['required', 'unique:students,mobile', 'min:10', 'max:13'],
+            'mobile' => ['required',Rule::unique(Student::class,'mobile')->ignore($this->id)],
             'facebook' => ['nullable'],
             'dob' => ['required'],
             'blood_group' => ['required'],
-            'email' => ['required', 'email', 'unique:students,email'],
+            'email' => ['required',Rule::unique(Student::class,'email')->ignore($this->id)],
             'absent_of_parent_name' => ['required', 'max:255'],
             'absent_of_parent_relation' => ['required', 'max:255'],
             'absent_of_parent_occupation' => ['required', 'max:255'],
