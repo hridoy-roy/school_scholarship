@@ -21,7 +21,7 @@ class ExamController extends Controller
             'title' => "Exam",
             'sub_title' => "List",
             'header' => "All List List",
-            'exams' => Exam::paginate(),
+            'exams' => Exam::orderBy('id', 'desc')->paginate(),
         ];
         return view('admin.content.exam.list', $data);
     }
@@ -133,5 +133,21 @@ class ExamController extends Controller
         $exam = $exam->load('students');
         $pdf = Pdf::loadView('admin.content.result.download', compact('exam'));
         return $pdf->download($exam->name . time() . '.pdf');
+    }
+
+    public function examResultPublish(Exam $exam)
+    {
+        if ($exam->result_publish) {
+            $exam->update([
+                'result_publish' => false
+            ]);
+        } else {
+            $exam->update([
+                'result_publish' => true
+            ]);
+        }
+
+        session()->put('success', 'Exam Result Update successfully.');
+        return redirect()->back();
     }
 }

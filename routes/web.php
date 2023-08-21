@@ -75,6 +75,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('student/exam/{exam}', [ExamController::class, 'examStudent'])->name('student.exam');
         Route::Post('student/exam/assign/{exam}', [ExamController::class, 'examStudentAssign'])->name('student.exam.assign');
+        Route::get('exam/result/{exam}/publish', [ExamController::class, 'examResultPublish'])->name('exam.result.publish');
 
 
 

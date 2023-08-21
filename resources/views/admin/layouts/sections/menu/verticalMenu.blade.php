@@ -20,14 +20,39 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Site Admin Section</span>
+        </li>
         <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }} menu-item">
             <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-smart-home"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
         </li>
-        @if (auth()->user()->is_admin == 1)
+        <li
+            class="{{ request()->routeIs('examcenter.index') || request()->routeIs('examcenter.create') || request()->routeIs('examcenter.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-clipboard"></i>
+                <div data-i18n="Dashboards">Exam Center</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
 
+                <li class="{{ request()->routeIs('examcenter.index') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('examcenter.create') }}" class="menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+
+                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('examcenter.index') }}" class="menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        @if (auth()->user()->is_admin == 1)
         <li
             class="{{ request()->routeIs('institute.index') || request()->routeIs('institute.create') || request()->routeIs('institute.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -96,29 +121,6 @@
 
             </ul>
         </li>
-        <li
-            class="{{ request()->routeIs('examcenter.index') || request()->routeIs('examcenter.create') || request()->routeIs('examcenter.edit') ? 'active open' : '' }} menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon ti ti-clipboard"></i>
-                <div data-i18n="Dashboards">Exam Center</div>
-                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
-            </a>
-            <ul class="menu-sub">
-
-                <li class="{{ request()->routeIs('examcenter.index') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('examcenter.create') }}" class="menu-link">
-                        <div>Create</div>
-                    </a>
-                </li>
-
-                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('examcenter.index') }}" class="menu-link">
-                        <div>List</div>
-                    </a>
-                </li>
-
-            </ul>
-        </li>
         <li class="{{ request()->routeIs('students.index') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon ti ti-smart-home"></i>
@@ -134,52 +136,7 @@
                 </li>
             </ul>
         </li>
-        <li
-            class="{{ request()->routeIs('blogs.index') || request()->routeIs('blogs.create') || request()->routeIs('blogs.edit') || request()->routeIs('blogs.show') ? 'active open' : '' }} menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                <div data-i18n="Dashboards">Blogs</div>
-                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('blogs.index') }}"
-                        class="{{ request()->routeIs('blogs.index') ? 'active' : '' }} menu-link">
-                        <div>List</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('blogs.create') }}"
-                        class="{{ request()->routeIs('blogs.create') ? 'active' : '' }} menu-link">
-                        <div>Create</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
 
-        {{-- Member --}}
-        <li
-            class="{{ request()->routeIs('members.index') || request()->routeIs('members.create') || request()->routeIs('members.edit') || request()->routeIs('members.show') ? 'active open' : '' }} menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                <div data-i18n="Dashboards">Members</div>
-                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('members.index') }}"
-                        class="{{ request()->routeIs('members.index') ? 'active' : '' }} menu-link">
-                        <div>List</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('members.create') }}"
-                        class="{{ request()->routeIs('members.create') ? 'active' : '' }} menu-link">
-                        <div>Create</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
 
         <li
             class="{{ request()->routeIs('student.pay.view') || request()->routeIs('student.paid.view') || request()->routeIs('student.unpaid.view')  ? 'active open' : '' }} menu-item">
@@ -205,23 +162,6 @@
                     <a href="{{ route('student.unpaid.view') }}"
                         class="{{ request()->routeIs('student.unpaid.view') ? 'active' : '' }} menu-link">
                         <div>Unpaid List</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <li
-            class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon ti ti-smart-home"></i>
-                <div data-i18n="Dashboards">Contact</div>
-                <div class="badge bg-label-primary rounded-pill ms-auto">1</div>
-            </a>
-            <ul class="menu-sub">
-
-                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('contact.index') }}" class="menu-link">
-                        <div>List</div>
                     </a>
                 </li>
             </ul>
@@ -265,32 +205,11 @@
             </ul>
         </li>
 
-        @endif
 
-        <li
-            class="{{ request()->routeIs('blogs.index') || request()->routeIs('blogs.create') || request()->routeIs('blogs.edit') || request()->routeIs('blogs.show') ? 'active open' : '' }} menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                <div data-i18n="Dashboards">Result</div>
-                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('blogs.index') }}"
-                        class="{{ request()->routeIs('blog.index') ? 'active' : '' }} menu-link">
-                        <div>List</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('blogs.create') }}"
-                        class="{{ request()->routeIs('blog.create') ? 'active' : '' }} menu-link">
-                        <div>Create</div>
-                    </a>
-                </li>
-            </ul>
+
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">For Frontend</span>
         </li>
-
-
         <li
             class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -313,9 +232,6 @@
                 </li>
             </ul>
         </li>
-
-
-
         <li
             class="{{ request()->routeIs('slider.create') || request()->routeIs('slider.list') || request()->routeIs('slider.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -338,10 +254,66 @@
                 </li>
             </ul>
         </li>
+        <li
+            class="{{ request()->routeIs('blogs.index') || request()->routeIs('blogs.create') || request()->routeIs('blogs.edit') || request()->routeIs('blogs.show') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Dashboards">Blogs</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('blogs.index') }}"
+                        class="{{ request()->routeIs('blogs.index') ? 'active' : '' }} menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('blogs.create') }}"
+                        class="{{ request()->routeIs('blogs.create') ? 'active' : '' }} menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li
+            class="{{ request()->routeIs('members.index') || request()->routeIs('members.create') || request()->routeIs('members.edit') || request()->routeIs('members.show') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Dashboards">Members</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('members.index') }}"
+                        class="{{ request()->routeIs('members.index') ? 'active' : '' }} menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('members.create') }}"
+                        class="{{ request()->routeIs('members.create') ? 'active' : '' }} menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li
+            class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-smart-home"></i>
+                <div data-i18n="Dashboards">Contact</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">1</div>
+            </a>
+            <ul class="menu-sub">
 
-
-
-
-
+                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('contact.index') }}" class="menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        @endif
     </ul>
 </aside>

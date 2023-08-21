@@ -21,6 +21,8 @@
                     <th>First Grade</th>
                     <th>Second Grade</th>
                     <th>Third Grade</th>
+                    <th>Students</th>
+                    <th>Result</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -38,6 +40,14 @@
                     <td>{{ $exam->first_grade }}</td>
                     <td>{{ $exam->second_grade }}</td>
                     <td>{{ $exam->third_grade }}</td>
+                    <td>{{ $exam->students->count() }}</td>
+                    <td>
+                        @if ($exam->result_publish)
+                        <span class="badge bg-label-success me-1">Publish</span>
+                        @else
+                        <span class="badge bg-label-danger me-1">Not Publish</span>
+                        @endif
+                    </td>
                     <td>
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -49,6 +59,15 @@
                                 <a class="dropdown-item" href="{{ route('student.exam',$exam->id) }}"><i
                                         class="ti ti-pencil me-1"></i>
                                     Exam Assign</a>
+                                @if ($exam->result_publish)
+                                <a class="dropdown-item" href="{{ route('exam.result.publish',$exam->id) }}"><i
+                                        class="ti ti-pencil me-1"></i>
+                                    Result Unpublish</a>
+                                @else
+                                <a class="dropdown-item" href="{{ route('exam.result.publish',$exam->id) }}"><i
+                                        class="ti ti-pencil me-1"></i>
+                                    Result Publish</a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('student.result.download',$exam->id) }}"><i
                                         class="ti ti-pencil me-1"></i>
                                     Result Download</a>
