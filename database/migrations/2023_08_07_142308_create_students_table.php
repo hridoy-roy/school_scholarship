@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Exam;
 use App\Models\Institute;
 use App\Models\ExamCenter;
 use App\Models\StudentClass;
@@ -30,6 +31,7 @@ return new class extends Migration
             $table->foreignIdFor(Institute::class);
             $table->foreignIdFor(StudentClass::class);
             $table->foreignIdFor(ExamCenter::class)->nullable();
+            $table->foreignIdFor(Exam::class)->nullable();
             $table->string('class_roll');
             $table->string('class_division')->nullable();
             $table->string('class_section');

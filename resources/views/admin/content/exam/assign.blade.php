@@ -2,6 +2,7 @@
 
 @section('title', 'Exam Center')
 
+
 @section('vendor-style')
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css')}}">
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css')}}">
@@ -11,7 +12,7 @@
 <!-- Row Group CSS -->
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css')}}">
 <!-- Form Validation -->
-<link rel="stylesheet" href="{{asset('assets/vendor/libs/form-validation/umd/styles/index.min.css')}}" />
+<link rel="stylesheet" href="{{asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css')}}" />
 @endsection
 
 @section('vendor-script')
@@ -20,9 +21,9 @@
 <script src="{{asset('assets/vendor/libs/moment/moment.js')}}"></script>
 <script src="{{asset('assets/vendor/libs/flatpickr/flatpickr.js')}}"></script>
 <!-- Form Validation -->
-<script src="{{asset('assets/vendor/libs/form-validation/umd/bundle/popular.min.js')}}"></script>
-<script src="{{asset('assets/vendor/libs/form-validation/umd/plugin-bootstrap5/index.min.js')}}"></script>
-<script src="{{asset('assets/vendor/libs/form-validation/umd//plugin-auto-focus/index.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js')}}"></script>
 @endsection
 
 @section('page-script')
@@ -34,20 +35,35 @@
     <h4 class="fw-bold">
         <span class="text-muted fw-light">{{ $title ?? 'N/A' }} /</span> {{ $sub_title ?? 'N/A' }}
     </h4>
-    <a href="{{route('examcenter.create')}}"> <button class=" btn btn-primary">➥ Create</button></a>
+    <a href="{{route('exams.create')}}"> <button class=" btn btn-primary">➥ Create</button></a>
 </div>
 
 <!-- Select -->
 <div class="card">
-    <h5 class="card-header">
-        <span class="badge bg-success bg-glow">Center Name :{{ $exam_center->name }}</span>
-        <span class="badge bg-danger bg-glow">Total Capacity :{{ $exam_center->capacity }}</span>
-        <span class="badge bg-primary bg-glow">Total Assing :{{ $exam_center->students?->count() }}</span>
-        <span class="badge bg-warning bg-glow">Available Sit :{{ $exam_center->capacity -
-            $exam_center->students?->count()
-            }}</span>
+    <h5 class="card-header text-center w-100">
+        <span class="badge bg-info bg-glow">{{ $header ?? 'N/A' }}</span>
+        <span class="badge bg-success bg-glow">Center Name :{{ $exam->name }}</span>
+        <span class="badge bg-primary bg-glow">Total Assing :{{ $exam->students?->count() }}</span>
     </h5>
-    <form action="{{ route('student.assign.result',$exam_center->id) }}" method="post">
+    <form action="{{ route('student.exam',$exam->id) }}" method="get">
+        @csrf
+        <div class="row  align-items-end">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label" for="multicol-birthdate">Select Year</label>
+                <select name="year" id="year" class="form-select">
+                    @foreach ($years as $year)
+                    <option value="{{ $year }}" {{ ($year==$currentYear) ? "selected" : '' }}> {{ $year }} </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-5">
+                <button class="btn btn-warning">Search</button>
+            </div>
+        </div>
+    </form>
+    <form action="{{ route('student.exam.assign',$exam->id) }}" method="post">
         @csrf
         <div class="card-datatable table-responsive pt-0">
             <table class="datatables-basic table">
@@ -57,15 +73,15 @@
                         <th>Photo & Name</th>
                         <th>Reg. No</th>
                         <th>Roll</th>
+                        <th>Father Name</th>
                         <th>Reg. Date</th>
                         <th>Mobile</th>
                         <th>Pay Status</th>
-                        <th>Exam Check</th>
-                        <th>Marks</th>
+                        <th>Check Box</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($exam_center->students as $student)
+                    @foreach ($students as $student)
                     <tr>
                         <td>{{ ++$loop->index }}</td>
                         <td>
@@ -84,6 +100,7 @@
                         </td>
                         <td>{{ $student->registration_no }}</td>
                         <td>{{ $student->roll_no ?? 'Not Set' }}</td>
+                        <td>{{ $student->father_name_en }}</td>
                         <td>{{ $student->created_at->format('d.m.Y') }}</td>
                         <td>{{ $student->mobile }}</td>
                         <td>
@@ -95,12 +112,8 @@
                         </td>
                         <td>
                             <input type="checkbox" class="form-check-input" id="basic-default-checkbox"
-                                name="student_id[]" value="{{ $student->id }}" @if($student->marks || $student->exam_id)
-                            checked @endif>
-                        </td>
-                        <td>
-                            <input type="text" class="form-input" value="{{ $student->marks }}" id="basic-default"
-                                name="marks[]">
+                                name="student_id[]" value="{{ $student->id }}" @if(is_array(old('student_id')) &&
+                                in_array(1, old('student_id'))) checked @endif>
                         </td>
                     </tr>
                     @endforeach
@@ -108,7 +121,9 @@
                 <tfoot>
                     <tr>
                         <th colspan="7"></th>
-                        <th colspan="2"><button class="btn btn-secondary create-new btn-primary">Save</button></th>
+                        <th colspan="2">
+                            <button class="btn btn-secondary create-new btn-primary">Save</button>
+                        </th>
                     </tr>
                 </tfoot>
             </table>
