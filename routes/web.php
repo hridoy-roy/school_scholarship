@@ -3,11 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CounterController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Admin\PayController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\MemberController;
+use App\Http\Controllers\Admin\ResultController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -42,6 +46,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/blog', [HomeController::class, 'blog'])->name('frontend.blog');
 Route::get('/blog/{blog}', [HomeController::class, 'details']);
 Route::resource('students', StudentController::class);
+Route::get('/result', [ResultController::class, 'index'])->name('result');
 Route::get('student/result/{exam}/download', [ExamController::class, 'examResultDownload'])->name('student.result.download');
 
 
@@ -55,9 +60,13 @@ Route::middleware('auth')->group(function () {
             'institute' => InstituteController::class,
             'examcenter' => ExamCenterController::class,
             'contact' => ContactController::class,
+            'counter' => CounterController::class,
+            'history' => HistoryController::class,
+            'sponsor' => SponsorController::class,
             'exams' => ExamController::class,
             'members' => MemberController::class,
         ]);
+        
         Route::get('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudent'])->name('student.assign');
         Route::post('student/assign/{exam_center}', [ExamCenterController::class, 'assignStudents'])->name('students.assign');
         Route::get('student/assign/{exam_center}/list', [ExamCenterController::class, 'assignStudentList'])->name('student.assign.list');
@@ -75,6 +84,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('student/exam/{exam}', [ExamController::class, 'examStudent'])->name('student.exam');
         Route::Post('student/exam/assign/{exam}', [ExamController::class, 'examStudentAssign'])->name('student.exam.assign');
+        Route::get('exam/result/{exam}/publish', [ExamController::class, 'examResultPublish'])->name('exam.result.publish');
 
 
 

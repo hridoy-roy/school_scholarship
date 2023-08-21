@@ -11,12 +11,7 @@ class Exam extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'exam_date',
-        'exam_time',
-        'first_grade',
-    ];
+    protected $guarded = [];
 
 
     public function students(): HasMany

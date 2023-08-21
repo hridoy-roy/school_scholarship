@@ -1738,11 +1738,11 @@ span.option-br {
    .admit-card:last-child(3) {
      margin: 0 auto 20px auto;
    }
- 
+
    .admit-card-responsive {
      display: none;
    }
- 
+
  }
   */
 
@@ -1752,6 +1752,22 @@ span.option-br {
    End Admit Card Style submit by Tanvir
    ========================================================================== */
 
+/* Board Member CSS Portion */
 
+   .circle-container {
+    display: inline-block; /* Make sure the container only takes the space it needs */
+    width: 8rem; /* Double the radius to get the diameter (4 units) */
+    height: 8rem;
+    border-radius: 50%; /* Make it a circle */
+    overflow: hidden; /* Hide the parts of the image outside the circle */
 
+    /* Optional: Add a border to the circle */
+    border: 2px solid;
+}
+
+.circular-image {
+    display: block; /* Make sure the image doesn't overflow its container */
+    width: 100%; /* Make the image fill the container */
+    height: auto; /* Maintain the image's aspect ratio */
+}
 

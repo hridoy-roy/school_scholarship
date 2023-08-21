@@ -44,7 +44,7 @@ class BlogController extends Controller
     {
         $fileName = time() . "-blog." . $request->file('banner')->getClientOriginalExtension();
         Image::make($request->file('banner'))->save('upload/blog/' . $fileName);
-        $project = Blog::create(array_merge($request->validated(), ['banner' => $fileName, 'user_id' => auth()->user()->id]));
+        Blog::create(array_merge($request->validated(), ['banner' => $fileName, 'user_id' => auth()->user()->id]));
         session()->put('success', 'Item created successfully.');
         return redirect()->back();
     }
