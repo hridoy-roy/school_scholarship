@@ -31,7 +31,7 @@ class HistoryController extends Controller
             'sub_title' => "Create",
             'header' => "Create History",
         ];
-        return view('admin.content.history.create', $data); 
+        return view('admin.content.history.create', $data);
     }
 
     /**
@@ -52,14 +52,14 @@ class HistoryController extends Controller
         if ($count < 1) {
             $student_data = $request->except(['image']);
 
-            $file = " ";   
+            $file = " ";
 
             if($file = $request->file('image')){
                 $imageName = $request->title.'.'.$file->getClientOriginalExtension();
                 $student_data['image'] = $file->move('upload/history/',$imageName);
             }
 
-            History::create($request->all());
+            History::create($student_data);
             session()->put('success', 'Item created successfully.');
             return redirect()->route('history.index');
         }else{
@@ -101,7 +101,7 @@ class HistoryController extends Controller
             'button'=>'required|min:3|max:255',
             'image'=>'required',
         ]);
-        
+
          $student_data = $request->except(['image','registration_no',]);
 
         $file = " ";
@@ -114,7 +114,7 @@ class HistoryController extends Controller
             $imageName = $request->title.'.'.$file->getClientOriginalExtension();
             $student_data['image'] = $file->move('upload/history/',$imageName);
         }
-        else{            
+        else{
             $student_data['image'] = $history->image;
         }
 

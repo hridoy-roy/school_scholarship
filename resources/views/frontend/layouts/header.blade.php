@@ -73,8 +73,9 @@
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                         </button>
-                                        <a class="navbar-brand" href="#home">
-                                            <img src="{{ url('frontend/assets/images/logo.png') }}" />
+                                        <a class="" href="#home">
+                                            {{-- <img src="{{ url('frontend/assets/images/logo.png') }}" /> --}}
+                                            <h2>SWAS</h2>
                                         </a>
                                     </div>
 
@@ -85,7 +86,7 @@
                                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                                         <ul class="nav navbar-nav navbar-right">
-                                            <li><a href="#home">HOME</a></li>
+                                            <li><a href="{{ route('frontend.index') }}">HOME</a></li>
                                             <li><a href="#history">ABOUT US</a></li>
                                             <li><a href="#portfolio">PORTFOLIO</a></li>
                                             <li><a href="{{ route('students.create') }}">Registration</a></li>

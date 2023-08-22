@@ -10,8 +10,8 @@
    <section id="home" class="home"  style="background-image: url(<?php echo $slider->bg_img ?>)">
 
     @endforeach
-                        
-    @endif 
+
+    @endif
 
 
 
@@ -56,8 +56,8 @@
 
 
                         @endforeach
-                        
-                    @endif 
+
+                    @endif
 
 
 
@@ -135,9 +135,6 @@
                             <div class="separator3"></div>
                             <p>{{$member->designation}}</p>
                         </div>
-                        <h4>{{$member->title}}</h4>
-                        <div class="separator3"></div>
-                        <p>{{$member->designation}}</p>
                     </div>
                 </div>
                 @endforeach

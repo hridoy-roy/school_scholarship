@@ -41,11 +41,12 @@ use App\Http\Controllers\Admin\StudentClassController;
 // });
 
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('frontend.index');
 
 Route::get('/blog', [HomeController::class, 'blog'])->name('frontend.blog');
 Route::get('/blog/{blog}', [HomeController::class, 'details']);
 Route::resource('students', StudentController::class);
+Route::resource('contact', ContactController::class);
 Route::get('/result', [ResultController::class, 'index'])->name('result');
 Route::get('student/result/{exam}/download', [ExamController::class, 'examResultDownload'])->name('student.result.download');
 
@@ -59,7 +60,6 @@ Route::middleware('auth')->group(function () {
             'blogs' => BlogController::class,
             'institute' => InstituteController::class,
             'examcenter' => ExamCenterController::class,
-            'contact' => ContactController::class,
             'counter' => CounterController::class,
             'history' => HistoryController::class,
             'sponsor' => SponsorController::class,

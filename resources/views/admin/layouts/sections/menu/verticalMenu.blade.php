@@ -258,6 +258,28 @@
             class="{{ request()->routeIs('history.create') || request()->routeIs('history.index') || request()->routeIs('history.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon ti ti-clipboard"></i>
+                <div data-i18n="Dashboards">Counter</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+
+                <li class="{{ request()->routeIs('history.create') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('counter.create') }}" class="menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+
+                <li class="{{ request()->routeIs('history.index') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('counter.index') }}" class="menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li
+            class="{{ request()->routeIs('history.create') || request()->routeIs('history.index') || request()->routeIs('history.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-clipboard"></i>
                 <div data-i18n="Dashboards">History</div>
                 <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
             </a>
@@ -343,7 +365,8 @@
             </ul>
         </li>
         <li
-            class="{{ request()->routeIs('contact.create') || request()->routeIs('contact.list') || request()->routeIs('contact.edit') ? 'active open' : '' }} menu-item">
+
+    class="{{ request()->routeIs('contact.create') || request()->routeIs('contact.list') || request()->routeIs('contact.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon ti ti-smart-home"></i>
                 <div data-i18n="Dashboards">Contact</div>
