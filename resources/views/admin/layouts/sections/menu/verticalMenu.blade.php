@@ -378,11 +378,6 @@
                         <div>List</div>
                     </a>
                 </li>
-                <li class="{{ request()->routeIs('contact.create') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('contact.create') }}" class="menu-link">
-                        <div>Create</div>
-                    </a>
-                </li>
             </ul>
         </li>
         @endif
