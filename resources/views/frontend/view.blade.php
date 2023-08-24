@@ -121,7 +121,7 @@
                 <a href="{{route('students.edit',$student->id)}}"><button class="btn btn-primary">➥ Edit</button></a>
             </td>
             <td style="width:200px">
-                <a href="#"> <button class=" btn btn-primary">➥ Print</button></a>
+                <a href="{{ route('print.student.info',$student->id) }}" class="btn btn-primary"> ➥ Download</a>
             </td>
         </tr>
     </tbody>
