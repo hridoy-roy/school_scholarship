@@ -97,13 +97,14 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student)
     {
         if ($request->file('image')) {
-            dd();
+
             $path = public_path('upload/profile/');
             unlink($path . $student->image);
             $student_data['image'] = time() . "-profile." . $request->file('image')->getClientOriginalExtension();
             $request->file('image')->move(public_path('upload/profile/'), $student_data['image']);
-        } else {
-            $student_data['image'] = $student->photo;
+        }
+        else {
+            $student_data['image'] = $student->image;
         }
 
 

@@ -330,10 +330,11 @@
                     </div>
                     <div class="separator"></div>
                 </div><!-- End off Head_title -->
-                @for ($i=1; $i <9; $i++) <div class="col-sm-3 col-xs-6">
-                    <a href=""><img src="{{@$sponsor->$i}}" alt="" /></a>
-            </div>
-            @endfor
+                @for ($i=1; $i <9; $i++)
+                <div class="col-sm-3 col-xs-6">
+                    <img src="{{@$sponsor->$i}}" alt=""/>
+                </div>
+                @endfor
         </div>
     </div>
     </div>
@@ -413,4 +414,21 @@
         </div>
     </section>
 </section><!-- End of contact section -->
+
+<!-- Client Logo Section -->
+<section id="clogo" class="clogo">
+    <div class="container">
+        <div class="row">
+            <div class="main_clogo sections text-center">
+                
+                @for ($i=1; $i <4; $i++)
+                <div class="col-sm-3 col-xs-6">
+                    <img src="{{@$ad->$i}}" alt=""/>
+                </div>
+                @endfor
+        </div>
+    </div>
+    </div>
+    <div class="divider"></div>
+</section><!-- End off clogo Section -->
 @endsection
