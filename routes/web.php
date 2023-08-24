@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CounterController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\SponsorController;
+use App\Http\Controllers\AdController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Admin\PayController;
 use App\Http\Controllers\Admin\BlogController;
@@ -49,8 +50,11 @@ Route::resource('students', StudentController::class);
 Route::resource('contact', ContactController::class);
 Route::get('/result', [ResultController::class, 'index'])->name('result');
 Route::get('student/result/{exam}/download', [ExamController::class, 'examResultDownload'])->name('student.result.download');
+Route::get('exam/list', [ExamController::class, 'frontendExamList'])->name('exam.list');
+Route::get('exam/result/{exam}', [ExamController::class, 'frontendExamResultDownload'])->name('exam.result.download');
+Route::get('print/student/info/{student}', [StudentController::class, 'printStudentInfo'])->name('print.student.info');
 
-
+// prefix('admin')->
 Route::middleware('auth')->group(function () {
     Route::middleware('is.admin')->group(function () {
         Route::get('admin/dashboard', DashboardController::class)->name('admin.dashboard');
@@ -59,10 +63,10 @@ Route::middleware('auth')->group(function () {
             'users' => UserController::class,
             'blogs' => BlogController::class,
             'institute' => InstituteController::class,
-            'examcenter' => ExamCenterController::class,
             'counter' => CounterController::class,
             'history' => HistoryController::class,
             'sponsor' => SponsorController::class,
+            'ad' => AdController::class,
             'exams' => ExamController::class,
             'members' => MemberController::class,
         ]);
@@ -87,12 +91,11 @@ Route::middleware('auth')->group(function () {
         Route::get('exam/result/{exam}/publish', [ExamController::class, 'examResultPublish'])->name('exam.result.publish');
 
 
-
-
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
+    Route::resource('examcenter', ExamCenterController::class);
     Route::get('admin/dashboard', DashboardController::class)->name('admin.dashboard');
     Route::get('password', [PasswordController::class, 'updatePass'])->name('password.update');
 });

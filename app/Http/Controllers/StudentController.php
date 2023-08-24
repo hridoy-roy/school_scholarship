@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\Institute;
 use App\Models\StudentClass;
-use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Requests\StudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 
@@ -97,16 +97,13 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student)
     {
         if ($request->file('image')) {
-            dd();
             $path = public_path('upload/profile/');
             unlink($path . $student->image);
             $student_data['image'] = time() . "-profile." . $request->file('image')->getClientOriginalExtension();
             $request->file('image')->move(public_path('upload/profile/'), $student_data['image']);
         } else {
-            $student_data['image'] = $student->photo;
+            $student_data['image'] = $student->image;
         }
-
-
 
         $student->update(array_merge($request->validated(), $student_data));
 
@@ -128,5 +125,11 @@ class StudentController extends Controller
         $student->delete();
         session()->put('success', 'Item Deleted successfully.');
         return redirect()->back();
+    }
+
+    public function printStudentInfo(Student $student)
+    {
+        $pdf = Pdf::loadView('frontend.download', compact('student'));
+        return $pdf->download($student->name . time() . '.pdf');
     }
 }

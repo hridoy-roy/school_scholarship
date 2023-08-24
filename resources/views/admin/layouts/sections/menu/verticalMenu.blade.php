@@ -254,6 +254,7 @@
                 </li>
             </ul>
         </li>
+
         <li
             class="{{ request()->routeIs('counter.create') || request()->routeIs('counter.index') || request()->routeIs('history.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -320,6 +321,30 @@
                 </li>
             </ul>
         </li>
+
+        <li
+            class="{{ request()->routeIs('ad.index') || request()->routeIs('ad.create') || request()->routeIs('ad.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-clipboard"></i>
+                <div data-i18n="Dashboards">AD</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+
+                <li class="{{ request()->routeIs('ad.create') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('ad.create') }}" class="menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+
+                <li class="{{ request()->routeIs('ad.index') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('ad.index') }}" class="menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <li
             class="{{ request()->routeIs('blogs.index') || request()->routeIs('blogs.create') || request()->routeIs('blogs.edit') || request()->routeIs('blogs.show') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
