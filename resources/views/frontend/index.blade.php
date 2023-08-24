@@ -393,7 +393,7 @@
 
 <!-- Contact Section -->
 <section id="contact" class="contact">
-    <section class="contact-container">
+    <div class="contact-container">
         <div class="form-container">
             <h3>Message us</h3>
             <form method="post" action="{{ route('contact.store') }}" class="contact-form">
@@ -412,22 +412,20 @@
                 style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-    </section>
+    </div>
+    <div class="divider"></div>
 </section><!-- End of contact section -->
 
 <!-- Client Logo Section -->
 <section id="clogo" class="clogo">
     <div class="container">
         <div class="row">
-            <div class="main_clogo sections text-center">
-                
-                @for ($i=1; $i <4; $i++)
-                <div class="col-sm-3 col-xs-6">
-                    <img src="{{@$ad->$i}}" alt=""/>
-                </div>
-                @endfor
+            @for ($i=1; $i <4; $i++)
+            <div class="col-sm-3 col-xs-6">
+                <img src="{{@$ad->$i}}" alt="" class="img-thumbnail"/>
+            </div>
+            @endfor
         </div>
-    </div>
     </div>
     <div class="divider"></div>
 </section><!-- End off clogo Section -->

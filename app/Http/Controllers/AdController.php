@@ -27,12 +27,21 @@ class AdController extends Controller
      */
     public function create()
     {
-        $data = [
+        $count = Ad::count();
+        if ($count < 1) {
+            $data = [
             'title' => "Ad",
             'sub_title' => "Create",
             'header' => "Create Ad",
         ];
-        return view('admin.content.ad.create', $data);
+            return view('admin.content.ad.create', compact('data'),$data);
+        }else{
+            $already_created = [
+                'title' => "Already Created",
+                'sub_title' => "Please go in ad list page and update your data.",
+            ];
+            return view('admin.content.ad.create',compact('already_created'));
+        }
     }
 
     /**

@@ -24,7 +24,7 @@ class HomeController extends Controller
             'sponsor' => Sponsor::first(),
             'sliders' => Slider::get(),
             'members' => Member::get(),
-            'ads' => Ad::get(),
+            'ad' => Ad::first(),
         ];
         return view('frontend.index', $data);
     }
