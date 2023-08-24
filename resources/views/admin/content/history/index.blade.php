@@ -7,7 +7,11 @@
     <h4 class="fw-bold">
         <span class="text-muted fw-light">{{ $title ?? 'N/A' }} /</span> {{ $sub_title ?? 'N/A' }}
     </h4>
+    @if (isset($history))
+    <a href="{{route('history.edit',$history->id)}}"> <button class=" btn btn-primary">➥ Edit</button></a>
+    @else
     <a href="{{route('history.create')}}"> <button class=" btn btn-primary">➥ Create</button></a>
+    @endif
 </div>
 <div class="card">
     <h5 class="card-header">Create Institute</h5>
@@ -31,7 +35,7 @@
             <tr>
             <td>{{$sl++}}</td>
             <td>{{$history->title}}</td>
-            <td>{{$history->description}}</td>
+            <td >{{$history->description}}</td>
             <td>{{$history->button}}</td>
             <td>{{$history->button_link}}</td>
             <td><img src="{{$history->image}}" alt="" style="width: 100px"></td>
@@ -61,7 +65,6 @@
             <th>Description</th>                      
             <th>Button</th>
             <th>Button Link</th>
-            <th>Action</th>
             <th class="rounded-end-bottom">Actions</th>
             </tr>
         </tfoot>

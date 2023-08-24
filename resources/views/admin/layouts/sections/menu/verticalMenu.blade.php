@@ -255,7 +255,7 @@
             </ul>
         </li>
         <li
-            class="{{ request()->routeIs('history.create') || request()->routeIs('history.index') || request()->routeIs('history.edit') ? 'active open' : '' }} menu-item">
+            class="{{ request()->routeIs('counter.create') || request()->routeIs('counter.index') || request()->routeIs('history.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon ti ti-clipboard"></i>
                 <div data-i18n="Dashboards">Counter</div>
@@ -263,7 +263,7 @@
             </a>
             <ul class="menu-sub">
 
-                <li class="{{ request()->routeIs('history.create') ? 'active' : '' }} menu-item">
+                <li class="{{ request()->routeIs('counter.create') ? 'active' : '' }} menu-item">
                     <a href="{{ route('counter.create') }}" class="menu-link">
                         <div>Create</div>
                     </a>

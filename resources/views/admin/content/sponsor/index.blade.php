@@ -7,7 +7,11 @@
     <h4 class="fw-bold">
         <span class="text-muted fw-light">{{ $title ?? 'N/A' }} /</span> {{ $sub_title ?? 'N/A' }}
     </h4>
+    @if (isset($history))
     <a href="{{route('sponsor.edit',$sponsor->id)}}"> <button class=" btn btn-primary">➥ Edit</button></a>
+    @else
+    <a href="{{route('sponsor.create')}}"> <button class=" btn btn-primary">➥ Create</button></a>
+    @endif
 </div>
 <div class="card">
     <h5 class="card-header">Create Institute</h5>
@@ -27,6 +31,7 @@
             <th>Action</th>
             </tr>
         </thead>
+         @if (isset($sponsor))
         <tbody>
             @php 
             $sl=1 
@@ -53,6 +58,7 @@
             </td>
             </tr>
         </tbody>
+        @endif 
         <tfoot class="table-border-bottom-0">
             <tr>
             <th class="rounded-start-bottom">ID</th>
