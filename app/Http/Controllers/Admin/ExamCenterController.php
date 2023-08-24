@@ -150,9 +150,8 @@ class ExamCenterController extends Controller
     public function assignStudentList(ExamCenter $exam_center)
     {
         $data = [
-            'title' => "Student",
-            'sub_title' => "Assign",
-            'header' => "Student Assign",
+            'title' => "Exam Center",
+            'sub_title' => "Student Assigned",
             'exam_center' => $exam_center,
         ];
         return view('admin.content.examcenter.assigned-list', $data);

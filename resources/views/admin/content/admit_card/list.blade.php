@@ -70,9 +70,9 @@
                         <th>Photo & Name</th>
                         <th>Reg. No</th>
                         <th>Roll</th>
-                        <th>Father Name</th>
+                        <th>Exam Name</th>
+                        <th>Exam Center</th>
                         <th>Reg. Date</th>
-                        <th>Mobile</th>
                         <th>Pay Status</th>
                         <th>Check For Unpaid</th>
                     </tr>
@@ -97,9 +97,21 @@
                         </td>
                         <td>{{ $student->registration_no }}</td>
                         <td>{{ $student->roll_no ?? 'Not Set' }}</td>
-                        <td>{{ $student->father_name_en }}</td>
+                        <td>
+                            @if ($student->exam)
+                            <span class="badge bg-label-success me-1">{{ $student->exam->name }}</span>
+                            @else
+                            <span class="badge bg-label-danger me-1">No Exam</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($student->examCenter)
+                            <span class="badge bg-label-success me-1">{{ $student->examCenter->name }}</span>
+                            @else
+                            <span class="badge bg-label-danger me-1">No Exam Center</span>
+                            @endif
+                        </td>
                         <td>{{ $student->created_at->format('d.m.Y') }}</td>
-                        <td>{{ $student->mobile }}</td>
                         <td>
                             @if ($student->payment_status === 'unpaid')
                             <span class="badge bg-label-danger me-1">Unpaid</span>

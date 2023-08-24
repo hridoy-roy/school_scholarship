@@ -31,7 +31,8 @@
     <link rel="stylesheet" href="{{ url('frontend/assets/css/slick/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ url('frontend/assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ url('frontend/assets/css/jquery.fancybox.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/bootstrap.css') }}">
+    {{--
+    <link rel="stylesheet" href="{{ url('frontend/assets/css/bootstrap.css') }}"> --}}
     <link rel="stylesheet" href="{{ url('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('frontend/assets/css/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/contact-us.css') }}">
@@ -94,7 +95,8 @@
                                             <li><a href="#team">TEAM</a></li>
                                             <li><a href="#blog">BLOG</a></li>
                                             <li><a href="#contact">CONTACT</a></li>
-                                            {{-- <li><a href="{{route('admitcard.submit')}}">Admit Card Download</a></li> --}}
+                                            {{-- <li><a href="{{route('admitcard.submit')}}">Admit Card Download</a>
+                                            </li> --}}
 
                                             {{-- href="{{url($team->linkedin)}}" --}}
 
