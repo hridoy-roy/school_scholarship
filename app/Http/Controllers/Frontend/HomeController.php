@@ -8,6 +8,7 @@ use App\Models\Gallery;
 use App\Models\History;
 use App\Models\Slider;
 use App\Models\Member;
+use App\Models\Ad;
 use App\Http\Controllers\Controller;
 use App\Models\Sponsor;
 
@@ -23,6 +24,7 @@ class HomeController extends Controller
             'sponsor' => Sponsor::first(),
             'sliders' => Slider::get(),
             'members' => Member::get(),
+            'ads' => Ad::get(),
         ];
         return view('frontend.index', $data);
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CounterController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\SponsorController;
+use App\Http\Controllers\AdController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Admin\PayController;
 use App\Http\Controllers\Admin\BlogController;
@@ -65,6 +66,7 @@ Route::middleware('auth')->group(function () {
             'counter' => CounterController::class,
             'history' => HistoryController::class,
             'sponsor' => SponsorController::class,
+            'ad' => AdController::class,
             'exams' => ExamController::class,
             'members' => MemberController::class,
         ]);
