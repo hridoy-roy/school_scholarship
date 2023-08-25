@@ -22,6 +22,10 @@ use App\Http\Controllers\Frontend\SliderController;
 use App\Http\Controllers\Admin\ExamCenterController;
 use App\Http\Controllers\Frontend\GalleryController;
 use App\Http\Controllers\Admin\StudentClassController;
+use App\Http\Controllers\Admin\MainImageController;
+use App\Models\Student;
+
+use Illuminate\Http\Request;
 
 // use App\Http\Controllers\Frontend\ContactController;
 
@@ -120,13 +124,46 @@ Route::post('/slider/update/{id}', [SliderController::class, 'update'])->name('s
 Route::delete('/slider/destroy/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');
 
 
+// Main Image
+
+
+// Route::get('/main', [MainPagesController::class, 'index'])->name('admin.main');
+// Route::put('/main', [MainPagesController::class, 'update'])->name('admin.main.update');
+
+
 require __DIR__ . '/auth.php';
+
+
 
 
 Route::get('/submit', function () {
     return view('admitcard.submit');
+})->name('submit');
+
+
+
+// Admit Card Section
+
+
+
+Route::post('/submit/verify', function (Request $request) {
+    $studentId = $request->get('student_id');
+
+    $student = Student::where('registration_no', $studentId)->where('payment_status', 'paid')->first();
+    if(blank($student)) {
+        return redirect()->back()->with('success', "New Slider create Successfully");
+    }
+
+    return redirect()->route('card', ['id' => $student->registration_no]);
 });
 
-Route::get('/card', function () {
-    return view('admitcard.card');
-});
+
+
+Route::get('/card/{id}', function ($studentId) {
+    $student = Student::where('registration_no', $studentId)->where('payment_status', 'paid')->first();
+    if(blank($student)) {
+        return redirect()->route('submit');
+    }
+
+    return view('admitcard.card', compact('student'));
+})->name('card');

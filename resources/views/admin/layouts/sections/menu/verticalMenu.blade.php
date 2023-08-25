@@ -23,12 +23,14 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Site Admin Section</span>
         </li>
+
         <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }} menu-item">
             <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-smart-home"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
         </li>
+
         <li
             class="{{ request()->routeIs('examcenter.index') || request()->routeIs('examcenter.create') || request()->routeIs('examcenter.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -232,6 +234,8 @@
                 </li>
             </ul>
         </li>
+
+
         <li
             class="{{ request()->routeIs('slider.list') || request()->routeIs('slider.create') || request()->routeIs('slider.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -252,8 +256,22 @@
                         <div>List</div>
                     </a>
                 </li>
+
+
             </ul>
         </li>
+
+
+        {{-- <li class="{{ request()->routeIs('admin.main') ? ' ' : '' }} menu-item">
+            <a href="{{ route('admin.main') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Dashboards">Main Image</div>
+            </a>
+        </li> --}}
+
+
+
+
         <li
             class="{{ request()->routeIs('history.create') || request()->routeIs('history.index') || request()->routeIs('history.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">

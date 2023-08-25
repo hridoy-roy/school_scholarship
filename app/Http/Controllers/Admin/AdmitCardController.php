@@ -41,4 +41,6 @@ class AdmitCardController extends Controller
         }
         return redirect()->back();
     }
+
+    // public function 
 }

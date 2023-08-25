@@ -209,8 +209,8 @@
             <div class="container-bottom">
 
                 <div class="input-group md-3" style="border: solid black;">
-                    <span class="input-group-text text-white bg-dark">পরীক্ষার্থীর নাম</span>
-                    <input type="text" class="form-control" placeholder="">
+                    <span class="input-group-text text-white bg-dark">পরীক্ষার্থীর নাম</span> {{ $student->name_en}}
+                    <input type="text" class="form-control" placeholder=""> 
                     <span class="input-group-text text-white bg-dark">পিতার নাম</span>
                     <input type="text" class="form-control" placeholder="">
             
@@ -219,6 +219,8 @@
                 <div class="input-group md-3" style="border: solid black;">
                     <span class="input-group-text text-white bg-dark">শিক্ষা প্রতিষ্ঠানের নাম</span>
                     <input type="text" class="form-control" placeholder="">
+
+                    
             
                 </div>
 
