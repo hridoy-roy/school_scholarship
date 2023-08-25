@@ -27,12 +27,21 @@ class SponsorController extends Controller
      */
     public function create()
     {
-        $data = [
-            'title' => "Sponsor",
-            'sub_title' => "Create",
-            'header' => "Create Sponsor",
-        ];
-        return view('admin.content.sponsor.create', $data); 
+        $count = Sponsor::count();
+        if ($count < 1) {
+            $data = [
+                'title' => "Sponsor",
+                'sub_title' => "Create",
+                'header' => "Create Sponsor",
+            ];
+            return view('admin.content.sponsor.create', compact('data'),$data);
+        }else{
+            $already_created = [
+                'title' => "Already Created",
+                'sub_title' => "Please go in sponsor list page and update your data.",
+            ];
+            return view('admin.content.sponsor.create',compact('already_created'));
+        }
     }
 
     /**

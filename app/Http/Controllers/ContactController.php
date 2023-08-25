@@ -41,14 +41,14 @@ class ContactController extends Controller
             'mobile'=>'required|min:11|max:13',
             'email'=>'required|email',
             'subject'=>'required|min:3|max:255',
-            'massage'=>'required|min:20|max:500',
+            'massage'=>'required|min:3|max:500',
         ]);
 
         $contact = Contact::create($request->all());
-        
+
 
         Mail::to($contact->email)->send(new ContactMail($contact->toArray()));
-            
+
         return redirect()->back();
     }
 

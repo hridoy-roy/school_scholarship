@@ -26,12 +26,21 @@ class HistoryController extends Controller
      */
     public function create()
     {
-        $data = [
-            'title' => "History",
-            'sub_title' => "Create",
-            'header' => "Create History",
-        ];
-        return view('admin.content.history.create', $data); 
+        $count = History::count();
+        if ($count < 1) {
+            $data = [
+                'title' => "History",
+                'sub_title' => "Create",
+                'header' => "Create History",
+            ];
+            return view('admin.content.history.create', compact('data'),$data);
+        }else{
+            $already_created = [
+                'title' => "Already Created",
+                'sub_title' => "Please go in history list page and update your data.",
+            ];
+            return view('admin.content.history.create',compact('already_created'));
+        }
     }
 
     /**
@@ -40,7 +49,7 @@ class HistoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title'=>'required|min:6|max:50',
+            'title'=>'required|min:3|max:255',
             'description'=>'required|min:6|max:1000',
             'button'=>'required|min:3|max:30',
             'button'=>'required|min:3|max:255',
@@ -52,14 +61,14 @@ class HistoryController extends Controller
         if ($count < 1) {
             $student_data = $request->except(['image']);
 
-            $file = " ";   
+            $file = " ";
 
             if($file = $request->file('image')){
                 $imageName = $request->title.'.'.$file->getClientOriginalExtension();
                 $student_data['image'] = $file->move('upload/history/',$imageName);
             }
 
-            History::create($request->all());
+            History::create($student_data);
             session()->put('success', 'Item created successfully.');
             return redirect()->route('history.index');
         }else{
@@ -95,14 +104,13 @@ class HistoryController extends Controller
     public function update(Request $request, History $history)
     {
         $this->validate($request, [
-            'title'=>'required|min:6|max:50',
+            'title'=>'required|min:3|max:255',
             'description'=>'required|min:6|max:1000',
             'button'=>'required|min:3|max:30',
             'button'=>'required|min:3|max:255',
-            'image'=>'required',
         ]);
-        
-         $student_data = $request->except(['image','registration_no',]);
+
+        $student_data = $request->except(['image']);
 
         $file = " ";
         $deleteOldImage = $history->image;
@@ -114,7 +122,7 @@ class HistoryController extends Controller
             $imageName = $request->title.'.'.$file->getClientOriginalExtension();
             $student_data['image'] = $file->move('upload/history/',$imageName);
         }
-        else{            
+        else{
             $student_data['image'] = $history->image;
         }
 

@@ -21,13 +21,14 @@
 
                             <div class="copyright_text">
 
-                                  <p class="wow fadeInRight" data-wow-duration="1s">Develop By
-                                    <a href="#">Dev Team </a> © <?php echo date("Y"); ?>. All Rights
-                                    Reserved 
-                                  </p>
+                                <p class="wow fadeInRight" data-wow-duration="1s">Develop By
+                                    <a href="#">Dev Team </a> ©
+                                    <?php echo date("Y"); ?>. All Rights
+                                    Reserved
+                                </p>
                             </div>
 
-                       
+
 
                         </div>
                     </div>
@@ -38,16 +39,8 @@
 </section><!-- End off footer Section-->
 
 
-
-
-
-
-
-
-
-
-
 </div>
+@include('admin._partials.notification')
 
 <!-- START SCROLL TO TOP  -->
 

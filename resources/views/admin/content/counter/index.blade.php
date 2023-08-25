@@ -7,7 +7,11 @@
     <h4 class="fw-bold">
         <span class="text-muted fw-light">{{ $title ?? 'N/A' }} /</span> {{ $sub_title ?? 'N/A' }}
     </h4>
+    @if (isset($counter))
+    <a href="{{route('counter.edit',$counter->id)}}"> <button class=" btn btn-primary">➥ Edit</button></a>
+    @else
     <a href="{{route('counter.create')}}"> <button class=" btn btn-primary">➥ Create</button></a>
+    @endif
 </div>
 <div class="card">
     <h5 class="card-header">Create Institute</h5>

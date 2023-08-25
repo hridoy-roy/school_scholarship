@@ -35,21 +35,21 @@
 
                     <div class="mb-3">
                         <label class="form-label" for="name">Exam Center Name <code>*</code></label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter Exam Center Name" value="{{@$center->name}}" />
+                        <input type="text" class="form-control" name="name" placeholder="Enter Exam Center Name" value="{{@$center->name ?? old('name')}}" />
                         @error('name')
                         <code>*{{$message}}</code>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="name">Exam Center Capacity <code>*</code></label>
-                        <input type="text" class="form-control" name="capacity" placeholder="Enter Exam Center Capacity" value="{{@$center->capacity}}" />
+                        <input type="text" class="form-control" name="capacity" placeholder="Enter Exam Center Capacity" value="{{@$center->capacity ?? old('capacity')}}" />
                         @error('name')
                         <code>*{{$message}}</code>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="order_by">Exam Center Serial</label>
-                        <input type="text" class="form-control" name="order_by" id="basic-default-company" value="{{@$center->order_by}}" placeholder="Enter Exam Center Serial" />
+                        <input type="text" class="form-control" name="order_by" id="basic-default-company" value="{{@$center->order_by ?? old('order_by')}}" placeholder="Enter Exam Center Serial" />
                         @error('order_by')
                         <code>*{{$message}}</code>
                         @enderror

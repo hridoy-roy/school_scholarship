@@ -25,13 +25,22 @@ class CounterController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        $data = [
-            'title' => "Counter",
-            'sub_title' => "Create",
-            'header' => "Create Counter",
-        ];
-        return view('admin.content.counter.create', $data); 
+    { 
+        $count = Counter::count();
+        if ($count < 1) {
+            $data = [
+                'title' => "Counter",
+                'sub_title' => "Create",
+                'header' => "Create Counter",
+            ];
+            return view('admin.content.counter.create', compact('data'),$data);
+        }else{
+            $already_created = [
+                'title' => "Already Created",
+                'sub_title' => "Please go in counter list page and update your data.",
+            ];
+            return view('admin.content.counter.create',compact('already_created'));
+        }
     }
 
     /**

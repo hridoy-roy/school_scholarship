@@ -31,7 +31,8 @@
     <link rel="stylesheet" href="{{ url('frontend/assets/css/slick/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ url('frontend/assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ url('frontend/assets/css/jquery.fancybox.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/assets/css/bootstrap.css') }}">
+    {{--
+    <link rel="stylesheet" href="{{ url('frontend/assets/css/bootstrap.css') }}"> --}}
     <link rel="stylesheet" href="{{ url('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('frontend/assets/css/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/contact-us.css') }}">
@@ -73,8 +74,9 @@
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                         </button>
-                                        <a class="navbar-brand" href="#home">
-                                            <img src="{{ url('frontend/assets/images/logo.png') }}" />
+                                        <a class="" href="#home">
+                                            {{-- <img src="{{ url('frontend/assets/images/logo.png') }}" /> --}}
+                                            <h2>SWAS</h2>
                                         </a>
                                     </div>
 
@@ -85,15 +87,16 @@
                                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                                         <ul class="nav navbar-nav navbar-right">
-                                            <li><a href="#home">HOME</a></li>
+                                            <li><a href="{{ route('frontend.index') }}">HOME</a></li>
                                             <li><a href="#history">ABOUT US</a></li>
                                             <li><a href="#portfolio">PORTFOLIO</a></li>
                                             <li><a href="{{ route('students.create') }}">Registration</a></li>
-                                            <li><a href="/result">Result</a></li>
+                                            <li><a href="{{ route('exam.list') }}">Result</a></li>
                                             <li><a href="#team">TEAM</a></li>
                                             <li><a href="#blog">BLOG</a></li>
                                             <li><a href="#contact">CONTACT</a></li>
-                                            {{-- <li><a href="{{route('admitcard.submit')}}">Admit Card Download</a></li> --}}
+                                            {{-- <li><a href="{{route('admitcard.submit')}}">Admit Card Download</a>
+                                            </li> --}}
 
                                             {{-- href="{{url($team->linkedin)}}" --}}
 

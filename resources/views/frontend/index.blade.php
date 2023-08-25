@@ -1,12 +1,10 @@
 
 <?php 
-
 use Illuminate\Support\Facades\DB;
 $sliders = DB::table('sliders')->get();
 $latest = DB::table('sliders')->latest('id')->first();
 
 ?>
-
 
 
 
@@ -18,18 +16,7 @@ $latest = DB::table('sliders')->latest('id')->first();
 <!--home Section -->
 
 
-{{-- @if (count($sliders) > 0)
-
-@foreach ($sliders as $slider)
-
-@endforeach
-                        
-@endif  --}}
-
    <section id="home" class="home"  style="background-image: url(<?php echo $latest->bg_img ?>)">
-
-
-
 
 
 
@@ -44,9 +31,6 @@ $latest = DB::table('sliders')->latest('id')->first();
 
                      @if (count($sliders) > 0)
                         @foreach ($sliders as $slider)
-
-                        
-
 
 
                             <div class="single_home_slider">
@@ -75,8 +59,8 @@ $latest = DB::table('sliders')->latest('id')->first();
 
 
                         @endforeach
-                        
-                    @endif 
+
+                    @endif
 
 
 
@@ -154,9 +138,6 @@ $latest = DB::table('sliders')->latest('id')->first();
                             <div class="separator3"></div>
                             <p>{{$member->designation}}</p>
                         </div>
-                        <h4>{{$member->title}}</h4>
-                        <div class="separator3"></div>
-                        <p>{{$member->designation}}</p>
                     </div>
                 </div>
                 @endforeach
@@ -352,10 +333,11 @@ $latest = DB::table('sliders')->latest('id')->first();
                     </div>
                     <div class="separator"></div>
                 </div><!-- End off Head_title -->
-                @for ($i=1; $i <9; $i++) <div class="col-sm-3 col-xs-6">
-                    <a href=""><img src="{{@$sponsor->$i}}" alt="" /></a>
-            </div>
-            @endfor
+                @for ($i=1; $i <9; $i++)
+                <div class="col-sm-3 col-xs-6">
+                    <img src="{{@$sponsor->$i}}" alt=""/>
+                </div>
+                @endfor
         </div>
     </div>
     </div>
@@ -414,7 +396,7 @@ $latest = DB::table('sliders')->latest('id')->first();
 
 <!-- Contact Section -->
 <section id="contact" class="contact">
-    <section class="contact-container">
+    <div class="contact-container">
         <div class="form-container">
             <h3>Message us</h3>
             <form method="post" action="{{ route('contact.store') }}" class="contact-form">
@@ -433,6 +415,21 @@ $latest = DB::table('sliders')->latest('id')->first();
                 style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-    </section>
+    </div>
+    <div class="divider"></div>
 </section><!-- End of contact section -->
+
+<!-- Client Logo Section -->
+<section id="clogo" class="clogo">
+    <div class="container">
+        <div class="row">
+            @for ($i=1; $i <4; $i++)
+            <div class="col-sm-3 col-xs-6">
+                <img src="{{@$ad->$i}}" alt="" class="img-thumbnail"/>
+            </div>
+            @endfor
+        </div>
+    </div>
+    <div class="divider"></div>
+</section><!-- End off clogo Section -->
 @endsection

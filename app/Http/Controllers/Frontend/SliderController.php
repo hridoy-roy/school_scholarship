@@ -158,9 +158,9 @@ class SliderController extends Controller
             return redirect()->back();
         }
 
-        $sliders->update(array_merge($request->validated(), ['bg_img' => $sliders->bg_img]));
-        session()->put('success', 'Slider Updated successfully.');
-        return redirect()->back();
+            $sliders->update(array_merge($request->validated(), ['bg_img' => $sliders->bg_img]));
+            session()->put('success', 'Slider Updated successfully.');
+            return redirect()->back();
 
 
 

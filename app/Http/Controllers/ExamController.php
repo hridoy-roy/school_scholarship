@@ -134,6 +134,12 @@ class ExamController extends Controller
         $pdf = Pdf::loadView('admin.content.result.download', compact('exam'));
         return $pdf->download($exam->name . time() . '.pdf');
     }
+    public function examResultDownloadPreview(Exam $exam)
+    {
+        $exam = $exam->load('students');
+        // $pdf = Pdf::loadView('admin.content.result.download', compact('exam'));
+        return view('admin.content.result.download', ['exam' => $exam]);
+    }
 
     public function examResultPublish(Exam $exam)
     {
@@ -149,5 +155,15 @@ class ExamController extends Controller
 
         session()->put('success', 'Exam Result Update successfully.');
         return redirect()->back();
+    }
+    public function frontendExamList()
+    {
+        return view('frontend.result', ['exams' => Exam::orderBy('created_at', 'desc')->where('result_publish', 1)->paginate()]);
+    }
+    public function frontendExamResultDownload(Exam $exam)
+    {
+        $exam = $exam->load('students');
+        $pdf = Pdf::loadView('admin.content.result.download', compact('exam'));
+        return $pdf->download($exam->name . time() . '.pdf');
     }
 }
