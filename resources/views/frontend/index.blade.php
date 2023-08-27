@@ -1,5 +1,4 @@
-
-<?php 
+<?php
 use Illuminate\Support\Facades\DB;
 $sliders = DB::table('sliders')->get();
 $latest = DB::table('sliders')->latest('id')->first();
@@ -16,7 +15,7 @@ $latest = DB::table('sliders')->latest('id')->first();
 <!--home Section -->
 
 
-   <section id="home" class="home"  style="background-image: url(<?php echo $latest->bg_img ?>)">
+<section id="home" class="home" style="background-image: url(<?php echo $latest->bg_img ?? '' ?>)">
 
 
 
@@ -29,8 +28,8 @@ $latest = DB::table('sliders')->latest('id')->first();
                         <div class="main_home_slider text-center">
 
 
-                     @if (count($sliders) > 0)
-                        @foreach ($sliders as $slider)
+                            @if (count($sliders) > 0)
+                            @foreach ($sliders as $slider)
 
 
                             <div class="single_home_slider">
@@ -58,9 +57,9 @@ $latest = DB::table('sliders')->latest('id')->first();
                             </div>
 
 
-                        @endforeach
+                            @endforeach
 
-                    @endif
+                            @endif
 
 
 
@@ -129,20 +128,20 @@ $latest = DB::table('sliders')->latest('id')->first();
             <div class="main_feature text-center">
 
                 @foreach ($members as $member)
-                    <div class="col-sm-3">
-                        <div class="single_feature">
-                            <div class="circle-container">
-                                <img src="{{asset('upload/member/'.$member->banner)}}" alt="" class="circular-image" />
-                            </div>
-                            <h4>{{$member->title}}</h4>
-                            <div class="separator3"></div>
-                            <p>{{$member->designation}}</p>
+                <div class="col-sm-3">
+                    <div class="single_feature">
+                        <div class="circle-container">
+                            <img src="{{asset('upload/member/'.$member->banner)}}" alt="" class="circular-image" />
                         </div>
+                        <h4>{{$member->title}}</h4>
+                        <div class="separator3"></div>
+                        <p>{{$member->designation}}</p>
                     </div>
                 </div>
-                @endforeach
             </div>
+            @endforeach
         </div>
+    </div>
     </div>
     <!--End of container -->
 </section>
@@ -333,11 +332,10 @@ $latest = DB::table('sliders')->latest('id')->first();
                     </div>
                     <div class="separator"></div>
                 </div><!-- End off Head_title -->
-                @for ($i=1; $i <9; $i++)
-                <div class="col-sm-3 col-xs-6">
-                    <img src="{{@$sponsor->$i}}" alt=""/>
-                </div>
-                @endfor
+                @for ($i=1; $i <9; $i++) <div class="col-sm-3 col-xs-6">
+                    <img src="{{@$sponsor->$i}}" alt="" />
+            </div>
+            @endfor
         </div>
     </div>
     </div>
@@ -423,12 +421,11 @@ $latest = DB::table('sliders')->latest('id')->first();
 <section id="clogo" class="clogo">
     <div class="container">
         <div class="row">
-            @for ($i=1; $i <4; $i++)
-            <div class="col-sm-3 col-xs-6">
-                <img src="{{@$ad->$i}}" alt="" class="img-thumbnail"/>
-            </div>
-            @endfor
+            @for ($i=1; $i <4; $i++) <div class="col-sm-3 col-xs-6">
+                <img src="{{@$ad->$i}}" alt="" class="img-thumbnail" />
         </div>
+        @endfor
+    </div>
     </div>
     <div class="divider"></div>
 </section><!-- End off clogo Section -->
