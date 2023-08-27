@@ -7,6 +7,7 @@ use App\Models\Institute;
 use App\Models\StudentClass;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Requests\StudentRequest;
+use Intervention\Image\Facades\Image;
 use App\Http\Requests\UpdateStudentRequest;
 
 class StudentController extends Controller
@@ -42,28 +43,31 @@ class StudentController extends Controller
      */
     public function store(StudentRequest $request)
     {
-
-        if (Student::latest()->first()?->registration_no) {
-            $currentRegNo = Student::latest()->first()?->registration_no;
-            $currentYear = substr($currentRegNo, 0, 4);
-            if ($currentYear === date('Y')) {
-                $student_data['registration_no'] = $currentRegNo + 1;
-            } else {
-                $student_data['registration_no'] = date('Y') . '0001';
+        if ($request->validated('institute_id')) {
+            $student_data['institute_name'] = Institute::find($request->validated('institute_id'))->name;
+        }
+        if ($request->validated('student_class_id')) {
+            $student_data['student_class_name'] = StudentClass::find($request->validated('student_class_id'))->name;
+        }
+        if ($request->file('image')) {
+            if (isset($student_data['image']) && file_exists(public_path('upload/profile/' . $student_data['image']))) {
+                unlink('upload/profile/' . $student_data['image']);
             }
+            $student_data['image'] = time() . "-profile." . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('upload/profile/'), $student_data['image']);
         } else {
-            $student_data['registration_no'] = date('Y') . '0001';
+            $student_data['image'] = session()->get('student_data')['image'];
         }
 
-        $student_data['image'] = time() . "-profile." . $request->file('image')->getClientOriginalExtension();
-        $request->file('image')->move(public_path('upload/profile/'), $student_data['image']);
-
-        // dd(array_merge($student_data,$request->validated()));
-        $student = Student::create(array_merge($request->validated(), $student_data));
-
+        session()->put('student_data', array_merge($request->validated(), $student_data));
         session()->put('success', 'Item created successfully.');
 
-        return redirect()->route('students.show', [$student->id]);
+        $data = [
+            'title' => "Class",
+            'student' => session()->get('student_data'),
+        ];
+
+        return view('frontend.view', $data);
     }
 
     /**
@@ -71,8 +75,17 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        $student->load(['institute', 'student_class']);
-        return view('frontend.view', compact('student'));
+
+        $institutes = Institute::where('status', 1)->pluck('name', 'id');
+        $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
+
+        $data = [
+            'title' => "Class",
+            'student' => $student,
+            'institutes' => $institutes,
+            'student_classes' => $student_classes,
+        ];
+        return view('frontend.view', $data);
     }
 
     /**
@@ -80,15 +93,35 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
+        $institutes = Institute::where('status', 1)->pluck('name', 'id');
+        $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
+
+
         $data = [
             'title' => "Class",
             'sub_title' => "Edit",
             'header' => "Edit Class",
+            'student' => $student,
+            'institutes' => $institutes,
+            'student_classes' => $student_classes,
         ];
+
+        return view('frontend.register', $data);
+    }
+    public function studentEditSession()
+    {
         $institutes = Institute::where('status', 1)->pluck('name', 'id');
         $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
-        session()->put('success', 'Item Updated successfully.');
-        return view('frontend.register', compact('student', 'institutes', 'student_classes'), $data);
+
+
+        $data = [
+            'title' => "Class",
+            'student' => session()->get('student_data'),
+            'institutes' => $institutes,
+            'student_classes' => $student_classes,
+        ];
+
+        return view('frontend.register', $data);
     }
 
     /**
@@ -131,5 +164,31 @@ class StudentController extends Controller
     {
         $pdf = Pdf::loadView('frontend.download', compact('student'));
         return $pdf->download($student->name . time() . '.pdf');
+    }
+
+
+    public function studentConfirmRegistration()
+    {
+        $studentData = session()->get('student_data');
+        unset($studentData['institute_name']);
+        unset($studentData['student_class_name']);
+        if (Student::latest()->first()?->registration_no) {
+            $currentRegNo = Student::latest()->first()?->registration_no;
+            $currentYear = substr($currentRegNo, 0, 4);
+            if ($currentYear === date('Y')) {
+                $studentData['registration_no'] = $currentRegNo + 1;
+            } else {
+                $studentData['registration_no'] = date('Y') . '0001';
+            }
+        } else {
+            $studentData['registration_no'] = date('Y') . '0001';
+        }
+        $student = Student::create($studentData);
+        session()->forget('student_data');
+        $data = [
+            'title' => "Class",
+            'student' => $student,
+        ];
+        return view('frontend.confirm', $data);
     }
 }

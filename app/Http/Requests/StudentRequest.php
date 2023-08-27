@@ -22,7 +22,7 @@ class StudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['required', 'mimes:png,jpg,jpeg,webp', 'max:1024'],
+            'image' => [session()->exists('student_data') ? 'nullable' : 'required', 'mimes:png,jpg,jpeg,webp', 'max:1024'],
             'school_madrasa' => ['required'],
             'student_type' => ['required'],
             'area' => ['required', 'max:255'],

@@ -5,124 +5,129 @@
     <tbody>
         <tr>
             <th>Image</th>
-            <td><img src="{{asset('upload/profile/'.$student->image)}}" style="height:200px;object-fit:cover;"
-                    alt="{{$student->title}}"></td>
+            <td>
+                <img src="{{asset('upload/profile/'.$student['image'])}}" style="height:200px;object-fit:cover;"
+                    alt="{{$student['name_bn']}}">
+            </td>
         </tr>
         <tr>
             <th style="width:200px">Name</th>
-            <td style="width:200px">{{$student->name_en}}</td>
+            <td style="width:200px">{{$student['name_en']}}</td>
             <th style="width:200px">Father Name</th>
-            <td style="width:200px">{{$student->father_name_en}}</td>
+            <td style="width:200px">{{$student['father_name_en']}}</td>
         </tr>
         <tr>
             <th style="width:200px">School Name</th>
-            <td>{{$student->institute->name}}</td>
+            <td>{{$student['institute_name']}}</td>
             <th style="width:200px">Profession</th>
-            <td style="width:200px">{{$student->father_occupation}}</td>
+            <td style="width:200px">{{$student['father_occupation']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Class Name</th>
-            <td style="width:200px">{{$student->student_class->name}}</td>
+            <td style="width:200px">{{$student['student_class_name']}}</td>
             <th style="width:200px">Mother Name</th>
-            <td style="width:200px">{{$student->mother_name_en}}</td>
+            <td style="width:200px">{{$student['mother_name_en']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Class Roll</th>
-            <td style="width:200px">{{$student->class_roll}}</td>
+            <td style="width:200px">{{$student['class_roll']}}</td>
             <th style="width:200px">Profession</th>
-            <td style="width:200px">{{$student->mother_occupation}}</td>
+            <td style="width:200px">{{$student['mother_occupation']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Subject</th>
-            <td style="width:200px">{{$student->class_division}}</td>
+            <td style="width:200px">{{$student['class_division']}}</td>
             <th style="width:200px">Present House Adress</th>
-            <td style="width:200px">{{$student->present_address}}</td>
+            <td style="width:200px">{{$student['present_address']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Section</th>
-            <td style="width:200px">{{$student->class_section}}</td>
+            <td style="width:200px">{{$student['class_section']}}</td>
             <th style="width:200px">Division Name</th>
-            <td style="width:200px">{{$student->permanent_address_district}}</td>
+            <td style="width:200px">{{$student['permanent_address_district']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Institute Type</th>
-            <td style="width:200px">{{$student->school_madrasa}}</td>
+            <td style="width:200px">{{$student['school_madrasa']}}</td>
             <th style="width:200px">Village Name</th>
-            <td style="width:200px">{{$student->permanent_address_village}}</td>
+            <td style="width:200px">{{$student['permanent_address_village']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Student Type</th>
-            <td style="width:200px">{{$student->student_type}}</td>
+            <td style="width:200px">{{$student['student_type']}}</td>
             <th style="width:200px">Select Thana</th>
-            <td style="width:200px">{{$student->permanent_address_thana}}</td>
+            <td style="width:200px">{{$student['permanent_address_thana']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Area</th>
-            <td style="width:200px">{{$student->area}}</td>
+            <td style="width:200px">{{$student['area']}}</td>
             <th style="width:200px">Postal Code</th>
-            <td style="width:200px">{{$student->permanent_address_post_office}}</td>
+            <td style="width:200px">{{$student['permanent_address_post_office']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Date of Birth</th>
-            <td style="width:200px">{{$student->dob}}</td>
+            <td style="width:200px">{{$student['dob']}}</td>
             <th style="width:200px">Permanent House Adress</th>
-            <td style="width:200px">{{$student->permanent_address}}</td>
+            <td style="width:200px">{{$student['permanent_address']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Blood Group</th>
             <td style="width:200px">
-                @if ($student->blood_group == 1 )
+                @if ($student['blood_group'] == 1 )
                 A+
-                @elseif ($student->blood_group == 2 )
+                @elseif ($student['blood_group'] == 2 )
                 B+
-                @elseif ($student->blood_group == 3 )
+                @elseif ($student['blood_group'] == 3 )
                 O+
-                @elseif ($student->blood_group == 4 )
+                @elseif ($student['blood_group'] == 4 )
                 AB+
-                @elseif ($student->blood_group == 5 )
+                @elseif ($student['blood_group'] == 5 )
                 A-
-                @elseif ($student->blood_group == 6 )
+                @elseif ($student['blood_group'] == 6 )
                 B-
-                @elseif ($student->blood_group == 6 )
+                @elseif ($student['blood_group'] == 6 )
                 O-
-                @elseif ($student->blood_group == 6 )
+                @elseif ($student['blood_group'] == 6 )
                 B-
                 @else
                 AB-
                 @endif
             </td>
             <th style="width:200px">Name of guardian</th>
-            <td style="width:200px">{{$student->absent_of_parent_name}}</td>
+            <td style="width:200px">{{$student['absent_of_parent_name']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Mobile Number</th>
-            <td style="width:200px">{{$student->mobile}}</td>
+            <td style="width:200px">{{$student['mobile']}}</td>
             <th style="width:200px">Relationship with guardian</th>
-            <td style="width:200px">{{$student->absent_of_parent_relation}}</td>
+            <td style="width:200px">{{$student['absent_of_parent_relation']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Facebook</th>
-            <td style="width:200px">{{$student->facebook}}</td>
+            <td style="width:200px">{{$student['facebook']}}</td>
             <th style="width:200px">Occupation of Guardian</th>
-            <td style="width:200px">{{$student->absent_of_parent_occupation}}</td>
+            <td style="width:200px">{{$student['absent_of_parent_occupation']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Email</th>
-            <td style="width:200px">{{$student->email}}</td>
+            <td style="width:200px">{{$student['email']}}</td>
             <th style="width:200px">Income of Guardian</th>
-            <td style="width:200px">{{$student->absent_of_parent_annual_earning}}</td>
+            <td style="width:200px">{{$student['absent_of_parent_annual_earning']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Previous Scholarship Organization</th>
-            <td style="width:200px">{{$student->previous_scholarship_name_group}}</td>
+            <td style="width:200px">{{$student['previous_scholarship_name_group']}}</td>
         </tr>
         <tr>
             <td style="width:200px">
-                <a href="{{route('students.edit',$student->id)}}"><button class="btn btn-primary">➥ Edit</button></a>
+                <a href="{{route('students.edit.session')}}"><button class="btn btn-primary">➥ Edit</button></a>
             </td>
             <td style="width:200px">
-                <a href="{{ route('print.student.info',$student->id) }}" class="btn btn-primary"> ➥ Download</a>
+                <a href="{{ route('students.confirm.registration') }}" class="btn btn-primary"> ➥ Confirm
+                    Registration</a>
             </td>
+            {{-- <a href="{{ route('print.student.info',$student['id']) }}" class="btn btn-primary"> ➥ Confirm
+                Registation</a> --}}
         </tr>
     </tbody>
 </table>

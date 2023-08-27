@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CounterController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\SponsorController;
-use App\Http\Controllers\AdController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Admin\PayController;
 use App\Http\Controllers\Admin\BlogController;
@@ -53,6 +53,8 @@ Route::get('student/result/{exam}/download', [ExamController::class, 'examResult
 Route::get('exam/list', [ExamController::class, 'frontendExamList'])->name('exam.list');
 Route::get('exam/result/{exam}', [ExamController::class, 'frontendExamResultDownload'])->name('exam.result.download');
 Route::get('print/student/info/{student}', [StudentController::class, 'printStudentInfo'])->name('print.student.info');
+Route::get('student/edit/session', [StudentController::class, 'studentEditSession'])->name('students.edit.session');
+Route::get('student/confirm/registration', [StudentController::class, 'studentConfirmRegistration'])->name('students.confirm.registration');
 
 // prefix('admin')->
 Route::middleware('auth')->group(function () {
