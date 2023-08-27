@@ -105,5 +105,16 @@
             </div>
         </div>
     </div>
+
+    <div class="col-lg-4 col-sm-6 mb-4">
+        <div class="card">
+            <div class="card-header text-center">
+                <div class="">
+                    <h5 class="mb-0">Total Area</h5>
+                </div>
+                <h4 class="card-title mb-1 text-success">{{ $totalArea }}</h4>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

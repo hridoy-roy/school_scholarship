@@ -23,6 +23,7 @@ use App\Http\Controllers\Frontend\SliderController;
 use App\Http\Controllers\Admin\ExamCenterController;
 use App\Http\Controllers\Frontend\GalleryController;
 use App\Http\Controllers\Admin\StudentClassController;
+use App\Http\Controllers\Admin\AreaController;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -62,6 +63,7 @@ Route::middleware('auth')->group(function () {
         Route::get('admin/dashboard', DashboardController::class)->name('admin.dashboard');
         Route::resources([
             'classes' => StudentClassController::class,
+            'areas' => AreaController::class,
             'users' => UserController::class,
             'blogs' => BlogController::class,
             'institute' => InstituteController::class,
