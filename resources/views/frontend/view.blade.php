@@ -103,20 +103,16 @@
             <td style="width:200px">{{$student['absent_of_parent_relation']}}</td>
         </tr>
         <tr>
-            <th style="width:200px">Facebook</th>
-            <td style="width:200px">{{$student['facebook']}}</td>
+            <th style="width:200px">Email</th>
+            <td style="width:200px">{{$student['email']}}</td>
             <th style="width:200px">Occupation of Guardian</th>
             <td style="width:200px">{{$student['absent_of_parent_occupation']}}</td>
         </tr>
-        <tr>
-            <th style="width:200px">Email</th>
-            <td style="width:200px">{{$student['email']}}</td>
+        <tr>  
+            <th style="width:200px">Previous Scholarship Organization</th>
+            <td style="width:200px">{{$student['previous_scholarship_name_group']}}</td>          
             <th style="width:200px">Income of Guardian</th>
             <td style="width:200px">{{$student['absent_of_parent_annual_earning']}}</td>
-        </tr>
-        <tr>
-            <th style="width:200px">Previous Scholarship Organization</th>
-            <td style="width:200px">{{$student['previous_scholarship_name_group']}}</td>
         </tr>
         <tr>
             <td style="width:200px">

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,13 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admit Card</title>
-
-
-
-
-
 </head>
 <style>
+    
+    .input-group {
+        padding: 6px;
+    }
     .top-side {
         margin-top: 20px;
         margin-left: 220px;
@@ -31,28 +29,28 @@
         margin: 80px 80px 80px 80px;
     }
 
+    .student{ 
+        width: 40%;
+     }
+
     .exam {
         width: 40%;
     }
 
     .father {
-        width: 43.5%;
+        width: 40%;
     }
 
     .school {
-        width: 87.5%;
+        width: 40%;
     }
 
     .roll {
-        width: 30%;
+        width: 45%;
     }
 
     .group {
-        width: 20%;
-    }
-
-    .time {
-        width: 23%;
+        width: 40%;
     }
 
     .address {
@@ -60,19 +58,22 @@
     }
 
     .mobile {
-        width: 41%;
+        width:40%;
     }
 
     .exam-date {
-        width: 39%;
+        width: 40%;
     }
 
     .exam-center {
-        width: 46.8%;
+        width: 40%;
+    }
+    .time {
+        width: 41%;
     }
 
     .class-name {
-        width: 10% !important;
+        width: 40% !important;
     }
 
     .footer {
@@ -87,10 +88,12 @@
     }
 
     .logo {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
     }
-
+    .mb-3{
+        margin-bottom: 6px;
+    }
     @media print {
 
         .top-side {
@@ -101,7 +104,6 @@
         }
 
         .top-logo {
-
             margin-bottom: 50px !important;
         }
 
@@ -116,24 +118,28 @@
             margin: 10px 10px 10px 10px;
         }
 
+        .student{ 
+        width: 28% !important;
+     }
+
         .father {
-            width: 150px !important;
+           width: 20% !important;
         }
 
         .school {
-            width: 400px !important;
+             width: 40% !important;
         }
 
         .class {
-            width: 15px !important;
+            width: 20% !important;
         }
 
         .roll {
-            width: 15px !important;
+           width: 48% !important;
         }
 
         .time {
-            width: 100px !important;
+            width: 2% !important;
         }
 
         .class-name {
@@ -141,15 +147,22 @@
         }
 
         .group {
-            width: 130px !important;
+            width: 20% !important;
         }
 
+        .mobile {
+        width: 20% !important;
+    }
+
         .address {
-            width: 150px !important;
+            width: 37% !important;
+        }
+        .exam-date{
+            width: 20% !important;
         }
 
         .exam-center {
-            width: 185px !important;
+            width: 40% !important;
         }
 
         .footer {
@@ -162,11 +175,14 @@
             font-family: "Times New Roman", Times, serif;
             font-size: 13px;
         }
-
+        
         .logo {
             margin-top: 50px !important;
-            width: 100px;
-            height: 100px;
+        width: 130px;
+        height: 130px;
+        }
+        .mb-3{
+            margin-bottom: 6px;
         }
 
         .footer {
@@ -177,154 +193,133 @@
 
 <body>
     @foreach ($students as $student)
-        <div style="">
+    <div style="">
 
-            <div style="border: 10px solid black;background-color:#e0e0e0;" class="all-border">
+        <div style="border: 10px solid black;background-color:#e0e0e0;" class="all-border">
 
-                <center>
+            <center>
 
-                    <div style="display:flex;width:100%;" class="top-side">
+                <div style="display:flex;width:100%;transform: translateX(-2%);" class="top-side">
 
-                        <div class="top-component top-logo" style="margin-top:30px;">
-                            <img src="{{ asset('upload/profile/' . $student['image']) }}" class="logo" alt=""
-                                srcset="" />
-                        </div>
+                    <div class="top-component top-logo" style="margin-top:30px;">
+                        <img src="{{ asset('upload/profile/' . $student['image']) }}" class="logo" alt="" srcset="" />
+                    </div>
 
-                        <div class="top-component" style="margin-top:-20px;">
-                            <img class="card-img-top" style="width: 100px" src="{{ asset('assets/admit/logo.png') }}"
-                                alt="Picture" />
-                            <h3><b>দি স্টুডেন্ট ওয়েলফেয়ার এসোসিয়েশন সাভার</b></h3>
-                            <h5 style="line-height:0" class="eng-text"><b>The Student Welfare Association Savar</b></h5>
-                            <h5 style="line-height:0"><b>বৃত্তি পরীক্ষা ২০২৩ ইং</b></h5>
-                            <h5 style="line-height:0"><b>রেজি নং - ঢ -০৮৫৭৭৩</b></h5>
-                        </div>
-                        <div class="top-component top-office" style="margin-top:30px;">
-                            <fieldset class="group-border">
-                                <legend class="group-border" style="text-align: center;">অফিস কর্তৃক পূরণীয়
-                                </legend>
+                    <div class="top-component" style="margin-top:-20px;">
+                        <img class="card-img-top" style="width: 100px" src="{{ asset('assets/admit/logo.png') }}" alt="Picture" />
+                        <h3><b>দি স্টুডেন্ট ওয়েলফেয়ার এসোসিয়েশন সাভার</b></h3>
+                        <h4 style="line-height:20px" class="eng-text"><b>The Student Welfare Association Savar</b></h4>
+                        <h5 style="line-height:30px"><b>Scholarship Exam Date 2023</b></h5>
+                        <h5><b>রেজি নং - ঢ -০৮৫৭৭৩</b></h5>
+                    </div>
+                    <div class="top-component top-office" style="margin-top:20px;">
+                        <fieldset class="group-border" style="padding: 10px">
+                            <legend class="group-border" style="text-align: center; margin-bottom:10px">Fill By The Office
+                            </legend>
 
-                                <div class="row">
+                            <div class="row">
 
-                                    <div class="col-lg-6">
-                                        <label class="control-label" for="name">বৃত্তি পরীক্ষার রোল:</label>
-                                    </div>
-
-                                    <div class="col-lg-5 space">
-                                        <input class="form-control input-sm office" disabled="disabled" id="title1"
-                                            name="title1" value="{{ $student['roll_no'] }}" type="text">
-                                    </div>
-
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="name">Scholarship Candidate Roll:</label>
                                 </div>
 
-
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label class="control-label" for="name">রেজিস্ট্রেশন নং:</label>
-                                    </div>
-                                    <div class="col-lg-5 space">
-                                        <input class="form-control input-sm office" disabled="disabled" id="title2"
-                                            name="title2" value="{{ $student['registration_no'] }}" type="text">
-                                    </div>
+                                <div class="col-lg-5 space">
+                                    <input class="form-control input-sm office" disabled="disabled" id="title1" name="title1" value="{{ $student['roll_no'] }}" type="text">
                                 </div>
 
+                            </div>
 
 
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label class="control-label" for="name">অঞ্চল:</label>
-                                    </div>
-                                    <div class="col-lg-5 space">
-                                        <input class="form-control input-sm office" disabled="disabled" id="title3"
-                                            name="title3" value="{{ $student['area'] }}" type="text">
-                                    </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="name">Registration No :</label>
                                 </div>
+                                <div class="col-lg-5 space">
+                                    <input class="form-control input-sm office" disabled="disabled" id="title2" name="title2" value="{{ $student['registration_no'] }}" type="text">
+                                </div>
+                            </div>
 
-                            </fieldset>
 
-                </center>
 
-                <div class="container-bottom" style="margin-top:50px !important;">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="name">Rigion :</label>
+                                </div>
+                                <div class="col-lg-5 space">
+                                    <input class="form-control input-sm office" disabled="disabled" id="title3" name="title3" value="{{ $student['area'] }}" type="text">
+                                </div>
+                            </div>
 
-                    <div class="input-group md-3" style="border: solid black;">
-                        <span class="input-group-text text-white bg-dark">পরীক্ষার্থীর নাম : </span>
-                        <input type="text" class="form-control exam" placeholder="" value="{{ $student['name_bn'] }}"
-                            style=" border-width : 0;background-color:#e0e0e0;">
-                        <span class="input-group-text text-white bg-dark">পিতার নাম :</span>
-                        <input type="text" class="form-control father" placeholder=""
-                            value="{{ $student['father_name_bn'] }}"
-                            style=" border-width : 0;background-color:#e0e0e0;">
+                        </fieldset>
 
-                    </div>
+            </center>
 
-                    <div class="input-group md-3" style="border: solid black;">
-                        <span class="input-group-text text-white bg-dark">শিক্ষা প্রতিষ্ঠানের নাম : </span>
-                        <input type="text" class="form-control school" placeholder=""
-                            value="{{ $student['institute']['name'] }}"
-                            style=" border-width : 0;background-color:#e0e0e0;">
+            <div class="container-bottom" style="margin-top:10px !important;">
 
-                    </div>
-
-                    <div class="input-group md-3" style="border: solid black;">
-                        <span class="input-group-text text-white bg-dark">শ্রেণী : </span>
-                        <input type="text" class="form-control class-name" placeholder=""
-                            value="{{ $student['student_class']['name'] }}"
-                            style=" border-width : 0;background-color:#e0e0e0;">
-                        <span class="input-group-text text-white bg-dark">রোল : </span>
-                        <input type="text" class="form-control roll" placeholder="" value="{{ $student['roll_no'] }}"
-                            style=" border-width : 0;background-color:#e0e0e0;">
-                        <span class="input-group-text text-white bg-dark">বিভাগ: </span>
-                        <input type="text" class="form-control group" placeholder=""
-                            value="{{ $student['class_section'] }}"
-                            style=" border-width : 0;background-color:#e0e0e0;">
-                        <span class="input-group-text text-white bg-dark">পরীক্ষার সময় : </span>
-                        <input type="text" class="form-control time"
-                            style=" border-width : 0;background-color:#e0e0e0;" placeholder=""
-                            value="{{ \Carbon\Carbon::parse($student['exam']['exam_time'])->format('g:i A') }}">
-                    </div>
-
-                    <div class="input-group md-3" style="border: solid black;">
-                        <span class="input-group-text text-white bg-dark">বর্তমান ঠিকানা : </span>
-                        <input type="text" class="form-control address" placeholder=""
-                            value="{{ $student['present_address'] }}"
-                            style=" border-width : 0;background-color:#e0e0e0;">
-                        <span class="input-group-text text-white bg-dark">মোবাইল : </span>
-                        <input type="text" class="form-control mobile" placeholder=""
-                            value="{{ $student['mobile'] }}" style=" border-width : 0;background-color:#e0e0e0;">
-                    </div>
-
-                    <div class="input-group md-3" style="border: solid black;">
-                        <span class="input-group-text text-white bg-dark">পরীক্ষার তারিখ : </span>
-                        <input type="text" class="form-control exam-date" placeholder=""
-                            value="{{ $student['present_address'] }}"
-                            style=" border-width : 0;background-color:#e0e0e0;">
-                        <span class="input-group-text text-white bg-dark">কেন্দ্র : </span>
-                        <input type="text" class="form-control exam-center" placeholder=""
-                            value="{{ $student['examCenter']['name'] }}"
-                            style=" border-width : 0;background-color:#e0e0e0;">
-                    </div>
+                <div class="input-group mb-3" style="border: 2px solid black;">
+                    <span class="input-group-text text-white bg-dark student">Student Name : </span>
+                    <input type="text" disabled class="form-control exam" placeholder="" value="{{ $student['name_bn'] }}" style=" border-width : 0;background-color:#e0e0e0;">
+                    <span class="input-group-text text-white bg-dark">Father Name :</span>
+                    <input type="text" disabled class="form-control father" placeholder="" value="{{ $student['father_name_bn'] }}" style=" border-width : 0;background-color:#e0e0e0;">
 
                 </div>
 
+                <div class="input-group mb-3" style="border: 2px solid black;">
+                    <span class="input-group-text text-white bg-dark">School Name : </span>
+                    <input type="text" disabled class="form-control school" placeholder="" value="{{ $student['institute']['name'] }}" style=" border-width : 0;background-color:#e0e0e0;">
+                    <span class="input-group-text text-white bg-dark">Class : </span>
+                    <input type="text" disabled class="form-control class-name" placeholder="" value="{{ $student['student_class']['name'] }}" style=" border-width : 0;background-color:#e0e0e0;">
+                </div>
+
+                <div class="input-group mb-3" style="border: 2px solid black;">
+                    
+                    <span class="input-group-text text-white bg-dark">Roll : </span>
+                    <input type="text" disabled class="form-control roll" placeholder="" value="{{ $student['roll_no'] }}" style=" border-width : 0;background-color:#e0e0e0;">
+                    <span class="input-group-text text-white bg-dark">Division: </span>
+                    <input type="text" disabled class="form-control group" placeholder="" value="{{ $student['class_section'] }}" style=" border-width : 0;background-color:#e0e0e0;">
+                    
+                </div>
+
+                <div class="input-group mb-3" style="border: 2px solid black;">
+                    <span class="input-group-text text-white bg-dark">Present Address : </span>
+                    <input type="text" disabled class="form-control address" placeholder="" value="{{ $student['present_address'] }}" style=" border-width : 0;background-color:#e0e0e0;">
+                    <span class="input-group-text text-white bg-dark">Mobile : </span>
+                    <input type="text" disabled class="form-control mobile" placeholder="" value="{{ $student['mobile'] }}" style=" border-width : 0;background-color:#e0e0e0;">
+                </div>
+
+                <div class="input-group mb-3" style="border: 2px solid black;">
+                    <span class="input-group-text text-white bg-dark">Exam Time : </span>
+                    <input type="text" disabled class="form-control time" style=" border-width : 0;background-color:#e0e0e0;" placeholder="" value="{{ \Carbon\Carbon::parse($student['exam']['exam_time'])->format('g:i A') }}">
+                    <span class="input-group-text text-white bg-dark">Exam Date : </span>
+                    <input type="text" disabled class="form-control exam-date" placeholder="" value="{{ $student['present_address'] }}" style=" border-width : 0;background-color:#e0e0e0;">
+                </div>
+                <div class="input-group mb-3" style="border: 2px solid black;">
+                    <span class="input-group-text text-white bg-dark">Center : </span>
+                    <input type="text" disabled class="form-control exam-center" placeholder="" value="{{ $student['examCenter']['name'] }}" style=" border-width : 0;background-color:#e0e0e0;">
+                </div>
+
             </div>
-        </div>
-
-        <div class="footer">
-
-            <div style="float: right; padding:30px 0px; text-align:center;">
-
-
-                <h4> <b>পরিচালক</b> </h4>
-                <h4> <b>দি স্টুডেন্ট ওয়েলফেয়ার এসোসিয়েশন সাভার</b></h4>
-
-            </div>
-        </div>
-        <br>
-            <br>
-            <br>
-
 
         </div>
+    </div>
+
+    <div class="footer">
+
+        <div style="float: right; padding:30px 0px; text-align:center;">
+
+
+            <h4> <b>Director</b> </h4>
+            <h4> <b>The Student welfare association Savar</b></h4>
+
         </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+    </div>
+    </div>
     @endforeach
 </body>
 
