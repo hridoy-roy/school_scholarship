@@ -41,14 +41,14 @@
                     <div class="row mb-3">
                         <div class="col-md">
                             <label class="form-label" for="name">Enter Counter Name <code>*</code></label>
-                            <input type="text" class="form-control" name="total_applicant" placeholder="Enter Counter Name" value="{{@$counter->total_applicant}}" />
+                            <input type="text" class="form-control" name="total_applicant" placeholder="Enter Counter Name" value="{{@$counter->total_applicant ?? old('total_applicant')}}" />
                             @error('total_applicant')
                             <code>*{{$message}}</code>
                             @enderror
                         </div>
                         <div class="col-md">
                             <label class="form-label" for="name">Enter Counter Number <code>*</code></label>
-                            <input type="text" class="form-control" name="total_applicant_number" placeholder="Enter Counter Number" value="{{@$counter->total_applicant_number}}" />
+                            <input type="text" class="form-control" name="total_applicant_number" placeholder="Enter Counter Number" value="{{@$counter->total_applicant_number ?? old('total_applicant_number')}}" />
                             @error('total_applicant_number')
                             <code>*{{$message}}</code>
                             @enderror
@@ -57,14 +57,14 @@
                     <div class="row mb-3">
                         <div class="col-md">
                             <label class="form-label" for="name">Enter Counter Name <code>*</code></label>
-                            <input type="text" class="form-control" name="total_scholarship" placeholder="Enter Counter Name" value="{{@$counter->total_scholarship}}" />
+                            <input type="text" class="form-control" name="total_scholarship" placeholder="Enter Counter Name" value="{{@$counter->total_scholarship ?? old('total_scholarship')}}" />
                             @error('total_scholarship')
                             <code>*{{$message}}</code>
                             @enderror
                         </div>
                         <div class="col-md">
                             <label class="form-label" for="name">Enter Counter Number <code>*</code></label>
-                            <input type="text" class="form-control" name="total_scholarship_number" placeholder="Enter Counter Number" value="{{@$counter->total_scholarship_number}}" />
+                            <input type="text" class="form-control" name="total_scholarship_number" placeholder="Enter Counter Number" value="{{@$counter->total_scholarship_number ?? old('total_scholarship_number')}}" />
                             @error('total_scholarship_number')
                             <code>*{{$message}}</code>
                             @enderror
@@ -73,14 +73,14 @@
                     <div class="row mb-3">
                         <div class="col-md">
                             <label class="form-label" for="name">Enter Counter Name <code>*</code></label>
-                            <input type="text" class="form-control" name="total_school" placeholder="Enter Counter Name" value="{{@$counter->total_school}}" />
+                            <input type="text" class="form-control" name="total_school" placeholder="Enter Counter Name" value="{{@$counter->total_school ?? old('total_school')}}" />
                             @error('total_school')
                             <code>*{{$message}}</code>
                             @enderror
                         </div>
                         <div class="col-md">
                             <label class="form-label" for="name">Enter Counter Number <code>*</code></label>
-                            <input type="text" class="form-control" name="total_school_number" placeholder="Enter Counter Number" value="{{@$counter->total_school_number}}" />
+                            <input type="text" class="form-control" name="total_school_number" placeholder="Enter Counter Number" value="{{@$counter->total_school_number ?? old('total_school_number')}}" />
                             @error('total_school_number')
                             <code>*{{$message}}</code>
                             @enderror
@@ -89,14 +89,14 @@
                     <div class="row mb-3">
                         <div class="col-md">
                             <label class="form-label" for="name">Enter Counter Name <code>*</code></label>
-                            <input type="text" class="form-control" name="total_exam_center" placeholder="Enter Counter Name" value="{{@$counter->total_exam_center}}" />
+                            <input type="text" class="form-control" name="total_exam_center" placeholder="Enter Counter Name" value="{{@$counter->total_exam_center ?? old('total_exam_center')}}" />
                             @error('total_exam_center')
                             <code>*{{$message}}</code>
                             @enderror
                         </div>
                         <div class="col-md">
                             <label class="form-label" for="name">Enter Counter Number <code>*</code></label>
-                            <input type="text" class="form-control" name="total_exam_center_number" placeholder="Enter Counter Number" value="{{@$counter->total_exam_center_number}}" />
+                            <input type="text" class="form-control" name="total_exam_center_number" placeholder="Enter Counter Number" value="{{@$counter->total_exam_center_number ?? old('total_exam_center_number')}}" />
                             @error('total_exam_center_number')
                             <code>*{{$message}}</code>
                             @enderror

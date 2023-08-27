@@ -90,10 +90,6 @@
                         </x-input>
                     </div> --}}
 
-                   
-
-                    
-                  
                   
 
                     <div class="col-12">

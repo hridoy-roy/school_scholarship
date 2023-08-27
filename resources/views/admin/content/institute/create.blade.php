@@ -35,14 +35,14 @@
 
                     <div class="mb-3">
                         <label class="form-label" for="name">Institute Name <code>*</code></label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter Institute Name" value="{{@$institute->name}}" />
+                        <input type="text" class="form-control" name="name" placeholder="Enter Institute Name" value="{{@$institute->name ?? old('name')}}" />
                         @error('name')
                         <code>*{{$message}}</code>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="order_by">Institute Serial</label>
-                        <input type="text" class="form-control" name="order_by" id="basic-default-company" value="{{@$institute->order_by}}" placeholder="Enter Category Serial" />
+                        <input type="text" class="form-control" name="order_by" id="basic-default-company" value="{{@$institute->order_by ?? old('order_by')}}" placeholder="Enter Category Serial" />
                         @error('order_by')
                         <code>*{{$message}}</code>
                         @enderror

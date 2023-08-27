@@ -23,12 +23,14 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Site Admin Section</span>
         </li>
+
         <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }} menu-item">
             <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-smart-home"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
         </li>
+
         <li
             class="{{ request()->routeIs('examcenter.index') || request()->routeIs('examcenter.create') || request()->routeIs('examcenter.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -91,6 +93,30 @@
 
                 <li class="{{ request()->routeIs('classes.list') ? 'active' : '' }} menu-item">
                     <a href="{{ route('classes.index') }}" class="menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <li
+            class="{{ request()->routeIs('areas.create') || request()->routeIs('areas.list') || request()->routeIs('areas.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-server"></i>
+                <div data-i18n="Dashboards">Area</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+
+                <li class="{{ request()->routeIs('areas.create') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('areas.create') }}" class="menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+
+                <li class="{{ request()->routeIs('areas.list') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('areas.index') }}" class="menu-link">
                         <div>List</div>
                     </a>
                 </li>
@@ -232,6 +258,8 @@
                 </li>
             </ul>
         </li>
+
+
         <li
             class="{{ request()->routeIs('slider.list') || request()->routeIs('slider.create') || request()->routeIs('slider.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -252,31 +280,22 @@
                         <div>List</div>
                     </a>
                 </li>
+
+
             </ul>
         </li>
 
-        <li
-            class="{{ request()->routeIs('counter.create') || request()->routeIs('counter.index') || request()->routeIs('history.edit') ? 'active open' : '' }} menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon ti ti-clipboard"></i>
-                <div data-i18n="Dashboards">Counter</div>
-                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+
+        {{-- <li class="{{ request()->routeIs('admin.main') ? ' ' : '' }} menu-item">
+            <a href="{{ route('admin.main') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Dashboards">Main Image</div>
             </a>
-            <ul class="menu-sub">
+        </li> --}}
 
-                <li class="{{ request()->routeIs('counter.create') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('counter.create') }}" class="menu-link">
-                        <div>Create</div>
-                    </a>
-                </li>
 
-                <li class="{{ request()->routeIs('history.index') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('counter.index') }}" class="menu-link">
-                        <div>List</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
+
+
         <li
             class="{{ request()->routeIs('history.create') || request()->routeIs('history.index') || request()->routeIs('history.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">

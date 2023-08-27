@@ -14,7 +14,7 @@ class Slider extends Model
     // ];
 
 
-    protected $fillable = ['sub_title', 'title', 'description', 'link1', 'link2', 'bg_img'];
+    protected $fillable = ['sub_title', 'title', 'description', 'link1', 'link2', 'bc_img'];
 
     // protected $fillable = ['sub_title', 'title', 'description', 'link1', 'link2', 'logo', 'favicon', 'bc_img'];
 

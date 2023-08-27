@@ -40,6 +40,7 @@ class SliderController extends Controller
             'description' => 'required|string',
             'link1' => 'required|string',
             'link2' => 'required|string',
+
             'bg_img' => 'required|image',
             
             // 'logo' => 'required|image',
@@ -57,28 +58,20 @@ class SliderController extends Controller
         $sliders->link2 = $request->link2;
 
 
-        // $bg_file = $request->file('bg_img');
-        // Storage::putFile('upload/bg_img/', $bg_file);
-
-        
+        $bg_file = $request->file('bg_img');
+        Storage::putFile('upload/bg_img/', $bg_file);
 
 
         $fileName = time() . "-slider." . $request->file('bg_img')->getClientOriginalExtension();
-
         Image::make($request->file('bg_img'))->save('upload/bg_img/'. $fileName);
-
         $sliders->bg_img = "upload/bg_img/".$fileName;
-
         $sliders->save();
-
         return redirect()->route('slider.create')->with('success', "New Slider create Successfully");
 
-        
 
-        // $sliders = Slider::create(array_merge($request->validated(), ['bg_img' => $fileName, 'user_id' => auth()->user()->id]));
-
-        // session()->put('success', 'Item created successfully.');
-        // return redirect()->back();
+        $sliders = Slider::create(array_merge($request->validated(), ['bg_img' => $fileName, 'user_id' => auth()->user()->id]));
+        session()->put('success', 'Item created successfully.');
+        return redirect()->back();
 
 
         // $logo_file = $request->file('logo');
@@ -148,35 +141,26 @@ class SliderController extends Controller
         // }
 
 
+
+
+
         if ($request->bg_img != '') {
 
-            //code for remove old file
             if ($sliders->bg_img != ''  && $sliders->bg_img != null) {
                 unlink( $sliders->bg_img);
             }
-
-            //upload new file
+            
             $fileName = time() . "-slider." . $request->file('bg_img')->getClientOriginalExtension();
             Image::make($request->file('bg_img'))->save('upload/bg_img/' . $fileName);
-            
-
-            //for update in table
-            // $sliders->update(array_merge($request->validated(), ['bg_img' => $fileName]));
-
             $sliders->bg_img = "upload/bg_img/".$fileName;
-
             $sliders->save();
-
-
             session()->put('success', 'Item Updated successfully.');
             return redirect()->back();
         }
 
-        // $sliders->update(array_merge($request->validated(), ['bg_img' => $sliders->bg_img]));
-        // session()->put('success', 'Slider Updated successfully.');
-        // return redirect()->back();
-
-
+            $sliders->update(array_merge($request->validated(), ['bg_img' => $sliders->bg_img]));
+            session()->put('success', 'Slider Updated successfully.');
+            return redirect()->back();
 
 
 
@@ -207,7 +191,6 @@ class SliderController extends Controller
       
     
         $sliders->save();
-
         return redirect()->route('slider.list')->with('success', "Slider Update Successfully");
     }
 
@@ -226,7 +209,6 @@ class SliderController extends Controller
       
 
         $slider->delete();
-
         return redirect()->route('slider.list')->with('success','Slider Deleteed Successfully');
     }
 

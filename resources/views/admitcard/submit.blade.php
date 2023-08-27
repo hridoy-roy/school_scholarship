@@ -127,8 +127,8 @@
     
               <p class="note">Note: You have to make confirm your payment of tuition fees before downloading the admit card</p>
     
-              <form>
-                
+              <form action="{{ url('submit/verify') }}" method="POST">
+                @csrf
     
                 <span class="options-divider"> </span>
                 <!-- <span class="option-br"></span> -->

@@ -1,18 +1,22 @@
+
+<?php 
+use Illuminate\Support\Facades\DB;
+$sliders = DB::table('sliders')->get();
+$latest = DB::table('sliders')->latest('id')->first();
+
+?>
+
+
+
+
 @extends('frontend.layouts.main')
 
 @section('main-container')
 
 <!--home Section -->
 
-@if (count($sliders) > 0)
-@foreach ($sliders as $slider)
 
-   <section id="home" class="home"  style="background-image: url(<?php echo $slider->bg_img ?>)">
-
-    @endforeach
-
-    @endif
-
+   <section id="home" class="home"  style="background-image: url(<?php echo $latest->bg_img ?>)">
 
 
 
@@ -27,7 +31,6 @@
 
                      @if (count($sliders) > 0)
                         @foreach ($sliders as $slider)
-
 
 
                             <div class="single_home_slider">
