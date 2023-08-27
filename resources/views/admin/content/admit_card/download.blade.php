@@ -7,15 +7,16 @@
     <title>Admit Card</title>
 </head>
 <style>
-    
     .input-group {
-        padding: 6px;
+        padding:5px;
     }
+
     .top-side {
         margin-top: 20px;
         margin-left: 220px;
         margin-right: 20px;
         margin-bottom: -20px;
+        transform: translateX(-6%);
     }
 
     .top-component {
@@ -29,9 +30,9 @@
         margin: 80px 80px 80px 80px;
     }
 
-    .student{ 
+    .student {
         width: 40%;
-     }
+    }
 
     .exam {
         width: 40%;
@@ -58,7 +59,7 @@
     }
 
     .mobile {
-        width:40%;
+        width: 40%;
     }
 
     .exam-date {
@@ -68,6 +69,7 @@
     .exam-center {
         width: 40%;
     }
+
     .time {
         width: 41%;
     }
@@ -91,16 +93,24 @@
         width: 180px;
         height: 180px;
     }
-    .mb-3{
-        margin-bottom: 6px;
-    }
-    @media print {
 
+    .mb-3 {
+        margin-bottom: 3px;
+    }
+
+    @media print {
+        legend{
+            margin-bottom: 0 !important;
+        }
+        .group-border{
+            padding: 0 !important;
+        }
         .top-side {
             margin-top: 20px;
             margin-left: 20px;
             margin-right: 20px;
             margin-bottom: -20px;
+            transform: translateX(-2%);
         }
 
         .top-logo {
@@ -118,16 +128,16 @@
             margin: 10px 10px 10px 10px;
         }
 
-        .student{ 
-        width: 28% !important;
-     }
+        .student {
+            width: 20% !important;
+        }
 
         .father {
-           width: 20% !important;
+            width: 20% !important;
         }
 
         .school {
-             width: 40% !important;
+            width: 39% !important;
         }
 
         .class {
@@ -135,11 +145,11 @@
         }
 
         .roll {
-           width: 48% !important;
+            width: 48% !important;
         }
 
         .time {
-            width: 2% !important;
+            width: 41% !important;
         }
 
         .class-name {
@@ -151,13 +161,14 @@
         }
 
         .mobile {
-        width: 20% !important;
-    }
+            width: 20% !important;
+        }
 
         .address {
             width: 37% !important;
         }
-        .exam-date{
+
+        .exam-date {
             width: 20% !important;
         }
 
@@ -175,14 +186,19 @@
             font-family: "Times New Roman", Times, serif;
             font-size: 13px;
         }
-        
+
         .logo {
             margin-top: 50px !important;
-        width: 130px;
-        height: 130px;
+            width: 130px;
+            height: 130px;
         }
-        .mb-3{
-            margin-bottom: 6px;
+
+        .mb-3 {
+            margin-bottom: 3px;
+        }
+
+        .input-group {
+            padding:5px;
         }
 
         .footer {
@@ -199,7 +215,7 @@
 
             <center>
 
-                <div style="display:flex;width:100%;transform: translateX(-2%);" class="top-side">
+                <div style="display:flex;width:100%;" class="top-side">
 
                     <div class="top-component top-logo" style="margin-top:30px;">
                         <img src="{{ asset('upload/profile/' . $student['image']) }}" class="logo" alt="" srcset="" />
@@ -256,7 +272,7 @@
 
             <div class="container-bottom" style="margin-top:10px !important;">
 
-                <div class="input-group mb-3" style="border: 2px solid black;">
+                <div class="input-group mb-3" style="border:1px solid black;">
                     <span class="input-group-text text-white bg-dark student">Student Name : </span>
                     <input type="text" disabled class="form-control exam" placeholder="" value="{{ $student['name_bn'] }}" style=" border-width : 0;background-color:#e0e0e0;">
                     <span class="input-group-text text-white bg-dark">Father Name :</span>
@@ -264,36 +280,36 @@
 
                 </div>
 
-                <div class="input-group mb-3" style="border: 2px solid black;">
+                <div class="input-group mb-3" style="border:1px solid black;">
                     <span class="input-group-text text-white bg-dark">School Name : </span>
                     <input type="text" disabled class="form-control school" placeholder="" value="{{ $student['institute']['name'] }}" style=" border-width : 0;background-color:#e0e0e0;">
                     <span class="input-group-text text-white bg-dark">Class : </span>
                     <input type="text" disabled class="form-control class-name" placeholder="" value="{{ $student['student_class']['name'] }}" style=" border-width : 0;background-color:#e0e0e0;">
                 </div>
 
-                <div class="input-group mb-3" style="border: 2px solid black;">
-                    
+                <div class="input-group mb-3" style="border:1px solid black;">
+
                     <span class="input-group-text text-white bg-dark">Roll : </span>
                     <input type="text" disabled class="form-control roll" placeholder="" value="{{ $student['roll_no'] }}" style=" border-width : 0;background-color:#e0e0e0;">
                     <span class="input-group-text text-white bg-dark">Division: </span>
                     <input type="text" disabled class="form-control group" placeholder="" value="{{ $student['class_section'] }}" style=" border-width : 0;background-color:#e0e0e0;">
-                    
+
                 </div>
 
-                <div class="input-group mb-3" style="border: 2px solid black;">
+                <div class="input-group mb-3" style="border:1px solid black;">
                     <span class="input-group-text text-white bg-dark">Present Address : </span>
                     <input type="text" disabled class="form-control address" placeholder="" value="{{ $student['present_address'] }}" style=" border-width : 0;background-color:#e0e0e0;">
                     <span class="input-group-text text-white bg-dark">Mobile : </span>
                     <input type="text" disabled class="form-control mobile" placeholder="" value="{{ $student['mobile'] }}" style=" border-width : 0;background-color:#e0e0e0;">
                 </div>
 
-                <div class="input-group mb-3" style="border: 2px solid black;">
+                <div class="input-group mb-3" style="border:1px solid black;">
                     <span class="input-group-text text-white bg-dark">Exam Time : </span>
                     <input type="text" disabled class="form-control time" style=" border-width : 0;background-color:#e0e0e0;" placeholder="" value="{{ \Carbon\Carbon::parse($student['exam']['exam_time'])->format('g:i A') }}">
                     <span class="input-group-text text-white bg-dark">Exam Date : </span>
                     <input type="text" disabled class="form-control exam-date" placeholder="" value="{{ $student['present_address'] }}" style=" border-width : 0;background-color:#e0e0e0;">
                 </div>
-                <div class="input-group mb-3" style="border: 2px solid black;">
+                <div class="input-group mb-3" style="border:1px solid black;">
                     <span class="input-group-text text-white bg-dark">Center : </span>
                     <input type="text" disabled class="form-control exam-center" placeholder="" value="{{ $student['examCenter']['name'] }}" style=" border-width : 0;background-color:#e0e0e0;">
                 </div>
