@@ -41,8 +41,8 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="order_by">Class Serial</label>
-                        <input type="text" class="form-control" name="order_by" id="basic-default-company" value="{{@$class->order_by ?? old('order_by')}}" placeholder="Enter Category Serial" />
+                        <label class="form-label" for="order_by">Class Number</label>
+                        <input type="text" class="form-control" name="order_by" id="basic-default-company" value="{{@$class->order_by ?? old('order_by')}}" placeholder="Enter Class Number" />
                         @error('order_by')
                         <code>*{{$message}}</code>
                         @enderror

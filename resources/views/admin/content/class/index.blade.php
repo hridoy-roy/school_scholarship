@@ -17,14 +17,14 @@
             <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Order By</th>                      
-            <th>Institute Status</th>
+            <th>Class Number</th>
+            <th>Class Status</th>
             <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @php 
-            $sl=1 
+            @php
+            $sl=1
             @endphp
 
             @foreach($classes as $class)
@@ -51,16 +51,16 @@
             </tr>
             @endforeach
         </tbody>
-        <tfoot class="table-border-bottom-0">
+        {{-- <tfoot class="table-border-bottom-0">
             <tr>
             <th class="rounded-start-bottom">ID</th>
             <th>Name</th>
-            <th>Order By</th>                      
+            <th>Order By</th>
             <th>Institute Status</th>
             <th class="rounded-end-bottom">Actions</th>
             </tr>
-        </tfoot>
-        </table>          
+        </tfoot> --}}
+        </table>
     </div>
 </div>
 @endsection
