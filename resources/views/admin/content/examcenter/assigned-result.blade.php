@@ -57,11 +57,11 @@
                         <th>Photo & Name</th>
                         <th>Reg. No</th>
                         <th>Roll</th>
-                        <th>Reg. Date</th>
-                        <th>Mobile</th>
+                        <th>Roll</th>
                         <th>Pay Status</th>
                         <th>Exam Check</th>
                         <th>Marks</th>
+                        <th>Scholar Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,8 +84,7 @@
                         </td>
                         <td>{{ $student->registration_no }}</td>
                         <td>{{ $student->roll_no ?? 'Not Set' }}</td>
-                        <td>{{ $student->created_at->format('d.m.Y') }}</td>
-                        <td>{{ $student->mobile }}</td>
+                        <td>{{ $student->roll_no ?? 'Not Set' }}</td>
                         <td>
                             @if ($student->payment_status === 'unpaid')
                             <span class="badge bg-label-danger me-1">Unpaid</span>
@@ -95,12 +94,22 @@
                         </td>
                         <td>
                             <input type="checkbox" class="form-check-input" id="basic-default-checkbox"
-                                name="student_id[]" value="{{ $student->id }}" @if($student->marks || $student->exam_id)
+                            name="student_id[]" value="{{ $student->id }}" @if($student->marks || $student->exam_id)
                             checked @endif>
                         </td>
                         <td>
                             <input type="text" class="form-input" value="{{ $student->marks }}" id="basic-default"
-                                name="marks[]">
+                            name="marks[{{$student->id}}]">
+                        </td>
+                        <td>
+                            <div class="form-check form-check-success">
+                                <input name="scholar_status[{{$student->id}}]" value="talent_full" class="form-check-input" type="radio" {{($student->scholar_status ?? null) === 'talent_full' ? 'checked'  : ''}} id="customRadioSuccess">
+                                <label class="form-check-label" > Talent Full </label>
+                            </div>
+                            <div class="form-check form-check-warning">
+                                <input name="scholar_status[{{$student->id}}]" value="general" class="form-check-input" type="radio" {{($student->scholar_status ?? null) === 'general' ? 'checked'  : ''}} id="customRadiowarning">
+                                <label class="form-check-label" > General </label>
+                            </div>
                         </td>
                     </tr>
                     @endforeach

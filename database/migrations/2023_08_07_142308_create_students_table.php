@@ -56,6 +56,7 @@ return new class extends Migration
             $table->string('previous_scholarship_name_group')->nullable();
             $table->enum('payment_status', ['paid', 'unpaid'])->default('unpaid');
             $table->float('marks', 8, 2)->nullable();
+            $table->enum('scholar_status', ['talent_full', 'general', null])->nullable();
             $table->timestamps();
         });
     }
