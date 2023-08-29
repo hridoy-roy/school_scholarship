@@ -47,21 +47,6 @@
                             name="exam_time">
                         </x-input>
                     </div>
-                    <div class="col-md-6">
-                        <x-input :value='$exam->first_grade' label='First Grade Marks' :required=true
-                            placeholder='Write Your Exam Name' name="first_grade">
-                        </x-input>
-                    </div>
-                    <div class="col-md-6">
-                        <x-input :value='$exam->second_grade' label='Second Grade Marks'
-                            placeholder='Write Your Exam Name' name="second_grade">
-                        </x-input>
-                    </div>
-                    <div class="col-md-6">
-                        <x-input :value='$exam->third_grade' label='Third Grade Marks'
-                            placeholder='Write Your Exam Name' name="third_grade">
-                        </x-input>
-                    </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
                     </div>

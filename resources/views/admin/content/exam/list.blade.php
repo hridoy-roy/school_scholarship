@@ -18,9 +18,6 @@
                     <th>Date</th>
                     <th>Time</th>
                     <th>Remiding</th>
-                    <th>First Grade</th>
-                    <th>Second Grade</th>
-                    <th>Third Grade</th>
                     <th>Students</th>
                     <th>Result</th>
                     <th>Actions</th>
@@ -37,9 +34,6 @@
                     <td>
                         {{ \Carbon\Carbon::parse($exam->exam_date)->diffForHumans() }}
                     </td>
-                    <td>{{ $exam->first_grade }}</td>
-                    <td>{{ $exam->second_grade }}</td>
-                    <td>{{ $exam->third_grade }}</td>
                     <td>{{ $exam->students->count() }}</td>
                     <td>
                         @if ($exam->result_publish)

@@ -17,9 +17,6 @@ return new class extends Migration
             $table->date('exam_date');
             $table->time('exam_time');
             $table->boolean('result_publish')->default(false);
-            $table->integer('first_grade');
-            $table->integer('second_grade')->nullable();
-            $table->integer('third_grade')->nullable();
             $table->timestamps();
         });
     }

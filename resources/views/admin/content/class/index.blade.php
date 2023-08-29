@@ -10,14 +10,16 @@
     <a href="{{route('classes.create')}}"> <button class=" btn btn-primary">➥ Create</button></a>
 </div>
 <div class="card">
-    <h5 class="card-header">Create Institute</h5>
+    <h5 class="card-header">Create Classes</h5>
     <div class="table-responsive text-nowrap">
         <table class="table">
         <thead>
             <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Class Number</th>
+            <th>Talent Ful Mark</th>
+            <th>General Mark</th>
+            <th>Class Serial</th>
             <th>Class Status</th>
             <th>Action</th>
             </tr>
@@ -31,6 +33,8 @@
             <tr>
             <td>{{$sl++}}</td>
             <td>{{$class->name}}</td>
+            <td>{{$class->talent_full_mark}}</td>
+            <td>{{$class->general_mark}}</td>
             <td>{{$class->order_by}}</td>
             <td><span class="badge bg-label-primary me-1">{{$class->status == 1 ? 'Active' : 'Inactive'}}</span></td>
             <td>

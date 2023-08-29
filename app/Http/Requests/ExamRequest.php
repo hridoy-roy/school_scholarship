@@ -26,9 +26,6 @@ class ExamRequest extends FormRequest
             'name' => ['required', 'unique:exams,name', 'string'],
             'exam_date' => ['required', 'date'],
             'exam_time' => ['required'],
-            'first_grade' => ['required', 'integer'],
-            'second_grade' => ['nullable', 'integer'],
-            'third_grade' => ['nullable', 'integer'],
         ];
     }
 }
