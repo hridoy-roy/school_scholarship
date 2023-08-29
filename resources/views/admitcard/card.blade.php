@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script> --}}
 
-  {{-- Bangla font --}}
-  <link href="https://fonts.maateen.me/bangla/font.css" rel="stylesheet">
-  <link href="https://fonts.maateen.me/apona-lohit/font.css" rel="stylesheet">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script> --}}
+
+    {{-- Bangla font --}}
+    <link href="https://fonts.maateen.me/bangla/font.css" rel="stylesheet">
+    <link href="https://fonts.maateen.me/apona-lohit/font.css" rel="stylesheet">
 
 
     <!--Google Fonts link-->
@@ -24,48 +25,50 @@
 
 
 
-    <style> legend.group-border {
-        /* width: inherit; */
-        /* Or auto */
-        /* padding: 0 5px; */
-        /* To give a bit of padding on the left and right */
-        /* border-bottom: none; */
-      }
-      
-      fieldset.group-border {
-        border: 2px groove #000000 !important;
-        background-color: #ffffff
-        /* padding: 0 1.4em 1.4em 1.4em !important; */
-        /* margin: 0 0 1.5em 0 !important; */
-        /* -webkit-box-shadow: 0px 0px 0px 0px #000;
+    <style>
+        legend.group-border {
+            /* width: inherit; */
+            /* Or auto */
+            /* padding: 0 5px; */
+            /* To give a bit of padding on the left and right */
+            /* border-bottom: none; */
+        }
+
+        fieldset.group-border {
+            border: 2px groove #000000 !important;
+            background-color: #ffffff
+                /* padding: 0 1.4em 1.4em 1.4em !important; */
+                /* margin: 0 0 1.5em 0 !important; */
+                /* -webkit-box-shadow: 0px 0px 0px 0px #000;
         box-shadow: 0px 0px 0px 0px #000; */
-      }
-      .group-border{
-        padding: 3px 0px;
+        }
 
-        
-        font-size: 16px;
-        font-weight: bold;
+        .group-border {
+            padding: 3px 0px;
 
-      }
-      .control-label{
-        padding: 6px 6px;
-      }
 
-      .space{
-        padding: 3px 0px;
-      }
-      
-      
-      </style>
-    
- 
-      
+            font-size: 16px;
+            font-weight: bold;
+
+        }
+
+        .control-label {
+            padding: 6px 6px;
+        }
+
+        .space {
+            padding: 3px 0px;
+        }
+    </style>
+
+
+
 
 
 </head>
+
 <body>
-    
+
     <div class="container bg-dark bangla_font" style="padding: .6rem; ">
 
         <div class="container mt3 p-3" style="background-color: #e0e0e0">
@@ -123,7 +126,7 @@
                                     <input class="form-control input-sm" disabled="disabled" id="title1" name="title1" value=" {{ $student->roll_no}}" type="text">
                                 </div>
 
-                            </div>
+                                <div style="width: 15vh; float: left; ">
 
 
                              <div class="row">
@@ -207,7 +210,7 @@
                     <label class="form-control"> <b> {{ $student->area}} </b></label>
                 </div>
 
-            </div> {{--  container-bottom --}}
+            </div> {{-- container-bottom --}}
 
         </div> {{--  container mt3 --}}
 
@@ -274,4 +277,5 @@
 
 
 </body>
+
 </html>

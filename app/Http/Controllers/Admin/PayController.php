@@ -34,7 +34,7 @@ class PayController extends Controller
                 if ($student->payment_status === 'unpaid') {
                     $student->update([
                         'payment_status' => 'paid',
-                        'roll_no' => $student->id + 1,
+                        'roll_no' => $student->student_class->order_by . '-' . $student->id + 1,
                     ]);
                 }
             }

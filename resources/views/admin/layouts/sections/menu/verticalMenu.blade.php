@@ -101,6 +101,30 @@
 
 
         <li
+            class="{{ request()->routeIs('areas.create') || request()->routeIs('areas.list') || request()->routeIs('areas.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-server"></i>
+                <div data-i18n="Dashboards">Area</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
+            </a>
+            <ul class="menu-sub">
+
+                <li class="{{ request()->routeIs('areas.create') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('areas.create') }}" class="menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+
+                <li class="{{ request()->routeIs('areas.list') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('areas.index') }}" class="menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <li
             class="{{ request()->routeIs('exams.index') || request()->routeIs('exams.create') || request()->routeIs('exams.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon ti ti-clipboard"></i>

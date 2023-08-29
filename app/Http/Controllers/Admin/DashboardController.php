@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Gallery;
 use App\Models\Institute;
 use App\Models\StudentClass;
+use App\Models\Area;
 
 class DashboardController extends Controller
 {
@@ -31,6 +32,7 @@ class DashboardController extends Controller
             'totalGallery' => Gallery::count(),
             'totalSchool' => Institute::count(),
             'totalClass' => StudentClass::count(),
+            'totalArea' => Area::count(),
         ];
         return view('admin.content.dashboard.dashboard', $data);
     }

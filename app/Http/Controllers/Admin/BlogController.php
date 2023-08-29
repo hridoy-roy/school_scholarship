@@ -106,6 +106,12 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    /**
+     * destroy
+     *
+     * @param  mixed $blog
+     * @return void
+     */
     public function destroy(Blog $blog)
     {
         unlink('upload/blog/' . $blog->banner);

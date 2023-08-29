@@ -32,16 +32,19 @@ class AdmitCardController extends Controller
         if ($request->student_id) {
             for ($i = 0; $i < count($request->student_id); $i++) {
                 $student = Student::find($request->student_id[$i] ?? null);
-                if ($student->payment_status === 'paid') {
+                if ($student->payment_status === 'paid' && $student->exam_id !== null && $student->examCenter !== null) {
                     $students[] = $student;
+                } else {
+                    session()->put('error', 'Exam Center OR Exam OR Payment Not Set');
+                    return redirect()->back();
                 }
             }
-            return view('admin.content.admit_card.download', compact('students'));
+            // return view('admin.content.admit_card.download', compact('students'));
             $pdf = Pdf::loadView('admin.content.admit_card.download', compact('students'));
             return $pdf->download('admin-cards' . time() . '.pdf');
         }
         return redirect()->back();
     }
 
-    // public function 
+    // public function
 }

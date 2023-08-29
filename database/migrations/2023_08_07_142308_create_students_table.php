@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Area;
 use App\Models\Exam;
 use App\Models\Institute;
 use App\Models\ExamCenter;
@@ -21,7 +22,6 @@ return new class extends Migration
             $table->string('roll_no')->unique()->nullable();
             $table->string('school_madrasa');
             $table->string('student_type');
-            $table->string('area');
             $table->string('name_bn');
             $table->string('name_en');
             $table->string('father_name_bn');
@@ -32,6 +32,7 @@ return new class extends Migration
             $table->foreignIdFor(StudentClass::class);
             $table->foreignIdFor(ExamCenter::class)->nullable();
             $table->foreignIdFor(Exam::class)->nullable();
+            $table->foreignIdFor(Area::class)->nullable();
             $table->string('class_roll');
             $table->string('class_division')->nullable();
             $table->string('class_section');
@@ -42,7 +43,6 @@ return new class extends Migration
             $table->string('permanent_address_thana');
             $table->string('permanent_address_district');
             $table->string('mobile')->unique();
-            $table->string('facebook')->nullable();
             $table->date('dob');
             $table->string('image');
             $table->string('father_occupation');
