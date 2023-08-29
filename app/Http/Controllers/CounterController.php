@@ -18,14 +18,14 @@ class CounterController extends Controller
             'header' => "List Counter",
         ];
         $counter = Counter::first();
-        return view ('admin.content.counter.index', compact('counter'), $data);
+        return view('admin.content.counter.index', compact('counter'), $data);
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
-    { 
+    {
         $count = Counter::count();
         if ($count < 1) {
             $data = [
@@ -33,13 +33,13 @@ class CounterController extends Controller
                 'sub_title' => "Create",
                 'header' => "Create Counter",
             ];
-            return view('admin.content.counter.create', compact('data'),$data);
-        }else{
+            return view('admin.content.counter.create', compact('data'), $data);
+        } else {
             $already_created = [
                 'title' => "Already Created",
                 'sub_title' => "Please go in counter list page and update your data.",
             ];
-            return view('admin.content.counter.create',compact('already_created'));
+            return view('admin.content.counter.create', compact('already_created'));
         }
     }
 
@@ -49,14 +49,14 @@ class CounterController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'total_applicant'=>'required|min:3|max:255',
-            'total_applicant_number'=>'required|numeric',
-            'total_scholarship'=>'required|min:3|max:255',
-            'total_scholarship_number'=>'required|numeric',
-            'total_school'=>'required|min:3|max:255',
-            'total_school_number'=>'required|numeric',
-            'total_exam_center'=>'required|min:3|max:255',
-            'total_exam_center_number'=>'required|numeric',
+            'total_applicant' => 'required|min:3|max:255',
+            'total_applicant_number' => 'required|numeric',
+            'total_scholarship' => 'required|min:3|max:255',
+            'total_scholarship_number' => 'required|numeric',
+            'total_school' => 'required|min:3|max:255',
+            'total_school_number' => 'required|numeric',
+            'total_exam_center' => 'required|min:3|max:255',
+            'total_exam_center_number' => 'required|numeric',
         ]);
 
         $count = Counter::count();
@@ -65,10 +65,10 @@ class CounterController extends Controller
             Counter::create($request->all());
             session()->put('success', 'Item created successfully.');
             return redirect()->route('counter.index');
-        }else{
+        } else {
             session()->put('success', 'Already Created.');
             return redirect()->back();
-        }        
+        }
     }
 
     /**
@@ -88,7 +88,7 @@ class CounterController extends Controller
             'sub_title' => "Edit",
             'header' => "Edit Counter",
         ];
-        return view ('admin.content.counter.create',compact('counter'), $data);
+        return view('admin.content.counter.create', compact('counter'), $data);
     }
 
     /**
@@ -96,21 +96,21 @@ class CounterController extends Controller
      */
     public function update(Request $request, Counter $counter)
     {
-         $this->validate($request, [
-            'total_applicant'=>'required|min:3|max:255',
-            'total_applicant_number'=>'required|numeric',
-            'total_scholarship'=>'required|min:3|max:255',
-            'total_scholarship_number'=>'required|numeric',
-            'total_school'=>'required|min:3|max:255',
-            'total_school_number'=>'required|numeric',
-            'total_exam_center'=>'required|min:3|max:255',
-            'total_exam_center_number'=>'required|numeric',
+        $this->validate($request, [
+            'total_applicant' => 'required|min:3|max:255',
+            'total_applicant_number' => 'required|numeric',
+            'total_scholarship' => 'required|min:3|max:255',
+            'total_scholarship_number' => 'required|numeric',
+            'total_school' => 'required|min:3|max:255',
+            'total_school_number' => 'required|numeric',
+            'total_exam_center' => 'required|min:3|max:255',
+            'total_exam_center_number' => 'required|numeric',
         ]);
 
         $counter->update($request->all());
 
         session()->put('success', 'Item Updated successfully.');
-            
+
         return redirect()->route('counter.index');
     }
 
@@ -122,6 +122,5 @@ class CounterController extends Controller
         $counter->delete();
         session()->put('success', 'Item Deleted successfully.');
         return redirect()->back();
-
     }
 }

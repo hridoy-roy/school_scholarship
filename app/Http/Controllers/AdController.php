@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
-use Illuminate\Database\DBAL\TimestampType;
 use Illuminate\Http\Request;
+use Illuminate\Database\DBAL\TimestampType;
 
 class AdController extends Controller
 {
@@ -19,7 +19,7 @@ class AdController extends Controller
             'header' => "List Ad",
         ];
         $ad = Ad::first();
-        return view ('admin.content.ad.index', compact('ad'), $data);
+        return view('admin.content.ad.index', compact('ad'), $data);
     }
 
     /**
@@ -30,17 +30,17 @@ class AdController extends Controller
         $count = Ad::count();
         if ($count < 1) {
             $data = [
-            'title' => "Ad",
-            'sub_title' => "Create",
-            'header' => "Create Ad",
-        ];
-            return view('admin.content.ad.create', compact('data'),$data);
-        }else{
+                'title' => "Ad",
+                'sub_title' => "Create",
+                'header' => "Create Ad",
+            ];
+            return view('admin.content.ad.create', compact('data'), $data);
+        } else {
             $already_created = [
                 'title' => "Already Created",
                 'sub_title' => "Please go in ad list page and update your data.",
             ];
-            return view('admin.content.ad.create',compact('already_created'));
+            return view('admin.content.ad.create', compact('already_created'));
         }
     }
 
@@ -52,29 +52,26 @@ class AdController extends Controller
 
         $count = Ad::count();
 
-        $student_data = $request->except('1','2','3');
+        $student_data = $request->except('1', '2', '3');
 
         if ($count < 1) {
 
-            for ($i=1; $i <4; $i++) {
+            for ($i = 1; $i < 4; $i++) {
 
-                    $file = " ";
+                $file = " ";
 
-                    if($file = $request->file([$i])){
-                        $imageName =$i.'.'.$file->getClientOriginalExtension();
-                        $student_data[$i] = $file->move('upload/ad/',$imageName);
-                    }
-
+                if ($file = $request->file([$i])) {
+                    $imageName = $i . '.' . $file->getClientOriginalExtension();
+                    $student_data[$i] = $file->move('upload/ad/', $imageName);
+                }
             }
             Ad::create($student_data);
             session()->put('success', 'Item created successfully.');
             return redirect()->route('ad.index');
-        }
-        else{
+        } else {
             session()->put('success', 'Already created');
             return redirect()->back();
         }
-
     }
 
     /**
@@ -95,7 +92,7 @@ class AdController extends Controller
             'sub_title' => "Edit",
             'header' => "Edit Ad",
         ];
-        return view ('admin.content.ad.create',compact('ad') ,$data);
+        return view('admin.content.ad.create', compact('ad'), $data);
     }
 
     /**
@@ -103,24 +100,22 @@ class AdController extends Controller
      */
     public function update(Request $request, Ad $ad)
     {
-        $student_data = $request->except('1','2','3');
+        $student_data = $request->except('1', '2', '3');
 
-        for ($i=1; $i <4; $i++) {
+        for ($i = 1; $i < 4; $i++) {
 
             $file = " ";
             $deleteOldImage = $ad->$i;
 
-            if($file = $request->file($i)){
-                if(file_exists($deleteOldImage)){
+            if ($file = $request->file($i)) {
+                if (file_exists($deleteOldImage)) {
                     unlink($deleteOldImage);
                 }
-                $imageName = $i.'.'.$file->getClientOriginalExtension();
-                $student_data[$i] = $file->move('upload/ad/',$imageName);
-            }
-            else{
+                $imageName = $i . '.' . $file->getClientOriginalExtension();
+                $student_data[$i] = $file->move('upload/ad/', $imageName);
+            } else {
                 $student_data[$i] = $ad->$i;
             }
-
         }
 
         $ad->update($student_data);
@@ -135,11 +130,11 @@ class AdController extends Controller
      */
     public function destroy(Ad $ad)
     {
-        for ($i=1; $i <4; $i++) {
+        for ($i = 1; $i < 4; $i++) {
             $deleteOldImage = $ad->$i;
-                if(file_exists($deleteOldImage)){
-                    unlink($deleteOldImage);
-                }
+            if (file_exists($deleteOldImage)) {
+                unlink($deleteOldImage);
+            }
         }
         $ad->delete();
         session()->put('success', 'Item Deleted successfully.');

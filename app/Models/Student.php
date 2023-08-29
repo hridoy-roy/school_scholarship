@@ -24,6 +24,10 @@ class Student extends Model
     {
         return $this->belongsTo(Exam::class);
     }
+    public function area(): BelongsTo
+    {
+        return $this->belongsTo(Area::class);
+    }
 
     public function institute(): BelongsTo
     {

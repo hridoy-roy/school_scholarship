@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Area;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AreaController extends Controller
 {
@@ -20,7 +20,7 @@ class AreaController extends Controller
             'areas' => Area::paginate(),
         ];
         $areas = Area::orderBy('order_by')->get();
-        return view ('admin.content.area.index', compact('areas'), $data);
+        return view('admin.content.area.index', compact('areas'), $data);
     }
 
     /**
@@ -41,10 +41,10 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate($request, [
-            'name'=>'required',
-            'order_by'=>'required',
-            'status'=>'required',
+        $this->validate($request, [
+            'name' => 'required',
+            'order_by' => 'required',
+            'status' => 'required',
         ]);
 
         Area::create([
@@ -76,7 +76,7 @@ class AreaController extends Controller
             'header' => "Edit Area",
             'area' => $area
         ];
-        return view ('admin.content.area.create', $data);
+        return view('admin.content.area.create', $data);
     }
 
     /**
@@ -84,10 +84,10 @@ class AreaController extends Controller
      */
     public function update(Request $request, Area $area)
     {
-         $this->validate($request, [
-            'name'=>'required',
-            'order_by'=>'required',
-            'status'=>'required',
+        $this->validate($request, [
+            'name' => 'required',
+            'order_by' => 'required',
+            'status' => 'required',
         ]);
 
         $area->update($request->all());

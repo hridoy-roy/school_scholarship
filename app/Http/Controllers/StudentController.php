@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Area;
 use App\Models\Student;
 use App\Models\Institute;
 use App\Models\StudentClass;
@@ -34,8 +35,9 @@ class StudentController extends Controller
     {
         $institutes = Institute::where('status', 1)->pluck('name', 'id');
         $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
+        $areas = Area::where('status', 1)->get();
         session()->put('success', 'Item Updated successfully.');
-        return view('frontend.register', compact('institutes', 'student_classes'));
+        return view('frontend.register', compact('institutes', 'student_classes', 'areas'));
     }
 
     /**
@@ -48,6 +50,9 @@ class StudentController extends Controller
         }
         if ($request->validated('student_class_id')) {
             $student_data['student_class_name'] = StudentClass::find($request->validated('student_class_id'))->name;
+        }
+        if ($request->validated('area_id')) {
+            $student_data['area_name'] = StudentClass::find($request->validated('area_id'))->name;
         }
         if ($request->file('image')) {
             if (isset($student_data['image']) && file_exists(public_path('upload/profile/' . $student_data['image']))) {
@@ -172,6 +177,7 @@ class StudentController extends Controller
         $studentData = session()->get('student_data');
         unset($studentData['institute_name']);
         unset($studentData['student_class_name']);
+        unset($studentData['area_name']);
         if (Student::latest()->first()?->registration_no) {
             $currentRegNo = Student::latest()->first()?->registration_no;
             $currentYear = substr($currentRegNo, 0, 4);

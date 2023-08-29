@@ -139,6 +139,22 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="form-group mb-4">
+                        <label for="area">Area<code>*</code></label>
+                        <select class="form-select" name="area_id" id="institute_id">
+                            @if (isset($student))
+                            <option value="{{ $student['area_id'] }}">{{ $student['area_name'] }}</option>
+                            @else
+                            <option value=" ">Select Area</option>
+                            @endif
+                            @foreach($areas as $area)
+                            <option value="{{$area->id}}">{{$areas->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('area_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <div class="col-md">
                         <div class="form-group">
                             <label for="area">Area<code>*</code></label>

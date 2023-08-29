@@ -19,7 +19,7 @@ class InstituteController extends Controller
             'header' => "List Institute",
         ];
         $institutes = Institute::orderBy('order_by')->paginate();
-        return view ('admin.content.institute.index', compact('institutes'), $data);
+        return view('admin.content.institute.index', compact('institutes'), $data);
     }
 
     /**
@@ -40,16 +40,16 @@ class InstituteController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate($request, [
-            'name'=>'required|min:6|max:255',
-            'order_by'=>'required|numeric',
-            'status'=>'required',
+        $this->validate($request, [
+            'name' => 'required|min:6|max:255',
+            'order_by' => 'required|numeric',
+            'status' => 'required',
         ]);
 
         Institute::create($request->all());
 
         session()->put('success', 'Item created successfully.');;
-            
+
         return redirect()->route('institute.index');
     }
 
@@ -71,7 +71,7 @@ class InstituteController extends Controller
             'sub_title' => "Edit",
             'header' => "Edit Institute",
         ];
-        return view ('admin.content.institute.create',compact('institute'), $data);
+        return view('admin.content.institute.create', compact('institute'), $data);
     }
 
     /**
@@ -79,16 +79,16 @@ class InstituteController extends Controller
      */
     public function update(Request $request, Institute $institute)
     {
-         $this->validate($request, [
-            'name'=>'required|min:3|max:255',
-            'order_by'=>'required|numeric',
-            'status'=>'required',
+        $this->validate($request, [
+            'name' => 'required|min:3|max:255',
+            'order_by' => 'required|numeric',
+            'status' => 'required',
         ]);
 
         $institute->update($request->all());
 
         session()->put('success', 'Item Updated successfully.');
-            
+
         return redirect()->route('institute.index');
     }
 
