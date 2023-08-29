@@ -43,7 +43,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Grade Mark</th>
+                    <th>Scholar Status</th>
                     <th>REG_NO</th>
                     <th>Roll_No.</th>
                     <th>NAME</th>
@@ -54,9 +54,9 @@
             </thead>
             <tbody>
                 @foreach ($exam['students'] ?? [] as $student)
-                @if ($student['marks'] >= $exam['first_grade'])
+                @if ($student['scholar_status'] == 'talent_full')
                 <tr>
-                    <td>First Grade</td>
+                    <td>Talent Full</td>
                     <td>{{ $student['registration_no'] }}</td>
                     <td>{{ $student['roll_no'] }}</td>
                     <td>{{ $student['name_en'] }}</td>
@@ -65,9 +65,9 @@
                     <td>{{ $student['marks'] }}</td>
                 </tr>
 
-                @elseif ($student['marks'] >= $exam['second_grade'])
+                @elseif ($student['scholar_status'] >= 'general')
                 <tr>
-                    <td>Second Grade</td>
+                    <td>General</td>
                     <td>{{ $student['registration_no'] }}</td>
                     <td>{{ $student['roll_no'] }}</td>
                     <td>{{ $student['name_en'] }}</td>
@@ -75,20 +75,9 @@
                     <td>{{ $student['institute']['name'] }}</td>
                     <td>{{ $student['marks'] }}</td>
                 </tr>
-                @elseif ($student['marks'] == null)
-                <tr>
-                    <td>Not Set</td>
-                    <td>{{ $student['registration_no'] }}</td>
-                    <td>{{ $student['roll_no'] }}</td>
-                    <td>{{ $student['name_en'] }}</td>
-                    <td>{{ $student['father_name_en'] }}</td>
-                    <td>{{ $student['institute']['name'] }}</td>
-                    <td>Not Set</td>
-                </tr>
-
                 @else
                 <tr>
-                    <td>Third Grade</td>
+                    <td>Other</td>
                     <td>{{ $student['registration_no'] }}</td>
                     <td>{{ $student['roll_no'] }}</td>
                     <td>{{ $student['name_en'] }}</td>
