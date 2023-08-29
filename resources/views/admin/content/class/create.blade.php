@@ -41,8 +41,22 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="order_by">Class Number</label>
-                        <input type="text" class="form-control" name="order_by" id="basic-default-company" value="{{@$class->order_by ?? old('order_by')}}" placeholder="Enter Class Number" />
+                        <label class="form-label" for="talent_full_mark">Talent Full Mark <code>*</code></label>
+                        <input type="number" class="form-control" name="talent_full_mark" placeholder="Enter Talent Full Mark" value="{{@$class->talent_full_mark ?? old('talent_full_mark')}}" />
+                        @error('talent_full_mark')
+                        <code>*{{$message}}</code>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="general_mark">General Mark <code>*</code></label>
+                        <input type="number" class="form-control" name="general_mark" placeholder="Enter General Mark" value="{{@$class->general_mark ?? old('general_mark')}}" />
+                        @error('general_mark')
+                        <code>*{{$message}}</code>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="order_by">Class Serial</label>
+                        <input type="number" class="form-control" name="order_by" id="basic-default-company" value="{{@$class->order_by ?? old('order_by')}}" placeholder="Enter Class Serial" />
                         @error('order_by')
                         <code>*{{$message}}</code>
                         @enderror
@@ -68,6 +82,7 @@
                         {{(@$class)?'Update':'Submit'}}
                     </button>
                 </form>
+                
             </div>
         </div>
     </div>
