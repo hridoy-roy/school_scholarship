@@ -148,23 +148,12 @@
                             <option value=" ">Select Area</option>
                             @endif
                             @foreach($areas as $area)
-                            <option value="{{$area->id}}">{{$areas->name}}</option>
+                            <option value="{{$area->id}}">{{$area->name}}</option>
                             @endforeach
                         </select>
                         @error('area_id')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                    </div>
-                    <div class="col-md">
-                        <div class="form-group">
-                            <label for="area">Area<code>*</code></label>
-                            <input type="text" class="form-control @error('area') is-invalid @enderror"
-                                name="{{ 'area' }}" id="area" value="{{ @$student['area'] ?? old('area')}}"
-                                placeholder="Area" />
-                            @error('area')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
                     </div>
                 </div>
 

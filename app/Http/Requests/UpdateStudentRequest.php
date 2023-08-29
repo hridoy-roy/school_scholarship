@@ -26,7 +26,6 @@ class updateStudentRequest extends FormRequest
         return [
             'school_madrasa' => ['required'],
             'student_type' => ['required'],
-            'area' => ['required', 'max:255'],
             'name_bn' => ['required', 'max:255'],
             'name_en' => ['required', 'max:255'],
             'father_name_bn' => ['required', 'max:255'],
@@ -36,6 +35,7 @@ class updateStudentRequest extends FormRequest
             'mother_name_en' => ['required', 'max:255'],
             'mother_occupation' => ['required', 'max:255'],
             'institute_id' => ['required', 'numeric'],
+            'area_id' => ['required', 'numeric'],
             'student_class_id' => ['required', 'numeric'],
             'class_roll' => ['required', 'numeric'],
             'class_division' => ['required', 'max:255'],
@@ -47,7 +47,6 @@ class updateStudentRequest extends FormRequest
             'permanent_address_thana' => ['required', 'max:255'],
             'permanent_address_district' => ['required', 'max:255'],
             'mobile' => ['required', 'unique:students,mobile,' . $this->student->id],
-            'facebook' => ['nullable'],
             'dob' => ['required'],
             'blood_group' => ['required'],
             'email' => ['required', 'email', 'unique:students,email,' . $this->student->id],

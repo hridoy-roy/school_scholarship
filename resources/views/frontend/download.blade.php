@@ -153,7 +153,7 @@
                     <span class="label">Name(English):</span>{{ $student['name_en'] }}
                 </div>
                 <div class="info-line">
-                    <span class="label">Area:</span>{{ $student['area'] }}
+                    <span class="label">Area:</span>{{ $student['area']['name'] }}
                 </div>
                 <div class="info-line">
                     <span class="label">School Name:</span>{{ $student['institute']['name'] }}

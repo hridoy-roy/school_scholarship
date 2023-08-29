@@ -52,7 +52,7 @@ class StudentController extends Controller
             $student_data['student_class_name'] = StudentClass::find($request->validated('student_class_id'))->name;
         }
         if ($request->validated('area_id')) {
-            $student_data['area_name'] = StudentClass::find($request->validated('area_id'))->name;
+            $student_data['area_name'] = Area::find($request->validated('area_id'))->name;
         }
         if ($request->file('image')) {
             if (isset($student_data['image']) && file_exists(public_path('upload/profile/' . $student_data['image']))) {
@@ -100,13 +100,14 @@ class StudentController extends Controller
     {
         $institutes = Institute::where('status', 1)->pluck('name', 'id');
         $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
-
+        $areas = Area::where('status', 1)->get();
 
         $data = [
             'title' => "Class",
             'sub_title' => "Edit",
             'header' => "Edit Class",
             'student' => $student,
+            'areas' => $areas,
             'institutes' => $institutes,
             'student_classes' => $student_classes,
         ];
@@ -117,11 +118,12 @@ class StudentController extends Controller
     {
         $institutes = Institute::where('status', 1)->pluck('name', 'id');
         $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
-
+        $areas = Area::where('status', 1)->get();
 
         $data = [
             'title' => "Class",
             'student' => session()->get('student_data'),
+            'areas' => $areas,
             'institutes' => $institutes,
             'student_classes' => $student_classes,
         ];

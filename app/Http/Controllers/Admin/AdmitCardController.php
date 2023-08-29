@@ -36,7 +36,7 @@ class AdmitCardController extends Controller
                     $students[] = $student;
                 }
             }
-            return view('admin.content.admit_card.download', compact('students'));
+            // return view('admin.content.admit_card.download', compact('students'));
             $pdf = Pdf::loadView('admin.content.admit_card.download', compact('students'));
             return $pdf->download('admin-cards' . time() . '.pdf');
         }

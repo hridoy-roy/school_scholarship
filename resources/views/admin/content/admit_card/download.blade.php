@@ -223,10 +223,10 @@
 
                     <div class="top-component" style="margin-top:-20px;">
                         <img class="card-img-top" style="width: 100px" src="{{ asset('assets/admit/logo.png') }}" alt="Picture" />
-                        <h3><b>দি স্টুডেন্ট ওয়েলফেয়ার এসোসিয়েশন সাভার</b></h3>
+                        <h3><b>The Student Welfare Association Savar</b></h3>
                         <h4 style="line-height:20px" class="eng-text"><b>The Student Welfare Association Savar</b></h4>
                         <h5 style="line-height:30px"><b>Scholarship Exam Date 2023</b></h5>
-                        <h5><b>রেজি নং - ঢ -০৮৫৭৭৩</b></h5>
+                        <h5><b>Reg. No. {{$student['registration_no']}}</b></h5>
                     </div>
                     <div class="top-component top-office" style="margin-top:20px;">
                         <fieldset class="group-border" style="padding: 10px">
@@ -322,11 +322,8 @@
     <div class="footer">
 
         <div style="float: right; padding:30px 0px; text-align:center;">
-
-
             <h4> <b>Director</b> </h4>
             <h4> <b>The Student welfare association Savar</b></h4>
-
         </div>
     </div>
     <br>

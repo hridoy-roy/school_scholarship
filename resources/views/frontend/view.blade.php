@@ -60,7 +60,7 @@
         </tr>
         <tr>
             <th style="width:200px">Area</th>
-            <td style="width:200px">{{$student['area']}}</td>
+            <td style="width:200px">{{$student['area_name']}}</td>
             <th style="width:200px">Postal Code</th>
             <td style="width:200px">{{$student['permanent_address_post_office']}}</td>
         </tr>
@@ -108,9 +108,9 @@
             <th style="width:200px">Occupation of Guardian</th>
             <td style="width:200px">{{$student['absent_of_parent_occupation']}}</td>
         </tr>
-        <tr>  
+        <tr>
             <th style="width:200px">Previous Scholarship Organization</th>
-            <td style="width:200px">{{$student['previous_scholarship_name_group']}}</td>          
+            <td style="width:200px">{{$student['previous_scholarship_name_group']}}</td>
             <th style="width:200px">Income of Guardian</th>
             <td style="width:200px">{{$student['absent_of_parent_annual_earning']}}</td>
         </tr>
