@@ -42,9 +42,12 @@
     <link rel="stylesheet" href="{{ url('frontend/assets/css/responsive.css') }}" />
 
     <script src="{{ url('frontend/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+
+
+
 </head>
 
-<body data-spy="scroll" data-target=".navbar-collapse">
+<body data-spy="scroll" data-target=".navbar-collapse" class="body">
 
     <div class='preloader'>
         <div class='loaded'>&nbsp;</div>
@@ -76,7 +79,7 @@
 
 
 
-                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    {{-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                                         <ul class="nav navbar-nav navbar-right">
                                             <li><a href="#home">HOME</a></li>
@@ -86,13 +89,12 @@
                                             <li><a href="#team">TEAM</a></li>
                                             <li><a href="#blog">BLOG</a></li>
                                             <li><a href="#contact">CONTACT</a></li>
-                                            {{-- <li><a href="{{route('admitcard.submit')}}">Admit Card Download</a></li> --}}
 
-                                            {{-- href="{{url($team->linkedin)}}" --}}
+                                          
 
                                         </ul>
 
-                                    </div>
+                                    </div> --}}
 
                                 </div>
                             </nav>
@@ -112,10 +114,10 @@
 
 
     <div class="submit-page">
-      <div class="container">
+      <div class="container" style="margin: 0px 140px">
         <div class="row">
-          <div class="col-xl-4 col-lg-5 col-md-5">        
-            <div class="form-bg">
+          <div class="col-xl-4 col-lg-5 col-md-6">        
+            <div class="form-bg" style="margin: 80px 0px 80px;" >
     
               <!-- <a href="#"><img src="/images/logo.png" alt="logo" class="logo"></a> -->
     
@@ -134,63 +136,20 @@
                 <!-- <span class="option-br"></span> -->
     
                 <div class="form-group">
-                  <input type="number" name="student_id" class="form-control" placeholder="Student ID" required>
+                  <input type="number" name="student_id" class="form-control" placeholder="Please write your registration number " required>
                 </div>
-    
-                <div class="form-group">
-                  <input type="text" name="Full Name" class="form-control" placeholder="Full Name">
-                </div>
-    
-                <div class="form-group">
-                  <input type="number" name="number" class="form-control" placeholder="Phone Number" required>
-                </div>
-    
-        <!-- 
-                 <div class="form-group">
-    
-                  <input class="form-check-input rounded-pill" type="checkbox" name="number" id="invalidCheck"  required>
-    
-                   <label class="form-check-label" for="invalidCheck">
-                       Check here to Confirm
-                   </label>
-    
-                 </div> -->
+
+                
     
     
-                  <div class="form-group">
     
+                        {{-- <div class="form-group">
                             <label class="form-checkbox">
-    
                                 <input type="checkbox" name="checkbox" required>
                                 <span> Check here to Confirm </span>
     
                             </label>
-    
-                        </div>
-    
-    
-    
-    
-    
-    
-          <!--  <div class="col-12">
-    
-                    <div class="form-check">
-    
-                      <input class="form-check-input rounded-pill" type="checkbox" value="" id="invalidCheck" required>
-    
-                      <label class="form-check-label" for="invalidCheck">
-    
-                        Agree to terms and conditions
-                      </label>
-    
-                      <div class="invalid-feedback">
-    
-                        You must agree before submitting.
-                      </div>
-                    </div>
-                  </div>
-               -->
+                        </div> --}}
     
                
     
@@ -198,18 +157,15 @@
                   <button class="signup-btn">Submit</button>
                 </div>
     
-                <p class="term-policy">NOTE: Please fill out all fields correctly. <span>Use the valid Student ID and mobile.</span> </p>
+                {{-- <p class="term-policy">NOTE: Please fill out all fields correctly. <span>Use the valid Student ID and mobile.</span> </p> --}}
               </form>
             </div>
     
-           
-          
     
           </div>
         </div>
       </div>
     </div>
-
 
 
 

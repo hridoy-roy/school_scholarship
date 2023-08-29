@@ -1530,15 +1530,38 @@ li .single_team_text p{
    Admit Card Style submit by Tanvir
    ========================================================================== */
 
+
+
+.submit-page{
+
+  /* margin: 50px 0px 50px; */
+
+  
+
+   
+  
+    font-weight: 100;
+    font-size: 18px;
+    /* line-height: 30px; */
+    color: #777;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+  }
+  
+
+
+
+
+
 /*subnit section*/
 
-.submit-page {
-    /* float: left; */
+/* .submit-page {
+  
     width: 100%;
     height: 100%;
     background-color: #f9f9f9;
     padding: 110px 360px 50px;
-}
+} */
 
 
 .form-bg {
@@ -1571,7 +1594,7 @@ button.login-with-fb {
     font-weight: 600;
 }
 .signup-btn {
-    background-color: #d93025;
+    background-color: #000142;
     border: none;
     width: 100%;
     color: #fff;
@@ -1627,6 +1650,8 @@ span.option-br {
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 0px 15px 0px;
+
+    
 }
 
 .admit h2{
@@ -1635,9 +1660,11 @@ span.option-br {
 }
 
 .note{
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: bold;
     line-height: 1.5;
     color: red;
+    
 }
 
 
