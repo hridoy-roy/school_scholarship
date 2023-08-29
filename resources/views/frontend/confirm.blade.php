@@ -14,7 +14,7 @@
                     <div class="separator"></div>
                 </div><!-- End off Head_title -->
 
-                <div class="test-center">
+                <div class="text-center">
                     <a href="{{ route('print.student.info',$student->id) }}" class="btn btn-success text-center">Print
                     Info</a>
                 <a href="/" class="btn btn-success text-center">Home</a>
