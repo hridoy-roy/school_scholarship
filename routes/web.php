@@ -58,6 +58,7 @@ Route::get('exam/result/{exam}', [ExamController::class, 'frontendExamResultDown
 Route::get('print/student/info/{student}', [StudentController::class, 'printStudentInfo'])->name('print.student.info');
 Route::get('student/edit/session', [StudentController::class, 'studentEditSession'])->name('students.edit.session');
 Route::get('student/confirm/registration', [StudentController::class, 'studentConfirmRegistration'])->name('students.confirm.registration');
+Route::get('student/cancel/registration', [StudentController::class, 'studentCancelRegistration'])->name('students.cancel.registration');
 
 // prefix('admin')->
 Route::middleware('auth')->group(function () {
@@ -155,7 +156,7 @@ Route::post('/submit/verify', function (Request $request) {
     $studentId = $request->get('student_id');
 
     $student = Student::where('registration_no', $studentId)->where('payment_status', 'paid')->first();
-    if(blank($student)) {
+    if (blank($student)) {
         return redirect()->back()->with('success', "New Slider create Successfully");
     }
 
@@ -166,7 +167,7 @@ Route::post('/submit/verify', function (Request $request) {
 
 Route::get('/card/{id}', function ($studentId) {
     $student = Student::where('registration_no', $studentId)->where('payment_status', 'paid')->first();
-    if(blank($student)) {
+    if (blank($student)) {
         return redirect()->route('submit');
     }
 
