@@ -91,7 +91,7 @@ Route::middleware('auth')->group(function () {
         Route::post('student/unpaid', [PayController::class, 'assignUnpaidStore'])->name('student.unpaid.store');
 
         Route::get('student/admit-card', [AdmitCardController::class, 'studentView'])->name('student.admin.card');
-        Route::Post('student/admit-card/download', [AdmitCardController::class, 'studentDownload'])->name('student.admin.card.download');
+        Route::get('student/admit-card/download', [AdmitCardController::class, 'studentDownload'])->name('student.admin.card.download');
 
         Route::get('student/exam/{exam}', [ExamController::class, 'examStudent'])->name('student.exam');
         Route::Post('student/exam/assign/{exam}', [ExamController::class, 'examStudentAssign'])->name('student.exam.assign');
@@ -119,7 +119,6 @@ Route::post('/gallery/update/{id}', [GalleryController::class, 'update'])->name(
 Route::delete('/gallery/destroy/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 
 
-
 // Slider Controller
 
 Route::get('/slider/create', [SliderController::class, 'create'])->name('slider.create');
@@ -128,6 +127,9 @@ Route::get('/slider/list', [SliderController::class, 'list'])->name('slider.list
 Route::get('/slider/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
 Route::post('/slider/update/{id}', [SliderController::class, 'update'])->name('slider.update');
 Route::delete('/slider/destroy/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');
+
+
+// Manu Controller
 
 
 // Main Image
