@@ -29,7 +29,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Dhaka School'
         ]);
         StudentClass::create([
-            'name' => 'One'
+            'name' => 'One',
+            'order_by' => 1,
+            'talent_full_mark' => 100
         ]);
     }
 }

@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('student_classes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('order_by')->nullable();
+            $table->integer('order_by');
+            $table->integer('talent_full_mark');
+            $table->integer('general_mark')->nullable();
             $table->tinyInteger('status')->default(true);
             $table->timestamps();
         });

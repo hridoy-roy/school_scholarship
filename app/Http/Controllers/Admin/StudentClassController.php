@@ -43,12 +43,16 @@ class StudentClassController extends Controller
     {
          $this->validate($request, [
             'name'=>'required|max:15',
+            'talent_full_mark'=>'required|numeric',
+            'general_mark'=>'required|numeric',
             'order_by'=>'required|numeric',
             'status'=>'required',
         ]);
 
         StudentClass::create([
             'name' => $request->name,
+            'talent_full_mark' => $request->talent_full_mark,
+            'general_mark' => $request->general_mark,
             'order_by' => $request->order_by,
             'status' => $request->status,
         ]);
@@ -86,6 +90,8 @@ class StudentClassController extends Controller
     {
          $this->validate($request, [
             'name'=>'required|min:3|max:255',
+            'talent_full_mark'=>'required|numeric',
+            'general_mark'=>'required|numeric',
             'order_by'=>'required|numeric',
             'status'=>'required',
         ]);

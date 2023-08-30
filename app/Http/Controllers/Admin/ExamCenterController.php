@@ -170,13 +170,16 @@ class ExamCenterController extends Controller
     {
         if ($request->student_id && $request->marks) {
             for ($i = 0; $i < count($request->student_id); $i++) {
-                if ($request->student_id[$i] && $request->marks[$i]) {
+                if ($request->student_id[$i] && $request->marks[$request->student_id[$i]] && $request->scholar_status[$request->student_id[$i]]) {
+
                     Student::find($request->student_id[$i] ?? null)->update([
-                        'marks' => $request->marks[$i],
+                        'marks' => $request->marks[$request->student_id[$i]],
+                        'scholar_status' => $request->scholar_status[$request->student_id[$i]],
                     ]);
                 } else {
                     Student::find($request->student_id[$i] ?? null)->update([
                         'marks' => null,
+                        'scholar_status' => null,
                     ]);
                 }
             }

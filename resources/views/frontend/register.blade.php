@@ -211,19 +211,38 @@
                 <div class="row g-3 mb-4">
                     <div class="col-md">
                         <div class="form-group">
-                            <label for="class_division">Subject<code>*</code></label>
-                            <input type="text" class="form-control @error('class_division') is-invalid @enderror"
-                                name="{{ 'class_division' }}" id="class_roll"
-                                value="{{ @$student['class_division'] ?? old('class_division')}}"
-                                placeholder="Subject" />
-                            @error('class_division')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                            <label for="class_division">Subject</label>
+                            <select class="form-select" name="class_division" id="class_division">
+                                @if (isset($student))
+                                <option value="{{ $student['class_division'] }}">
+                                    @if ($student['class_division'] == 1 )
+                                    Science
+                                    @elseif ($student['class_division'] == 2 )
+                                    Commerce
+                                    @elseif ($student['class_division'] == 3 )
+                                    Arts
+                                    @else
+                                    Others
+                                    @endif
+                                </option>
+                                @else
+                                <option value=" ">Subject</option>
+                                @endif
+                                <option value="Science" {{ old('class_division')==='Science' ? 'selected' : '' }}>Science
+                                </option>
+                                <option value="Commerce" {{ old('class_division')==='Commerce' ? 'selected' : '' }}>Commerce
+                                </option>
+                                <option value="Arts" {{ old('class_division')==='Arts' ? 'selected' : '' }}>Arts
+                                </option>
+                                <option value="Others" {{ old('class_division')==='Others' ? 'selected' : '' }}>Others
+                                </option>
+                            </select>
                         </div>
                     </div>
+
                     <div class="col-md">
                         <div class="form-group">
-                            <label for="class_section">Section<code>*</code></label>
+                            <label for="class_section">Section</label>
                             <input type="text" class="form-control @error('class_section') is-invalid @enderror"
                                 name="{{ 'class_section' }}" id="class_section"
                                 value="{{ @$student['class_section']  ?? old('class_section')}}"
@@ -267,9 +286,9 @@
                                     A-
                                     @elseif ($student['blood_group'] == 6 )
                                     B-
-                                    @elseif ($student['blood_group'] == 6 )
+                                    @elseif ($student['blood_group'] == 7 )
                                     O-
-                                    @elseif ($student['blood_group'] == 6 )
+                                    @elseif ($student['blood_group'] == 8 )
                                     B-
                                     @else
                                     AB-
@@ -389,27 +408,86 @@
                 <div class="border mb-5"></div>
 
                 <h6 class="mb-5 color">Present Address:</h6>
+                <div class="row g-3 mt-3 mb-4">
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="present_address_district">District Name<code>*</code></label>
+                            <input type="text"
+                                class="form-control @error('present_address_district') is-invalid @enderror"
+                                name="{{ 'present_address_district' }}" id="present_address_district"
+                                value="{{ @$student['present_address_district']  ?? old('present_address_district')}}"
+                                placeholder="District Name" />
+                            @error('present_address_district')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="present_address_village">Village Name <code>*</code></label>
+                            <input type="text"
+                                class="form-control @error('present_address_village') is-invalid @enderror"
+                                name="{{ 'present_address_village' }}" id="present_address_village"
+                                value="{{ @$student['present_address_village'] ?? old('present_address_village')}}"
+                                placeholder="Village Name" />
+                            @error('present_address_village')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="present_address_thana">Select Thana <code>*</code></label>
+                            <input type="text"
+                                class="form-control @error('present_address_thana') is-invalid @enderror"
+                                name="{{ 'present_address_thana' }}" id="present_address_thana"
+                                value="{{ @$student['present_address_thana'] ?? old('present_address_thana')}}"
+                                placeholder="Postal Code" />
+                            @error('present_address_thana')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="present_address_post_office">Postal Code <code>*</code></label>
+                            <input type="number"
+                                class="form-control @error('present_address_post_office') is-invalid @enderror"
+                                name="{{ 'present_address_post_office' }}" id="present_address_post_office"
+                                value="{{ @$student['present_address_post_office'] ?? old('present_address_post_office')}}"
+                                placeholder="Postal Code" />
+                            @error('present_address_post_office')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                </div>
                 <div class="form-group mb-5">
                     <label for="present_address">House Adress <code>*</code></label>
-                    <input type="text" class="form-control @error('present_address') is-invalid @enderror"
-                        name="{{ 'present_address' }}" id="present_address"
-                        value="{{ @$student['present_address']  ?? old('present_address')}}"
-                        placeholder="House Adress" />
+                    <textarea type="text" class="form-control @error('present_address') is-invalid @enderror"
+                    name="{{ 'present_address' }}" id="present_address"
+                    value="{{ @$student['present_address']  ?? old('present_address')}}"
+                    placeholder="House Adress">
+                    </textarea>
                     @error('present_address')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
                 <div class="border"></div>
                 <h6 class="mt-5 color">Permanent Address:</h6>
+                <input type="checkbox" class="mt-5" name="check_address" id="check_address"/> Same as Present Address
                 <div class="row g-3 mt-3 mb-4">
                     <div class="col-md">
                         <div class="form-group">
-                            <label for="permanent_address_district">Division Name<code>*</code></label>
+                            <label for="permanent_address_district">District Name<code>*</code></label>
                             <input type="text"
-                                class="form-control @error('permanent_address_district') is-invalid @enderror"
+                                class="form-control permanent_address_field @error('permanent_address_district') is-invalid @enderror"
                                 name="{{ 'permanent_address_district' }}" id="permanent_address_district"
                                 value="{{ @$student['permanent_address_district']  ?? old('permanent_address_district')}}"
-                                placeholder="Division Name" />
+                                placeholder="District Name" />
                             @error('permanent_address_district')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -419,7 +497,7 @@
                         <div class="form-group">
                             <label for="permanent_address_village">Village Name <code>*</code></label>
                             <input type="text"
-                                class="form-control @error('permanent_address_village') is-invalid @enderror"
+                                class="form-control permanent_address_field @error('permanent_address_village') is-invalid @enderror"
                                 name="{{ 'permanent_address_village' }}" id="permanent_address_village"
                                 value="{{ @$student['permanent_address_village'] ?? old('permanent_address_village')}}"
                                 placeholder="Village Name" />
@@ -432,7 +510,7 @@
                         <div class="form-group">
                             <label for="permanent_address_thana">Select Thana <code>*</code></label>
                             <input type="text"
-                                class="form-control @error('permanent_address_thana') is-invalid @enderror"
+                                class="form-control permanent_address_field @error('permanent_address_thana') is-invalid @enderror"
                                 name="{{ 'permanent_address_thana' }}" id="permanent_address_thana"
                                 value="{{ @$student['permanent_address_thana'] ?? old('permanent_address_thana')}}"
                                 placeholder="Postal Code" />
@@ -446,7 +524,7 @@
                         <div class="form-group">
                             <label for="permanent_address_post_office">Postal Code <code>*</code></label>
                             <input type="number"
-                                class="form-control @error('permanent_address_post_office') is-invalid @enderror"
+                                class="form-control permanent_address_field @error('permanent_address_post_office') is-invalid @enderror"
                                 name="{{ 'permanent_address_post_office' }}" id="permanent_address_post_office"
                                 value="{{ @$student['permanent_address_post_office'] ?? old('permanent_address_post_office')}}"
                                 placeholder="Postal Code" />
@@ -459,10 +537,11 @@
                 </div>
                 <div class="form-group mb-5">
                     <label for="permanent_address">House Adress <code>*</code></label>
-                    <input type="text" class="form-control @error('permanent_address') is-invalid @enderror"
-                        name="{{ 'permanent_address' }}" id="permanent_address"
-                        value="{{ @$student['permanent_address']  ?? old('permanent_address')}}"
-                        placeholder="House Adress" />
+                    <textarea type="text" class="form-control permanent_address_field @error('permanent_address') is-invalid @enderror"
+                    name="{{ 'permanent_address' }}" id="permanent_address"
+                    value="{{ @$student['permanent_address']  ?? old('permanent_address')}}"
+                    placeholder="House Adress">
+                    </textarea>
                     @error('permanent_address')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -612,5 +691,24 @@
             </form>
         </div>
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Select the checkbox and permanent address fields
+            var checkbox = $('#check_address');
+            var permanentFields = $('.permanent_address_field');
+
+            // Initial check of the checkbox state
+            if (checkbox.is(':checked')) {
+                permanentFields.prop('disabled', true);
+            }
+
+            // Toggle the disabled attribute when the checkbox state changes
+            checkbox.on('change', function() {
+                permanentFields.prop('disabled', this.checked);
+            });
+        });
+    </script>
 
 </body>

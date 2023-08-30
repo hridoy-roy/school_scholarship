@@ -46,7 +46,7 @@ class ExamController extends Controller
     {
         Exam::create($request->validated());
         session()->put('success', 'Item created successfully.');
-        return redirect()->back();
+        return redirect()->route('exams.index');
     }
 
     /**
@@ -79,7 +79,7 @@ class ExamController extends Controller
 
         $exam->update($request->validated());
         session()->put('success', 'Item Updated successfully.');
-        return redirect()->back();
+        return redirect()->route('exams.index');
     }
 
     /**

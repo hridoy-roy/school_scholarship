@@ -35,8 +35,12 @@ return new class extends Migration
             $table->foreignIdFor(Area::class)->nullable();
             $table->string('class_roll');
             $table->string('class_division')->nullable();
-            $table->string('class_section');
+            $table->string('class_section')->nullable();
             $table->string('present_address');
+            $table->string('present_address_village');
+            $table->string('present_address_post_office');
+            $table->string('present_address_thana');
+            $table->string('present_address_district');
             $table->string('permanent_address');
             $table->string('permanent_address_village');
             $table->string('permanent_address_post_office');
@@ -56,6 +60,7 @@ return new class extends Migration
             $table->string('previous_scholarship_name_group')->nullable();
             $table->enum('payment_status', ['paid', 'unpaid'])->default('unpaid');
             $table->float('marks', 8, 2)->nullable();
+            $table->enum('scholar_status', ['talent_full', 'general', null])->nullable();
             $table->timestamps();
         });
     }
