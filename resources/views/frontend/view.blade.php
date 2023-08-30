@@ -122,8 +122,10 @@
                 <a href="{{ route('students.confirm.registration') }}" class="btn btn-primary"> ➥ Confirm
                     Registration</a>
             </td>
-            {{-- <a href="{{ route('print.student.info',$student['id']) }}" class="btn btn-primary"> ➥ Confirm
-                Registation</a> --}}
+            <td style="width:200px">
+                <a href="{{ route('students.cancel.registration') }}" class="btn btn-danger"> ➥ Cancel
+                    Registration</a>
+            </td>
         </tr>
     </tbody>
 </table>

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Area;
 use App\Models\Institute;
 use App\Models\StudentClass;
 use Illuminate\Database\Seeder;
@@ -32,6 +33,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'One',
             'order_by' => 1,
             'talent_full_mark' => 100
+        ]);
+        Area::create([
+            'name' => 'Dha',
         ]);
     }
 }
