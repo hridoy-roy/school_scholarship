@@ -30,7 +30,8 @@ class DatabaseSeeder extends Seeder
         ]);
         StudentClass::create([
             'name' => 'One',
-            'order_by' => 1
+            'order_by' => 1,
+            'talent_full_mark' => 100
         ]);
     }
 }
