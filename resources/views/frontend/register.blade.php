@@ -37,7 +37,17 @@
     @section('main-container')
     <section>
         <div class="container my-5">
-            <a href="/" class="btn btn-success">Home</a>
+
+
+            @if (count($menus) > 0)
+            @foreach ($menus as $menu)
+
+            <a href="{{ $menu->link }}" class="btn btn-success">{{ $menu->name }}</a>
+
+
+            @endforeach
+            @endif
+            
             <h1 class="text-center mb-5">Registration Form</h1>
             @if ($errors->any())
             <div class="alert alert-danger">

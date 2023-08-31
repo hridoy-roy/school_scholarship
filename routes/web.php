@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\InstituteController;
 use App\Http\Controllers\Frontend\SliderController;
 use App\Http\Controllers\Admin\ExamCenterController;
 use App\Http\Controllers\Frontend\GalleryController;
+use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\Admin\StudentClassController;
 use App\Http\Controllers\Admin\AreaController;
 use App\Models\Student;
@@ -130,6 +131,30 @@ Route::delete('/slider/destroy/{id}', [SliderController::class, 'destroy'])->nam
 
 
 // Manu Controller
+
+Route::get('/menuitem/create', [MenuItemController::class, 'create'])->name('menu.create');
+Route::put('/menuitem/create', [MenuItemController::class, 'store'])->name('menu.store');
+Route::get('/menuitem/list', [MenuItemController::class, 'list'])->name('menu.list');
+Route::get('/menuitem/edit/{id}', [MenuItemController::class, 'edit'])->name('menu.edit');
+Route::post('/menuitem/update/{id}', [MenuItemController::class, 'update'])->name('menu.update');
+Route::delete('/menuitem/destroy/{id}', [MenuItemController::class, 'destroy'])->name('menu.destroy');
+
+
+
+// Route::get('/menuitem/create', [
+//     'uses' => 'MenuItemController@create',
+//     'as' => 'menu.create',
+// ]);
+
+// Route::post('/menuitem/store', [
+//     'uses' => 'MenuItemController@store',
+//     'as' => 'menu.store',
+// ]);
+
+// Route::post('/menuitem/edit', [
+//     'uses' => 'MenuItemController@store',
+//     'as' => 'menu.edit',
+// ]);
 
 
 // Main Image

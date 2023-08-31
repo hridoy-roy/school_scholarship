@@ -9,6 +9,6 @@ class CreateManu extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'route', 'ordering'
+        'name', 'link', 'status'
     ];
 }

@@ -290,8 +290,8 @@
 
 
 
-        {{-- <li
-            class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
+        <li
+            class="{{ request()->routeIs('menu.create') || request()->routeIs('menu.store') || request()->routeIs('menu.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon ti ti-school"></i>
                 <div data-i18n="Dashboards">Create Manu</div>
@@ -299,19 +299,19 @@
             </a>
             <ul class="menu-sub">
 
-                <li class="{{ request()->routeIs('gallery.create') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('gallery.create') }}" class="menu-link">
+                <li class="{{ request()->routeIs('menu.create') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('menu.create') }}" class="menu-link">
                         <div>Create</div>
                     </a>
                 </li>
 
-                <li class="{{ request()->routeIs('gallery.list') ? 'active' : '' }} menu-item">
-                    <a href="{{ route('gallery.list') }}" class="menu-link">
+                <li class="{{ request()->routeIs('menu.list') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('menu.list') }}" class="menu-link">
                         <div>List</div>
                     </a>
                 </li>
             </ul>
-        </li> --}}
+        </li>
 
 
       
