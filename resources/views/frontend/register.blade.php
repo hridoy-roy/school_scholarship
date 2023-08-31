@@ -32,8 +32,6 @@
 
 <body>
 
-
-
     @section('main-container')
     <section>
         <div class="container my-5">
@@ -47,7 +45,7 @@
 
             @endforeach
             @endif
-            
+
             <h1 class="text-center mb-5">Registration Form</h1>
             @if ($errors->any())
             <div class="alert alert-danger">
@@ -76,7 +74,7 @@
                             <label class="form-check-label" for="madrasha">Madrasha<code>*</code></label>
 
                             @error('school_madrasa')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <p><code>{{ $message }}</code></p>
                             @enderror
 
                         </div>
@@ -96,7 +94,7 @@
                             <label class="form-check-label" for="female">Female<code>*</code></label>
 
                             @error('student_type')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <p><code>{{ $message }}</code></p>
                             @enderror
                         </div>
                     </div>
@@ -119,7 +117,7 @@
                                 onchange="upload()">
                         </p>
                         @error('image')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                            <p><code>{{ $message }}</code></p>
                         @enderror
                     </div>
                 </div>
@@ -162,7 +160,7 @@
                             @endforeach
                         </select>
                         @error('area_id')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                            <p><code>{{ $message }}</code></p>
                         @enderror
                     </div>
                 </div>
@@ -180,8 +178,8 @@
                         @endforeach
                     </select>
                     @error('institute_id')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                            <p><code>{{ $message }}</code></p>
+                        @enderror
                 </div>
 
                 <div class="row g-3 mb-4">
@@ -200,7 +198,7 @@
                                 @endforeach
                             </select>
                             @error('student_class_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <p><code>{{ $message }}</code></p>
                             @enderror
                         </div>
                     </div>
@@ -212,7 +210,7 @@
                                 name="{{ 'class_roll' }}" id="class_roll"
                                 value="{{ @$student['class_roll'] ?? old('class_roll')}}" placeholder="Roll" />
                             @error('class_roll')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -248,17 +246,20 @@
                                 </option>
                             </select>
                         </div>
+                        @error('class_division')
+                            <p><code>{{ $message }}</code></p>
+                        @enderror
                     </div>
+
 
                     <div class="col-md">
                         <div class="form-group">
-                            <label for="class_section">Section</label>
+                            <label for="class_section">Section<code>*</code></label>
                             <input type="text" class="form-control @error('class_section') is-invalid @enderror"
                                 name="{{ 'class_section' }}" id="class_section"
-                                value="{{ @$student['class_section']  ?? old('class_section')}}"
-                                placeholder="Section" />
+                                value="{{ @$student['class_section'] ?? old('class_section')}}" placeholder="Section" />
                             @error('class_section')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -479,8 +480,7 @@
                     <textarea type="text" class="form-control @error('present_address') is-invalid @enderror"
                     name="{{ 'present_address' }}" id="present_address"
                     value="{{ @$student['present_address']  ?? old('present_address')}}"
-                    placeholder="House Adress">
-                    </textarea>
+                    placeholder="House Adress"></textarea>
                     @error('present_address')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -550,8 +550,7 @@
                     <textarea type="text" class="form-control permanent_address_field @error('permanent_address') is-invalid @enderror"
                     name="{{ 'permanent_address' }}" id="permanent_address"
                     value="{{ @$student['permanent_address']  ?? old('permanent_address')}}"
-                    placeholder="House Adress">
-                    </textarea>
+                    placeholder="House Adress"></textarea>
                     @error('permanent_address')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
