@@ -35,8 +35,7 @@
             <td>{{$menu->link}}</td>
            
 
-           
-
+        
             <td><span class="badge bg-label-primary me-1">{{$menu->status == 1 ? 'Active' : 'Inactive'}}</span></td>
             <td>
                 <div class="dropdown">
