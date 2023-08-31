@@ -270,13 +270,11 @@
                     <div class="col-md">
                         <div class="form-group">
                             <label for="dob">Date of Birth <code>*</code></label><br />
-                            <div class="row">
-                                <input type="date" class="form-control @error('dob') is-invalid @enderror" id="dob"
+                                <input type="text" id="txtDate" class="form-control" format="DD-MM-YYYY" @error('dob') is-invalid @enderror" id="dob"
                                     name="{{ 'dob' }}" value="{{ @$student['dob'] ?? old('dob')}}">
                                 @error('dob')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                            </div>
                         </div>
                     </div>
                     <div class="col-md">
@@ -719,5 +717,20 @@
             });
         });
     </script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"
+    type="text/javascript"></script>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
+    rel="Stylesheet" type="text/css" />
+<script type="text/javascript">
+    $(function () {
+        $("#txtDate").datepicker({
+            showOn: 'button',
+            buttonImageOnly: true,
+            buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+            dateFormat: 'dd-M-yy'
+        });
+    });
+</script>
 
 </body>
