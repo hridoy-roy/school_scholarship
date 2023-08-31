@@ -22,8 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $menus = CreateManu::where('status', 'Enabled')->get();
+        // $menus = CreateManu::where('status', 'Enabled')->get();
 
-        view()->share('menus', $menus);
+        // view()->share('menus', $menus);
     }
 }
