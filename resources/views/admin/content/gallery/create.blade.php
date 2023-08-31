@@ -23,7 +23,7 @@
 <div class="d-flex justify-content-between">
     <h4 class="fw-bold mb-4">
 
-        <span class="text-muted fw-light">{{ $title ?? 'N/A' }} /</span> {{ $sub_title ?? 'N/A' }}
+        <span class="text-muted fw-light">{{ $title ?? 'Gallery' }} /</span> {{ $sub_title ?? 'Create' }}
     </h4>
 
     <a href="{{ route('gallery.list') }}" class="btn btn-primary align-items-center waves-effect waves-light">
@@ -35,7 +35,7 @@
 
     <div class="col-12">
         <div class="card">
-            <h5 class="card-header">{{ $header ?? 'N/A' }}</h5>
+            <h5 class="card-header">{{ $header ?? 'Create' }}</h5>
             <div class="card-body">
 
                 <form action="{{ route('gallery.store') }}" method="POST" class="row g-3 needs-validation" novalidate

@@ -219,6 +219,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">For Frontend</span>
         </li>
+        
 
         <li
             class="{{ request()->routeIs('gallery.list') || request()->routeIs('gallery.create') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
