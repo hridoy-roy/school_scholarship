@@ -36,7 +36,6 @@ class StudentController extends Controller
         $institutes = Institute::where('status', 1)->pluck('name', 'id');
         $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
         $areas = Area::where('status', 1)->get();
-        session()->put('success', 'Item Updated successfully.');
         return view('frontend.register', compact('institutes', 'student_classes', 'areas'));
     }
 
