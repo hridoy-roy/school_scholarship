@@ -259,7 +259,7 @@
                                 name="{{ 'class_section' }}" id="class_section"
                                 value="{{ @$student['class_section'] ?? old('class_section')}}" placeholder="Section" />
                             @error('class_section')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                <p><code>{{ $message }}</code></p>
                             @enderror
                         </div>
                     </div>
@@ -273,7 +273,7 @@
                                 <input type="text" id="txtDate" class="form-control" format="DD-MM-YYYY" @error('dob') is-invalid @enderror" id="dob"
                                     name="{{ 'dob' }}" value="{{ @$student['dob'] ?? old('dob')}}">
                                 @error('dob')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                    <p><code>{{ $message }}</code></p>
                                 @enderror
                         </div>
                     </div>
@@ -717,6 +717,7 @@
             });
         });
     </script>
+
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"
     type="text/javascript"></script>

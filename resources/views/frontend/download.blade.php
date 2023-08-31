@@ -127,9 +127,9 @@
         <div class="header">
             Registration Form
         </div>
-        <div class="image-container">
+        {{-- <div class="image-container">
             <img class="image" src="photo/Screenshot_20230622_175323_Gallery.jpg" alt="Student Image">
-        </div>
+        </div> --}}
         <div class="section">
             <div class="section-one">
                 <div class="section-one-info">
@@ -142,9 +142,9 @@
                     </div>
                 </div>
 
-                <!-- <div class="image-container">
-          <img class="image" src="photo/Screenshot_20230622_175323_Gallery.jpg" alt="Student Image">
-        </div> -->
+                <div class="image-container">
+                    <img class="image" src="{{asset('upload/profile/'.$student['image'])}}" alt="Student Image">
+                </div>
             </div>
 
             <div class="section-two">
@@ -197,6 +197,18 @@
                 <div class="section-two-title">Present Address</div>
                 <div class="info-line">
                     <span class="label">Home Address:</span>{{ $student['present_address'] }}
+                </div>
+                <div class="info-line">
+                    <span class="label">Division:</span>{{ $student['present_address_district'] }}
+                </div>
+                <div class="info-line">
+                    <span class="label">Village Name:</span>{{ $student['present_address_village'] }}
+                </div>
+                <div class="info-line">
+                    <span class="label">Thane:</span>{{ $student['present_address_thana'] }}
+                </div>
+                <div class="info-line">
+                    <span class="label">Post Code:</span>{{ $student['present_address_post_office'] }}
                 </div>
             </div>
 
