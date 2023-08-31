@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between my-2">
     <h4 class="fw-bold">
-        <span class="text-muted fw-light">{{ $title ?? 'N/A' }} /</span> {{ $sub_title ?? 'N/A' }}
+        <span class="text-muted fw-light">{{ $title ?? 'Slider' }} /</span> {{ $sub_title ?? 'List' }}
     </h4>
     <a href="{{route('slider.create')}}"> <button class=" btn btn-primary">➥ Create</button></a>
 </div>

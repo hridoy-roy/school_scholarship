@@ -9,7 +9,7 @@
 @section('content')
 <div class="d-flex justify-content-between my-2">
     <h4 class="fw-bold">
-        <span class="text-muted fw-light">{{ $title ?? 'N/A' }} /</span> {{ $sub_title ?? 'N/A' }}
+        <span class="text-muted fw-light">{{ $title ?? 'Menu' }} /</span> {{ $sub_title ?? 'Edit' }}
     </h4>
     <a href="{{route('menu.list')}}"> <button class=" btn btn-primary">➥ List</button></a>
 </div>
@@ -18,7 +18,7 @@
 
    <div class="col-12">
         <div class="card">
-            <h5 class="card-header">{{ $header ?? 'N/A' }}</h5>
+            <h5 class="card-header">{{ $header ?? 'Edit' }}</h5>
             <div class="card-body">
 
                 <form action="{{ route('menu.update', $menu->id) }}" method="POST" class="row g-3 needs-validation" novalidate
