@@ -63,6 +63,13 @@ class StudentController extends Controller
         } else {
             $student_data['image'] = session()->get('student_data')['image'];
         }
+        if ($request->validated('check_address') == 'on') {
+            $student_data['permanent_address'] = $request->validated('present_address');
+            $student_data['permanent_address_village'] = $request->validated('present_address_village');
+            $student_data['permanent_address_post_office'] = $request->validated('present_address_post_office');
+            $student_data['permanent_address_thana'] = $request->validated('present_address_thana');
+            $student_data['permanent_address_district'] = $request->validated('present_address_district');
+        }
 
         session()->put('student_data', array_merge($request->validated(), $student_data));
         session()->put('success', 'Item created successfully.');
@@ -146,6 +153,14 @@ class StudentController extends Controller
             $student_data['image'] = $student->image;
         }
 
+        if ($request->validated('check_address') == 'on') {
+            $student_data['permanent_address'] = $request->validated('present_address');
+            $student_data['permanent_address_village'] = $request->validated('present_address_village');
+            $student_data['permanent_address_post_office'] = $request->validated('present_address_post_office');
+            $student_data['permanent_address_thana'] = $request->validated('present_address_thana');
+            $student_data['permanent_address_district'] = $request->validated('present_address_district');
+        }
+
         $student->update(array_merge($request->validated(), $student_data));
 
         session()->put('success', 'Item Updated successfully.');
@@ -181,6 +196,7 @@ class StudentController extends Controller
         unset($studentData['institute_name']);
         unset($studentData['student_class_name']);
         unset($studentData['area_name']);
+        unset($studentData['check_address']);
         if (Student::latest()->first()?->registration_no) {
             $currentRegNo = Student::latest()->first()?->registration_no;
             $currentYear = substr($currentRegNo, 0, 4);
