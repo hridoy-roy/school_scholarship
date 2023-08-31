@@ -44,6 +44,7 @@ class StudentRequest extends FormRequest
             'present_address_post_office' => ['required'],
             'present_address_thana' => ['required', 'max:255'],
             'present_address_district' => ['required', 'max:255'],
+            'check_address' => ['nullable'],
             'permanent_address' => ['required', 'max:255'],
             'permanent_address_village' => ['required', 'max:255'],
             'permanent_address_post_office' => ['required'],

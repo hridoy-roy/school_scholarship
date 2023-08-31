@@ -37,8 +37,20 @@
         <tr>
             <th style="width:200px">Subject</th>
             <td style="width:200px">{{$student['class_division']}}</td>
-            <th style="width:200px">Present House Adress</th>
+            <th style="width:200px">Present Adress</th>
             <td style="width:200px">{{$student['present_address']}}</td>
+        </tr>
+        <tr>
+            <th style="width:200px">Present Address Village</th>
+            <td style="width:200px">{{$student['present_address_village']}}</td>
+            <th style="width:200px">Present Address Post</th>
+            <td style="width:200px">{{$student['present_address_post_office']}}</td>
+        </tr>
+        <tr>
+            <th style="width:200px">Present Adress Thana</th>
+            <td style="width:200px">{{$student['present_address_thana']}}</td>
+            <th style="width:200px">Present Address District</th>
+            <td style="width:200px">{{$student['present_address_district']}}</td>
         </tr>
         <tr>
             <th style="width:200px">Section</th>

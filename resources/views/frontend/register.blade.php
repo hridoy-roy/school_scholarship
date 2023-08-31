@@ -476,9 +476,7 @@
                     <label for="present_address">House Adress <code>*</code></label>
                     <textarea type="text" class="form-control @error('present_address') is-invalid @enderror"
                     name="{{ 'present_address' }}" id="present_address"
-                    value="{{ @$student['present_address']  ?? old('present_address')}}"
-                    placeholder="House Adress">
-                    </textarea>
+                    placeholder="House Adress">{{ @$student['present_address']  ?? old('present_address')}}</textarea>
                     @error('present_address')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -486,7 +484,9 @@
 
                 <div class="border"></div>
                 <h6 class="mt-5 color">Permanent Address:</h6>
-                <input type="checkbox" class="mt-5" name="check_address" id="check_address"/> Same as Present Address
+                <input type="checkbox" class="mt-5" @if (@$student['check_address'])
+                    checked
+                @endif name="check_address" id="check_address"/> Same as Present Address
                 <div class="row g-3 mt-3 mb-4">
                     <div class="col-md">
                         <div class="form-group">
@@ -547,9 +547,7 @@
                     <label for="permanent_address">House Adress <code>*</code></label>
                     <textarea type="text" class="form-control permanent_address_field @error('permanent_address') is-invalid @enderror"
                     name="{{ 'permanent_address' }}" id="permanent_address"
-                    value="{{ @$student['permanent_address']  ?? old('permanent_address')}}"
-                    placeholder="House Adress">
-                    </textarea>
+                    placeholder="House Adress">{{ @$student['permanent_address']  ?? old('permanent_address')}}</textarea>
                     @error('permanent_address')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
