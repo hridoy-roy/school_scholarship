@@ -269,13 +269,11 @@
                     <div class="col-md">
                         <div class="form-group">
                             <label for="dob">Date of Birth <code>*</code></label><br />
-                            <div class="row">
-                                <input type="date" class="form-control @error('dob') is-invalid @enderror" id="dob"
+                                <input type="date" class="form-control" format="DD-MM-YYYY" @error('dob') is-invalid @enderror" id="dob"
                                     name="{{ 'dob' }}" value="{{ @$student['dob'] ?? old('dob')}}">
                                 @error('dob')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                            </div>
                         </div>
                     </div>
                     <div class="col-md">
