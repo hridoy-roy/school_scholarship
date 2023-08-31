@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\InstituteController;
 use App\Http\Controllers\Frontend\SliderController;
 use App\Http\Controllers\Admin\ExamCenterController;
 use App\Http\Controllers\Frontend\GalleryController;
+use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\Admin\StudentClassController;
 use App\Http\Controllers\Admin\AreaController;
 use App\Models\Student;
@@ -58,6 +59,7 @@ Route::get('exam/result/{exam}', [ExamController::class, 'frontendExamResultDown
 Route::get('print/student/info/{student}', [StudentController::class, 'printStudentInfo'])->name('print.student.info');
 Route::get('student/edit/session', [StudentController::class, 'studentEditSession'])->name('students.edit.session');
 Route::get('student/confirm/registration', [StudentController::class, 'studentConfirmRegistration'])->name('students.confirm.registration');
+Route::get('student/cancel/registration', [StudentController::class, 'studentCancelRegistration'])->name('students.cancel.registration');
 
 // prefix('admin')->
 Route::middleware('auth')->group(function () {
@@ -90,7 +92,7 @@ Route::middleware('auth')->group(function () {
         Route::post('student/unpaid', [PayController::class, 'assignUnpaidStore'])->name('student.unpaid.store');
 
         Route::get('student/admit-card', [AdmitCardController::class, 'studentView'])->name('student.admin.card');
-        Route::Post('student/admit-card/download', [AdmitCardController::class, 'studentDownload'])->name('student.admin.card.download');
+        Route::get('student/admit-card/download', [AdmitCardController::class, 'studentDownload'])->name('student.admin.card.download');
 
         Route::get('student/exam/{exam}', [ExamController::class, 'examStudent'])->name('student.exam');
         Route::Post('student/exam/assign/{exam}', [ExamController::class, 'examStudentAssign'])->name('student.exam.assign');
@@ -118,7 +120,6 @@ Route::post('/gallery/update/{id}', [GalleryController::class, 'update'])->name(
 Route::delete('/gallery/destroy/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 
 
-
 // Slider Controller
 
 Route::get('/slider/create', [SliderController::class, 'create'])->name('slider.create');
@@ -127,6 +128,33 @@ Route::get('/slider/list', [SliderController::class, 'list'])->name('slider.list
 Route::get('/slider/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
 Route::post('/slider/update/{id}', [SliderController::class, 'update'])->name('slider.update');
 Route::delete('/slider/destroy/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');
+
+
+// Manu Controller
+
+Route::get('/menuitem/create', [MenuItemController::class, 'create'])->name('menu.create');
+Route::put('/menuitem/create', [MenuItemController::class, 'store'])->name('menu.store');
+Route::get('/menuitem/list', [MenuItemController::class, 'list'])->name('menu.list');
+Route::get('/menuitem/edit/{id}', [MenuItemController::class, 'edit'])->name('menu.edit');
+Route::post('/menuitem/update/{id}', [MenuItemController::class, 'update'])->name('menu.update');
+Route::delete('/menuitem/destroy/{id}', [MenuItemController::class, 'destroy'])->name('menu.destroy');
+
+
+
+// Route::get('/menuitem/create', [
+//     'uses' => 'MenuItemController@create',
+//     'as' => 'menu.create',
+// ]);
+
+// Route::post('/menuitem/store', [
+//     'uses' => 'MenuItemController@store',
+//     'as' => 'menu.store',
+// ]);
+
+// Route::post('/menuitem/edit', [
+//     'uses' => 'MenuItemController@store',
+//     'as' => 'menu.edit',
+// ]);
 
 
 // Main Image
@@ -155,7 +183,7 @@ Route::post('/submit/verify', function (Request $request) {
     $studentId = $request->get('student_id');
 
     $student = Student::where('registration_no', $studentId)->where('payment_status', 'paid')->first();
-    if(blank($student)) {
+    if (blank($student)) {
         return redirect()->back()->with('success', "New Slider create Successfully");
     }
 
@@ -166,7 +194,7 @@ Route::post('/submit/verify', function (Request $request) {
 
 Route::get('/card/{id}', function ($studentId) {
     $student = Student::where('registration_no', $studentId)->where('payment_status', 'paid')->first();
-    if(blank($student)) {
+    if (blank($student)) {
         return redirect()->route('submit');
     }
 

@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Registration Result</title>
+    <title>Registration Cancel</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Keywords" content="html, css, html tables, table">
@@ -27,7 +27,7 @@
 
         #upper-side {
             padding: 2em;
-            background-color: #03aa35;
+            background-color: #942323;
             display: block;
             color: #fff;
             border-top-right-radius: 8px;
@@ -82,7 +82,7 @@
             position: relative;
             top: 1.5em;
             text-decoration: none;
-            background: #0db640;
+            background: #942323;
             color: #fff;
             margin: auto;
             padding: .8em 2em;
@@ -142,13 +142,12 @@
                 <circle fill="none" stroke="#ffffff" stroke-width="5" stroke-miterlimit="10" cx="109.486" cy="104.353"
                     r="32.53" />
             </svg>
-            <h3 id='status'> Success </h3>
+            <h3 id='status'> Cancel </h3>
         </div>
         <div id='lower-side'>
-            <p id='message'> Congratulations, You have successfully registered! </p>
+            <p id='message'> You successfully Cancel registration! </p>
             <div class="btn">
                 <a href="/" id="contBtn1">Home</a>
-                <a href="{{ route('print.student.info',$student->id) }}" id="contBtn2">Download</a>
             </div>
         </div>
     </div>

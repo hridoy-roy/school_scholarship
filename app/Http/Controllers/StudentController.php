@@ -36,7 +36,6 @@ class StudentController extends Controller
         $institutes = Institute::where('status', 1)->pluck('name', 'id');
         $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
         $areas = Area::where('status', 1)->get();
-        session()->put('success', 'Item Updated successfully.');
         return view('frontend.register', compact('institutes', 'student_classes', 'areas'));
     }
 
@@ -59,7 +58,8 @@ class StudentController extends Controller
                 unlink('upload/profile/' . $student_data['image']);
             }
             $student_data['image'] = time() . "-profile." . $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->move(public_path('upload/profile/'), $student_data['image']);
+            Image::make($request->file('image'))->save('upload/profile/' . $student_data['image']);
+            // $request->file('image')->move(public_path('upload/profile/'), $student_data['image']);
         } else {
             $student_data['image'] = session()->get('student_data')['image'];
         }
@@ -140,6 +140,7 @@ class StudentController extends Controller
             $path = public_path('upload/profile/');
             unlink($path . $student->image);
             $student_data['image'] = time() . "-profile." . $request->file('image')->getClientOriginalExtension();
+            Image::make($request->file('image'))->save('upload/profile/' . $student_data['image']);
             $request->file('image')->move(public_path('upload/profile/'), $student_data['image']);
         } else {
             $student_data['image'] = $student->image;
@@ -198,5 +199,18 @@ class StudentController extends Controller
             'student' => $student,
         ];
         return view('frontend.confirm', $data);
+    }
+
+    public function studentCancelRegistration()
+    {
+
+        if (session()->exists('student_data')) {
+            if (session()->get('student_data')['image']) {
+                $path = public_path('upload/profile/');
+                unlink($path . session()->get('student_data')['image']);
+            }
+            session()->forget('student_data');
+        }
+        return view('frontend.cancel');
     }
 }

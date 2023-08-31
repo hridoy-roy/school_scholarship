@@ -20,6 +20,7 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
+
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Site Admin Section</span>
         </li>
@@ -54,6 +55,7 @@
 
             </ul>
         </li>
+
         @if (auth()->user()->is_admin == 1)
         <li
             class="{{ request()->routeIs('institute.index') || request()->routeIs('institute.create') || request()->routeIs('institute.edit') ? 'active open' : '' }} menu-item">
@@ -236,6 +238,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">For Frontend</span>
         </li>
+
         <li
             class="{{ request()->routeIs('gallery.create') || request()->routeIs('gallery.list') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -286,12 +289,39 @@
         </li>
 
 
-        {{-- <li class="{{ request()->routeIs('admin.main') ? ' ' : '' }} menu-item">
-            <a href="{{ route('admin.main') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                <div data-i18n="Dashboards">Main Image</div>
+
+        <li
+            class="{{ request()->routeIs('menu.create') || request()->routeIs('menu.store') || request()->routeIs('menu.edit') ? 'active open' : '' }} menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon ti ti-school"></i>
+                <div data-i18n="Dashboards">Create Manu</div>
+                <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
             </a>
-        </li> --}}
+            <ul class="menu-sub">
+
+                <li class="{{ request()->routeIs('menu.create') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('menu.create') }}" class="menu-link">
+                        <div>Create</div>
+                    </a>
+                </li>
+
+                <li class="{{ request()->routeIs('menu.list') ? 'active' : '' }} menu-item">
+                    <a href="{{ route('menu.list') }}" class="menu-link">
+                        <div>List</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+      
+
+
+
+
+
+
+
 
 
 
