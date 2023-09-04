@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Student;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class updateStudentRequest extends FormRequest
@@ -41,15 +39,15 @@ class updateStudentRequest extends FormRequest
             'class_division' => ['required', 'max:255'],
             'class_section' => ['required', 'max:255'],
             'present_address' => ['required', 'max:255'],
-            'permanent_address' => ['nullable','max:255'],
-            'permanent_address_village' => ['nullable','max:255'],
+            'permanent_address' => ['nullable', 'max:255'],
+            'permanent_address_village' => ['nullable', 'max:255'],
             'permanent_address_post_office' => ['nullable'],
             'permanent_address_thana' => ['nullable', 'max:255'],
             'permanent_address_district' => ['nullable', 'max:255'],
             'mobile' => ['required', 'unique:students,mobile,' . $this->student->id],
             'dob' => ['required'],
             'blood_group' => ['required'],
-            'email' => ['required', 'email', 'unique:students,email,' . $this->student->id],
+            'email' => ['email', 'unique:students,email,' . $this->student->id],
             'absent_of_parent_name' => ['required', 'max:255'],
             'absent_of_parent_relation' => ['required', 'max:255'],
             'absent_of_parent_occupation' => ['required', 'max:255'],

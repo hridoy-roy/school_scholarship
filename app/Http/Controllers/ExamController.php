@@ -131,6 +131,7 @@ class ExamController extends Controller
     public function examResultDownload(Exam $exam)
     {
         $exam = $exam->load('students');
+        return view('admin.content.result.download', compact('exam'));
         $pdf = Pdf::loadView('admin.content.result.download', compact('exam'));
         return $pdf->download($exam->name . time() . '.pdf');
     }
@@ -163,6 +164,7 @@ class ExamController extends Controller
     public function frontendExamResultDownload(Exam $exam)
     {
         $exam = $exam->load('students');
+        return view('admin.content.result.download', compact('exam'));
         $pdf = Pdf::loadView('admin.content.result.download', compact('exam'));
         return $pdf->download($exam->name . time() . '.pdf');
     }

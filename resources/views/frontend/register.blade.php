@@ -570,7 +570,7 @@
 
                     <div class="col-md">
                         <div class="form-group">
-                            <label for="email">Email<code>*</code></label>
+                            <label for="email">Email</label>
                             <input type="text" class="form-control @error('email') is-invalid @enderror"
                                 name="{{ 'email' }}" id="email" value="{{ @$student['email']  ?? old('email')}}"
                                 placeholder="Email" />
@@ -692,7 +692,7 @@
 
                 <div class="row justify-content-end">
                     <button type="submit" class="btn btn-next">
-                        {{ @$student ? 'Update' : 'Submit' }}
+                        {{ @$student ? 'Update' : 'Next' }}
                     </button>
                 </div>
             </form>

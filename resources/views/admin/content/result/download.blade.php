@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+            integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
     <style>
         body {
@@ -37,7 +40,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="downloadContent">
         <h2>The Student Welfare Association Savar</h2>
         <h4>List of Student for Stipend of SSC Examination 2023</h4>
         <table>
@@ -94,7 +97,12 @@
         </table>
     </div>
 
-
+    <script>
+        window.onload = function () {
+            const downloadContent = this.document.getElementById('downloadContent');
+            html2pdf().from(downloadContent).save('student_murk_info');
+        }
+    </script>
 </body>
 
 </html>

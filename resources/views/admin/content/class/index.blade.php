@@ -44,6 +44,7 @@
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{route('classes.edit',$class->id)}}"><i class="ti ti-pencil me-1"></i> Edit</a>
+                    <a class="dropdown-item" href="{{route('student.admin.card.class',$class->id)}}"><i class="ti ti-pencil me-1"></i> Admit Card</a>
                     <form method="post" id="{{'form_'.$class->id}}" action="{{route('classes.destroy',$class->id)}}">
                         @csrf
                         @method('DELETE')

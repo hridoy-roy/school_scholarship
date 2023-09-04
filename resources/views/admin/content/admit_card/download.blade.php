@@ -5,10 +5,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admit Card</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+            integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <style>
     .input-group {
         padding:5px;
+    }
+    .form-control1{
+        text-align: center
     }
 
     .top-side {
@@ -27,7 +33,7 @@
 
     .all-border {
         padding: 10px 10px 10px 10px;
-        margin: 80px 80px 80px 80px;
+        margin: 0px 10px 0px 0px;
     }
 
     .student {
@@ -79,7 +85,6 @@
     }
 
     .footer {
-        margin-top: -80px;
         margin-right: 150px !important;
         font-weight: bold;
     }
@@ -125,7 +130,7 @@
         .all-border {
             background-color: red !important;
             padding: 10px 10px 10px 10px;
-            margin: 10px 10px 10px 10px;
+            margin: 0px 10px 0px 0px;
         }
 
         .student {
@@ -209,7 +214,7 @@
 
 <body>
     @foreach ($students as $student)
-    <div style="">
+    <div id="downloadContent">
 
         <div style="border: 10px solid black;background-color:#e0e0e0;" class="all-border">
 
@@ -240,7 +245,7 @@
                                 </div>
 
                                 <div class="col-lg-5 space">
-                                    <input class="form-control input-sm office" disabled="disabled" id="title1" name="title1" value="{{ $student['roll_no'] }}" type="text">
+                                    <input class="form-control1 input-sm office" disabled="disabled" id="title1" name="title1" value="{{ $student['roll_no'] }}" type="text">
                                 </div>
 
                             </div>
@@ -251,7 +256,7 @@
                                     <label class="control-label" for="name">Registration No :</label>
                                 </div>
                                 <div class="col-lg-5 space">
-                                    <input class="form-control input-sm office" disabled="disabled" id="title2" name="title2" value="{{ $student['registration_no'] }}" type="text">
+                                    <input class="form-control1 input-sm office" disabled="disabled" id="title2" name="title2" value="{{ $student['registration_no'] }}" type="text">
                                 </div>
                             </div>
 
@@ -262,7 +267,7 @@
                                     <label class="control-label" for="name">Rigion :</label>
                                 </div>
                                 <div class="col-lg-5 space">
-                                    <input class="form-control input-sm office" disabled="disabled" id="title3" name="title3" value="{{ $student['area'] }}" type="text">
+                                    <input class="form-control1 input-sm office" disabled="disabled" id="title3" name="title3" value="{{ $student['area']['name'] }}" type="text">
                                 </div>
                             </div>
 
@@ -321,7 +326,7 @@
 
     <div class="footer">
 
-        <div style="float: right; padding:30px 0px; text-align:center;">
+        <div style="float: right; padding:0px 0px; text-align:center;">
             <h4> <b>Director</b> </h4>
             <h4> <b>The Student welfare association Savar</b></h4>
         </div>
@@ -329,11 +334,15 @@
     <br>
     <br>
     <br>
-
-p
     </div>
     </div>
     @endforeach
-</body>
+
+    <script>
+        window.onload = function () {
+            const downloadContent = this.document.getElementById('downloadContent');
+            html2pdf().from(downloadContent).save('student_murk_info');
+        }
+    </script></body>
 
 </html>

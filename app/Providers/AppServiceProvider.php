@@ -4,9 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-use Illuminate\Support\Facades\Storage;
-use App\Models\CreateManu;
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -22,8 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // $menus = CreateManu::where('status', 'Enabled')->get();
-
-        // view()->share('menus', $menus);
+        //
     }
 }

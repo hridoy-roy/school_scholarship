@@ -17,14 +17,14 @@
             <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Order By</th>                      
+            <th>Order By</th>
             <th>Institute Status</th>
             <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @php 
-            $sl=1 
+            @php
+            $sl=1
             @endphp
 
             @foreach($institutes as $institute)
@@ -40,6 +40,7 @@
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{route('institute.edit',$institute->id)}}"><i class="ti ti-pencil me-1"></i> Edit</a>
+                    <a class="dropdown-item" href="{{route('student.admin.card.school',$institute->id)}}"><i class="ti ti-pencil me-1"></i> Admit Download</a>
                     <form method="post" id="{{'form_'.$institute->id}}" action="{{route('institute.destroy',$institute->id)}}">
                         @csrf
                         @method('DELETE')
@@ -55,13 +56,12 @@
             <tr>
             <th class="rounded-start-bottom">ID</th>
             <th>Name</th>
-            <th>Order By</th>                      
+            <th>Order By</th>
             <th>Institute Status</th>
             <th class="rounded-end-bottom">Actions</th>
             </tr>
         </tfoot>
-        </table>          
+        </table>
     </div>
 </div>
 @endsection
-

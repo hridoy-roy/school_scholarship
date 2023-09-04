@@ -185,6 +185,7 @@ class StudentController extends Controller
 
     public function printStudentInfo(Student $student)
     {
+        return view('frontend.download', compact('student'));
         $pdf = Pdf::loadView('frontend.download', compact('student'));
         return $pdf->download($student->name . time() . '.pdf');
     }
@@ -208,11 +209,12 @@ class StudentController extends Controller
         } else {
             $studentData['registration_no'] = date('Y') . '0001';
         }
-        $student = Student::create($studentData);
+        if (session()->get('student_data'))
+            $student = Student::create($studentData);
         session()->forget('student_data');
         $data = [
             'title' => "Class",
-            'student' => $student,
+            'student' => $student ?? null,
         ];
         return view('frontend.confirm', $data);
     }
