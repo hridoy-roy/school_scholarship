@@ -51,7 +51,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('father_occupation');
             $table->string('mother_occupation');
-            $table->string('blood_group')->nullable();
+            $table->string('blood_group');
             $table->string('email')->unique()->nullable();
             $table->string('absent_of_parent_name');
             $table->string('absent_of_parent_relation');
