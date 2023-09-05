@@ -33,8 +33,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $institutes = Institute::where('status', 1)->pluck('name', 'id');
-        $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
+        $institutes = Institute::where('status', 1)->get();
+        $student_classes = StudentClass::where('status', 1)->get();
         $areas = Area::where('status', 1)->get();
         return view('frontend.register', compact('institutes', 'student_classes', 'areas'));
     }
@@ -123,8 +123,8 @@ class StudentController extends Controller
     }
     public function studentEditSession()
     {
-        $institutes = Institute::where('status', 1)->pluck('name', 'id');
-        $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
+        $institutes = Institute::where('status', 1)->get();
+        $student_classes = StudentClass::where('status', 1)->get();
         $areas = Area::where('status', 1)->get();
 
         $data = [
@@ -135,7 +135,7 @@ class StudentController extends Controller
             'student_classes' => $student_classes,
         ];
 
-        return view('frontend.register', $data);
+        return view('frontend.register_edit', $data);
     }
 
     /**

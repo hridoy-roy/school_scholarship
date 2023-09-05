@@ -198,7 +198,7 @@
             class="{{ request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon ti ti-school"></i>
-                <div data-i18n="Dashboards">Exams</div>
+                <div data-i18n="Dashboards">Admin User</div>
                 <div class="badge bg-label-primary rounded-pill ms-auto">2</div>
             </a>
             <ul class="menu-sub">
@@ -214,12 +214,12 @@
                 </li>
             </ul>
         </li>
-        
+
 
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">For Frontend</span>
         </li>
-        
+
 
         <li
             class="{{ request()->routeIs('gallery.list') || request()->routeIs('gallery.create') || request()->routeIs('gallery.edit') ? 'active open' : '' }} menu-item">

@@ -10,7 +10,8 @@
     <title>Document</title>
     <style>
         body {
-            padding: 25px;
+            width: 8in;
+            margin: 0 auto;
         }
 
         table {
@@ -42,7 +43,7 @@
 <body>
     <div class="container" id="downloadContent">
         <h2>The Student Welfare Association Savar</h2>
-        <h4>List of Student for Stipend of SSC Examination 2023</h4>
+        <h4>List of Student for Stipend of {{$exam['name']}}</h4>
         <table>
             <thead>
                 <tr>
@@ -50,7 +51,6 @@
                     <th>REG_NO</th>
                     <th>Roll_No.</th>
                     <th>NAME</th>
-                    <th>Father's name</th>
                     <th>SCHOOL</th>
                     <th>MARKS</th>
                 <tr>
@@ -59,22 +59,20 @@
                 @foreach ($exam['students'] ?? [] as $student)
                 @if ($student['scholar_status'] == 'talent_full')
                 <tr>
-                    <td>Talent Full</td>
+                    <td style="color: #de4882"><strong>Talent Full</strong></td>
                     <td>{{ $student['registration_no'] }}</td>
                     <td>{{ $student['roll_no'] }}</td>
                     <td>{{ $student['name_en'] }}</td>
-                    <td>{{ $student['father_name_en'] }}</td>
                     <td>{{ $student['institute']['name'] }}</td>
                     <td>{{ $student['marks'] }}</td>
                 </tr>
 
                 @elseif ($student['scholar_status'] >= 'general')
                 <tr>
-                    <td>General</td>
+                    <td style="color: #20c997"><strong>General</strong></td>
                     <td>{{ $student['registration_no'] }}</td>
                     <td>{{ $student['roll_no'] }}</td>
                     <td>{{ $student['name_en'] }}</td>
-                    <td>{{ $student['father_name_en'] }}</td>
                     <td>{{ $student['institute']['name'] }}</td>
                     <td>{{ $student['marks'] }}</td>
                 </tr>
@@ -84,7 +82,6 @@
                     <td>{{ $student['registration_no'] }}</td>
                     <td>{{ $student['roll_no'] }}</td>
                     <td>{{ $student['name_en'] }}</td>
-                    <td>{{ $student['father_name_en'] }}</td>
                     <td>{{ $student['institute']['name'] }}</td>
                     <td>{{ $student['marks'] }}</td>
                 </tr>
@@ -98,9 +95,10 @@
     </div>
 
     <script>
-        window.onload = function () {
+        window.onload = async  function () {
             const downloadContent = this.document.getElementById('downloadContent');
-            html2pdf().from(downloadContent).save('student_murk_info');
+            await html2pdf().from(downloadContent).save('student_murk_info');
+            // window.history.go(-1);
         }
     </script>
 </body>

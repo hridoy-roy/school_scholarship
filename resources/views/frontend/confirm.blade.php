@@ -151,7 +151,7 @@
     <div id='lower-side'>
         <p id='message'> Congratulations, You have successfully registered! </p>
         <div class="btn">
-            <a href="/" id="contBtn1">Home</a>
+            <a href="/students/create" id="contBtn1">Home</a>
             <a href="{{ route('print.student.info',$student->id) }}" id="contBtn2">Download</a>
         </div>
     </div>

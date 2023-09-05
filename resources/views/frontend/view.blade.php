@@ -26,6 +26,7 @@
         .aa_h2 {
             font: 100 3.5rem/0 Roboto;
             text-transform: uppercase;
+            color: #fff;
         }
 
         table {
@@ -382,7 +383,7 @@ table, thead, tbody, tfoot, tr, td, th {
         .button {
             float: left;
             min-width: 150px;
-            max-width: 250px;
+            max-width: 260px;
             display: block;
             margin: 1em;
             padding: 1em 2em;
@@ -469,11 +470,18 @@ table, thead, tbody, tfoot, tr, td, th {
         .button--rayen {
             overflow: hidden;
             padding: 0;
-            width: 245px;
+            width: 260px;
         }
 
-        .button--rayen.button--inverted {
-            color: #fff;
+        .button--rayen.button--inverted1 {
+            color: #33ff57;
+            font-weight: bold;
+        }
+        .button--rayen.button--inverted2 {
+            color: #000;
+        }
+        .button--rayen.button--inverted3 {
+            color: #000;
         }
 
         .button--rayen::before {
@@ -630,27 +638,7 @@ table, thead, tbody, tfoot, tr, td, th {
                 </tr>
                 <tr>
                     <th>Blood Group</th>
-                    <td>:
-                        @if ($student['blood_group'] == 1 )
-                        A+
-                        @elseif ($student['blood_group'] == 2 )
-                        B+
-                        @elseif ($student['blood_group'] == 3 )
-                        O+
-                        @elseif ($student['blood_group'] == 4 )
-                        AB+
-                        @elseif ($student['blood_group'] == 5 )
-                        A-
-                        @elseif ($student['blood_group'] == 6 )
-                        B-
-                        @elseif ($student['blood_group'] == 6 )
-                        O-
-                        @elseif ($student['blood_group'] == 6 )
-                        B-
-                        @else
-                        AB-
-                        @endif
-                    </td>
+                    <td>{{$student['blood_group']}}</td>
                     <th>Name of guardian</th>
                     <td>: {{$student['absent_of_parent_name']}}</td>
                 </tr>
@@ -677,13 +665,13 @@ table, thead, tbody, tfoot, tr, td, th {
         <section class="content">
             <div class="box bg-2">
                 <a href="{{route('students.edit.session')}}"
-                    class="button button--rayen button--border-medium button--text-thin button--size-l button--inverted button--inverted_three"
+                    class="button button--rayen button--border-medium button--text-thin button--size-l button--inverted3 button--inverted_three"
                     data-text="Click For Edit"><span>Click For Edit</span></a>
                 <a href="{{ route('students.confirm.registration') }}"
-                    class="button button--rayen button--border-medium button--text-thin button--size-l button--inverted button--inverted_one"
+                    class="button button--rayen button--border-medium button--text-thin button--size-l button--inverted1 button--inverted_one"
                     data-text="Confirm Registration"><span>Confirm Registration</span></a>
                 <a href="{{ route('students.cancel.registration') }}"
-                    class="button button--rayen button--border-medium button--text-thin button--size-l button--inverted button--inverted_two"
+                    class="button button--rayen button--border-medium button--text-thin button--size-l button--inverted2 button--inverted_two"
                     data-text="Cancel Registration"><span>Cancel Registration</span></a>
             </div>
         </section>
