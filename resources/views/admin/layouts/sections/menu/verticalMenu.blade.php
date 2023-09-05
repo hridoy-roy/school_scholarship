@@ -392,6 +392,7 @@
                 </li>
             </ul>
         </li>
+
         <li
             class="{{ request()->routeIs('contact.index') || request()->routeIs('contact.create') || request()->routeIs('contact.edit') ? 'active open' : '' }} menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -407,7 +408,8 @@
                     </a>
                 </li>
             </ul>
-        </li>l>
+        </li>
+
         </li>
         @endif
     </ul>
