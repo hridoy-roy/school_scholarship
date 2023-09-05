@@ -144,11 +144,105 @@
             background-position: center;
         }
 
+    /*    Button */
+        .margin-bottom-40 {
+            margin-bottom:40px;
+            margin-top:40px;
+        }
+
+        /* Button Sizes*/
+
+        .btn-mod.btn-large {
+            height: auto;
+            padding: 13px 52px;
+            font-size: 15px;
+        }
+
+        .btn-mod.btn-medium {
+            height: auto;
+            padding: 10px 35px;
+            font-size: 13px;
+        }
+
+        .btn-mod.btn-small {
+            height: auto;
+            padding: 6px 16px;
+            font-size: 12px;
+        }
+
+        /* Button Mod to the original Bootstrap Buttons */
+
+        .btn-mod.btn-circle {
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            border-radius: 30px;
+        }
+
+        .btn-mod.btn-border {
+            color: #fff;
+            border: 2px solid #fff;
+            background: transparent;
+        }
+
+        .btn-mod, a.btn-mod {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 4px 13px;
+            color: #fff;
+            background: rgba(34,34,34, .9);
+            border: 2px solid transparent;
+            font-size: 11px;
+            font-weight: 400;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 2px;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            -webkit-transition: all 0.2s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+            -moz-transition: all 0.2s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+            -o-transition: all 0.2s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+            -ms-transition: all 0.2s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+            transition: all 0.2s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+        }
+
+        .btn-mod.btn-border:hover, .btn-mod.btn-border:focus{
+            color: #000;
+            border-color: transparent;
+            background: #fff;
+        }
+
+        .btn-mod:hover, .btn-mod:focus, a.btn-mod:hover, a.btn-mod:focus {
+            font-weight: 400;
+            color: rgba(255,255,255, .85);
+            background: rgba(0,0,0, .7);
+            text-decoration: none;
+            outline: none;
+            border-color: transparent;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        /*    Button */
+
 
     </style>
 </head>
 <body>
 <div class="container">
+    <div class="row text-center">
+        @foreach ($menus as $menu)
+        <div class="col-md-2 col-sm-4 margin-bottom-40">
+            <a href="{{ $menu->link }}" class="btn btn-mod btn-border btn-circle btn-large">
+                {{ $menu->name }}
+            </a>
+        </div>
+        @endforeach
+    </div>
     <div class="bg-light">
         <div class="row">
             <div class="col-lg-8 col-md-12 p-5 bg-white rounded-3">
@@ -156,18 +250,19 @@
                       enctype="multipart/form-data">
                     @csrf
                     <div class="d-flex mb-3 flex-column">
-                        <h1 class=" h1 text-center">Registration Form </h1>
+                        <h1 class=" h1 text-center text-decoration-underline ">Registration Form </h1>
                         <div class="d-flex justify-content-center">
                             <div class="mb-3 text-center">
-                                <label class="form-label"><strong>Upload Image</strong></label>
+                                <label class="form-label"><strong>Upload Image <span>*</span></strong></label>
                                 <div class="avatar-upload">
                                     <div class="avatar-edit">
-                                        <input type='file' required name="image" id="imageUpload" accept=".png, .jpg, .jpeg"/>
+                                        <input type='file' required name="image" id="imageUpload"
+                                               accept=".png, .jpg, .jpeg"/>
                                         <label for="imageUpload"></label>
                                     </div>
                                     <div class="avatar-preview">
                                         <div id="imagePreview"
-                                             style="background-image: url('http://i.pravatar.cc/500?img=7');">
+                                             style="background-image: url('http://i.pravatar.cc/500?img=2');">
                                         </div>
                                     </div>
                                 </div>
@@ -176,18 +271,19 @@
                         </div>
                     </div>
 
-                    <h3 class="h3 text-success">Student Information:</h3>
+                    <h3 class="h3 text-success text-center text-decoration-underline">Student Information</h3>
                     <div class="col-md-6 p-3">
-                        <label class="form-label"><strong>School OR Madrasha</strong></label>
+                        <label class="form-label"><strong>School OR Madrasha <span>*</span></strong></label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="school_madrasa" required id="School" value="school" >
+                            <input class="form-check-input" type="radio" name="school_madrasa" required id="School"
+                                   value="school">
                             <label class="form-check-label" for="School">
                                 School
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="school_madrasa" required id="Madrasha"
-                                   value="madrasha"  >
+                                   value="madrasha">
                             <label class="form-check-label" for="Madrasha">
                                 Madrasha
                             </label>
@@ -197,15 +293,17 @@
                         @enderror
                     </div>
                     <div class="col-md-6 p-3">
-                        <label class="form-label"><strong>Male OR Female</strong></label>
+                        <label class="form-label"><strong>Male OR Female <span>*</span></strong></label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="student_type" required id="Male" value="male">
+                            <input class="form-check-input" type="radio" name="student_type" required id="Male"
+                                   value="male">
                             <label class="form-check-label" for="Male">
                                 Male
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="student_type" required id="Female" value="female">
+                            <input class="form-check-input" type="radio" name="student_type" required id="Female"
+                                   value="female">
                             <label class="form-check-label" for="Female">
                                 Female
                             </label>
@@ -293,7 +391,8 @@
                     <div class="col-md-6 p-3">
                         <label class="form-label"><strong>Date of Birth *</strong></label>
                         <div class="form-floating input-group mb-4">
-                            <input type="text" id="datepicker2" class="datepicker_input form-control" placeholder="DD/MM/YYYY" required>
+                            <input type="text" id="datepicker2" class="datepicker_input form-control"
+                                   placeholder="DD/MM/YYYY" required>
                             <i class="bi bi-calendar-date input-group-text"></i>
                         </div>
                         @error('student_type')
@@ -303,7 +402,7 @@
                     <div class="col-md-6 p-3">
                         <label class="form-label"><strong>Blood Group </strong></label>
                         <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select Blood Group </option>
+                            <option selected>Open this select Blood Group</option>
                             <option value="A+">A+</option>
                             <option value="A-">A-</option>
                             <option value="B+">B+</option>
@@ -318,7 +417,7 @@
                         @enderror
                     </div>
 
-                    <h3 class="h3 text-success">Parents Information:</h3>
+                    <h3 class="h3 text-warning text-center text-decoration-underline">Parents Information</h3>
                     <div class="col-md-6 p-3">
                         <label class="form-label"><strong>Father Name <span>* (English)</span></strong></label>
                         <input required placeholder="Father Name * (English)" type="text" name=""/>
@@ -371,7 +470,7 @@
                     </div>
 
 
-                    <h3 class="h3 text-success">Present Address:</h3>
+                    <h3 class="h3 text-info text-center text-decoration-underline">Present Address</h3>
                     <div class="col-md-6 p-3">
                         <label class="form-label"><strong>District Name <span>*</span></strong></label>
                         <input required placeholder="District Name" type="text" name=""/>
@@ -409,7 +508,7 @@
                     </div>
 
 
-                    <h3 class="h3 text-success">Permanent Address:</h3>
+                    <h3 class="h3 text-info text-center text-decoration-underline">Permanent Address</h3>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="school_madrasa"
                                id="Same as Present Address">
@@ -439,7 +538,7 @@
                     </div>
 
 
-                    <h3 class="h3 text-success">Absence of Guardian Information:</h3>
+                    <h3 class="h3 text-secondary text-center text-decoration-underline">Absence of Guardian Information</h3>
                     <div class="col-md-6 p-3">
                         <label class="form-label"><strong>Name of guardian </strong></label>
                         <input placeholder="Name of guardian" type="text" name=""/>
@@ -457,7 +556,7 @@
                         <input placeholder="Income of Guardian" type="text" name=""/>
                     </div>
 
-                    <h3 class="h3 text-success">Additional Information:</h3>
+                    <h3 class="h3 text-secondary text-center text-decoration-underline">Additional Information</h3>
                     <div class="col-md-12 p-3">
                         <label class="form-label"><strong>Previous Scholarship Organization (if any) </strong></label>
                         <input placeholder="Previous Scholarship Organization (if any)" type="text" name=""/>
@@ -470,54 +569,77 @@
             </div>
             <div class="col-lg-4 col-md-12 text-white aside px-4 py-5">
                 <div class="mb-5">
-                    <h1 class="h3">Our Member Info</h1>
-                    <p class="opacity-50">
-                        <small>
-                            Fill out the from and we will get back to you whitin 24 hours
-                        </small>
-                    </p>
-                    <p class="opacity-50">
-                        <small>
-                            Fill out the from and we will get back to you whitin 24 hours
-                        </small>
-                    </p>
-                    <p class="opacity-50">
-                        <small>
-                            Fill out the from and we will get back to you whitin 24 hours
+                    <h1 class="h3">Our Honourable Members</h1>
+                    <div class="px-0">
+                        <ul class="m-0 p-0">
+                            <li class="d-flex justify-content-start align-items-center mb-4">
+                              <span class="opacity-50 d-flex align-items-center me-3 fs-2">
+                                <ion-icon class="p-2" name="person"></ion-icon>
+                              </span>
+                                <span>Demo Demo</span>
+                            </li>
+                            <li class="d-flex align-items-center r mb-4">
+                              <span class="opacity-50 d-flex align-items-center me-3 fs-2">
+                                <ion-icon class="p-2" name="person"></ion-icon>
+                              </span>
+                                <span>Demo Demo</span>
+                            </li>
+                            <li class="d-flex justify-content-start align-items-center mb-4">
+                              <span class="opacity-50 d-flex align-items-center me-3 fs-2">
+                               <ion-icon class="p-2" name="person"></ion-icon>
+                              </span>
+                                <span>Demo Demo</span>
+                            </li>
+                            <li class="d-flex justify-content-start align-items-center mb-4">
+                              <span class="opacity-50 d-flex align-items-center me-3 fs-2">
+                               <ion-icon class="p-2" name="person"></ion-icon>
+                              </span>
+                                <span>Demo Demo</span>
+                            </li>
+                            <li class="d-flex justify-content-start align-items-center mb-4">
+                              <span class="opacity-50 d-flex align-items-center me-3 fs-2">
+                               <ion-icon class="p-2" name="person"></ion-icon>
+                              </span>
+                                <span>Demo Demo</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <h1 class="h3">Out Program Information</h1>
+                    <p class="opacity-50 text-justify" style="text-align: justify;">
+                        <small class="text-justify">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium assumenda aut beatae consectetur cupiditate, deserunt ducimus et eveniet facilis ipsa, iure minus molestias odit officiis pariatur quae repellendus sed tempore velit veniam voluptate voluptatibus? Adipisci aliquid architecto assumenda dolorum eos expedita fugit in ipsa itaque magnam minima modi nam nisi numquam odit ratione reiciendis tempore, temporibus totam vitae voluptates voluptatibus voluptatum? Accusamus adipisci animi asperiores delectus facere facilis hic, impedit incidunt iste perspiciatis praesentium quam saepe tempora tempore tenetur ullam, ut veniam voluptatem! Animi aperiam aspernatur eaque illum impedit incidunt magnam neque possimus quaerat quas reiciendis totam vel, voluptas?
                         </small>
                     </p>
                 </div>
 
-
                 <div class="mb-5">
-                    <h1 class="h3">Contact Information</h1>
-                    <p class="opacity-50">
-                        <small>
-                            Fill out the from
-                        </small>
-                    </p>
+                    <h1 class="h3">Our Contact Information</h1>
+
                 </div>
                 <div class="d-flex flex-column px-0">
                     <ul class="m-0 p-0">
                         <li class="d-flex justify-content-start align-items-center mb-4">
-              <span class="opacity-50 d-flex align-items-center me-3 fs-2">
-                <ion-icon name="call"></ion-icon>
-              </span>
+                              <span class="opacity-50 d-flex align-items-center me-3 fs-2">
+                                <ion-icon name="call"></ion-icon>
+                              </span>
                             <span>+134 1234 1234</span>
                         </li>
                         <li class="d-flex align-items-center r mb-4">
-              <span class="opacity-50 d-flex align-items-center me-3 fs-2">
-                <ion-icon name="mail"></ion-icon>
-              </span>
+                              <span class="opacity-50 d-flex align-items-center me-3 fs-2">
+                                <ion-icon name="mail"></ion-icon>
+                              </span>
                             <span>Help@contact.com</span>
                         </li>
                         <li class="d-flex justify-content-start align-items-center mb-4">
-              <span class="opacity-50 d-flex align-items-center me-3 fs-2">
-                <ion-icon name="pin"></ion-icon>
-              </span>
+                              <span class="opacity-50 d-flex align-items-center me-3 fs-2">
+                                <ion-icon name="pin"></ion-icon>
+                              </span>
                             <span>52 Buddy Ln Conway, <br/>
-                Arkansas(AR), 72032
-              </span>
+                                Arkansas(AR), 72032
+                          </span>
                         </li>
                     </ul>
                     <div class="text-muted text-center">
@@ -577,7 +699,7 @@
     const elems = document.querySelectorAll('.datepicker_input');
     for (const elem of elems) {
         const datepicker = new Datepicker(elem, {
-            'format': 'dd/mm/yyyy', // UK format
+            'format': 'dd/MM/yyyy', // UK format
             title: getDatePickerTitle(elem)
         });
     }
