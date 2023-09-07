@@ -6,6 +6,7 @@ use App\Models\Area;
 use App\Models\Student;
 use App\Models\Institute;
 use App\Models\StudentClass;
+use App\Models\Member;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Requests\StudentRequest;
 use Intervention\Image\Facades\Image;
@@ -36,7 +37,8 @@ class StudentController extends Controller
         $institutes = Institute::where('status', 1)->get();
         $student_classes = StudentClass::where('status', 1)->get();
         $areas = Area::where('status', 1)->get();
-        return view('frontend.register', compact('institutes', 'student_classes', 'areas'));
+        $members = Member::get();
+        return view('frontend.register', compact('institutes', 'student_classes', 'areas', 'members'));
     }
 
     /**
@@ -96,6 +98,7 @@ class StudentController extends Controller
             'student' => $student,
             'institutes' => $institutes,
             'student_classes' => $student_classes,
+            'members'=>$members,
         ];
         return view('frontend.view', $data);
     }
@@ -108,6 +111,7 @@ class StudentController extends Controller
         $institutes = Institute::where('status', 1)->pluck('name', 'id');
         $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
         $areas = Area::where('status', 1)->get();
+        $members = Member::get();
 
         $data = [
             'title' => "Class",
@@ -117,6 +121,7 @@ class StudentController extends Controller
             'areas' => $areas,
             'institutes' => $institutes,
             'student_classes' => $student_classes,
+            'members'=> $members,
         ];
 
         return view('frontend.register', $data);
@@ -126,6 +131,7 @@ class StudentController extends Controller
         $institutes = Institute::where('status', 1)->get();
         $student_classes = StudentClass::where('status', 1)->get();
         $areas = Area::where('status', 1)->get();
+        $members = Member::get();
 
         $data = [
             'title' => "Class",
@@ -133,6 +139,7 @@ class StudentController extends Controller
             'areas' => $areas,
             'institutes' => $institutes,
             'student_classes' => $student_classes,
+            'members' => $members,
         ];
 
         return view('frontend.register_edit', $data);

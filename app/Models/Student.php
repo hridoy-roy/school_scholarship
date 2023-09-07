@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Institute;
 use App\Models\StudentClass;
+use App\Models\Member;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -37,5 +38,10 @@ class Student extends Model
     public function student_class(): BelongsTo
     {
         return $this->belongsTo(StudentClass::class);
+    }
+
+    public function member(): BelongsTo
+    {
+        return $this->belongsTo(Member::class);
     }
 }
