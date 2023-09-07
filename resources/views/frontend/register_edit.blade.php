@@ -778,18 +778,20 @@
                         <h1 class="h3">Our Honourable Members</h1>
                         <div class="px-0">
                             <ul class="m-0 p-0">
+                                @foreach ($members as $member)
                                 <li class="d-flex justify-content-start align-items-center mb-2">
+                                    <span class="opacity-50 d-flex align-items-center me-3 fs-2">
+                                        <img src="{{asset('upload/member/'.$member->banner)}}" alt="" height="50" width="50" class="rounded-circle" />
+                                    </span>
+                                    <span>{{$member->title}}</span>
+                                </li>
+                                @endforeach
+                                {{-- <li class="d-flex align-items-center r mb-2">
                               <span class="opacity-50 d-flex align-items-center me-3 fs-2">
                                 <ion-icon class="p-2" name="person"></ion-icon>
                               </span>
                                     <span>Demo Demo</span>
                                 </li>
-                                <li class="d-flex align-items-center r mb-2">
-                              <span class="opacity-50 d-flex align-items-center me-3 fs-2">
-                                <ion-icon class="p-2" name="person"></ion-icon>
-                              </span>
-                                    <span>Demo Demo</span>
-                                </li>
                                 <li class="d-flex justify-content-start align-items-center mb-2">
                               <span class="opacity-50 d-flex align-items-center me-3 fs-2">
                                <ion-icon class="p-2" name="person"></ion-icon>
@@ -807,7 +809,7 @@
                                <ion-icon class="p-2" name="person"></ion-icon>
                               </span>
                                     <span>Demo Demo</span>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>
