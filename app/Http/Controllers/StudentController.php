@@ -18,10 +18,10 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $data = [
-            'title' => "Institute",
+        $data     = [
+            'title'     => "Institute",
             'sub_title' => "Index",
-            'header' => "List Class",
+            'header'    => "List Class",
         ];
         $students = Student::with('institute')->with('student_class')->get();
 
@@ -33,9 +33,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $institutes = Institute::where('status', 1)->get();
+        $institutes      = Institute::where('status', 1)->get();
         $student_classes = StudentClass::where('status', 1)->get();
-        $areas = Area::where('status', 1)->get();
+        $areas           = Area::where('status', 1)->get();
         return view('frontend.register', compact('institutes', 'student_classes', 'areas'));
     }
 
@@ -64,18 +64,18 @@ class StudentController extends Controller
             $student_data['image'] = session()->get('student_data')['image'];
         }
         if ($request->validated('check_address') == 'on') {
-            $student_data['permanent_address'] = $request->validated('present_address');
-            $student_data['permanent_address_village'] = $request->validated('present_address_village');
+            $student_data['permanent_address']             = $request->validated('present_address');
+            $student_data['permanent_address_village']     = $request->validated('present_address_village');
             $student_data['permanent_address_post_office'] = $request->validated('present_address_post_office');
-            $student_data['permanent_address_thana'] = $request->validated('present_address_thana');
-            $student_data['permanent_address_district'] = $request->validated('present_address_district');
+            $student_data['permanent_address_thana']       = $request->validated('present_address_thana');
+            $student_data['permanent_address_district']    = $request->validated('present_address_district');
         }
 
         session()->put('student_data', array_merge($request->validated(), $student_data));
         session()->put('success', 'Item created successfully.');
 
         $data = [
-            'title' => "Class",
+            'title'   => "Class",
             'student' => session()->get('student_data'),
         ];
 
@@ -88,13 +88,13 @@ class StudentController extends Controller
     public function show(Student $student)
     {
 
-        $institutes = Institute::where('status', 1)->pluck('name', 'id');
+        $institutes      = Institute::where('status', 1)->pluck('name', 'id');
         $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
 
         $data = [
-            'title' => "Class",
-            'student' => $student,
-            'institutes' => $institutes,
+            'title'           => "Class",
+            'student'         => $student,
+            'institutes'      => $institutes,
             'student_classes' => $student_classes,
         ];
         return view('frontend.view', $data);
@@ -105,17 +105,17 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        $institutes = Institute::where('status', 1)->pluck('name', 'id');
+        $institutes      = Institute::where('status', 1)->pluck('name', 'id');
         $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
-        $areas = Area::where('status', 1)->get();
+        $areas           = Area::where('status', 1)->get();
 
         $data = [
-            'title' => "Class",
-            'sub_title' => "Edit",
-            'header' => "Edit Class",
-            'student' => $student,
-            'areas' => $areas,
-            'institutes' => $institutes,
+            'title'           => "Class",
+            'sub_title'       => "Edit",
+            'header'          => "Edit Class",
+            'student'         => $student,
+            'areas'           => $areas,
+            'institutes'      => $institutes,
             'student_classes' => $student_classes,
         ];
 
@@ -123,15 +123,15 @@ class StudentController extends Controller
     }
     public function studentEditSession()
     {
-        $institutes = Institute::where('status', 1)->get();
+        $institutes      = Institute::where('status', 1)->get();
         $student_classes = StudentClass::where('status', 1)->get();
-        $areas = Area::where('status', 1)->get();
+        $areas           = Area::where('status', 1)->get();
 
         $data = [
-            'title' => "Class",
-            'student' => session()->get('student_data'),
-            'areas' => $areas,
-            'institutes' => $institutes,
+            'title'           => "Class",
+            'student'         => session()->get('student_data'),
+            'areas'           => $areas,
+            'institutes'      => $institutes,
             'student_classes' => $student_classes,
         ];
 
@@ -154,11 +154,11 @@ class StudentController extends Controller
         }
 
         if ($request->validated('check_address') == 'on') {
-            $student_data['permanent_address'] = $request->validated('present_address');
-            $student_data['permanent_address_village'] = $request->validated('present_address_village');
+            $student_data['permanent_address']             = $request->validated('present_address');
+            $student_data['permanent_address_village']     = $request->validated('present_address_village');
             $student_data['permanent_address_post_office'] = $request->validated('present_address_post_office');
-            $student_data['permanent_address_thana'] = $request->validated('present_address_thana');
-            $student_data['permanent_address_district'] = $request->validated('present_address_district');
+            $student_data['permanent_address_thana']       = $request->validated('present_address_thana');
+            $student_data['permanent_address_district']    = $request->validated('present_address_district');
         }
 
         $student->update(array_merge($request->validated(), $student_data));
@@ -200,7 +200,7 @@ class StudentController extends Controller
         unset($studentData['check_address']);
         if (Student::latest()->first()?->registration_no) {
             $currentRegNo = Student::latest()->first()?->registration_no;
-            $currentYear = substr($currentRegNo, 0, 4);
+            $currentYear  = substr($currentRegNo, 0, 4);
             if ($currentYear === date('Y')) {
                 $studentData['registration_no'] = $currentRegNo + 1;
             } else {
@@ -211,9 +211,35 @@ class StudentController extends Controller
         }
         if (session()->get('student_data'))
             $student = Student::create($studentData);
+        // digitext Sms Api Start
+
+        // $message = [
+        //     "secret"   => "0a496de72f6caaca71b4e4b568dde4f364253e37",
+        //     // your API secret from (Tools -> API Keys) page
+        //     "mode"     => "devices",
+        //     "device"   => "00000000-0000-0000-d57d-f30cb6a89289",
+        //     "sim"      => 1,
+        //     "priority" => 1,
+        //     "phone"    => $student->mobile,
+        //     "message"  => "Student Reg Number " . $student->registration_no
+        // ];
+
+        // $cURL = curl_init("https://digitext.digi5.net/api/send/sms");
+        // curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($cURL, CURLOPT_POSTFIELDS, $message);
+        // $response = curl_exec($cURL);
+        // curl_close($cURL);
+
+        // digitext Sms Api End
+
+        // mim Sms Api Start
+        
+        // mim Sms Api End
+
+
         session()->forget('student_data');
         $data = [
-            'title' => "Class",
+            'title'   => "Class",
             'student' => $student ?? null,
         ];
         return view('frontend.confirm', $data);
