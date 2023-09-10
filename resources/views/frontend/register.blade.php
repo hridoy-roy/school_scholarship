@@ -259,7 +259,8 @@
 							enctype="multipart/form-data">
 							@csrf
 							<div class="d-flex mb-3 flex-column">
-								<h1 class=" h1 text-center text-decoration-underline ">Student Registration Form </h1>
+								<h5 class="h5 text-center mb-3 text-decoration-underline" style="color: #01224E">The Student Welfare Association Savar</h5>
+								<h1 class="h1 text-center mb-5 " style="color: #01224E">Student Registration Form </h1>
 								<div class="d-flex justify-content-center">
 
 									{{-- ----------- Image Upload ----------- --}}
@@ -283,7 +284,7 @@
 								</div>
 							</div>
 
-							<h3 class="h3 text-success text-center text-decoration-underline">Student Information</h3>
+							<h3 class="h3 text-center text-decoration-underline"  style="color: #01224E">Student Information</h3>
 
 							{{-- ----------- School or Madrasha ----------- --}}
 							<div class="col-md-6 p-3">
@@ -469,8 +470,7 @@
 									<div class="invalid-feedback">{{ $message }}</div>
 								@enderror
 							</div>
-
-							<h3 class="h3 text-success text-center text-decoration-underline">Parents Information</h3>
+							<h3 class="h3 text-center text-decoration-underline"  style="color: #01224E">Parents Information</h3>
 
 							{{-- ----------- Father Name (English) ----------- --}}
 							<div class="col-md-6 p-3">
@@ -559,7 +559,7 @@
 							</div>
 
 							{{-- ----------- Present Address ----------- --}}
-							<h3 class="h3 text-success text-center text-decoration-underline">Present Address</h3>
+							<h3 class="h3 text-center text-decoration-underline"  style="color: #01224E">Present Address</h3>
 							<div class="col-md-6 p-3">
 								<label for="present_address_district" class="form-label"><strong>District Name <code>*</code></strong></label>
 								<input type="text" class="form-control @error('present_address_district') is-invalid @enderror"
@@ -613,7 +613,7 @@
 							</div>
 
 							{{-- ----------- Permanent Address ----------- --}}
-							<h3 class="h3 text-success text-center text-decoration-underline">Permanent Address</h3>
+							<h3 class="h3 text-center text-decoration-underline"  style="color: #01224E">Permanent Address</h3>
 							<div>
 								<input type="checkbox" class="mt-5" @if (@$student['check_address']) checked @endif name="check_address"
 									id="check_address" /> Same as Present Address
@@ -680,7 +680,7 @@
 
 							{{-- ----------- Guardian Information ----------- --}}
 
-							<h3 class="h3 text-success text-center text-decoration-underline">Absence of Guardian Information</h3>
+							<h3 class="h3 text-center text-decoration-underline"  style="color: #01224E">Absence of Guardian Information</h3>
 							<div class="col-md-6 p-3">
 								<label class="form-label"><strong>Name of guardian </strong></label>
 								<input type="text" class="form-control @error('absent_of_parent_name') is-invalid @enderror"
@@ -727,7 +727,8 @@
 								@enderror
 							</div>
 
-							<h3 class="h3 text-success text-center text-decoration-underline">Additional Information</h3>
+
+							<h3 class="h3 text-center text-decoration-underline"  style="color: #01224E">Additional Information</h3>
 							<div class="col-md-12 p-3">
 								<label for="previous_scholarship_name_group" class="form-label"><strong>Previous Scholarship Organization (if
 										any) </strong></label>
