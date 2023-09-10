@@ -433,8 +433,8 @@
 
                     {{-- ----------- Date of Birth ----------- --}}
                     <div class="col-md-6 p-3">
+                        <label class="form-label"><strong>Date of Birth</strong></label>
                         <div class="form-floating input-group mb-4">
-                            <label for="class_section" class="form-label"><strong><code>Date of Birth</code></strong></label>
                             <input type="text" id="datepicker2" class="datepicker_input form-control  @error('dob') is-invalid @enderror" placeholder="DD/MM/YYYY"
                                    name="{{ 'dob' }}" value="{{ old('dob') ?? @$student['dob']}}" >
                             <i class="bi bi-calendar-date input-group-text"></i>

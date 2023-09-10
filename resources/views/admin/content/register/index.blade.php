@@ -56,7 +56,8 @@
                 @foreach($students as $student)
                 <tr>
                     <td>{{$sl++}}</td>
-                    <td><img src="{{asset($student->image)}}" alt="" style="width: 70px; height:80px; object-fit:cover">
+                    <td><img src="{{asset('/upload/profile/'.$student->image)}}" alt="" class="rounded-circle"
+                            height="80">
                     </td>
                     <td>{{$student->name_bn}}</td>
                     <td>{{$student->institute->name}}</td>
@@ -66,7 +67,7 @@
                     <td>{{$student->class_section}}</td>
                     <td>{{$student->school_madrasa}}</td>
                     <td>{{$student->student_type}}</td>
-                    <td>{{$student->area}}</td>
+                    <td>{{$student->area->name}}</td>
                     <td>{{$student->dob}}</td>
                     <td>
                         @if ($student->blood_group == 1 )
@@ -112,8 +113,8 @@
                                 <i class="ti ti-dots-vertical"></i>
                             </button>
                             <div class="dropdown-menu">
-                                {{-- <a href="{{route('students.show',$student->id)}}"><button class="btn btn-sm btn-info"><i
-                                            class="fa-solid fa-eye "></i></button></a> --}}
+                                {{-- <a href="{{route('students.show',$student->id)}}"><button
+                                        class="btn btn-sm btn-info"><i class="fa-solid fa-eye "></i></button></a> --}}
                                 <a class="dropdown-item" href="{{route('students.edit',$student->id)}}"><i
                                         class="ti ti-pencil me-1"></i> Edit</a>
                                 <form method="post" id="{{'form_'.$student->id}}"

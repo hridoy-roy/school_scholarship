@@ -107,8 +107,8 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        $institutes      = Institute::where('status', 1)->pluck('name', 'id');
-        $student_classes = StudentClass::where('status', 1)->pluck('name', 'id');
+        $institutes      = Institute::where('status', 1)->get();
+        $student_classes = StudentClass::where('status', 1)->get();
 
         $areas   = Area::where('status', 1)->get();
         $members = Member::get();
@@ -124,7 +124,7 @@ class StudentController extends Controller
             'members'         => $members,
         ];
 
-        return view('frontend.register', $data);
+        return view('admin.content.student.edit', $data);
     }
     public function studentEditSession()
     {
@@ -172,7 +172,7 @@ class StudentController extends Controller
 
         session()->put('success', 'Item Updated successfully.');
 
-        return redirect()->route('students.show', [$student->id]);
+        return redirect()->route('students.index', [$student->id]);
     }
 
     /**
