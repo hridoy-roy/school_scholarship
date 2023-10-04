@@ -108,6 +108,11 @@
 			object-fit: cover;
 			border-radius: 50%;
 		}
+
+		.glow-text:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Add a white glow effect */
+            color: #ff6600; /* Change text color on hover */
+        }
 	</style>
 </head>
 
@@ -285,6 +290,10 @@
 			</div>
 
 		</div>
+
+		<p>For Contact:<span class="glow-text">+016xxxxxxxx</span></p>
+		<p>For Payment in bKash/ Nagad:<span class="glow-text">+016xxxxxxxx</span></p>
+
 	</div>
 	{{-- <script>
 		window.onload = function() {

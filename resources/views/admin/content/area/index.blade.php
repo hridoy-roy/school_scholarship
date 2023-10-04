@@ -51,15 +51,6 @@
             </tr>
             @endforeach
         </tbody>
-        {{-- <tfoot class="table-border-bottom-0">
-            <tr>
-            <th class="rounded-start-bottom">ID</th>
-            <th>Area Name</th>
-            <th>Order By</th>
-            <th>Institute Status</th>
-            <th class="rounded-end-bottom">Actions</th>
-            </tr>
-        </tfoot> --}}
         </table>
     </div>
 </div>
